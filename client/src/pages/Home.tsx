@@ -3,16 +3,18 @@ import { ExperimentDetail } from "@/components/ExperimentDetail";
 import { ExperimentGraph } from "@/components/ExperimentGraph";
 import { FilterBar, type AtlasFilters } from "@/components/FilterBar";
 import { datasetInfo, experiments, statusInfo, type ExperimentStatus } from "@/lib/experimentData";
-import { BookMarked, GitCommitHorizontal, Layers3 } from "lucide-react";
+import { BookMarked, Moon, Sun } from "lucide-react";
+import { useTheme } from "@/contexts/ThemeContext";
 import { useMemo, useState } from "react";
 
-const defaultFilters: AtlasFilters = { dataset: "all", status: "all", input: "all" };
+const defaultFilters: AtlasFilters = { dataset: "all", status: "all", input: "all", search: "", repository: "all", era: "all", phase: "all" };
 
 function LineageMark() {
   return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M9 10c9 2 11 10 20 12s10 8 10 16" /><path d="M8 36c8-1 10-10 18-12s10-7 14-14" /><path d="M8 23h31" /><circle cx="24" cy="23" r="3" /></svg>;
 }
 
 export default function Home() {
+  const { theme, toggleTheme } = useTheme();
   const [selectedId, setSelectedId] = useState("V2-E-032");
   const [filters, setFilters] = useState<AtlasFilters>(defaultFilters);
   const selected = experiments.find((experiment) => experiment.id === selectedId) ?? experiments[0];
@@ -20,7 +22,13 @@ export default function Home() {
   const count953 = experiments.filter((item) => item.dataset === "SawitMVC-953").length;
   const count352 = experiments.filter((item) => item.dataset === "SawitMVC-Depth-352").length;
   const historicalCount = experiments.filter((item) => item.source).length;
-  const visible = (experiment: typeof experiments[number]) => (filters.dataset === "all" || experiment.dataset === filters.dataset) && (filters.status === "all" || experiment.status === filters.status) && (filters.input === "all" || experiment.inputs.includes(filters.input));
+  const visible = (experiment: typeof experiments[number]) => {
+    const text = [experiment.id, experiment.title, experiment.model, experiment.phase, experiment.dataset, experiment.inputs.join(" "), experiment.era, experiment.source?.repo, experiment.conclusion].filter(Boolean).join(" ").toLocaleLowerCase("id-ID");
+    const search = filters.search.trim().toLocaleLowerCase("id-ID");
+    const repository = experiment.source?.repo ?? "project-expertise";
+    const era = experiment.era ?? "Riset terkini · 2026";
+    return (filters.dataset === "all" || experiment.dataset === filters.dataset) && (filters.status === "all" || experiment.status === filters.status) && (filters.input === "all" || experiment.inputs.includes(filters.input)) && (filters.repository === "all" || repository === filters.repository) && (filters.era === "all" || era === filters.era) && (filters.phase === "all" || experiment.phase === filters.phase) && (!search || text.includes(search));
+  };
 
   return (
     <div className="atlas-page">
@@ -35,7 +43,7 @@ export default function Home() {
           <div className="rail-source"><strong>Basis audit</strong><code>project-expertise@225faaeb</code><br /><code>Research-Pipeline@4aa9ad6</code><br /><code>Baseline-SawitMVC@ee2f0ac</code><br /><code>research-method-dedup@a720f17</code></div>
         </aside>
         <main className="atlas-main">
-          <header className="atlas-header"><div className="atlas-eyebrow"><BookMarked size={14} />Atlas eksperimen · SawitMVC</div><h2>Telusuri keputusan, bukan hanya skor.</h2><p>Catatan lapangan interaktif untuk run, audit, hasil nol, dan batas inferensi dari empat repositori yang membentuk perjalanan riset deteksi serta counting tandan sawit.</p><div className="atlas-stats"><div className="atlas-stat"><strong>{experiments.length}</strong><span>node terdokumentasi</span></div><div className="atlas-stat"><strong>{historicalCount}</strong><span>node historis terlacak</span></div><div className="atlas-stat"><strong>{counts.negative}</strong><span>hasil negatif terjaga</span></div><div className="atlas-stat"><strong>4</strong><span>repositori diaudit</span></div></div></header>
+          <header className="atlas-header"><div className="atlas-header-actions"><button type="button" onClick={toggleTheme} aria-label={theme === "dark" ? "Aktifkan tema terang" : "Aktifkan tema gelap"} title={theme === "dark" ? "Tema terang" : "Tema gelap"}>{theme === "dark" ? <Sun size={15} /> : <Moon size={15} />}<span>{theme === "dark" ? "Terang" : "Gelap"}</span></button></div><div className="atlas-eyebrow"><BookMarked size={14} />Atlas eksperimen · SawitMVC</div><h2>Telusuri keputusan, bukan hanya skor.</h2><p>Catatan lapangan interaktif untuk run, audit, hasil nol, dan batas inferensi dari empat repositori yang membentuk perjalanan riset deteksi serta counting tandan sawit.</p><div className="atlas-stats"><div className="atlas-stat"><strong>{experiments.length}</strong><span>node terdokumentasi</span></div><div className="atlas-stat"><strong>{historicalCount}</strong><span>node historis terlacak</span></div><div className="atlas-stat"><strong>{counts.negative}</strong><span>hasil negatif terjaga</span></div><div className="atlas-stat"><strong>4</strong><span>repositori diaudit</span></div></div></header>
           <FilterBar filters={filters} onChange={setFilters} />
           <ExperimentGraph selectedId={selected.id} visible={visible} onSelect={setSelectedId} />
         </main>

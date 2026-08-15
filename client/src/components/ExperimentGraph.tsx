@@ -2,7 +2,8 @@
 import { datasetRoots, experiments, statusInfo, type Experiment } from "@/lib/experimentData";
 import { buildAtlasLayout, orthogonalPath } from "@/lib/atlasLayout";
 import { ExperimentNode } from "@/components/ExperimentNode";
-import { Crosshair, Maximize2, Minimize2, RotateCcw, ScanLine, ZoomIn, ZoomOut } from "lucide-react";
+import { Crosshair, Download, LoaderCircle, Maximize2, Minimize2, RotateCcw, ScanLine, ZoomIn, ZoomOut } from "lucide-react";
+import { toPng } from "html-to-image";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 interface ExperimentGraphProps {
@@ -77,6 +78,8 @@ export function ExperimentGraph({ selectedId, visible, onSelect }: ExperimentGra
   const [focusMode, setFocusMode] = useState(false);
   const [edgeTooltip, setEdgeTooltip] = useState<EdgeTooltip | null>(null);
   const [viewport, setViewport] = useState({ x: 0, y: 0, width: 600, height: 420 });
+  const [isExporting, setIsExporting] = useState(false);
+  const [exportMessage, setExportMessage] = useState("");
   const canvasWidth = layout.canvasWidth;
   const canvasHeight = layout.canvasHeight;
   const canvasStyle = { "--canvas-width": `${canvasWidth}px`, "--canvas-height": `${canvasHeight}px` } as React.CSSProperties;
@@ -103,6 +106,25 @@ export function ExperimentGraph({ selectedId, visible, onSelect }: ExperimentGra
     element.scrollLeft = Math.max(0, x * zoom - element.clientWidth / 2);
     element.scrollTop = Math.max(0, y * zoom - element.clientHeight / 2);
     requestAnimationFrame(updateViewport);
+  };
+  const exportMap = async () => {
+    const canvas = scrollRef.current?.querySelector<HTMLElement>(".experiment-canvas");
+    if (!canvas || isExporting) return;
+    setIsExporting(true);
+    setExportMessage("");
+    try {
+      const dataUrl = await toPng(canvas, { cacheBust: true, pixelRatio: 2, backgroundColor: "#123d2d", width: canvasWidth, height: canvasHeight, style: { transform: "none", transformOrigin: "top left" } });
+      const link = document.createElement("a");
+      link.download = `atlas-sawitmvc-${focusMode ? `${selected.id}-fokus` : "peta-lengkap"}-2x.png`;
+      link.href = dataUrl;
+      link.click();
+      setExportMessage("PNG 2× siap diunduh");
+    } catch {
+      setExportMessage("Ekspor belum dapat dibuat. Coba lagi.");
+    } finally {
+      setIsExporting(false);
+      window.setTimeout(() => setExportMessage(""), 3200);
+    }
   };
   const startDrag = (event: React.PointerEvent<HTMLDivElement>) => {
     if ((event.target as HTMLElement).closest("button, a, select, input, .edge-hitarea")) return;
@@ -134,11 +156,12 @@ export function ExperimentGraph({ selectedId, visible, onSelect }: ExperimentGra
       <div className="graph-topbar">
         <div className="graph-note"><span />Tarik latar untuk menggeser peta. Arahkan ke garis untuk membaca alasan; roda + <kbd>Ctrl</kbd> untuk zoom.</div>
         <div className="graph-controls" aria-label="Kontrol peta">
-          <button type="button" onClick={() => setFocusMode((current) => !current)} aria-pressed={focusMode} aria-label={focusMode ? "Keluar mode fokus cabang" : "Fokuskan cabang node terpilih"} title={focusMode ? "Keluar mode fokus" : "Fokus cabang node terpilih"} className={focusMode ? "is-active" : ""}><ScanLine size={14} /></button>
+          <button type="button" onClick={exportMap} disabled={isExporting} aria-label="Unduh peta sebagai PNG resolusi tinggi" title="Unduh PNG 2×">{isExporting ? <LoaderCircle className="is-spinning" size={14} /> : <Download size={14} />}</button><button type="button" onClick={() => setFocusMode((current) => !current)} aria-pressed={focusMode} aria-label={focusMode ? "Keluar mode fokus cabang" : "Fokuskan cabang node terpilih"} title={focusMode ? "Keluar mode fokus" : "Fokus cabang node terpilih"} className={focusMode ? "is-active" : ""}><ScanLine size={14} /></button>
           <button type="button" onClick={() => setZoomClamped(zoom - 0.1)} disabled={zoom <= MIN_ZOOM} aria-label="Perkecil peta" title="Perkecil peta"><ZoomOut size={15} /></button><output aria-label={`Zoom ${Math.round(zoom * 100)} persen`}>{Math.round(zoom * 100)}%</output><button type="button" onClick={() => setZoomClamped(zoom + 0.1)} disabled={zoom >= MAX_ZOOM} aria-label="Perbesar peta" title="Perbesar peta"><ZoomIn size={15} /></button><button type="button" onClick={resetView} aria-label="Reset tampilan peta" title="Reset tampilan"><RotateCcw size={14} /></button><button type="button" onClick={toggleFullscreen} aria-label={isFullscreen ? "Keluar dari layar penuh" : "Buka peta layar penuh"} title={isFullscreen ? "Keluar layar penuh" : "Layar penuh"}>{isFullscreen ? <Minimize2 size={14} /> : <Maximize2 size={14} />}</button>
         </div>
       </div>
       {focusMode && <div className="focus-strip"><ScanLine size={13} /><span><strong>Mode fokus cabang.</strong> Dependensi dan turunan <b>{selected.id}</b> dipertahankan.</span><button type="button" onClick={() => setFocusMode(false)}>Tampilkan semua</button></div>}
+      {exportMessage && <div className="export-note" role="status">{exportMessage}</div>}
       <div ref={scrollRef} className={`graph-scroll ${isDragging ? "is-grabbing" : ""}`} onScroll={updateViewport} onPointerDown={startDrag} onPointerMove={moveDrag} onPointerUp={endDrag} onPointerCancel={endDrag} onWheel={zoomWithWheel}>
         <div className="zoom-stage" style={{ width: canvasWidth * zoom, height: canvasHeight * zoom }}>
           <div className="experiment-canvas" style={{ ...canvasStyle, transform: `scale(${zoom})` }}>

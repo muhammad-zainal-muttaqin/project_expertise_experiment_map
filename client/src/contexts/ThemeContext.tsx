@@ -33,8 +33,10 @@ export function ThemeProvider({
     const root = document.documentElement;
     if (theme === "dark") {
       root.classList.add("dark");
+      root.classList.remove("ledger-light");
     } else {
       root.classList.remove("dark");
+      root.classList.add("ledger-light");
     }
 
     if (switchable) {

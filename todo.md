@@ -32,11 +32,21 @@
 - [x] Tambahkan minimap interaktif untuk melompat ke lane dan era riset.
 - [x] Tambahkan mode fokus cabang untuk menyembunyikan node serta edge di luar lineage terpilih.
 - [x] Verifikasi kontrol baru pada desktop dan ponsel.
-- [ ] Simpan checkpoint fitur navigasi dan sampaikan hasil.
+- [x] Simpan checkpoint fitur navigasi dan sampaikan hasil.
 
 ## GitHub Pages
 
-- [ ] Periksa respons halaman GitHub Pages dan konfigurasi Vite saat ini.
-- [ ] Pastikan base path, rujukan aset, dan fallback SPA kompatibel dengan subpath repositori.
-- [ ] Tambahkan workflow build dan deploy GitHub Actions untuk GitHub Pages.
-- [ ] Verifikasi build produksi dan deploy pertama pada URL Pages.
+- [x] Periksa respons halaman GitHub Pages dan konfigurasi Vite saat ini.
+- [x] Pastikan base path, rujukan aset, dan fallback SPA kompatibel dengan subpath repositori.
+- [x] Tambahkan workflow build dan deploy GitHub Actions untuk GitHub Pages.
+- [x] Verifikasi build produksi dan deploy pertama pada URL Pages.
+
+## Skill dan Eksplorasi Atlas
+
+- [x] Inisialisasi serta dokumentasikan skill reusable untuk audit repositori, katalog eksperimen, lineage, dan deployment atlas.
+- [x] Tambahkan pencarian teks lintas ID, judul, model, dataset, dan repositori.
+- [x] Tambahkan filter interaktif untuk era, repositori, serta keluarga riset.
+- [x] Tambahkan toggle tema gelap dan terang yang mempertahankan material Field Research Ledger.
+- [x] Tambahkan ekspor tampilan kanvas peta saat ini sebagai PNG beresolusi tinggi.
+- [x] Validasi skill dan uji fitur baru pada desktop serta ponsel.
+- [ ] Simpan checkpoint fitur eksplorasi dan sampaikan hasil.

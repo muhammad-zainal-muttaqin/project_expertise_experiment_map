@@ -2,6 +2,7 @@
 @import "tw-animate-css";
 @import "./historical.css";
 @import "./navigation.css";
+@import "./atlasEnhancements.css";
 
 @custom-variant dark (&:is(.dark *));
 
