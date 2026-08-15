@@ -113,3 +113,9 @@
 - [x] Audit struktur tiga-rail dan breakpoint yang mengatur panel kiri.
 - [x] Tambahkan kontrol sembunyikan/tampilkan panel kiri dengan status yang jelas.
 - [x] Verifikasi peta melebar, panel dapat dipulihkan, dan tampilan ponsel tetap aman.
+
+## Dokumentasi Proyek
+
+- [x] Audit perintah, struktur data, fitur, dan konfigurasi deploy yang harus tercantum di README.
+- [x] Tulis README berbahasa Indonesia untuk menjalankan, menjelajahi, dan memelihara atlas.
+- [x] Validasi instruksi README terhadap skrip proyek serta alur GitHub Pages.
