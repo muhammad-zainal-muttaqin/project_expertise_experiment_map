@@ -100,6 +100,8 @@ client/
 
 Tambahkan atau perbarui node di `client/src/lib/experimentData.ts`. Arsip dari repositori terdahulu berada di `client/src/lib/historicalExperiments.ts`. Gunakan kontrak data yang sama supaya peta, filter, lembar bukti, minimap, dan ekspor PNG dapat membaca node baru tanpa jalur khusus.
 
+Untuk prosedur lengkap—termasuk contoh node siap salin, pengaturan lineage, posisi peta, pembaruan dataset, penghapusan node, dan checklist publikasi—lihat **[Panduan Pemeliharaan Atlas](docs/MAINTENANCE.md)**.
+
 | Bidang | Kegunaan |
 |---|---|
 | `id` | Identitas stabil eksperimen, misalnya `V2-E-034`. |

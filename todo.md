@@ -119,3 +119,10 @@
 - [x] Audit perintah, struktur data, fitur, dan konfigurasi deploy yang harus tercantum di README.
 - [x] Tulis README berbahasa Indonesia untuk menjalankan, menjelajahi, dan memelihara atlas.
 - [x] Validasi instruksi README terhadap skrip proyek serta alur GitHub Pages.
+
+## Panduan Pemeliharaan Atlas
+
+- [x] Audit kontrak eksperimen, arsip historis, tata letak, dan titik konfigurasi yang perlu dijelaskan.
+- [x] Tambahkan panduan langkah demi langkah untuk menambah, mengubah, menghapus, dan mengaudit eksperimen.
+- [x] Sertakan contoh node, aturan lineage, checklist validasi, serta alur publikasi GitHub Pages.
+- [x] Validasi contoh panduan terhadap tipe dan skrip proyek.
