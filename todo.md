@@ -91,3 +91,19 @@
 - [x] Buat lembar bukti normal penuh-tinggi dengan area isi yang dapat digulir secara mandiri.
 - [x] Dock atau kecilkan minimap ketika lembar bukti fullscreen terbuka agar keduanya tidak saling menutup.
 - [x] Verifikasi tata letak pada tema terang, gelap, dan layar penuh.
+
+## Penyederhanaan Minimap
+
+- [ ] Hapus label bantuan teknis di atas minimap fullscreen tanpa mengubah posisi dock minimap.
+- [ ] Verifikasi minimap tetap tidak bertumpuk dengan lembar bukti.
+
+## Audit Label Bantuan
+
+- [x] Inventarisasi semua label bantuan dan anotasi orientasi yang terlihat pada atlas.
+- [x] Kelompokkan label yang esensial bagi navigasi dan label yang dapat dihapus.
+
+## Tooltip Edge Kontekstual
+
+- [x] Audit perhitungan titik tooltip saat ini terhadap koordinat hover dan zoom peta.
+- [x] Tempatkan tooltip di dekat pointer/segmen edge yang sedang di-hover dengan batas aman layar.
+- [x] Verifikasi tooltip pada zoom serta mode layar penuh.

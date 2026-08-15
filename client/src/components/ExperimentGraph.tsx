@@ -201,11 +201,21 @@ export function ExperimentGraph({ selectedId, visible, onSelect }: ExperimentGra
                 const childPosition = layout.positions[edge.child.id] ?? edge.child.position;
                 const isArchiveBridge = (edge.parentId.startsWith("RP-") || edge.parentId.startsWith("HB-") || edge.parentId.startsWith("HD-")) !== edge.child.id.startsWith("RP-") && !edge.child.id.startsWith("HB-") && !edge.child.id.startsWith("HD-");
                 const path = orthogonalPath(parentPosition, childPosition, edge, edge.parentId.startsWith("dataset-"));
-                const tooltip = { parentId: edge.parentId, childId: edge.child.id, x: (parentPosition.x + childPosition.x) / 2, y: (parentPosition.y + childPosition.y) / 2 };
-                return <g key={edge.key}><path d={path} className={`lineage-path ${active ? "is-active" : ""} ${isArchiveBridge ? "is-archive-bridge" : ""}`} /><path d={path} className="edge-hitarea" tabIndex={0} aria-label={`Alasan hubungan ${edge.parentId} ke ${edge.child.id}`} onPointerEnter={() => setEdgeTooltip(tooltip)} onFocus={() => setEdgeTooltip(tooltip)} onBlur={() => setEdgeTooltip(null)} /></g>;
+                const fallbackTooltip = { parentId: edge.parentId, childId: edge.child.id, x: (parentPosition.x + childPosition.x) / 2, y: (parentPosition.y + childPosition.y) / 2 };
+                const setTooltipFromPointer = (event: React.PointerEvent<SVGPathElement>) => {
+                  const rect = event.currentTarget.ownerSVGElement?.getBoundingClientRect();
+                  if (!rect?.width || !rect.height) return setEdgeTooltip(fallbackTooltip);
+                  setEdgeTooltip({
+                    parentId: edge.parentId,
+                    childId: edge.child.id,
+                    x: (event.clientX - rect.left) / rect.width * canvasWidth,
+                    y: (event.clientY - rect.top) / rect.height * canvasHeight,
+                  });
+                };
+                return <g key={edge.key}><path d={path} className={`lineage-path ${active ? "is-active" : ""} ${isArchiveBridge ? "is-archive-bridge" : ""}`} /><path d={path} className="edge-hitarea" tabIndex={0} aria-label={`Alasan hubungan ${edge.parentId} ke ${edge.child.id}`} onPointerEnter={setTooltipFromPointer} onPointerMove={setTooltipFromPointer} onFocus={() => setEdgeTooltip(fallbackTooltip)} onBlur={() => setEdgeTooltip(null)} /></g>;
               })}
             </svg>
-            {edgeTooltip && tooltipChild && tooltipReason && <aside className="edge-tooltip" role="status" style={{ left: Math.min(canvasWidth - 350, Math.max(18, edgeTooltip.x - 150)), top: Math.max(18, edgeTooltip.y - 112) }}><span className="edge-tooltip-kicker"><Crosshair size={12} />ALASAN LINEAGE</span><strong>{tooltipParent && ("title" in tooltipParent ? tooltipParent.title : tooltipParent.label)} <i>→</i> {tooltipChild.title}</strong><p>{tooltipReason.relation}</p>{tooltipReason.sourceConclusion && <small><b>Bukti asal:</b> {tooltipReason.sourceConclusion}</small>}</aside>}
+            {edgeTooltip && tooltipChild && tooltipReason && <aside className="edge-tooltip" role="status" style={{ left: Math.min(canvasWidth - 350, Math.max(18, edgeTooltip.x + 18)), top: Math.min(canvasHeight - 230, Math.max(18, edgeTooltip.y + 18)) }}><span className="edge-tooltip-kicker"><Crosshair size={12} />ALASAN LINEAGE</span><strong>{tooltipParent && ("title" in tooltipParent ? tooltipParent.title : tooltipParent.label)} <i>→</i> {tooltipChild.title}</strong><p>{tooltipReason.relation}</p>{tooltipReason.sourceConclusion && <small><b>Bukti asal:</b> {tooltipReason.sourceConclusion}</small>}</aside>}
             {datasetRoots.map((root) => <button key={root.id} type="button" className={`dataset-root ${lineage.has(root.id) ? "is-active" : ""} ${focusMode && !branch.has(root.id) ? "is-focus-hidden" : ""}`} style={{ left: layout.positions[root.id]?.x ?? root.position.x, top: layout.positions[root.id]?.y ?? root.position.y }} onClick={() => onSelect(root.id === "dataset-953" ? "V2-E-001" : "V2-E-003")}><span>DATASET</span><strong>{root.label}</strong><small>{root.detail}</small></button>)}
             {experiments.map((experiment) => <ExperimentNode key={experiment.id} experiment={experiment} position={layout.positions[experiment.id]} selected={experiment.id === selected.id} dimmed={!visible(experiment)} hidden={!showExperiment(experiment)} lineageActive={lineage.has(experiment.id)} onSelect={onSelect} />)}
             <div className="canvas-legend">{Object.entries(statusInfo).map(([status, info]) => <span key={status}><i className={info.dot} />{info.label}</span>)}</div>
