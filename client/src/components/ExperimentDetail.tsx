@@ -8,6 +8,8 @@ interface ExperimentDetailProps {
 
 export function ExperimentDetail({ experiment }: ExperimentDetailProps) {
   const status = statusInfo[experiment.status];
+  const sourceUrl = experiment.source?.url ?? "https://github.com/muhammad-zainal-muttaqin/project-expertise";
+  const sourceLabel = experiment.source ? `${experiment.source.repo} · ${experiment.source.commit}` : "project-expertise · 225faaeb";
   return (
     <aside className="evidence-sheet" aria-live="polite">
       <div className="sheet-topline"><span className={`status-stamp ${status.className}`}>{status.label}</span><span>{experiment.phase}</span></div>
@@ -27,8 +29,9 @@ export function ExperimentDetail({ experiment }: ExperimentDetailProps) {
       {experiment.perClass && <section className="sheet-section"><div className="section-title"><span>Per kelas / konteks</span></div><dl className="metric-list compact">{experiment.perClass.map((metric) => <div key={metric.label}><dt>{metric.label}</dt><dd>{metric.value}</dd></div>)}</dl></section>}
       {experiment.confidence && <section className="confidence-note"><GitBranch size={15} /><div><span>{experiment.confidence.label}</span><strong>{experiment.confidence.value}</strong></div></section>}
       <section className="sheet-section"><div className="section-title"><span>Catatan interpretasi</span></div><p className="finding-text">{experiment.findings}</p></section>
-      <section className="sheet-section artifact-section"><div className="section-title"><span>Artefak sumber</span><small>{experiment.artifacts.length} berkas</small></div><div className="artifact-list">{experiment.artifacts.map((artifact) => <a key={artifact} href="https://github.com/muhammad-zainal-muttaqin/project-expertise" target="_blank" rel="noreferrer"><code>{artifact}</code><ExternalLink size={13} /></a>)}</div></section>
-      <a className="repo-link" href="https://github.com/muhammad-zainal-muttaqin/project-expertise" target="_blank" rel="noreferrer">Lihat repositori pada commit audited <ArrowUpRight size={15} /></a>
+      <section className="sheet-section provenance-section"><div className="section-title"><span>Provenance</span><small>audit sumber</small></div><div className="provenance-card"><span>Era</span><strong>{experiment.era ?? "project-expertise · Agustus 2026"}</strong><span>Repositori / commit</span><code>{sourceLabel}</code></div></section>
+      <section className="sheet-section artifact-section"><div className="section-title"><span>Artefak sumber</span><small>{experiment.artifacts.length} berkas</small></div><div className="artifact-list">{experiment.artifacts.map((artifact) => <a key={artifact} href={sourceUrl} target="_blank" rel="noreferrer"><code>{artifact}</code><ExternalLink size={13} /></a>)}</div></section>
+      <a className="repo-link" href={sourceUrl} target="_blank" rel="noreferrer">Buka sumber pada commit yang diaudit <ArrowUpRight size={15} /></a>
     </aside>
   );
 }

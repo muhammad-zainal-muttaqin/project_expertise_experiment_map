@@ -23,17 +23,21 @@ function lineageFor(selectedId: string) {
 export function ExperimentGraph({ selectedId, visible, onSelect }: ExperimentGraphProps) {
   const lineage = lineageFor(selectedId);
   const selected = experiments.find((item) => item.id === selectedId) ?? experiments[0];
+  const canvasWidth = Math.max(2600, Math.max(...experiments.map((item) => item.position.x), ...datasetRoots.map((item) => item.position.x)) + 340);
+  const canvasHeight = Math.max(880, Math.max(...experiments.map((item) => item.position.y), ...datasetRoots.map((item) => item.position.y)) + 180);
+  const canvasStyle = { "--canvas-width": `${canvasWidth}px`, "--canvas-height": `${canvasHeight}px` } as React.CSSProperties;
 
   return (
     <section className="graph-shell" aria-label="Peta garis keturunan eksperimen">
-      <div className="graph-note"><span />Klik sebuah kartu untuk membuka lembar bukti. Filter hanya meredupkan node agar konteks keturunan tetap terbaca.</div>
-      <div className="graph-scroll">
-        <div className="experiment-canvas">
+        <div className="graph-note"><span />Klik sebuah kartu untuk membuka lembar bukti. Gulir ke bawah untuk menelusuri arsip April–Agustus 2026; filter hanya meredupkan node agar konteks keturunan tetap terbaca.</div>
+        <div className="graph-scroll">
+        <div className="experiment-canvas" style={canvasStyle}>
           <div className="canvas-band band-foundation"><span>FONDASI &amp; SCREENING</span></div>
           <div className="canvas-band band-diagnosis"><span>DIAGNOSIS &amp; REKOMPOSISI</span></div>
           <div className="canvas-band band-audit"><span>VALIDITAS INFERENSI</span></div>
           <div className="canvas-band band-mono"><span>MONOCULAR DEPTH</span></div>
-          <svg className="lineage-svg" viewBox="0 0 2600 880" role="img" aria-label="Garis hubungan antar eksperimen">
+          <div className="historical-ledger"><span>RIWAYAT SEBELUM PROJECT-EXPERTISE · APR–AUG 2026</span><small>Tiga repositori · titik audit tetap dipertahankan</small></div>
+          <svg className="lineage-svg" viewBox={`0 0 ${canvasWidth} ${canvasHeight}`} role="img" aria-label="Garis hubungan antar eksperimen">
             <defs><filter id="roughen"><feTurbulence baseFrequency="0.008" numOctaves="1" result="noise" /><feDisplacementMap in="SourceGraphic" in2="noise" scale="1" /></filter></defs>
             {experiments.flatMap((experiment) => experiment.parentIds.map((parentId) => {
               const parent = lookup.get(parentId) as { position: { x: number; y: number } } | undefined;

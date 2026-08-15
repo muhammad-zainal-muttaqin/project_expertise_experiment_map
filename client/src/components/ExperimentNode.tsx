@@ -30,10 +30,10 @@ export function ExperimentNode({ experiment, selected, dimmed, lineageActive, on
       aria-pressed={selected}
       aria-label={`Buka bukti ${experiment.id}: ${experiment.title}`}
     >
-      <span className="node-index">{experiment.id.replace("V2-E-", "")}</span>
+      <span className="node-index">{experiment.id.replace(/^(V2-E-|RP-|HB-|HD-)/, "")}</span>
       <span className={`node-status ${status.className}`}><Icon size={11} strokeWidth={2.2} />{status.label}</span>
       <strong>{experiment.title}</strong>
-      <span className="node-meta"><i style={{ background: datasetInfo[experiment.dataset].color }} />{datasetInfo[experiment.dataset].short}</span>
+      <span className="node-meta"><i style={{ background: datasetInfo[experiment.dataset].color }} />{datasetInfo[experiment.dataset].short}{experiment.source && <em>{experiment.source.repo}</em>}</span>
     </button>
   );
 }

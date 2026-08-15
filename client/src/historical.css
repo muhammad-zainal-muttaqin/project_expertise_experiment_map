@@ -1,0 +1,11 @@
+/* Field Research Ledger historical expansion — April–August provenance and wide lineage canvas. */
+.experiment-canvas { width:var(--canvas-width); height:var(--canvas-height); }
+.lineage-svg { width:var(--canvas-width); height:var(--canvas-height); }
+.canvas-band { bottom:auto; height:846px; }
+.historical-ledger { position:absolute; z-index:2; top:850px; left:0; right:0; display:flex; align-items:center; gap:12px; padding:10px 22px; border-top:1px solid rgba(224,216,170,.3); border-bottom:1px solid rgba(224,216,170,.22); background:linear-gradient(90deg,rgba(230,221,176,.08),rgba(230,221,176,.015)); color:#eadfae; font-size:10px; font-weight:700; letter-spacing:.13em; }
+.historical-ledger small { color:#9db29d; font-size:9px; font-weight:400; letter-spacing:.03em; }
+.node-meta em { overflow:hidden; max-width:72px; color:#849d8b; font-size:8px; font-style:normal; text-overflow:ellipsis; white-space:nowrap; }
+.provenance-card { display:grid; grid-template-columns:1fr auto; gap:5px 10px; margin-top:9px; padding:10px; border-left:2px solid rgba(77,113,80,.7); background:rgba(255,252,235,.52); }
+.provenance-card span { color:#62806b; font-size:9px; text-transform:uppercase; letter-spacing:.07em; }
+.provenance-card strong,.provenance-card code { overflow:hidden; max-width:190px; color:#254a37; font-size:10px; text-align:right; text-overflow:ellipsis; white-space:nowrap; }
+@media (max-width:720px) { .historical-ledger { padding:10px 14px; } .historical-ledger small { display:none; } }

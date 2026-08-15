@@ -1,3 +1,5 @@
+import { historicalExperiments } from "@/lib/historicalExperiments";
+
 /**
  * Field Research Ledger data layer — sourced from project-expertise commit 225faaeb.
  * Each node represents a completed experiment, audit, or synthesis logged in EKSPERIMEN.md.
@@ -29,6 +31,8 @@ export interface Experiment {
   artifacts: string[];
   parentIds: string[];
   position: { x: number; y: number };
+  era?: string;
+  source?: { repo: string; commit: string; url: string };
 }
 
 export interface DatasetRoot {
@@ -49,7 +53,7 @@ export const experiments: Experiment[] = [
     conclusion: "Tiga arsitektur mereproduksi benchmark Volume 1 dalam ±0,014 mAP50.", findings: "RF-DETR-L memimpin deteksi RGB-953; ini menjadi acuan lintas eksperimen berikutnya.",
     metrics: [{ label: "YOLO26l mAP50", value: "0,5435" }, { label: "RT-DETR-L mAP50", value: "0,5781" }, { label: "RF-DETR-L mAP50", value: "0,6012" }, { label: "RF-DETR-L mAP50-95", value: "0,2747" }],
     perClass: [{ label: "YOLO26l B1/B2/B3/B4", value: "0,7705 / 0,4479 / 0,6050 / 0,3506" }, { label: "RF-DETR-L B1/B2/B3/B4", value: "0,8150 / 0,5184 / 0,6553 / 0,4160" }],
-    artifacts: ["results/perkelas_pycoco_v2repro.json", "models/yolo26l_e60_i1280_v2repro/best.pt"], parentIds: ["dataset-953"], position: { x: 238, y: 52 },
+    artifacts: ["results/perkelas_pycoco_v2repro.json", "models/yolo26l_e60_i1280_v2repro/best.pt"], parentIds: ["dataset-953", "RP-E021"], position: { x: 238, y: 52 },
   },
   {
     id: "V2-E-002", title: "Counting tiga detektor 953", date: "09 Agu 2026", phase: "Fondasi", dataset: "SawitMVC-953", inputs: ["RGB", "Counting"], model: "Ridge + F_all", seeds: "seed 42", status: "negative",
@@ -243,6 +247,7 @@ export const experiments: Experiment[] = [
     metrics: [{ label: "Test penuh terkontaminasi", value: "512 / 588 citra" }, { label: "Test-352 di train-953", value: "44 / 55 pohon" }, { label: "Status mono-depth", value: "tidak terdampak" }],
     artifacts: ["experiments/EKSPERIMEN.md", "docs/LAPORAN-AKHIR.md"], parentIds: ["V2-E-022", "V2-E-025"], position: { x: 2378, y: 52 },
   },
+  ...historicalExperiments,
 ];
 
 export const statusInfo: Record<ExperimentStatus, { label: string; className: string; dot: string }> = {
@@ -259,4 +264,4 @@ export const datasetInfo: Record<DatasetId, { short: string; color: string }> = 
   Audit: { short: "Audit", color: "#CDBAEB" },
 };
 
-export const allInputs = ["RGB", "Depth", "Edge", "Mono", "Counting", "Class-agnostic", "Bootstrap", "WBF", "Transfer"];
+export const allInputs = ["RGB", "Depth", "Edge", "Mono", "Counting", "Class-agnostic", "Bootstrap", "WBF", "Transfer", "Multi-view", "Geometry", "Ordinal", "Training", "Audit"];
