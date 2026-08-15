@@ -25,6 +25,7 @@ Dataset utama yang ditampilkan adalah **SawitMVC 953** dan **SawitMVC-Depth 352*
 |---|---|---|
 | **Peta lineage** | Klik node atau arahkan pointer ke garis penghubung. | Memahami eksperimen pendahulu, turunan, dan alasan hubungan. |
 | **Lembar bukti** | Node terpilih tampil pada panel kanan. | Membaca ringkasan awam, metrik, batas, artefak, dan sumber audit. |
+| **Audit artefak & akses data** | Perhatikan badge file di lembar bukti; gunakan **Raw** atau **Unduh** pada JSON/CSV yang terverifikasi. | Membedakan file yang tersedia pada commit sumber dari path 404, pola belum spesifik, atau rujukan commit. |
 | **Pencarian & filter** | Gunakan teks bebas serta filter dataset, status, kanal, repositori, era, dan keluarga riset. | Menemukan eksperimen atau cabang tertentu tanpa menelusuri seluruh peta. |
 | **Zoom, drag, dan minimap** | Tarik latar peta, gunakan roda/`Ctrl` + roda, atau klik minimap. | Menavigasi atlas besar secara cepat. |
 | **Mode fokus cabang** | Aktifkan ikon fokus setelah memilih node. | Menyembunyikan jalur lain untuk membaca satu silsilah eksperimen. |
@@ -71,6 +72,28 @@ pnpm run build:pages
 | `pnpm preview` | Menyajikan hasil build Vite secara lokal. |
 | `pnpm format` | Memformat berkas dengan Prettier. |
 
+## Audit Artefak
+
+Atlas tidak hanya menyimpan nama artefak. Setiap path diaudit terhadap **commit sumber yang dipasangi pin**, lalu hasilnya disimpan sebagai manifest statis agar tetap dapat dibaca di GitHub Pages. Audit saat ini mencakup 90 entri katalog: 78 file terverifikasi, 5 path tidak tersedia, 6 pola yang belum menunjuk ke satu berkas, dan 1 rujukan commit.
+
+| Badge panel | Makna | Akses yang diberikan |
+|---|---|---|
+| **Terverifikasi** | Raw GitHub mengembalikan HTTP 200 pada commit sumber. | Tautan file; JSON dan CSV juga mempunyai **Raw** serta **Unduh**. |
+| **Tidak tersedia** | Path mengembalikan HTTP 404 pada commit sumber. | Tidak ada tautan yang berpotensi rusak; panel menjelaskan statusnya. |
+| **Perlu audit** | Path masih berupa pola beberapa berkas atau respons belum dapat dipastikan. | Tidak ada Raw/Unduh hingga path tunggal dapat diverifikasi. |
+| **Rujukan commit** | Entri menunjuk commit, bukan berkas tertentu. | Tautan ke halaman commit saja. |
+
+Jalankan perintah berikut setelah mengubah `artifacts`, `source.commit`, atau katalog historis. Perintah pertama membangun laporan yang dapat ditinjau; perintah kedua menyegarkan manifest yang diimpor antarmuka.
+
+```bash
+python3 scripts/audit_artifacts.py \
+  --project-root . \
+  --output research_notes/artifact_audit_report.json
+cp research_notes/artifact_audit_report.json client/src/lib/artifactManifest.json
+```
+
+> **Batas penting:** badge **Terverifikasi** hanya membuktikan bahwa berkas dapat diakses pada commit tersebut. Ia tidak menilai kebenaran isi berkas, keseragaman evaluator, maupun kekuatan simpulan ilmiah. Lihat [Panduan Pemeliharaan Atlas](docs/MAINTENANCE.md) untuk alur audit dan penanganan path yang lebih rinci.
+
 ## Struktur Proyek
 
 ```text
@@ -85,6 +108,7 @@ client/
     lib/
       experimentData.ts         # Kontrak data dan katalog eksperimen utama
       historicalExperiments.ts  # Arsip node historis dan provenance commit
+      artifactManifest.json     # Status artefak yang dihasilkan audit dan dibaca panel
       atlasLayout.ts            # Swimlane, posisi node, dan routing edge
     pages/
       Home.tsx                  # Komposisi tiga-rail atlas
@@ -94,6 +118,10 @@ client/
     themeReaderFix.css          # Kontrak mode terang dan gelap
 .github/workflows/
   deploy-pages.yml              # Validasi dan deploy GitHub Pages
+scripts/
+  audit_artifacts.py            # Audit path raw GitHub pada commit tersemat
+research_notes/
+  artifact_audit_report.json    # Laporan audit artefak yang dapat ditinjau
 ```
 
 ## Memelihara Katalog Eksperimen
@@ -113,6 +141,8 @@ Untuk prosedur lengkap—termasuk contoh node siap salin, pengaturan lineage, po
 | `parentIds` | Hubungan lineage dengan node pendahulu. |
 | `source` dan `artifacts` | Commit, file, atau artefak yang memungkinkan audit ulang. |
 
+Sesudah mengubah `artifacts` atau `source`, jalankan audit artefak dan salin manifest sebagaimana dijelaskan pada bagian **Audit Artefak**. Panel akan otomatis menampilkan status terbaru serta menawarkan Raw/Unduh hanya untuk JSON/CSV yang benar-benar tersedia pada commit sumber.
+
 Saat menambahkan hubungan baru, pastikan `parentIds` hanya mengacu pada node yang benar-benar ada dan alasan hubungan dapat dijelaskan secara ilmiah. Garis lineage bukan sekadar konektor visual; ia menyatakan ketergantungan data, metode, evaluasi, atau audit antara dua keputusan riset.
 
 ## Deploy GitHub Pages
@@ -126,6 +156,8 @@ Konfigurasi Vite memakai base path `/project_expertise_experiment_map/` hanya un
 Sebelum mengajukan perubahan, pastikan data tetap dapat diaudit, label tetap berbahasa Indonesia, dan hasil negatif tidak dihapus dari katalog. Lakukan pemeriksaan tipe serta build Pages; kemudian uji setidaknya pencarian/filter, pemilihan node, mode fokus, layar penuh, pergantian tema, dan ekspor PNG.
 
 ```bash
+python3 scripts/audit_artifacts.py --project-root . --output research_notes/artifact_audit_report.json
+cp research_notes/artifact_audit_report.json client/src/lib/artifactManifest.json
 pnpm check
 pnpm run build:pages
 ```

@@ -147,3 +147,9 @@
 - [x] Tambahkan indikator status serta tombol Raw dan Unduh untuk artefak JSON/CSV yang tersedia.
 - [x] Buat skill reusable untuk mengaudit serta memetakan artefak bersumber commit.
 - [x] Validasi panel, build Pages, manifest audit, dan skill reusable.
+
+## Penyelarasan README Audit Artefak
+
+- [x] Tambahkan ringkasan status verifikasi artefak dan tindakan Raw/Unduh ke README.
+- [x] Tambahkan perintah audit Python serta tautan ke panduan pemeliharaan rinci.
+- [x] Tinjau, simpan checkpoint, dan sampaikan pembaruan dokumentasi.
