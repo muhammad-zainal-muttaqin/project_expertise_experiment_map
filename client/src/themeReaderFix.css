@@ -60,3 +60,70 @@ html.dark .reader-summary-grid p { color:#3d614c; }
 .status-stamp.status-negative,.node-status.status-negative { background:rgba(165,80,56,.13); color:#a55038; }
 .status-stamp.status-inconclusive,.node-status.status-inconclusive { background:rgba(183,131,43,.14); color:#8f6924; }
 .status-stamp.status-audit,.node-status.status-audit { background:rgba(52,117,137,.13); color:#347589; }
+
+/* Dark contract: no paper panels leak into the night-reading state; color remains reserved for evidence status. */
+html.dark,html.dark body { color-scheme:dark;background:#0a2118; }
+html.dark .atlas-page { background:#0a2118;color:#e7edd2; }
+html.dark .atlas-layout { background:linear-gradient(90deg,#0b281d 0 20%,#102f23 20% 80%,#0b281d 80%); }
+html.dark .left-rail,html.dark .right-rail { border-color:rgba(177,202,166,.18);background:#0d2c20;color:#d9e4d4; }
+html.dark .atlas-main { background:#102f23; }
+html.dark .brand-lockup { border-color:rgba(177,202,166,.16); }
+html.dark .brand-lockup::after { color:#92aa82; }
+html.dark .brand-lockup p,html.dark .rail-heading,html.dark .rail-source { color:#9db7a4; }
+html.dark .brand-lockup h1,html.dark .rail-source strong { color:#fff7dc; }
+html.dark .dataset-card::after { background:linear-gradient(90deg,rgba(10,39,27,.97),rgba(12,44,32,.83) 58%,rgba(12,44,32,.3)); }
+html.dark .dataset-card strong { color:#fff6dc; }
+html.dark .dataset-card span,html.dark .dataset-card small,html.dark .status-tally button { color:#b9cabb; }
+html.dark .status-tally button { background:rgba(255,255,255,.02); }
+html.dark .status-tally button:hover,html.dark .status-tally button.is-active { background:rgba(211,226,189,.09);border-color:rgba(211,226,189,.3);color:#fff7dc; }
+html.dark .atlas-header { border-color:rgba(204,217,183,.22);background-image:linear-gradient(90deg,rgba(12,42,29,.98),rgba(17,55,39,.9) 56%,rgba(17,55,39,.55)); }
+html.dark .atlas-header::before { color:#aabf83;border-color:rgba(211,226,189,.32); }
+html.dark .atlas-eyebrow { color:#d6e19c; }
+html.dark .atlas-header h2,html.dark .atlas-stat strong { color:#fff8df; }
+html.dark .atlas-header p,html.dark .atlas-stat span { color:#c7d7c7; }
+html.dark .atlas-header-actions button { border-color:rgba(225,228,175,.34);background:rgba(7,31,22,.5);color:#f7f0cd; }
+html.dark .filter-bar { border-color:rgba(207,221,194,.18);background:#103425; }
+html.dark .filter-label,html.dark .filter-bar label span,html.dark .reset-filter { color:#b5c7b7; }
+html.dark .filter-bar select,html.dark .filter-search > div { border-color:rgba(210,222,198,.25);background:#163e2e;color:#e9efd7; }
+html.dark .filter-search input { color:#f2f4dc; }
+html.dark .filter-search input::placeholder { color:#8ba58f; }
+html.dark .graph-shell { border-color:rgba(207,221,194,.18);background:linear-gradient(120deg,#0e3325,#164634);box-shadow:none; }
+html.dark .graph-topbar { border-color:rgba(226,219,182,.2);background:rgba(9,42,29,.72); }
+html.dark .graph-note { color:#d8e0bf; }
+html.dark .graph-controls { border-color:rgba(228,224,186,.2); }
+html.dark .graph-controls button { color:#e9e2b9; }
+html.dark .graph-controls output { color:#e7d98d; }
+html.dark .experiment-canvas { background-image:linear-gradient(rgba(214,220,180,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(214,220,180,.045) 1px,transparent 1px); }
+html.dark .canvas-band { border-color:rgba(238,232,198,.17);background:rgba(255,250,224,.02); }
+html.dark .canvas-band span { color:rgba(240,232,199,.62); }
+html.dark .lineage-path { stroke:rgba(237,224,175,.48); }
+html.dark .lineage-path.is-active { stroke:#f1d985; }
+html.dark .dataset-root { border-color:rgba(225,232,184,.45);background:#143f2e;color:#ebf0d9;box-shadow:none; }
+html.dark .dataset-root strong { color:#ebf0d9; }
+html.dark .dataset-root small { color:#a9c0ad; }
+html.dark .experiment-node { border-color:rgba(201,217,193,.22);background:linear-gradient(140deg,rgba(29,75,56,.98),rgba(19,58,43,.98));color:#dce8d7;box-shadow:0 8px 18px rgba(1,18,10,.13); }
+html.dark .experiment-node strong { color:#f0f4df; }
+html.dark .node-index { width:auto;height:auto;display:block;border:0;border-radius:0;color:#91af98;background:transparent;writing-mode:vertical-rl;transform:rotate(180deg); }
+html.dark .evidence-sheet { background-color:#102f23;background-image:repeating-linear-gradient(0deg,rgba(255,250,230,.025) 0 1px,transparent 1px 23px),linear-gradient(155deg,rgba(255,250,230,.035),transparent 45%); }
+html.dark .sheet-topline { color:#90ab95; }
+html.dark .sheet-kicker { color:#cddf9a; }
+html.dark .evidence-sheet h2 { color:#fff7dc; }
+html.dark .sheet-conclusion,html.dark .finding-text { color:#c4d3c7; }
+html.dark .sheet-meta-grid { background:rgba(211,226,189,.16);border-color:rgba(211,226,189,.16); }
+html.dark .sheet-meta-grid div { background:rgba(16,52,38,.72); }
+html.dark .sheet-meta-grid span,html.dark .metric-list dt { color:#90a997; }
+html.dark .sheet-meta-grid strong,html.dark .metric-list dd { color:#e4ebd5; }
+html.dark .section-title { border-color:rgba(211,226,189,.17);color:#dce6b9; }
+html.dark .section-title small { color:#88a596; }
+html.dark .metric-list div { border-color:rgba(211,226,189,.10); }
+html.dark .artifact-list a { color:#afc9b7;background:rgba(255,255,255,.035);border-color:rgba(211,226,189,.1); }
+html.dark .repo-link { color:#d7e39e;border-color:rgba(211,226,189,.17); }
+html.dark .reader-summary-grid article { background:rgba(255,255,255,.035);border-left-color:#aebd83; }
+html.dark .reader-summary-grid span { color:#d4df9d; }
+html.dark .reader-summary-grid p { color:#c4d3c7; }
+html.dark .edge-tooltip { border-color:#d7c36f;background:#143c2d;box-shadow:4px 5px 0 rgba(1,18,10,.45);color:#f5efd0; }
+html.dark .edge-tooltip-kicker { color:#cddc95; }
+html.dark .edge-tooltip p { color:#d3dfce; }
+html.dark .edge-tooltip small { border-color:rgba(211,226,189,.2);color:#a9c0ad; }
+html.dark .edge-tooltip small b { color:#dce6b9; }
+html.dark .graph-minimap { border-color:rgba(238,220,144,.67);background:rgba(10,47,32,.92);color:#eee3b5; }

@@ -51,4 +51,38 @@ html.ledger-light .sheet-meta-grid strong,html.ledger-light .metric-list dd { co
 html.ledger-light .section-title { border-color:rgba(47,83,53,.18);color:#365d42; }
 @media (max-width:1100px) { .filter-bar--enhanced { grid-template-columns:auto repeat(2,minmax(120px,1fr)); }.filter-search { grid-column:span 2; } }
 @media (max-width:680px) { .filter-bar--enhanced { grid-template-columns:1fr 1fr; }.filter-label { grid-column:1/-1; }.filter-search { grid-column:1/-1; }.reset-filter { justify-content:center; }.atlas-header-actions { top:12px;right:12px; }.atlas-header-actions button span { display:none; } }
+@media (max-width:680px) { .atlas-header::before { display:none; } }
 @media (prefers-reduced-motion:reduce) { .is-spinning { animation:none; } }
+
+/* Light contract: all operational surfaces become an ivory field ledger; the map does not retain dark-dashboard chrome. */
+html.ledger-light .atlas-layout { background:linear-gradient(90deg,#f3e8c9 0 20%,#e4dcc0 20% 80%,#f5e9ca 80%); }
+html.ledger-light .atlas-main { background:#e4dcc0; }
+html.ledger-light .graph-shell { background:#d9ddc4; }
+html.ledger-light .graph-topbar { border-color:rgba(31,75,58,.28);background:#f6edce; }
+html.ledger-light .graph-note { color:#3f614d; }
+html.ledger-light .graph-note span { background:#a47e31;box-shadow:0 0 0 3px rgba(164,126,49,.13); }
+html.ledger-light .graph-note kbd { border-color:rgba(31,75,58,.3);background:#fff8df;color:#315644; }
+html.ledger-light .graph-controls { border-color:rgba(31,75,58,.2); }
+html.ledger-light .graph-controls button { color:#315644; }
+html.ledger-light .graph-controls button:hover:not(:disabled) { border-color:rgba(31,75,58,.5);background:rgba(31,75,58,.08);color:#173d2e; }
+html.ledger-light .graph-controls button.is-active { border-color:#9c7730;background:rgba(156,119,48,.12);color:#674d1d; }
+html.ledger-light .graph-controls output { color:#5a6d42; }
+html.ledger-light .experiment-canvas { background-image:linear-gradient(rgba(31,75,58,.11) 1px,transparent 1px),linear-gradient(90deg,rgba(31,75,58,.11) 1px,transparent 1px); }
+html.ledger-light .canvas-band { border-color:rgba(31,75,58,.22);background:rgba(255,251,227,.22); }
+html.ledger-light .canvas-band span { color:rgba(31,75,58,.64); }
+html.ledger-light .canvas-lane { border-color:rgba(31,75,58,.18);background:linear-gradient(90deg,rgba(31,75,58,.065),transparent 42%); }
+html.ledger-light .canvas-lane strong { color:rgba(31,75,58,.73); }
+html.ledger-light .canvas-lane span { color:rgba(59,96,72,.7); }
+html.ledger-light .lineage-path { stroke:rgba(31,75,58,.46); }
+html.ledger-light .lineage-path.is-active { stroke:#8d6720; }
+html.ledger-light .focus-strip { border-color:rgba(156,119,48,.32);background:rgba(247,232,186,.8);color:#604b20; }
+html.ledger-light .focus-strip strong,html.ledger-light .focus-strip b { color:#3e5e37; }
+html.ledger-light .focus-strip button { border-color:rgba(62,94,55,.55);color:#3e5e37; }
+html.ledger-light .graph-minimap { border-color:rgba(31,75,58,.42);background:#f4e9c8;box-shadow:3px 4px 0 rgba(31,75,58,.2);color:#254a37; }
+html.ledger-light .minimap-title small { color:#5b765f; }
+html.ledger-light .graph-minimap svg { border-color:rgba(31,75,58,.28);background:#dde0c4; }
+html.ledger-light .graph-minimap text { fill:rgba(31,75,58,.62); }
+html.ledger-light .minimap-lane { fill:rgba(255,250,219,.46);stroke:rgba(31,75,58,.18); }
+html.ledger-light .minimap-root { fill:#46734d; }
+html.ledger-light .minimap-viewport { fill:rgba(31,75,58,.08);stroke:#85661e; }
+html.ledger-light .graph-shell:fullscreen { background:#e4dcc0; }

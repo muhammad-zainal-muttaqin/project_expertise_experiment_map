@@ -66,3 +66,9 @@
 - [x] Perbaiki generator path agar setiap koneksi memakai belokan kontinu dengan koridor yang tidak saling bertabrakan.
 - [x] Pastikan hit-area tooltip mengikuti path yang sama tanpa menciptakan artefak visual.
 - [x] Verifikasi kontinuitas garis pada desktop dan ponsel; simpan checkpoint routing.
+
+## Konsistensi Tema
+
+- [x] Audit permukaan, teks, batas, dan kontrol yang masih memakai token tema berlawanan.
+- [x] Bedakan kontrak warna mode terang dan gelap untuk rel, filter, lembar bukti, node, serta peta.
+- [x] Verifikasi pergantian tema pada desktop dan ponsel; simpan checkpoint perbaikan.

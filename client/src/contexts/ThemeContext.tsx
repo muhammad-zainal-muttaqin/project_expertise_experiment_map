@@ -1,3 +1,4 @@
+/** Field Research Ledger theme state — one explicit document class controls the full light or dark surface contract. */
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 type Theme = "light" | "dark";
@@ -22,6 +23,8 @@ export function ThemeProvider({
   switchable = false,
 }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(() => {
+    const previewTheme = new URLSearchParams(window.location.search).get("theme");
+    if (previewTheme === "light" || previewTheme === "dark") return previewTheme;
     if (switchable) {
       const stored = localStorage.getItem("theme");
       return (stored as Theme) || defaultTheme;
