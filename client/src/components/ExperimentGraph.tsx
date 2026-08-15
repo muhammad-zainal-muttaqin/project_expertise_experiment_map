@@ -1,4 +1,4 @@
-/** Field Research Ledger graph — semantic lineage map with edge rationale, minimap, and branch focus. */
+/** Field Research Ledger graph — semantic lineage map with continuous, readable routed edges. */
 import { datasetRoots, experiments, statusInfo, type Experiment } from "@/lib/experimentData";
 import { buildAtlasLayout, orthogonalPath } from "@/lib/atlasLayout";
 import { ExperimentNode } from "@/components/ExperimentNode";
@@ -15,6 +15,7 @@ interface ExperimentGraphProps {
 type Root = (typeof datasetRoots)[number];
 type GraphRecord = Experiment | Root;
 type EdgeTooltip = { parentId: string; childId: string; x: number; y: number };
+type RoutedEdge = { key: string; parentId: string; child: Experiment; serial: number; sourceIndex: number; sourceCount: number; targetIndex: number; targetCount: number };
 
 const lookup = new Map<string, GraphRecord>([...datasetRoots, ...experiments].map((item) => [item.id, item]));
 const DEFAULT_ZOOM = 0.82;
@@ -59,7 +60,7 @@ function reasonForEdge(parentId: string, child: Experiment) {
   else if (childInputs.includes("Counting") && !parentInputs.includes("Counting")) relation = "Menguji apakah perubahan pada deteksi atau representasi benar-benar diterjemahkan ke metrik counting end-to-end.";
   else if (child.phase.includes("Diagnosis")) relation = "Menggunakan hasil pendahulu sebagai titik diagnosis untuk mencari mekanisme kesalahan, bukan sekadar membandingkan skor.";
   else if (child.phase.includes("Mono")) relation = "Memakai baseline atau representasi sebelumnya sebagai pembanding langsung untuk menguji tambahan monocular depth.";
-  else if (parent && "era" in parent && parent.era && child.era && parent.era !== child.era) relation = "Mewarisi temuan arsip sebagai konteks historis; koneksi lintas era/repositori ditampilkan putus-putus.";
+  else if (parent && "era" in parent && parent.era && child.era && parent.era !== child.era) relation = "Mewarisi temuan arsip sebagai konteks historis; koneksi lintas era/repositori dibuat lebih lembut agar tidak mendominasi bukti aktif.";
   else if (added.length) relation = `Mengubah atau menambahkan ${added.join(", ")} sambil mempertahankan konteks keputusan dari node asal.`;
   return { parentTitle, relation, sourceConclusion };
 }
@@ -69,6 +70,24 @@ export function ExperimentGraph({ selectedId, visible, onSelect }: ExperimentGra
   const branch = branchFor(selectedId);
   const selected = experiments.find((item) => item.id === selectedId) ?? experiments[0];
   const layout = useMemo(() => buildAtlasLayout(experiments), []);
+  const routedEdges = useMemo<RoutedEdge[]>(() => {
+    const raw = experiments.flatMap((child, serial) => child.parentIds.map((parentId, parentIndex) => ({ key: `${parentId}-${child.id}`, parentId, child, serial: serial * 3 + parentIndex })));
+    const outgoing = new Map<string, typeof raw>();
+    const incoming = new Map<string, typeof raw>();
+    raw.forEach((edge) => {
+      outgoing.set(edge.parentId, [...(outgoing.get(edge.parentId) ?? []), edge]);
+      incoming.set(edge.child.id, [...(incoming.get(edge.child.id) ?? []), edge]);
+    });
+    const sourceCursor = new Map<string, number>();
+    const targetCursor = new Map<string, number>();
+    return raw.map((edge) => {
+      const sourceIndex = sourceCursor.get(edge.parentId) ?? 0;
+      const targetIndex = targetCursor.get(edge.child.id) ?? 0;
+      sourceCursor.set(edge.parentId, sourceIndex + 1);
+      targetCursor.set(edge.child.id, targetIndex + 1);
+      return { ...edge, sourceIndex, sourceCount: outgoing.get(edge.parentId)?.length ?? 1, targetIndex, targetCount: incoming.get(edge.child.id)?.length ?? 1 };
+    });
+  }, []);
   const graphRef = useRef<HTMLElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const dragRef = useRef({ active: false, lastX: 0, lastY: 0 });
@@ -166,19 +185,18 @@ export function ExperimentGraph({ selectedId, visible, onSelect }: ExperimentGra
         <div className="zoom-stage" style={{ width: canvasWidth * zoom, height: canvasHeight * zoom }}>
           <div className="experiment-canvas" style={{ ...canvasStyle, transform: `scale(${zoom})` }}>
             {layout.lanes.map((lane) => <div key={lane.id} className={`canvas-lane canvas-lane-${lane.tone}`} style={{ top: lane.y, height: lane.height }}><strong>{lane.label}</strong><span>{lane.caption}</span></div>)}
-            <svg className="lineage-svg" viewBox={`0 0 ${canvasWidth} ${canvasHeight}`} role="img" aria-label="Garis hubungan antar eksperimen" onPointerLeave={() => setEdgeTooltip(null)}>
-              <defs><filter id="roughen"><feTurbulence baseFrequency="0.008" numOctaves="1" result="noise" /><feDisplacementMap in="SourceGraphic" in2="noise" scale="1" /></filter></defs>
-              {experiments.flatMap((experiment, experimentIndex) => experiment.parentIds.map((parentId, parentIndex) => {
-                const parent = lookup.get(parentId) as { id: string; position: { x: number; y: number } } | undefined;
-                if (!parent || !showEdge(parentId, experiment.id)) return null;
-                const active = lineage.has(experiment.id) && lineage.has(parentId);
-                const parentPosition = layout.positions[parentId] ?? parent.position;
-                const childPosition = layout.positions[experiment.id] ?? experiment.position;
-                const isArchiveBridge = (parentId.startsWith("RP-") || parentId.startsWith("HB-") || parentId.startsWith("HD-")) !== experiment.id.startsWith("RP-") && !experiment.id.startsWith("HB-") && !experiment.id.startsWith("HD-");
-                const path = orthogonalPath(parentPosition, childPosition, experimentIndex + parentIndex, parentId.startsWith("dataset-"));
-                const tooltip = { parentId, childId: experiment.id, x: (parentPosition.x + childPosition.x) / 2, y: (parentPosition.y + childPosition.y) / 2 };
-                return <g key={`${parentId}-${experiment.id}`}><path d={path} className={`lineage-path ${active ? "is-active" : ""} ${isArchiveBridge ? "is-archive-bridge" : ""}`} /><path d={path} className="edge-hitarea" tabIndex={0} aria-label={`Alasan hubungan ${parentId} ke ${experiment.id}`} onPointerEnter={() => setEdgeTooltip(tooltip)} onFocus={() => setEdgeTooltip(tooltip)} onBlur={() => setEdgeTooltip(null)} /></g>;
-              }))}
+            <svg className="lineage-svg" viewBox={`0 0 ${canvasWidth} ${canvasHeight}`} role="img" aria-label="Garis hubungan antar eksperimen" shapeRendering="geometricPrecision" onPointerLeave={() => setEdgeTooltip(null)}>
+              {routedEdges.map((edge) => {
+                const parent = lookup.get(edge.parentId) as { id: string; position: { x: number; y: number } } | undefined;
+                if (!parent || !showEdge(edge.parentId, edge.child.id)) return null;
+                const active = lineage.has(edge.child.id) && lineage.has(edge.parentId);
+                const parentPosition = layout.positions[edge.parentId] ?? parent.position;
+                const childPosition = layout.positions[edge.child.id] ?? edge.child.position;
+                const isArchiveBridge = (edge.parentId.startsWith("RP-") || edge.parentId.startsWith("HB-") || edge.parentId.startsWith("HD-")) !== edge.child.id.startsWith("RP-") && !edge.child.id.startsWith("HB-") && !edge.child.id.startsWith("HD-");
+                const path = orthogonalPath(parentPosition, childPosition, edge, edge.parentId.startsWith("dataset-"));
+                const tooltip = { parentId: edge.parentId, childId: edge.child.id, x: (parentPosition.x + childPosition.x) / 2, y: (parentPosition.y + childPosition.y) / 2 };
+                return <g key={edge.key}><path d={path} className={`lineage-path ${active ? "is-active" : ""} ${isArchiveBridge ? "is-archive-bridge" : ""}`} /><path d={path} className="edge-hitarea" tabIndex={0} aria-label={`Alasan hubungan ${edge.parentId} ke ${edge.child.id}`} onPointerEnter={() => setEdgeTooltip(tooltip)} onFocus={() => setEdgeTooltip(tooltip)} onBlur={() => setEdgeTooltip(null)} /></g>;
+              })}
             </svg>
             {edgeTooltip && tooltipChild && tooltipReason && <aside className="edge-tooltip" role="status" style={{ left: Math.min(canvasWidth - 350, Math.max(18, edgeTooltip.x - 150)), top: Math.max(18, edgeTooltip.y - 112) }}><span className="edge-tooltip-kicker"><Crosshair size={12} />ALASAN LINEAGE</span><strong>{tooltipParent && ("title" in tooltipParent ? tooltipParent.title : tooltipParent.label)} <i>→</i> {tooltipChild.title}</strong><p>{tooltipReason.relation}</p>{tooltipReason.sourceConclusion && <small><b>Bukti asal:</b> {tooltipReason.sourceConclusion}</small>}</aside>}
             {datasetRoots.map((root) => <button key={root.id} type="button" className={`dataset-root ${lineage.has(root.id) ? "is-active" : ""} ${focusMode && !branch.has(root.id) ? "is-focus-hidden" : ""}`} style={{ left: layout.positions[root.id]?.x ?? root.position.x, top: layout.positions[root.id]?.y ?? root.position.y }} onClick={() => onSelect(root.id === "dataset-953" ? "V2-E-001" : "V2-E-003")}><span>DATASET</span><strong>{root.label}</strong><small>{root.detail}</small></button>)}

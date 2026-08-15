@@ -1,24 +1,25 @@
-/* Field Research Ledger theme contract: the paper-led default and dark reading mode must be visibly distinct. */
+/* Field Research Ledger theme contract: warm paper surrounds the Canopy Ink map, while status colors retain evidentiary meaning. */
 html.dark .atlas-page { background:#102f23;color:#e7edd2; }
-html.dark .atlas-layout { background:linear-gradient(90deg,#0f3023 0 20%,#143e2d 20% 80%,#102f23 80%); }
-html.dark .left-rail,html.dark .right-rail { border-color:rgba(177,202,166,.18);background:rgba(13,42,31,.94);color:#d9e4d4; }
+html.dark .atlas-layout { background:linear-gradient(90deg,#ece1bd 0 20%,#143e2d 20% 80%,#f0e5c5 80%); }
+html.dark .left-rail,html.dark .right-rail { border-color:rgba(31,75,58,.3);background:#eee3c2;color:#1f4b3a; }
 html.dark .atlas-main { background:transparent; }
-html.dark .brand-lockup { border-color:rgba(177,202,166,.16); }
-html.dark .brand-lockup p,html.dark .rail-heading,html.dark .rail-source { color:#9db7a4; }
-html.dark .brand-lockup h1,html.dark .rail-source strong { color:#fff7dc; }
-html.dark .dataset-card::after { background:linear-gradient(90deg,rgba(10,39,27,.96),rgba(12,44,32,.75) 55%,rgba(12,44,32,.2)); }
-html.dark .dataset-card strong { color:#fff6dc; }
-html.dark .dataset-card span,html.dark .dataset-card small,html.dark .status-tally button { color:#b9cabb; }
-html.dark .status-tally button { background:rgba(255,255,255,.02); }
-html.dark .status-tally button:hover,html.dark .status-tally button.is-active { background:rgba(211,226,189,.09);border-color:rgba(211,226,189,.3);color:#fff7dc; }
+html.dark .brand-lockup { position:relative;border-color:rgba(31,75,58,.25); }
+html.dark .brand-lockup::after { content:"FIELD NOTE · 01"; display:block; margin-top:8px; color:#5b734d; font-size:8px; font-weight:800; letter-spacing:.16em; }
+html.dark .brand-lockup p,html.dark .rail-heading,html.dark .rail-source { color:#577361; }
+html.dark .brand-lockup h1,html.dark .rail-source strong { color:#1f4b3a; }
+html.dark .dataset-card::after { background:linear-gradient(90deg,rgba(238,229,197,.97),rgba(238,229,197,.82) 58%,rgba(238,229,197,.18)); }
+html.dark .dataset-card strong { color:#173d2e; }
+html.dark .dataset-card span,html.dark .dataset-card small,html.dark .status-tally button { color:#456554; }
+html.dark .status-tally button { background:rgba(31,75,58,.035); }
+html.dark .status-tally button:hover,html.dark .status-tally button.is-active { background:rgba(31,75,58,.08);border-color:rgba(31,75,58,.38);color:#173d2e; }
 html.dark .atlas-header { border-color:rgba(204,217,183,.22);background-image:linear-gradient(90deg,rgba(12,42,29,.96),rgba(17,55,39,.83) 56%,rgba(17,55,39,.24)); }
 html.dark .atlas-eyebrow { color:#d6e19c; }
 html.dark .atlas-header h2,html.dark .atlas-stat strong { color:#fff8df; }
 html.dark .atlas-header p,html.dark .atlas-stat span { color:#c7d7c7; }
-html.dark .filter-bar { border-color:rgba(207,221,194,.18);background:rgba(10,37,27,.46); }
-html.dark .filter-label,html.dark .filter-bar label span,html.dark .reset-filter { color:#b5c7b7; }
-html.dark .filter-bar select,html.dark .filter-search > div { border-color:rgba(210,222,198,.25);background:#163e2e;color:#e9efd7; }
-html.dark .filter-search input { color:#f2f4dc; }
+html.dark .filter-bar { border-color:rgba(31,75,58,.3);background:#f0e7c9; }
+html.dark .filter-label,html.dark .filter-bar label span,html.dark .reset-filter { color:#456554; }
+html.dark .filter-bar select,html.dark .filter-search > div { border-color:rgba(31,75,58,.34);background:#fbf4dc;color:#244b39; }
+html.dark .filter-search input { color:#244b39; }
 html.dark .graph-shell { border-color:rgba(207,221,194,.18);background:linear-gradient(120deg,rgba(13,43,31,.82),rgba(21,58,43,.76));box-shadow:none; }
 html.dark .dataset-root { border-color:rgba(225,232,184,.45);background:#143f2e;color:#ebf0d9;box-shadow:none; }
 html.dark .dataset-root strong { color:#ebf0d9; }
@@ -26,20 +27,20 @@ html.dark .dataset-root small { color:#a9c0ad; }
 html.dark .experiment-node { border-color:rgba(201,217,193,.22);background:linear-gradient(140deg,rgba(29,75,56,.98),rgba(19,58,43,.98));color:#dce8d7;box-shadow:0 8px 18px rgba(1,18,10,.13); }
 html.dark .experiment-node strong { color:#f0f4df; }
 html.dark .node-index { width:auto;height:auto;display:block;border:0;border-radius:0;color:#91af98;background:transparent;writing-mode:vertical-rl;transform:rotate(180deg); }
-html.dark .evidence-sheet { background-color:#102f23;background-image:linear-gradient(155deg,rgba(255,250,230,.03),transparent 45%); }
-html.dark .sheet-topline { color:#90ab95; }
-html.dark .sheet-kicker { color:#cddf9a; }
-html.dark .evidence-sheet h2 { color:#fff7dc; }
-html.dark .sheet-conclusion,html.dark .finding-text { color:#c4d3c7; }
-html.dark .sheet-meta-grid { background:rgba(211,226,189,.16);border-color:rgba(211,226,189,.16); }
-html.dark .sheet-meta-grid div { background:rgba(16,52,38,.72); }
-html.dark .sheet-meta-grid span,html.dark .metric-list dt { color:#90a997; }
-html.dark .sheet-meta-grid strong,html.dark .metric-list dd { color:#e4ebd5; }
-html.dark .section-title { border-color:rgba(211,226,189,.17);color:#dce6b9; }
-html.dark .section-title small { color:#88a596; }
-html.dark .metric-list div { border-color:rgba(211,226,189,.10); }
-html.dark .artifact-list a { color:#afc9b7;background:rgba(255,255,255,.035);border-color:rgba(211,226,189,.1); }
-html.dark .repo-link { color:#d7e39e;border-color:rgba(211,226,189,.17); }
+html.dark .evidence-sheet { background-color:#f1e5c6;background-image:repeating-linear-gradient(0deg,rgba(31,75,58,.025) 0 1px,transparent 1px 23px),radial-gradient(circle at 18% 12%,rgba(31,75,58,.08),transparent 29%),linear-gradient(135deg,rgba(255,252,235,.84),rgba(239,226,188,.86)); }
+html.dark .sheet-topline { color:#557362; }
+html.dark .sheet-kicker { color:#557d48; }
+html.dark .evidence-sheet h2 { color:#1f4b3a; }
+html.dark .sheet-conclusion,html.dark .finding-text { color:#385d49; }
+html.dark .sheet-meta-grid { background:rgba(31,75,58,.3);border-color:rgba(31,75,58,.3); }
+html.dark .sheet-meta-grid div { background:rgba(255,249,226,.84); }
+html.dark .sheet-meta-grid span,html.dark .metric-list dt { color:#62806b; }
+html.dark .sheet-meta-grid strong,html.dark .metric-list dd { color:#254a37; }
+html.dark .section-title { border-color:rgba(31,75,58,.24);color:#315d43; }
+html.dark .section-title small { color:#607b68; }
+html.dark .metric-list div { border-color:rgba(31,75,58,.14); }
+html.dark .artifact-list a { color:#355e46;background:rgba(255,252,235,.52);border-color:rgba(31,75,58,.17); }
+html.dark .repo-link { color:#416d49;border-color:rgba(31,75,58,.26); }
 html.dark .map-control,html.dark .graph-toolbar button,html.dark .minimap { border-color:rgba(211,226,189,.2);background:rgba(10,37,27,.9);color:#e5ecd2; }
 
 .reader-summary-grid { display:grid;gap:8px;margin-top:10px; }
@@ -49,6 +50,13 @@ html.dark .map-control,html.dark .graph-toolbar button,html.dark .minimap { bord
 .reader-summary-grid article:nth-child(4) { border-left-color:#7b5a3e; }
 .reader-summary-grid span { display:block;color:#305d43;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase; }
 .reader-summary-grid p { margin:4px 0 0;color:#3d614c;font-size:11px;line-height:1.52; }
-html.dark .reader-summary-grid article { background:rgba(255,255,255,.035);border-left-color:#aebd83; }
-html.dark .reader-summary-grid span { color:#d4df9d; }
-html.dark .reader-summary-grid p { color:#c4d3c7; }
+html.dark .reader-summary-grid article { background:rgba(31,75,58,.055);border-left-color:#809968; }
+html.dark .reader-summary-grid span { color:#305d43; }
+html.dark .reader-summary-grid p { color:#3d614c; }
+
+/* Evidence colors are semantic ink, repeated in node stamps and selected-sheet stamps only. */
+.status-stamp,.node-status { border:1px solid currentColor; box-shadow:inset 0 0 0 1px rgba(255,250,226,.14); }
+.status-stamp.status-supported,.node-status.status-supported { background:rgba(64,121,76,.13); color:#33744c; }
+.status-stamp.status-negative,.node-status.status-negative { background:rgba(165,80,56,.13); color:#a55038; }
+.status-stamp.status-inconclusive,.node-status.status-inconclusive { background:rgba(183,131,43,.14); color:#8f6924; }
+.status-stamp.status-audit,.node-status.status-audit { background:rgba(52,117,137,.13); color:#347589; }

@@ -1,4 +1,4 @@
-/** Field Research Ledger layout — semantic swimlanes replace chronological-grid placement. */
+/** Field Research Ledger layout — semantic swimlanes with legible, continuous lineage routing. */
 import type { Experiment } from "@/lib/experimentData";
 
 export type AtlasPosition = { x: number; y: number };
@@ -70,16 +70,32 @@ export function buildAtlasLayout(experiments: Experiment[]) {
   return { positions, canvasWidth: Math.max(3060, maxX + 260), canvasHeight: Math.max(2640, maxY + 190), lanes: atlasLanes };
 }
 
-export function orthogonalPath(parent: AtlasPosition, child: AtlasPosition, routeSlot: number, parentIsRoot = false) {
+/**
+ * Produces one unbroken cubic route per relationship. The deterministic offset
+ * keeps sibling links out of the same narrow vertical corridor.
+ */
+export function orthogonalPath(parent: AtlasPosition, child: AtlasPosition, route: { serial: number; sourceIndex: number; sourceCount: number; targetIndex: number; targetCount: number }, parentIsRoot = false) {
   const parentWidth = parentIsRoot ? 174 : 176;
+  const parentHeight = parentIsRoot ? 104 : 107;
+  const childHeight = 107;
   const startX = parent.x + parentWidth;
-  const startY = parent.y + 53;
+  const sourceSpan = Math.max(1, parentHeight - 40);
+  const targetSpan = Math.max(1, childHeight - 40);
+  const startY = parent.y + 20 + (route.sourceCount === 1 ? sourceSpan / 2 : (route.sourceIndex / (route.sourceCount - 1)) * sourceSpan);
   const targetX = child.x;
-  const targetY = child.y + 53;
-  if (targetX > startX + 48) {
-    const corridorX = Math.min(targetX - 24, startX + 26 + (routeSlot % 4) * 10);
-    return `M ${startX} ${startY} H ${corridorX} V ${targetY} H ${targetX}`;
+  const targetY = child.y + 20 + (route.targetCount === 1 ? targetSpan / 2 : (route.targetIndex / (route.targetCount - 1)) * targetSpan);
+  const sourceBias = route.sourceIndex - (route.sourceCount - 1) / 2;
+  const targetBias = route.targetIndex - (route.targetCount - 1) / 2;
+  const horizontalDistance = targetX - startX;
+
+  if (horizontalDistance >= 44) {
+    const handle = Math.max(40, Math.min(132, horizontalDistance * 0.38));
+    return `M ${startX} ${startY} C ${startX + handle} ${startY + sourceBias * 11}, ${targetX - handle} ${targetY + targetBias * 11}, ${targetX} ${targetY}`;
   }
-  const corridorY = Math.max(parent.y + 118, child.y + 118) + (routeSlot % 5) * 10;
-  return `M ${startX} ${startY} V ${corridorY} H ${targetX - 24} V ${targetY} H ${targetX}`;
+
+  // Backward audit/history links loop through unique vertical slots rather than
+  // stacking into a shared rectangular detour.
+  const loopX = Math.max(startX, targetX) + 68 + (route.serial % 7) * 18;
+  const loopY = Math.max(parent.y + parentHeight, child.y + childHeight) + 32 + (route.serial % 5) * 18;
+  return `M ${startX} ${startY} C ${loopX} ${startY + sourceBias * 11}, ${loopX} ${loopY}, ${loopX} ${loopY} C ${targetX - 54} ${loopY}, ${targetX - 42} ${targetY + targetBias * 11}, ${targetX} ${targetY}`;
 }

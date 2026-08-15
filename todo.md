@@ -59,3 +59,10 @@
 - [x] Sederhanakan label serta istilah teknis di panel detail tanpa menghapus metrik sumber.
 - [x] Uji tema dan keterbacaan panel detail pada desktop serta ponsel.
 - [ ] Simpan checkpoint perbaikan pengalaman baca dan sampaikan hasil.
+
+## Perbaikan Garis Lineage
+
+- [x] Audit path SVG, offset koridor, dan urutan layer untuk edge yang terlihat putus atau bertumpuk.
+- [x] Perbaiki generator path agar setiap koneksi memakai belokan kontinu dengan koridor yang tidak saling bertabrakan.
+- [x] Pastikan hit-area tooltip mengikuti path yang sama tanpa menciptakan artefak visual.
+- [x] Verifikasi kontinuitas garis pada desktop dan ponsel; simpan checkpoint routing.

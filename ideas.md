@@ -62,3 +62,6 @@ Mark adalah **tiga garis lintasan yang berpotongan pada satu titik observasi**, 
 - **Kertas gading hangat** menjadi material permukaan default; Canopy Ink dipusatkan sebagai tinta, garis aturan, label, dan bidang fokus peta.
 - Identitas merek memakai tiga lintasan garis yang berpotongan membentuk huruf **E** abstrak; mark hanya menggunakan Canopy Ink, gading, atau warna status bukti.
 - Node eksperimen dibaca sebagai **slip bukti** yang dipin pada graph paper: setiapnya membawa marker nomor, cap status, cue dataset/metode, dan benang keturunan yang terlihat.
+- **Kertas gading hangat** mengisi rel, filter, dan lembar bukti pada kedua tema; Canopy Ink dipertahankan khusus untuk peta, bidang fokus, dan tinta utama.
+- Warna lumut, terakota, oker, dan biru mineral hanya dipakai sebagai **tinta status** yang diulang pada cap, marker, dan ringkasan bukti.
+- Setiap wilayah utama membawa cue ledger yang nyata: garis aturan, cap arsip, catatan pinggir, nomor slip, atau graph-paper grid.

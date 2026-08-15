@@ -1,4 +1,4 @@
-/* Field Research Ledger map navigation — the map behaves like a physical research sheet. */
+/* Field Research Ledger map navigation — continuous ink paths, restrained controls, physical research-sheet feel. */
 .graph-shell { position:relative; }
 .graph-topbar { display:flex; align-items:center; justify-content:space-between; min-height:35px; border-bottom:1px solid rgba(226,219,182,.2); background:rgba(9,42,29,.4); }
 .graph-topbar .graph-note { flex:1; border-bottom:0; }
@@ -28,8 +28,8 @@
 .canvas-lane strong { position:absolute; top:12px; left:226px; color:rgba(236,231,191,.66); font-size:10px; font-weight:700; letter-spacing:.14em; }
 .canvas-lane span { position:absolute; top:27px; left:226px; color:rgba(167,195,166,.65); font-size:9px; letter-spacing:.03em; }
 .canvas-lane-depth { background:linear-gradient(90deg,rgba(140,198,211,.06),transparent 42%); }.canvas-lane-audit { background:linear-gradient(90deg,rgba(232,200,120,.06),transparent 42%); }.canvas-lane-archive { background:linear-gradient(90deg,rgba(230,222,181,.035),transparent 42%); }
-.lineage-path { opacity:.29; }.lineage-path.is-active { opacity:1; }.lineage-path.is-archive-bridge { stroke-dasharray:2 10; opacity:.2; }.lineage-path.is-archive-bridge.is-active { opacity:.72; }
-.edge-hitarea { fill:none; stroke:transparent; stroke-width:18; pointer-events:stroke; cursor:help; }
+.lineage-path { opacity:.34; stroke-linecap:round; stroke-linejoin:round; vector-effect:non-scaling-stroke; }.lineage-path.is-active { opacity:1; }.lineage-path.is-archive-bridge { opacity:.24; }.lineage-path.is-archive-bridge.is-active { opacity:.78; }
+.edge-hitarea { fill:none; stroke:transparent; stroke-linecap:round; stroke-linejoin:round; stroke-width:18; pointer-events:stroke; cursor:help; }
 .edge-hitarea:focus { outline:none; stroke:rgba(244,224,142,.14); }
 .edge-tooltip { position:absolute; z-index:30; width:320px; padding:11px 13px 12px; border:1px solid #e4cf84; background:rgba(255,249,218,.96); box-shadow:4px 5px 0 rgba(1,31,20,.3); color:#153d2f; pointer-events:none; }
 .edge-tooltip-kicker { display:flex; align-items:center; gap:5px; margin-bottom:6px; color:#6d7448; font-size:9px; font-weight:800; letter-spacing:.12em; }.edge-tooltip strong { display:block; font-family:Fraunces,serif; font-size:14px; line-height:1.15; }.edge-tooltip strong i { color:#a87e32; font-style:normal; }.edge-tooltip p { margin:7px 0; color:#2c5744; font-size:11px; line-height:1.45; }.edge-tooltip small { display:block; padding-top:7px; border-top:1px solid rgba(55,86,67,.2); color:#58705f; font-size:9px; line-height:1.35; }.edge-tooltip small b { color:#315643; }
