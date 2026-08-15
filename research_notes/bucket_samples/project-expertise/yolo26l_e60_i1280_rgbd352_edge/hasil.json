@@ -1,0 +1,9 @@
+{
+  "modal": "rgbd_encoding_screening",
+  "data": "/workspace/SawitMVC-Depth-4ch-edge/data_rgbd_352_edge.yaml",
+  "epochs": 60,
+  "patience": 60,
+  "imgsz": 1280,
+  "batch": 4,
+  "durasi_detik": 10039.8
+}

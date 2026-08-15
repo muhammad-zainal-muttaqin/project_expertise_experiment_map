@@ -1,0 +1,9 @@
+{
+  "modal": "rgbd_encoding_screening",
+  "data": "/workspace/agnostic953/data.yaml",
+  "epochs": 12,
+  "patience": 12,
+  "imgsz": 1280,
+  "batch": 4,
+  "durasi_detik": 6563.0
+}

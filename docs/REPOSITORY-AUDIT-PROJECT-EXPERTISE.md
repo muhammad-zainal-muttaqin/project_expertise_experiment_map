@@ -91,6 +91,22 @@ Pergeseran temporal mengubah interpretasi paling penting di repositori ini. Perb
 
 Monocular depth diuji sebagai kanal tambahan, bukan pengganti depth sensor. Pada 953, RGB+mono turun sekitar `−0,0476` mAP50 dengan interval bootstrap yang seluruhnya negatif. Pada 352, RGB+mono memiliki titik estimasi lebih tinggi dari RGB tetapi interval mencakup nol; menambahkan mono di atas edge-depth kembali merugikan secara signifikan. Matriks ini belum menjawab apakah kerugian berasal dari isi peta mono atau dari biaya menambah kanal, karena kontrol `M_shuf` belum dijalankan. [5]
 
+### Lampiran Bukti Bucket Cadangan — Tidak Mengubah Putusan Commit
+
+Bucket `ULM-DS-Lab/project-expertise-backup` diperiksa pada 15 Agu 2026 sebagai sumber pelengkap. Inventaris baca-saja mencatat 59.929 objek: 3.160 path non-dependensi berada dalam snapshot `project-expertise/`, berbanding 149 path pada commit atlas `225faaeb`. Selisih utamanya adalah run, log, prediksi, citra, dan checkpoint yang tidak dimasukkan ke snapshot Git. Karena Hugging Face Storage Buckets bersifat mutable serta non-versioned, artefak ini **bukan** bukti commit-tersemat dan tidak boleh mengganti angka atau putusan V2-E pada tabel register. [6] [7]
+
+Sampel lima run kecil dibaca melalui `args.yaml`, `hasil.json` bila tersedia, dan `results.csv`. Sampel tersebut mengonfirmasi bahwa sejumlah run historis memang tersimpan, termasuk variasi RGB+mono, RGB+edge-depth+mono, 4-channel agnostik, dan RGBD-edge. Namun, berkas yang diperiksa hanya berupa kurva validasi pelatihan dan konfigurasi; tidak tersedia pada sampel ini dump prediksi, evaluator test yang disamakan, atau kontrak split yang memadai untuk mengangkat skor validasi menjadi klaim baru. Keputusan atlas untuk V2-E-027 hingga V2-E-032 karena itu **tetap tidak berubah**. [6]
+
+| Run bucket | Konfigurasi yang terbaca | Catatan metrik dari `results.csv` | Status pembacaan |
+|---|---|---|---|
+| `sel6_953_rgbmono` | YOLO26l, `d953_rgbmono`, seed 42, target 60 epoch; rekaman berhenti pada epoch 31. | mAP50 validasi terakhir `0,48703`; tidak ada `hasil.json`. | Mendukung keberadaan jalur RGB+mono, tetapi bukan skor test atau replikasi setara V2-E-027. |
+| `sel4_352_rgbedgemono` | YOLO26l, `d352_rgbedgemono`, 60 epoch, seed 42. | mAP50 validasi terakhir `0,38715`. | Artefak pendukung jalur edge-depth+mono; tidak mengubah putusan negatif bootstrap V2-E-031. |
+| `agn352_4ch` | YOLO26l, `agnostic352_4ch`, 60 epoch, seed 42. | mAP50 validasi terakhir `0,72244`. | Rezim agnostik; tidak sebanding langsung dengan mAP class-aware pada register. |
+| `agn953_full` | YOLO26l, `agnostic953`, 12 epoch, seed 42. | mAP50 validasi terakhir `0,80508`. | Rezim agnostik dan jadwal lebih pendek; hanya kandidat inspeksi, bukan benchmark 953 yang menggantikan V2-E-001. |
+| `yolo26l_e60_i1280_rgbd352_edge` | YOLO26l, `data_rgbd_352_edge`, 60 epoch, seed 42. | mAP50 validasi terakhir `0,34805`. | Jejak pelatihan untuk encoding edge; perlu evaluator test yang sama sebelum dibandingkan dengan V2-E-010. |
+
+> **Cara inspeksi manual.** Dengan akses bucket yang sah, salin path berikut ke CLI Hugging Face—misalnya `hf buckets cp hf://buckets/ULM-DS-Lab/project-expertise-backup/project-expertise/runs/sel6_953_rgbmono/results.csv .`—atau buka bucket pada halaman sumber [6]. Path yang dibaca dalam sampel adalah `project-expertise/runs/<nama-run>/{args.yaml,hasil.json,results.csv}`. Jangan memasukkan token akses ke Markdown, issue, commit, atau browser URL.
+
 ## Artefak Inspeksi Prioritas
 
 | Keperluan audit | Artefak langsung pada commit `225faaeb` |
@@ -102,10 +118,13 @@ Monocular depth diuji sebagai kanal tambahan, bukan pengganti depth sensor. Pada
 | Diagnosis / dua tahap | [`probe_fitur_depth.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/probe_fitur_depth.json) · [`twostage_final_v4.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/twostage_final_v4.json) |
 | Validitas | [`pergeseran_temporal.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/pergeseran_temporal.json) · [`test953_bersih.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/test953_bersih.json) |
 | Monocular depth | [`boot_sel6_vs_sel5.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/boot_sel6_vs_sel5.json) · [`boot_sel4_vs_sel2.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/boot_sel4_vs_sel2.json) · [`boot_sel3_vs_sel1.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/boot_sel3_vs_sel1.json) |
+| Pelengkap bucket mutable | [`Bucket project-expertise-backup`](https://huggingface.co/buckets/ULM-DS-Lab/project-expertise-backup) · `hf://buckets/ULM-DS-Lab/project-expertise-backup/project-expertise/runs/` · [catatan inventaris lokal](../research_notes/repo_inventory/hf_backup_audit_notes.md) |
 
 ## Keterkaitan dengan Atlas
 
 Atlas mengimpor node V2-E-001 sampai V2-E-033 dari kontrak data `client/src/lib/experimentData.ts`. Dossier ini menggunakan ID yang sama dan mengembalikan pembaca ke artefak primer. Jika sebuah simpul dan dossier tidak sepakat, rujukan otoritatif untuk angka adalah JSON/CSV pada commit di atas; rujukan otoritatif untuk putusan adalah entri yang lebih baru di register dan auditnya. Perbedaan tersebut harus dicatat sebagai pembaruan katalog, bukan diam-diam dirapikan.
+
+Artefak bucket yang dijelaskan di atas berfungsi sebagai petunjuk pemeriksaan tambahan. Ia baru dapat mengubah atlas bila konfigurasi, split, evaluator, dan artefak testnya dapat direkonstruksi, lalu hasilnya diberi sumber/tanggal bucket secara eksplisit dan diaudit kembali.
 
 ## Referensi
 
@@ -114,6 +133,8 @@ Atlas mengimpor node V2-E-001 sampai V2-E-033 dari kontrak data `client/src/lib/
 [3]: https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/counting_v2repro.json "Hasil counting reproduksi tiga detektor"
 [4]: https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/docs/LAPORAN-AKHIR.md "Laporan akhir dan batas audit project-expertise"
 [5]: https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/boot_sel6_vs_sel5.json "Bootstrap monocular depth 953"
+[6]: https://huggingface.co/buckets/ULM-DS-Lab/project-expertise-backup "ULM-DS-Lab/project-expertise-backup — storage bucket pelengkap, diinventaris 15 Agu 2026"
+[7]: https://huggingface.co/docs/hub/en/storage-buckets "Dokumentasi Hugging Face Storage Buckets — object storage mutable dan non-versioned"
 
 <!-- AUTO_CATALOG_START -->
 ## Lampiran A — Katalog Artefak yang Dapat Diaudit

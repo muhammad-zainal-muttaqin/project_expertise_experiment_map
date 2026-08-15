@@ -1,0 +1,10 @@
+{
+  "modal": "rgbd_encoding_screening",
+  "data": "/workspace/d352_rgbedgemono/data.yaml",
+  "epochs": 60,
+  "patience": 60,
+  "imgsz": 1280,
+  "batch": 4,
+  "durasi_detik": 10123.7,
+  "resume_dari": null
+}

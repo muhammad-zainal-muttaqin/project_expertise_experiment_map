@@ -163,3 +163,10 @@
 - [x] Tulis dossier lengkap `research-method-dedup` dengan metode deduplikasi, oracle, dan pembuktian terkait.
 - [x] Selaraskan indeks, tautan inspeksi, dan klaim dossier dengan atlas serta validasi Markdown.
 - [x] Simpan checkpoint dan sampaikan empat dossier audit.
+
+## Audit Bucket Cadangan
+
+- [x] Inventarisasi bucket cadangan project-expertise dengan provenance dan ukuran artefak.
+- [x] Bandingkan artefak bucket dengan commit audit dan identifikasi bukti tambahan yang substantif.
+- [x] Perbarui dossier hanya dengan tambahan yang dapat diverifikasi serta beri label sumber bucket.
+- [x] Validasi tautan, provenance, dan ringkasan temuan bucket.
