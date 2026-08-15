@@ -6,6 +6,7 @@
 .graph-controls { display:flex; align-items:center; gap:3px; margin-right:8px; padding-left:8px; border-left:1px solid rgba(228,224,186,.2); }
 .graph-controls button { display:grid; place-items:center; width:27px; height:27px; border:1px solid transparent; background:transparent; color:#e9e2b9; transition:.16s cubic-bezier(.23,1,.32,1); }
 .graph-controls button:hover:not(:disabled) { border-color:rgba(235,218,146,.7); background:rgba(255,249,218,.1); color:#fff7cf; }
+.graph-controls button.is-active { border-color:#edda8c; background:rgba(242,220,144,.17); color:#fff4bc; }
 .graph-controls button:active:not(:disabled) { transform:scale(.94); }
 .graph-controls button:disabled { cursor:not-allowed; opacity:.35; }
 .graph-controls output { min-width:34px; color:#e7d98d; font-size:10px; font-variant-numeric:tabular-nums; text-align:center; }
@@ -18,6 +19,8 @@
 .graph-shell:fullscreen .graph-scroll { height:calc(100vh - 37px); }
 .graph-shell:fullscreen .graph-topbar { min-height:42px; }
 .graph-shell:fullscreen .graph-controls button { width:31px; height:31px; }
+.focus-strip { display:flex; align-items:center; gap:7px; min-height:30px; padding:5px 10px; border-bottom:1px solid rgba(235,218,146,.28); background:rgba(241,220,144,.12); color:#f5e4ab; font-size:10px; letter-spacing:.01em; }
+.focus-strip strong,.focus-strip b { color:#fff3bc; }.focus-strip button { margin-left:auto; border-bottom:1px solid rgba(255,242,183,.6); color:#fff3bc; font:inherit; font-weight:700; }
 @media (max-width:720px) { .graph-topbar { align-items:flex-start; }.graph-topbar .graph-note { min-height:48px; padding:8px 10px; font-size:9px; }.graph-note kbd { display:none; }.graph-controls { gap:0; margin:5px 4px 0 0; padding-left:4px; }.graph-controls button { width:24px; height:25px; }.graph-controls output { display:none; }.graph-shell:fullscreen .graph-scroll { height:calc(100vh - 58px); } }
 
 /* Semantic swimlanes: rows preserve the research question and reduce cross-map traffic. */
@@ -26,3 +29,10 @@
 .canvas-lane span { position:absolute; top:27px; left:226px; color:rgba(167,195,166,.65); font-size:9px; letter-spacing:.03em; }
 .canvas-lane-depth { background:linear-gradient(90deg,rgba(140,198,211,.06),transparent 42%); }.canvas-lane-audit { background:linear-gradient(90deg,rgba(232,200,120,.06),transparent 42%); }.canvas-lane-archive { background:linear-gradient(90deg,rgba(230,222,181,.035),transparent 42%); }
 .lineage-path { opacity:.29; }.lineage-path.is-active { opacity:1; }.lineage-path.is-archive-bridge { stroke-dasharray:2 10; opacity:.2; }.lineage-path.is-archive-bridge.is-active { opacity:.72; }
+.edge-hitarea { fill:none; stroke:transparent; stroke-width:18; pointer-events:stroke; cursor:help; }
+.edge-hitarea:focus { outline:none; stroke:rgba(244,224,142,.14); }
+.edge-tooltip { position:absolute; z-index:30; width:320px; padding:11px 13px 12px; border:1px solid #e4cf84; background:rgba(255,249,218,.96); box-shadow:4px 5px 0 rgba(1,31,20,.3); color:#153d2f; pointer-events:none; }
+.edge-tooltip-kicker { display:flex; align-items:center; gap:5px; margin-bottom:6px; color:#6d7448; font-size:9px; font-weight:800; letter-spacing:.12em; }.edge-tooltip strong { display:block; font-family:Fraunces,serif; font-size:14px; line-height:1.15; }.edge-tooltip strong i { color:#a87e32; font-style:normal; }.edge-tooltip p { margin:7px 0; color:#2c5744; font-size:11px; line-height:1.45; }.edge-tooltip small { display:block; padding-top:7px; border-top:1px solid rgba(55,86,67,.2); color:#58705f; font-size:9px; line-height:1.35; }.edge-tooltip small b { color:#315643; }
+.is-focus-hidden { visibility:hidden !important; pointer-events:none !important; }
+.graph-minimap { position:absolute; z-index:35; right:12px; bottom:13px; width:198px; padding:8px 9px 9px; border:1px solid rgba(238,220,144,.67); background:rgba(10,47,32,.92); box-shadow:3px 4px 0 rgba(1,28,18,.32); color:#eee3b5; backdrop-filter:blur(6px); }.minimap-title { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:5px; }.minimap-title span { font-size:9px; font-weight:800; letter-spacing:.13em; }.minimap-title small { color:#9fba9c; font-size:8px; }.graph-minimap svg { display:block; width:178px; height:132px; border:1px solid rgba(222,222,177,.28); cursor:crosshair; }.minimap-lane { fill:rgba(255,250,219,.05); stroke:rgba(223,225,181,.16); stroke-width:6; cursor:pointer; }.minimap-lane-depth { fill:rgba(140,198,211,.12); }.minimap-lane-audit { fill:rgba(232,200,120,.12); }.minimap-lane-archive { fill:rgba(230,222,181,.08); }.graph-minimap text { fill:rgba(238,231,191,.68); font-size:28px; font-weight:700; letter-spacing:5px; pointer-events:none; }.minimap-root { fill:#f0df9e; opacity:.9; pointer-events:none; }.minimap-node { stroke-width:4; pointer-events:none; }.minimap-supported { fill:#aad7b0; }.minimap-negative { fill:#e99a7b; }.minimap-inconclusive { fill:#e7c778; }.minimap-audit_needed { fill:#75b5c6; }.minimap-node.is-selected { fill:#fff6c8; stroke:#fff; stroke-width:14; }.minimap-viewport { fill:rgba(255,246,189,.08); stroke:#fff0a7; stroke-width:13; pointer-events:none; }.graph-minimap .is-focus-hidden { visibility:hidden; }
+@media (max-width:720px) { .focus-strip { min-height:38px; padding:6px 9px; font-size:9px; }.focus-strip button { font-size:9px; }.graph-minimap { right:8px; bottom:8px; width:142px; padding:6px; }.graph-minimap svg { width:130px; height:96px; }.minimap-title small { display:none; }.edge-tooltip { display:none; } }

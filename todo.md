@@ -15,7 +15,7 @@
 - [x] Tambahkan zoom in, zoom out, reset, serta indikator skala yang dapat diakses keyboard.
 - [x] Tambahkan mode layar penuh khusus peta beserta cara keluar yang jelas.
 - [x] Verifikasi peta dapat dinavigasi pada desktop dan layar kecil.
-- [ ] Simpan checkpoint navigasi peta dan sampaikan hasil.
+- [x] Simpan checkpoint navigasi peta dan sampaikan hasil.
 
 ## Tata Letak dan Lineage
 
@@ -23,4 +23,13 @@
 - [x] Kelompokkan eksperimen ke jalur pertanyaan riset dan era yang lebih jelas.
 - [x] Terapkan posisi bertingkat serta routing ortogonal/berkoridor untuk mengurangi garis silang.
 - [x] Verifikasi peta pada desktop dan ponsel.
-- [ ] Simpan checkpoint tata letak baru dan sampaikan hasil.
+- [x] Simpan checkpoint tata letak baru dan sampaikan hasil.
+
+## Navigasi dan Keterjelasan Lineage
+
+- [x] Definisikan alasan hubungan untuk setiap jenis edge lineage yang telah diaudit.
+- [x] Tambahkan tooltip/panel hover edge yang menjelaskan node asal, node tujuan, dan alasan keterhubungan.
+- [x] Tambahkan minimap interaktif untuk melompat ke lane dan era riset.
+- [x] Tambahkan mode fokus cabang untuk menyembunyikan node serta edge di luar lineage terpilih.
+- [x] Verifikasi kontrol baru pada desktop dan ponsel.
+- [ ] Simpan checkpoint fitur navigasi dan sampaikan hasil.

@@ -7,6 +7,7 @@ interface ExperimentNodeProps {
   position?: { x: number; y: number };
   selected: boolean;
   dimmed: boolean;
+  hidden?: boolean;
   lineageActive: boolean;
   onSelect: (id: string) => void;
 }
@@ -18,7 +19,7 @@ const statusIcons = {
   audit_needed: ShieldAlert,
 };
 
-export function ExperimentNode({ experiment, position = experiment.position, selected, dimmed, lineageActive, onSelect }: ExperimentNodeProps) {
+export function ExperimentNode({ experiment, position = experiment.position, selected, dimmed, hidden = false, lineageActive, onSelect }: ExperimentNodeProps) {
   const status = statusInfo[experiment.status];
   const Icon = statusIcons[experiment.status];
 
@@ -26,7 +27,7 @@ export function ExperimentNode({ experiment, position = experiment.position, sel
     <button
       type="button"
       onClick={() => onSelect(experiment.id)}
-      className={`experiment-node ${selected ? "is-selected" : ""} ${dimmed ? "is-dimmed" : ""} ${lineageActive ? "is-lineage" : ""}`}
+      className={`experiment-node ${selected ? "is-selected" : ""} ${dimmed ? "is-dimmed" : ""} ${hidden ? "is-focus-hidden" : ""} ${lineageActive ? "is-lineage" : ""}`}
       style={{ left: position.x, top: position.y }}
       aria-pressed={selected}
       aria-label={`Buka bukti ${experiment.id}: ${experiment.title}`}
