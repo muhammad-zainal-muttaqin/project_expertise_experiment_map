@@ -127,3 +127,5 @@ html.dark .edge-tooltip p { color:#d3dfce; }
 html.dark .edge-tooltip small { border-color:rgba(211,226,189,.2);color:#a9c0ad; }
 html.dark .edge-tooltip small b { color:#dce6b9; }
 html.dark .graph-minimap { border-color:rgba(238,220,144,.67);background:rgba(10,47,32,.92);color:#eee3b5; }
+html.dark .fullscreen-evidence { border-color:rgba(223,206,130,.55);box-shadow:6px 7px 0 rgba(1,18,10,.52); }
+html.dark .fullscreen-evidence-close { border-color:rgba(211,226,189,.22);background:rgba(10,45,32,.88);color:#dce6b9; }.fullscreen-evidence-close:hover { background:rgba(255,255,255,.09); }

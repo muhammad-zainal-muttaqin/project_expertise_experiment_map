@@ -72,3 +72,15 @@
 - [x] Audit permukaan, teks, batas, dan kontrol yang masih memakai token tema berlawanan.
 - [x] Bedakan kontrak warna mode terang dan gelap untuk rel, filter, lembar bukti, node, serta peta.
 - [x] Verifikasi pergantian tema pada desktop dan ponsel; simpan checkpoint perbaikan.
+
+## Bukti dalam Layar Penuh
+
+- [x] Audit state eksperimen terpilih dan struktur kontrol layar penuh.
+- [x] Tambahkan lembar bukti ringkas yang muncul di dalam peta layar penuh.
+- [x] Verifikasi interaksi pilih node, baca ringkasan, dan tutup panel pada desktop serta ponsel.
+
+## Integrasi Panel Bukti Lengkap
+
+- [x] Hapus duplikasi ringkasan fullscreen dan pakai ulang lembar bukti utama di dalam mode layar penuh.
+- [x] Sediakan kontrol buka/tutup panel tanpa mengubah data atau struktur pembuktian.
+- [x] Verifikasi konsistensi isi panel biasa dan panel fullscreen pada kedua tema.
