@@ -133,3 +133,9 @@
 - [x] Rekonstruksi tujuan, kerja konkret, output/bukti, dampak, dan batas untuk node aktif maupun arsip.
 - [x] Rancang kontrak narasi panel kanan yang membedakan eksperimen, inventaris, audit, dan sintesis.
 - [x] Terapkan cerita sumber pada katalog eksperimen dan verifikasi keterbacaannya di panel normal serta fullscreen.
+
+## Tautan Artefak Primer
+
+- [x] Audit bentuk data artefak dan URL fallback pada panel bukti.
+- [x] Bentuk URL GitHub file spesifik menggunakan repositori, commit, dan path artefak.
+- [x] Verifikasi beberapa artefak dari empat repositori dan tampilkan fallback yang transparan bila perlu.

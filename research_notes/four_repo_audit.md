@@ -50,3 +50,12 @@
 ## Implikasi desain panel
 
 Setiap node perlu menyimpan: `jenisKerja` (inventaris, probe, eksperimen pembanding, audit, sintesis, formulasi), `pertanyaan`, `langkah`, `buktiUtama`, `putusanOperasional`, `dampak`, dan `batas`. Struktur ini menghindari narasi palsu seperti “menguji peningkatan” pada node yang sebenarnya hanya memetakan data atau memperbaiki validitas ground truth.
+
+## Verifikasi Artefak Primer — 15 Agustus 2026
+
+| Repositori | Commit | Artefak representatif | Hasil verifikasi | Implikasi panel |
+|---|---|---|---|---|
+| `research-method-dedup` | `a720f17` | `algorithms/M01_selector_b2b3.py` | Tersedia; dokumen menerangkan selector trifurkasi dan koreksi B2↔B3. | Tautkan ke `blob/a720f17/algorithms/M01_selector_b2b3.py`. |
+| `Baseline-SawitMVC` | `ee2f0ac` | `README.md` | Tersedia; memuat baseline tree-level dan split 716/96/141. | Tautkan ke `blob/ee2f0ac/README.md`; fragmen `§` hanya anotasi panel. |
+| `Research-Pipeline` | `4aa9ad6` | `experiments/README.md` | Tersedia; memuat register E-001–E-032 dan status kutip. | Tautkan ke `blob/4aa9ad6/experiments/README.md`. |
+| `project-expertise` | `225faaeb` | `runs_fase6/sd101_rgb/hasil.json`; `runs_fase6/pre953v2/hasil.json` | Kedua URL GitHub `blob` mengembalikan HTTP 404 pada commit audit. | Jangan tampilkan sebagai tautan aktif; beri label “tidak tersedia pada commit 225faaeb”. |
