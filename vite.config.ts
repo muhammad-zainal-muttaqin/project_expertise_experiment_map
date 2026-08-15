@@ -205,7 +205,10 @@ function vitePluginStorageProxy(): Plugin {
 
 const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
+  // Field Research Ledger — Pages builds live at a repository subpath;
+  // local Manus preview deliberately keeps root-relative paths.
+  base: mode === "github-pages" ? "/project_expertise_experiment_map/" : "/",
   plugins,
   resolve: {
     alias: {
@@ -238,4 +241,4 @@ export default defineConfig({
       deny: ["**/.*"],
     },
   },
-});
+}));

@@ -33,3 +33,10 @@
 - [x] Tambahkan mode fokus cabang untuk menyembunyikan node serta edge di luar lineage terpilih.
 - [x] Verifikasi kontrol baru pada desktop dan ponsel.
 - [ ] Simpan checkpoint fitur navigasi dan sampaikan hasil.
+
+## GitHub Pages
+
+- [ ] Periksa respons halaman GitHub Pages dan konfigurasi Vite saat ini.
+- [ ] Pastikan base path, rujukan aset, dan fallback SPA kompatibel dengan subpath repositori.
+- [ ] Tambahkan workflow build dan deploy GitHub Actions untuk GitHub Pages.
+- [ ] Verifikasi build produksi dan deploy pertama pada URL Pages.
