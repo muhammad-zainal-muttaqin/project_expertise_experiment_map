@@ -1,0 +1,214 @@
+# project-expertise @ 225faaeb
+
+## HEAD
+225faaeb5c3a44f769f6a9c6abfb2477daea7f8e
+
+## Recent history
+225faae | 2026-08-15 | Kontrol cross_tree 953: rantai build->gerbang korup->training
+6fcd852 | 2026-08-15 | V2-E-033: catat dua kebocoran split yang membatasi cara mengutip angka lama
+4278f07 | 2026-08-15 | Sel 4 (352 RGB+Depth+Mono 5ch) tuntas — matriks mono-depth lengkap
+ff58fb5 | 2026-08-15 | Matriks monocular-depth: sel 6 dan sel 3 tuntas, mono turun signifikan di 953
+7d57d41 | 2026-08-12 | REGENERASI.md: catat perilaku gagal-keras skrip pembangun
+b66d59c | 2026-08-12 | Catat hasil aktual pemangkasan bucket + bukti verifikasi regenerasi
+9d1f91d | 2026-08-12 | Gagal keras saat sumber hilang di dua skrip pembangun dataset 4-kanal
+0a5c4af | 2026-08-12 | Catat penelusuran bobot DETR yang hilang + perbarui README pasca-pemangkasan
+5ebbe8b | 2026-08-12 | Tambah resep regenerasi dan skrip builder yang hilang sebelum pemangkasan bucket
+e235d38 | 2026-08-12 | V2-E-024/025/026: depth menaikkan LOKALISASI, plafon 0,733 dikoreksi
+8f0112e | 2026-08-12 | Tutup lubang metadata split pada 6 berkas hasil
+6faa63b | 2026-08-12 | Audit kelengkapan split + langkah penutup di panduan reproduksi
+f92e049 | 2026-08-12 | Fase 6 penutup: temuan pergeseran temporal + CI bootstrap + laporan akhir
+32e1e61 | 2026-08-12 | Fase 6 lanjutan: pipeline dua-tahap mencapai mAP50 0,4500 (V2-E-017..021)
+bdb3b07 | 2026-08-11 | Fase 6: diagnostik ulang RGB+D + pipeline dua-tahap (V2-E-012..016)
+3fb7adf | 2026-08-11 | Fase 5: loop perbaikan RGB+D — screening 2 lever + promosi edge (V2-E-008..011)
+f21d25b | 2026-08-09 | Fase 4: analisis matriks 9-sel + bootstrap CI + sintesis terstratifikasi (V2-E-007)
+e94fdbf | 2026-08-09 | Fase 2-3 selesai: deteksi+counting RGB & RGBD 352 pohon (V2-E-003 s/d V2-E-006)
+c0da2f1 | 2026-08-09 | Fase 1 selesai: V2-E-001 (deteksi 3 model tereproduksi) + V2-E-002 (counting)
+a173157 | 2026-08-08 | Update handoff: bobot YOLO26l sudah aman di git, tidak perlu retrain
+e315bad | 2026-08-08 | Simpan bobot YOLO26l_v2repro (51MB) — satu-satunya model Fase 1 yang selesai penuh
+e2ebb6c | 2026-08-08 | Handoff: pindah GPU — status lengkap Fase 0-1, cara lanjut, link, catatan token
+34d4d85 | 2026-08-08 | Cache dataset ke disk lokal; koreksi: bottleneck ternyata GPU compute bukan I/O
+1110ad5 | 2026-08-08 | Fase 1: YOLO26l tereproduksi (mAP50 test 0,5435 vs target 0,5300), RT-DETR-L sedang training
+0e5e9eb | 2026-08-08 | Fase 5: protokol screening cepat (maks 15 epoch, patience 3)
+6d1595d | 2026-08-08 | Tambahkan Fase 5: batasan eksplisit loop perbaikan RGB+D (representasi data / arsitektur saja)
+db1118a | 2026-08-08 | Dokumentasikan bug resolusi path data_rgb.yaml dan perbaikannya (Fase 1)
+b2ef614 | 2026-08-08 | Fase 0: infrastruktur siap — clone Baseline-SawitMVC, adaptor per-pohon, reprojeksi depth
+e951973 | 2026-08-08 | Inisialisasi repo: sintesis Volume 1 + rencana kerja 4 fase
+
+## Files
+.gitignore
+CLAUDE.md
+README.md
+docs/CATATAN-TEKNIS-FASE1.md
+docs/DATASET.md
+docs/DIAGNOSIS-DEPTH.md
+docs/LAPORAN-AKHIR.md
+docs/REGENERASI.md
+docs/REKAP.md
+docs/RENCANA.md
+docs/REPRODUKSI-FASE6.md
+docs/SCHEMA-PERTREE.md
+experiments/EKSPERIMEN.md
+experiments/STATUS.md
+logs_ringkas/eval_sel6_953_rgbmono.log
+logs_ringkas/gerbang_a_reproduksi_sel5.log
+logs_ringkas/gerbang_b_kelayakan_5kanal.log
+logs_ringkas/latih_sel3_352_rgbmono.log
+logs_ringkas/latih_sel3_352_rgbmono_arsip_210940.log
+logs_ringkas/latih_sel4_352_rgbedgemono.log
+logs_ringkas/latih_sel4_352_rgbedgemono_arsip_210940.log
+logs_ringkas/latih_sel6_953_rgbmono.log
+logs_ringkas/latih_sel6_953_rgbmono_arsip_210940.log
+logs_ringkas/matriks.log
+models/yolo26l_e60_i1280_v2repro/best.pt
+requirements-freeze.txt
+results/.gitkeep
+results/boot_sel3_vs_sel1.json
+results/boot_sel3_vs_sel2.json
+results/boot_sel4_vs_sel2.json
+results/boot_sel4_vs_sel3.json
+results/boot_sel6_vs_sel5.json
+results/bootstrap_ci_352.json
+results/bootstrap_lokalisasi.json
+results/bootstrap_map.json
+results/bootstrap_map_awal.json
+results/bucket_prune_2026-08-12.json
+results/counting_rgb352.json
+results/counting_rgbd352.json
+results/counting_twostage.json
+results/counting_v2repro.json
+results/detektor_pilihan.json
+results/detektor_pilihan_v2.json
+results/detektor_pilihan_v3.json
+results/detektor_pilihan_v4.json
+results/eval_sel3_352_rgbmono_test.json
+results/eval_sel4_352_rgbedgemono_test.json
+results/eval_sel5_953_rgb_test.json
+results/eval_sel6_953_rgbmono_test.json
+results/fase6_classifier.json
+results/fase6_ringkas.json
+results/logs_ringkas/sel3_352_rgbmono.log
+results/logs_ringkas/sel4_352_rgbedgemono.log
+results/logs_ringkas/sel6_953_rgbmono.log
+results/matrix_compiled.json
+results/pergeseran_temporal.json
+results/perkelas_pycoco_rgb352.json
+results/perkelas_pycoco_rgbd352.json
+results/perkelas_pycoco_v2repro.json
+results/pred_agn4ch_test.npz
+results/pred_agn953_bersih.npz
+results/pred_agn953_penuh.npz
+results/pred_agnrgb_test.npz
+results/pred_edge_test.npz
+results/pred_edge_val.npz
+results/pred_rgb352_test.npz
+results/pred_rgb352_val.npz
+results/pred_sel3_352_rgbmono_test.npz
+results/pred_sel4_352_rgbedgemono_test.npz
+results/pred_sel5_953_rgb_test.npz
+results/pred_sel6_953_rgbmono_test.npz
+results/probe_fitur_depth.json
+results/probe_mono_vs_sensor.json
+results/riwayat_epoch/sel3_352_rgbmono__DIHENTIKAN_LEBIH_AWAL
+results/riwayat_epoch/sel3_352_rgbmono__args.yaml
+results/riwayat_epoch/sel3_352_rgbmono__results.csv
+results/riwayat_epoch/sel4_352_rgbedgemono__args.yaml
+results/riwayat_epoch/sel4_352_rgbedgemono__results.csv
+results/riwayat_epoch/sel6_953_rgbmono__DIHENTIKAN_LEBIH_AWAL
+results/riwayat_epoch/sel6_953_rgbmono__args.yaml
+results/riwayat_epoch/sel6_953_rgbmono__results.csv
+results/sweep_inferensi.json
+results/sweep_inferensi_v2.json
+results/sweep_inferensi_v3.json
+results/sweep_inferensi_v4.json
+results/test953_bersih.json
+results/tiff_korup.json
+results/tiff_korup_setelah_perbaikan.json
+results/twostage_final.json
+results/twostage_final_v2.json
+results/twostage_final_v3.json
+results/twostage_final_v4.json
+results/twostage_small_ens3_tta.json
+results/twostage_tiny_ens3.json
+results/twostage_tiny_ens3_mk.json
+results/twostage_v4_ulang.json
+results/twostage_v4_ulang.pred.npz
+results/val_curve_sel5_953_rgb_v2repro.csv
+scripts/adapters/common_pertree.py
+scripts/adapters/rfdetr_to_pertree.py
+scripts/adapters/rtdetr_to_pertree.py
+scripts/adapters/yolo_to_pertree.py
+scripts/bootstrap_ci.py
+scripts/bootstrap_map.py
+scripts/bootstrap_nch.py
+scripts/buat_agnostic352_4ch.py
+scripts/buat_dataset_nch.py
+scripts/buat_mono_depth.py
+scripts/buat_test_953_bersih.py
+scripts/build_4ch_dataset.py
+scripts/build_crop_dataset.py
+scripts/compile_matrix.py
+scripts/create_depth_edge_dataset.py
+scripts/dump_classaware.py
+scripts/eval_all_pycoco_v2repro.py
+scripts/eval_detector_agnostic.py
+scripts/eval_nch.py
+scripts/eval_pycoco_352.py
+scripts/eval_pycoco_rgbd352.py
+scripts/eval_twostage.py
+scripts/fuse_final.py
+scripts/jalankan_matriks.sh
+scripts/lengkapi_metadata_split.py
+scripts/make_absolute_split.py
+scripts/make_agnostic_dataset.py
+scripts/make_pretrain_split.py
+scripts/materialize_split_dirs.py
+scripts/perbaiki_tiff_korup.py
+scripts/pilih_detektor.py
+scripts/probe_depth_signal.py
+scripts/probe_fitur_depth.py
+scripts/probe_mono_vs_sensor.py
+scripts/probe_pergeseran_temporal.py
+scripts/rantai_xtree953.sh
+scripts/run_counting_rgb352.py
+scripts/run_counting_rgbd352.py
+scripts/run_counting_twostage.py
+scripts/run_counting_v2repro.py
+scripts/sweep_inferensi.py
+scripts/train_crop_classifier.py
+scripts/train_rfdetr_4ch.py
+scripts/train_ultra_local.py
+scripts/train_yolo_4ch_dropout.py
+scripts/train_yolo_4ch_screening.py
+scripts/train_yolo_midfusion.py
+splits_fase6/agnostic_ringkas.json
+splits_fase6/pretrain953_images.txt
+splits_fase6/pretrain953_meta.json
+splits_fase6/pretrain953_trees.txt
+
+## File counts by extension
+.csv 4
+.gitignore 1
+.gitkeep 1
+.json 48
+.log 13
+.md 13
+.npz 13
+.pt 1
+.py 45
+.sh 2
+.txt 3
+.yaml 3
+[none] 2
+
+## Root entries
+.gitignore
+CLAUDE.md
+README.md
+docs
+experiments
+logs_ringkas
+models
+requirements-freeze.txt
+results
+scripts
+splits_fase6

@@ -1,0 +1,545 @@
+CLAUDE.md
+README.md
+audit/AUDIT-PRA-SUBMISI.md
+audit/README.md
+audit/claim-audit-182.md
+audit/core-claim-register.md
+audit/dosen-revision-status-2026-08-10.md
+audit/entri-accuracy-check.md
+audit/evidence-matrix-182.md
+audit/evidence-matrix-v2.md
+datasets/README.md
+docs-readme-old.md
+experiments/AUDIT-E022.md
+experiments/BRIEF-DEEP-RESEARCH.md
+experiments/EKSPERIMEN.md
+experiments/LAPORAN-EKSPERIMEN.md
+experiments/METRICS.md
+experiments/METRIK-LENGKAP.md
+experiments/README.md
+experiments/REPORT_PLAN.md
+experiments/SERI-F.md
+experiments/SINTESIS-DEEP-RESEARCH.md
+experiments/SR/README.md
+experiments/SR/SR-001-ambiguitas-kematangan.md
+experiments/SR/SR-002-resolusi-master-mentah.md
+experiments/SR/SR-003-da3-video-orbit.md
+experiments/SR/SR-004-da3-empat-sisi.md
+experiments/SR/SR-005-sinyal-depth-tandan.md
+experiments/SR/SR-006-penautan-geometris.md
+experiments/SR/SR-007-diagnosis-b4.md
+experiments/SR/SR-008-kanal-tekstur.md
+experiments/SR/SR-009-ordinalitas-kelas.md
+experiments/SR/SR-010-hambatan-klasifikasi.md
+experiments/SR/SR-011-plafon-kematangan.md
+experiments/SR/SR-012-dua-tahap.md
+experiments/SR/SR-013-rtdetr-nms-free.md
+experiments/SR/SR-014-rfdetr-dinov2.md
+experiments/SR/SR-015-depth-sensor-4kanal.md
+experiments/SR/SR-016-konsistensi-lintas-sisi.md
+experiments/SR/SR-017-sintesis-deep-research.md
+experiments/STATUS.md
+experiments/archive/E022-seed42-awal.md
+experiments/code/CATATAN-TEKNIS-E021.md
+experiments/code/PETA-SKRIP.md
+experiments/code/README.md
+experiments/code/REPRODUCE.md
+experiments/code/requirements.txt
+experiments/code/train/RANCANGAN-rfdetr-fusi-mid.md
+experiments/deep-research/Codex-DR.md
+experiments/deep-research/Gemini-DR.md
+experiments/logs/logs-agnostic.txt
+experiments/logs/logs-basetest.txt
+experiments/logs/logs-build-rgbd.txt
+experiments/logs/logs-c4hi.txt
+experiments/logs/logs-chain.txt
+experiments/logs/logs-chainx.txt
+experiments/logs/logs-conv8.txt
+experiments/logs/logs-cropsraw.txt
+experiments/logs/logs-evalmissing.txt
+experiments/logs/logs-extras.txt
+experiments/logs/logs-final.txt
+experiments/logs/logs-gd-fix.txt
+experiments/logs/logs-gd0.txt
+experiments/logs/logs-gd1.txt
+experiments/logs/logs-gd2.txt
+experiments/logs/logs-gd3.txt
+experiments/logs/logs-gendepth.txt
+experiments/logs/logs-headvscrop.txt
+experiments/logs/logs-install.txt
+experiments/logs/logs-locceil.txt
+experiments/logs/logs-matchraw.txt
+experiments/logs/logs-maturity-raw.txt
+experiments/logs/logs-maturity.txt
+experiments/logs/logs-metrics-full.txt
+experiments/logs/logs-metricvar.txt
+experiments/logs/logs-multiview.txt
+experiments/logs/logs-pm1fix.txt
+experiments/logs/logs-pycoco-all.txt
+experiments/logs/logs-queue.txt
+experiments/logs/logs-queue2.txt
+experiments/logs/logs-queue3.txt
+experiments/logs/logs-queue4.txt
+experiments/logs/logs-rawtest.txt
+experiments/logs/logs-rfdetr-e60.txt
+experiments/logs/logs-rfdetr-install.txt
+experiments/logs/logs-rfdetr-install2.txt
+experiments/logs/logs-rfdetr-perkelas.txt
+experiments/logs/logs-rfdetr-smoke.txt
+experiments/logs/logs-rtdetr.txt
+experiments/logs/logs-stop52.txt
+experiments/logs/logs-tilebuild.txt
+experiments/logs/logs-train-rgb-resume.txt
+experiments/logs/logs-train-rgb.txt
+experiments/logs/logs-train-rgbd.txt
+experiments/logs/logs-train-tile.txt
+experiments/logs/logs-ultra.txt
+experiments/logs/logs-x.txt
+experiments/logs/logs-yolo26l.txt
+experiments/results/E-023/README.md
+experiments/results/E-023/ringkasan.txt
+experiments/results/F-004/sha256_seed1337.txt
+experiments/results/F-004/sha256_seed2024.txt
+experiments/results/F-004/sha256_seed42.txt
+experiments/results/F-007/sha256_dwt_seed42.txt
+experiments/results/F-007/sha256_laplacian_seed42.txt
+experiments/results/README.md
+experiments/splits/depth/seed1/test.txt
+experiments/splits/depth/seed1/train.txt
+experiments/splits/depth/seed1/val.txt
+experiments/splits/depth/seed2/test.txt
+experiments/splits/depth/seed2/train.txt
+experiments/splits/depth/seed2/val.txt
+experiments/splits/depth/seed42/test.txt
+experiments/splits/depth/seed42/train.txt
+experiments/splits/depth/seed42/val.txt
+experiments/splits/rgb/sawitmvc/test.txt
+experiments/splits/rgb/sawitmvc/train.txt
+experiments/splits/rgb/sawitmvc/val.txt
+experiments/splits/rgb/test.txt
+experiments/splits/rgb/train.txt
+experiments/splits/rgb/val.txt
+experiments/splits/rgb/val_mini.txt
+legacy/README.md
+literature/README.md
+literature/entries/001 - 2016 - You Only Look Once (YOLOv1) - Fondasi RGB.md
+literature/entries/002 - 2017 - YOLO9000 (YOLOv2) - Fondasi RGB.md
+literature/entries/003 - 2018 - YOLOv3 - Fondasi RGB.md
+literature/entries/004 - 2020 - YOLOv4 - Fondasi RGB.md
+literature/entries/005 - 2021 - YOLOX - Fondasi RGB.md
+literature/entries/006 - 2022 - YOLOv6 - Fondasi RGB.md
+literature/entries/007 - 2023 - YOLOv7 - Fondasi RGB.md
+literature/entries/008 - 2024 - YOLOv9 - Fondasi RGB.md
+literature/entries/009 - 2024 - YOLOv10 - Fondasi RGB.md
+literature/entries/010 - 2024 - YOLOv11 (Overview) - Fondasi RGB.md
+literature/entries/011 - 2020 - PP-YOLO - Fondasi RGB.md
+literature/entries/012 - 2014 - R-CNN - Fondasi RGB.md
+literature/entries/013 - 2015 - Fast R-CNN - Fondasi RGB.md
+literature/entries/014 - 2017 - Faster R-CNN - Fondasi RGB.md
+literature/entries/015 - 2016 - SSD - Fondasi RGB.md
+literature/entries/016 - 2017 - RetinaNet (Focal Loss) - Fondasi RGB.md
+literature/entries/017 - 2017 - Mask R-CNN - Fondasi RGB.md
+literature/entries/018 - 2017 - Feature Pyramid Networks (FPN) - Fondasi RGB.md
+literature/entries/019 - 2019 - FCOS - Fondasi RGB.md
+literature/entries/020 - 2019 - CenterNet (Objects as Points) - Fondasi RGB.md
+literature/entries/021 - 2020 - EfficientDet - Fondasi RGB.md
+literature/entries/022 - 2020 - DETR - Fondasi RGB.md
+literature/entries/023 - 2021 - Deformable DETR - Fondasi RGB.md
+literature/entries/024 - 2021 - Vision Transformer (ViT) - Fondasi RGB.md
+literature/entries/025 - 2021 - Swin Transformer - Fondasi RGB.md
+literature/entries/026 - 2023 - Review YOLO (Terven dkk.) - Survei YOLO.md
+literature/entries/027 - 2023 - Review YOLO Manufaktur (Hussain) - Survei YOLO.md
+literature/entries/028 - 2022 - Review Perkembangan YOLO (Jiang dkk.) - Survei YOLO.md
+literature/entries/029 - 2024 - Review YOLO Pertanian (Sapkota dkk.) - Survei YOLO.md
+literature/entries/030 - 2025 - Tinjauan Dekade YOLO (Sapkota dkk.) - Survei YOLO.md
+literature/entries/031 - 2024 - Systematic Review YOLO (Vijayakumar & Vairavasundaram) - Survei YOLO.md
+literature/entries/032 - 2024 - YOLO Evolution Benchmark (Alif & Hussain) - Survei YOLO.md
+literature/entries/035 - 2019 - DMRA - RGB-D SOD.md
+literature/entries/036 - 2020 - BBS-Net - RGB-D SOD.md
+literature/entries/037 - 2021 - D3Net (Rethinking RGB-D SOD) - RGB-D SOD.md
+literature/entries/038 - 2020 - JL-DCF - RGB-D SOD.md
+literature/entries/039 - 2020 - S2MA - RGB-D SOD.md
+literature/entries/040 - 2020 - HDFNet - RGB-D SOD.md
+literature/entries/041 - 2020 - UC-Net - RGB-D SOD.md
+literature/entries/042 - 2021 - Visual Saliency Transformer (VST) - RGB-D SOD.md
+literature/entries/043 - 2022 - SwinNet - RGB-D SOD.md
+literature/entries/044 - 2021 - TriTransNet - RGB-D SOD.md
+literature/entries/045 - 2021 - DSA2F - RGB-D SOD.md
+literature/entries/046 - 2022 - CIR-Net - RGB-D SOD.md
+literature/entries/050 - 2023 - HiDAnet - RGB-D SOD.md
+literature/entries/051 - 2016 - FuseNet - Segmentasi RGB-D.md
+literature/entries/052 - 2018 - RedNet - Segmentasi RGB-D.md
+literature/entries/053 - 2017 - RDFNet - Segmentasi RGB-D.md
+literature/entries/054 - 2019 - ACNet - Segmentasi RGB-D.md
+literature/entries/055 - 2020 - SA-Gate - Segmentasi RGB-D.md
+literature/entries/056 - 2021 - ESANet - Segmentasi RGB-D.md
+literature/entries/057 - 2021 - ShapeConv - Segmentasi RGB-D.md
+literature/entries/058 - 2023 - CMX - Segmentasi RGB-D.md
+literature/entries/060 - 2022 - Multimodal Token Fusion - Segmentasi RGB-D.md
+literature/entries/061 - 2024 - DFormer - Segmentasi RGB-D.md
+literature/entries/062 - 2014 - Depth dari Citra Tunggal (Eigen dkk.) - Estimasi Kedalaman.md
+literature/entries/063 - 2017 - Monodepth (Left-Right Consistency) - Estimasi Kedalaman.md
+literature/entries/064 - 2019 - Monodepth2 - Estimasi Kedalaman.md
+literature/entries/065 - 2019 - BTS (Local Planar Guidance) - Estimasi Kedalaman.md
+literature/entries/066 - 2021 - AdaBins - Estimasi Kedalaman.md
+literature/entries/067 - 2021 - DPT (Dense Prediction Transformer) - Estimasi Kedalaman.md
+literature/entries/068 - 2022 - MiDaS (Robust Monocular Depth) - Estimasi Kedalaman.md
+literature/entries/069 - 2020 - PackNet - Estimasi Kedalaman.md
+literature/entries/070 - 2021 - MonoIndoor - Estimasi Kedalaman.md
+literature/entries/071 - 2024 - Depth Anything - Estimasi Kedalaman.md
+literature/entries/072 - 2021 - Review Depth Monokular (Ming dkk.) - Estimasi Kedalaman.md
+literature/entries/073 - 2018 - PoseCNN - Pose 6D.md
+literature/entries/074 - 2019 - DenseFusion - Pose 6D.md
+literature/entries/075 - 2020 - PVN3D - Pose 6D.md
+literature/entries/076 - 2021 - FFB6D - Pose 6D.md
+literature/entries/077 - 2020 - G2L-Net - Pose 6D.md
+literature/entries/078 - 2024 - FoundationPose - Pose 6D.md
+literature/entries/079 - 2021 - Review Pose 6D & Deteksi 3D (Hoque dkk.) - Pose 6D.md
+literature/entries/080 - 2015 - Deep Learning Robotic Grasps (Lenz dkk.) - Grasp Robotik.md
+literature/entries/081 - 2018 - GG-CNN - Grasp Robotik.md
+literature/entries/082 - 2020 - GR-ConvNet - Grasp Robotik.md
+literature/entries/083 - 2022 - GR-ConvNet v2 - Grasp Robotik.md
+literature/entries/084 - 2020 - GraspNet-1Billion - Grasp Robotik.md
+literature/entries/085 - 2023 - BCMFNet (Bilateral Cross-Modal Fusion) - Grasp Robotik.md
+literature/entries/086 - 2018 - Jacquard Dataset - Grasp Robotik.md
+literature/entries/087 - 2018 - VoxelNet - Deteksi 3D.md
+literature/entries/088 - 2019 - PointPillars - Deteksi 3D.md
+literature/entries/089 - 2019 - PointRCNN - Deteksi 3D.md
+literature/entries/090 - 2018 - Frustum PointNets - Deteksi 3D.md
+literature/entries/091 - 2017 - MV3D - Deteksi 3D.md
+literature/entries/092 - 2018 - AVOD - Deteksi 3D.md
+literature/entries/093 - 2020 - PointPainting - Deteksi 3D.md
+literature/entries/094 - 2020 - 3D-CVF - Deteksi 3D.md
+literature/entries/095 - 2019 - Pseudo-LiDAR - Deteksi 3D.md
+literature/entries/096 - 2020 - Pseudo-LiDAR++ - Deteksi 3D.md
+literature/entries/097 - 2022 - TransFusion - Deteksi 3D.md
+literature/entries/098 - 2023 - BEVFusion - Deteksi 3D.md
+literature/entries/099 - 2019 - Survei Deteksi 3D (Arnold dkk.) - Deteksi 3D.md
+literature/entries/100 - 2015 - KAIST Multispectral Pedestrian - Pedestrian RGB-T.md
+literature/entries/101 - 2019 - IAF R-CNN (Illumination-Aware) - Pedestrian RGB-T.md
+literature/entries/102 - 2020 - MBNet - Pedestrian RGB-T.md
+literature/entries/103 - 2021 - GAFF - Pedestrian RGB-T.md
+literature/entries/104 - 2020 - Cyclic Fuse-and-Refine (CFR) - Pedestrian RGB-T.md
+literature/entries/107 - 2017 - ORB-SLAM2 - RGB-D SLAM.md
+literature/entries/108 - 2018 - DynaSLAM - RGB-D SLAM.md
+literature/entries/109 - 2018 - DS-SLAM - RGB-D SLAM.md
+literature/entries/110 - 2022 - CFP-SLAM - RGB-D SLAM.md
+literature/entries/111 - 2019 - Visual SLAM YOLO vs Mask R-CNN (Soares dkk.) - RGB-D SLAM.md
+literature/entries/112 - 2020 - Expandable YOLO - YOLO plus RGB-D.md
+literature/entries/113 - 2024 - FusionVision - YOLO plus RGB-D.md
+literature/entries/115 - 2025 - YOLOv8-URE 2D+Point Cloud Grasping - YOLO plus RGB-D.md
+literature/entries/117 - 2024 - Onboard Dynamic-Object Detection (Xu dkk.) - YOLO plus RGB-D.md
+literature/entries/118 - 2019 - Exploring RGB+Depth Fusion (Ophoff dkk.) - YOLO plus RGB-D.md
+literature/entries/124 - 2020 - Fruit Detection & 3D Location (Gene-Mola dkk.) - Pertanian.md
+literature/entries/125 - 2020 - Iceberg Lettuce Harvesting Robot - Pertanian.md
+literature/entries/126 - 2019 - Automated Fruit Harvesting Robot (Onishi dkk.) - Pertanian.md
+literature/entries/127 - 2020 - Fruit Detection & 3D Visualisation (Kang & Chen) - Pertanian.md
+literature/entries/128 - 2024 - Systematic Review YOLO Medis (Qureshi dkk.) - Medis.md
+literature/entries/129 - 2021 - COVID-19 CAD dari X-Ray (Al-Antari dkk.) - Medis.md
+literature/entries/130 - 2021 - Breast Lesion Detection (YOLO Fusion) - Medis.md
+literature/entries/133 - 2023 - EFC-YOLO (Steel Strip Defects) - Industri.md
+literature/entries/134 - 2024 - PCB-YOLO (PCB Defects) - Industri.md
+literature/entries/136 - 2021 - Safety Helmet Detection (Improved YOLOv5) - Industri.md
+literature/entries/137 - 2021 - TPH-YOLOv5 (Drone Detection) - Remote Sensing.md
+literature/entries/139 - 2023 - UAV-YOLOv8 (Small Object) - Remote Sensing.md
+literature/entries/140 - 2018 - YOLT (Satellite Imagery) - Remote Sensing.md
+literature/entries/141 - 2012 - NYU Depth v2 - Dataset.md
+literature/entries/142 - 2015 - SUN RGB-D - Dataset.md
+literature/entries/143 - 2017 - ScanNet - Dataset.md
+literature/entries/144 - 2012 - KITTI - Dataset.md
+literature/entries/145 - 2020 - nuScenes - Dataset.md
+literature/entries/146 - 2014 - Microsoft COCO - Dataset.md
+literature/entries/147 - 2016 - ResNet - Fusi Multimodal.md
+literature/entries/148 - 2017 - PointNet - Fusi Multimodal.md
+literature/entries/149 - 2018 - CBAM - Fusi Multimodal.md
+literature/entries/150 - 2021 - Survei Deteksi & Segmentasi Multimodal (Feng dkk.) - Fusi Multimodal.md
+literature/entries/151 - 2023 - Object Detection in 20 Years (Zou dkk.) - Fusi Multimodal.md
+literature/entries/153 - 2021 - Survei RGB-D SOD (Zhou dkk.) - Fusi Multimodal.md
+literature/entries/154 - 2022 - Survei Dataset RGB-D (Lopes dkk.) - Fusi Multimodal.md
+literature/entries/155 - 2024 - RT-DETR - Fondasi RGB.md
+literature/entries/156 - 2024 - YOLO-World - Fondasi RGB.md
+literature/entries/157 - 2023 - Gold-YOLO - Fondasi RGB.md
+literature/entries/158 - 2023 - DINO detector - Fondasi RGB.md
+literature/entries/159 - 2022 - DN-DETR - Fondasi RGB.md
+literature/entries/160 - 2021 - Conditional DETR - Fondasi RGB.md
+literature/entries/161 - 2021 - Sparse R-CNN - Fondasi RGB.md
+literature/entries/162 - 2022 - ConvNeXt - Fondasi RGB.md
+literature/entries/163 - 2022 - Swin Transformer V2 - Fondasi RGB.md
+literature/entries/164 - 2021 - Pyramid Vision Transformer - Fondasi RGB.md
+literature/entries/165 - 2023 - Co-DETR - Fondasi RGB.md
+literature/entries/166 - 2020 - CoNet - RGB-D SOD.md
+literature/entries/167 - 2021 - DCF - RGB-D SOD.md
+literature/entries/168 - 2021 - SPNet - RGB-D SOD.md
+literature/entries/169 - 2023 - CAVER - RGB-D SOD.md
+literature/entries/170 - 2022 - MobileSal - RGB-D SOD.md
+literature/entries/171 - 2021 - SegFormer - Segmentasi RGB-D.md
+literature/entries/172 - 2022 - EMSANet - Segmentasi RGB-D.md
+literature/entries/173 - 2024 - GeminiFusion - Segmentasi RGB-D.md
+literature/entries/174 - 2022 - Omnivore - Segmentasi RGB-D.md
+literature/entries/175 - 2024 - Depth Anything V2 - Estimasi Kedalaman.md
+literature/entries/176 - 2023 - ZoeDepth - Estimasi Kedalaman.md
+literature/entries/177 - 2023 - Metric3D - Estimasi Kedalaman.md
+literature/entries/178 - 2024 - Marigold - Estimasi Kedalaman.md
+literature/entries/179 - 2022 - NeWCRFs - Estimasi Kedalaman.md
+literature/entries/180 - 2021 - GDR-Net - Pose 6D.md
+literature/entries/181 - 2022 - ZebraPose - Pose 6D.md
+literature/entries/182 - 2022 - OnePose - Pose 6D.md
+literature/entries/183 - 2021 - Contact-GraspNet - Grasp Robotik.md
+literature/entries/184 - 2020 - VGN - Grasp Robotik.md
+literature/entries/185 - 2021 - CenterPoint - Deteksi 3D.md
+literature/entries/186 - 2020 - PV-RCNN - Deteksi 3D.md
+literature/entries/187 - 2022 - BEVFormer - Deteksi 3D.md
+literature/entries/188 - 2022 - DETR3D - Deteksi 3D.md
+literature/entries/189 - 2022 - CFT multispectral - Pedestrian RGB-T.md
+literature/entries/190 - 2021 - ORB-SLAM3 - RGB-D SLAM.md
+literature/entries/191 - 2021 - DROID-SLAM - RGB-D SLAM.md
+literature/entries/192 - 2025 - YOLO26 Detektor Real-Time End-to-End - Fondasi RGB.md
+literature/entries/193 - 2025 - RF-DETR NAS untuk Detektor Transformer Real-Time - Fondasi RGB.md
+literature/entries/194 - 2026 - Le-DETR Encoder Efisien untuk DETR Real-Time - Fondasi RGB.md
+literature/entries/195 - 2026 - RiO-DETR Deteksi Objek Berorientasi Real-Time - Remote Sensing.md
+literature/entries/196 - 2025 - GL-DMNet Dual Mutual Learning RGB-D SOD - RGB-D SOD.md
+literature/entries/197 - 2025 - DiffPixelFormer Segmentasi Scene RGB-D Indoor - Segmentasi RGB-D.md
+literature/entries/198 - 2025 - Depth Anything 3 Geometri dari Sembarang Pandangan - Estimasi Kedalaman.md
+literature/entries/199 - 2025 - Survei Estimasi Kedalaman Metrik Monokular - Estimasi Kedalaman.md
+literature/entries/200 - 2026 - AsyncMDE Kedalaman Monokular Real-Time Memori Spasial - Estimasi Kedalaman.md
+literature/entries/201 - 2026 - UniDAC Kedalaman Metrik Universal untuk Sembarang Kamera - Estimasi Kedalaman.md
+literature/entries/202 - 2026 - Focusable Monocular Depth Estimation - Estimasi Kedalaman.md
+literature/entries/INDEX-TAHUN.md
+literature/entries/INDEX.md
+literature/extracted/001-redmon2016yolo.md
+literature/extracted/002-redmon2017yolo9000.md
+literature/extracted/003-redmon2018yolov3.md
+literature/extracted/004-bochkovskiy2020yolov4.md
+literature/extracted/005-ge2021yolox.md
+literature/extracted/006-li2022yolov6.md
+literature/extracted/007-wang2023yolov7.md
+literature/extracted/008-wang2024yolov9.md
+literature/extracted/009-wang2024yolov10.md
+literature/extracted/010-khanam2024yolov11.md
+literature/extracted/011-long2020ppyolo.md
+literature/extracted/012-girshick2014rcnn.md
+literature/extracted/013-girshick2015fastrcnn.md
+literature/extracted/014-ren2017fasterrcnn.md
+literature/extracted/015-liu2016ssd.md
+literature/extracted/016-lin2017focal.md
+literature/extracted/017-he2017maskrcnn.md
+literature/extracted/018-lin2017fpn.md
+literature/extracted/019-tian2019fcos.md
+literature/extracted/020-zhou2019objects.md
+literature/extracted/021-tan2020efficientdet.md
+literature/extracted/022-carion2020detr.md
+literature/extracted/023-zhu2021deformabledetr.md
+literature/extracted/024-dosovitskiy2021vit.md
+literature/extracted/025-liu2021swin.md
+literature/extracted/026-terven2023yolo.md
+literature/extracted/027-hussain2023yolo.md
+literature/extracted/028-jiang2022yoloreview.md
+literature/extracted/029-sapkota2024yoloagri.md
+literature/extracted/030-sapkota2025yologenesis.md
+literature/extracted/031-vijayakumar2024yolo.md
+literature/extracted/032-alif2024yoloevolution.md
+literature/extracted/035-piao2019dmra.md
+literature/extracted/036-fan2020bbsnet.md
+literature/extracted/037-fan2020d3net.md
+literature/extracted/038-fu2020jldcf.md
+literature/extracted/039-liu2020s2ma.md
+literature/extracted/040-pang2020hdfnet.md
+literature/extracted/041-zhang2020ucnet.md
+literature/extracted/042-liu2021vst.md
+literature/extracted/043-liu2021swinnet.md
+literature/extracted/044-liu2021tritransnet.md
+literature/extracted/045-sun2021dsa2f.md
+literature/extracted/046-cong2022cirnet.md
+literature/extracted/050-wu2023hidanet.md
+literature/extracted/051-hazirbas2016fusenet.md
+literature/extracted/052-jiang2018rednet.md
+literature/extracted/053-park2017rdfnet.md
+literature/extracted/054-hu2019acnet.md
+literature/extracted/055-chen2020sagate.md
+literature/extracted/056-seichter2021esanet.md
+literature/extracted/057-cao2021shapeconv.md
+literature/extracted/058-zhang2023cmx.md
+literature/extracted/060-wang2022tokenfusion.md
+literature/extracted/061-yin2024dformer.md
+literature/extracted/062-eigen2014depth.md
+literature/extracted/063-godard2017monodepth.md
+literature/extracted/064-godard2019monodepth2.md
+literature/extracted/065-lee2019bts.md
+literature/extracted/066-bhat2021adabins.md
+literature/extracted/067-ranftl2021dpt.md
+literature/extracted/068-ranftl2022midas.md
+literature/extracted/069-guizilini2020packnet.md
+literature/extracted/070-ji2021monoindoor.md
+literature/extracted/071-yang2024depthanything.md
+literature/extracted/072-ming2021depthsurvey.md
+literature/extracted/073-xiang2018posecnn.md
+literature/extracted/074-wang2019densefusion.md
+literature/extracted/075-he2020pvn3d.md
+literature/extracted/076-he2021ffb6d.md
+literature/extracted/077-chen2020g2lnet.md
+literature/extracted/078-wen2024foundationpose.md
+literature/extracted/079-hoque2021posesurvey.md
+literature/extracted/080-lenz2015grasp.md
+literature/extracted/081-morrison2018ggcnn.md
+literature/extracted/082-kumra2020grconvnet.md
+literature/extracted/083-kumra2022grconvnetv2.md
+literature/extracted/084-fang2020graspnet.md
+literature/extracted/085-zhang2023bcmfnet.md
+literature/extracted/086-depierre2018jacquard.md
+literature/extracted/087-zhou2018voxelnet.md
+literature/extracted/088-lang2019pointpillars.md
+literature/extracted/089-shi2019pointrcnn.md
+literature/extracted/090-qi2018frustum.md
+literature/extracted/091-chen2017mv3d.md
+literature/extracted/092-ku2018avod.md
+literature/extracted/093-vora2020pointpainting.md
+literature/extracted/094-yoo20203dcvf.md
+literature/extracted/095-wang2019pseudolidar.md
+literature/extracted/096-you2020pseudolidarpp.md
+literature/extracted/097-bai2022transfusion.md
+literature/extracted/098-liu2023bevfusion.md
+literature/extracted/099-arnold2019survey3d.md
+literature/extracted/100-hwang2015kaist.md
+literature/extracted/101-li2019illumination.md
+literature/extracted/102-zhou2020mbnet.md
+literature/extracted/103-zhang2021gaff.md
+literature/extracted/104-zhang2020cfr.md
+literature/extracted/107-murartal2017orbslam2.md
+literature/extracted/108-bescos2018dynaslam.md
+literature/extracted/109-yu2018dsslam.md
+literature/extracted/110-hu2022cfpslam.md
+literature/extracted/111-soares2019visualslam.md
+literature/extracted/112-takahashi2020expandableyolo.md
+literature/extracted/113-elamraoui2024fusionvision.md
+literature/extracted/115-yang2025yolov8ure.md
+literature/extracted/117-xu2024onboard.md
+literature/extracted/118-ophoff2019multimodal.md
+literature/extracted/124-genemola2020fruit3d.md
+literature/extracted/125-birrell2020lettuce.md
+literature/extracted/126-onishi2019harvest.md
+literature/extracted/127-kang2020strawberry.md
+literature/extracted/128-qureshi2024medyolo.md
+literature/extracted/129-alantari2020covid.md
+literature/extracted/130-baccouche2021breast.md
+literature/extracted/133-yang2023efcyolo.md
+literature/extracted/134-tang2024pcbyolo.md
+literature/extracted/136-zhou2021helmet.md
+literature/extracted/137-zhu2021tphyolov5.md
+literature/extracted/139-wang2023uavyolo.md
+literature/extracted/140-vanetten2018yolt.md
+literature/extracted/141-silberman2012nyu.md
+literature/extracted/142-song2015sunrgbd.md
+literature/extracted/143-dai2017scannet.md
+literature/extracted/144-geiger2012kitti.md
+literature/extracted/145-caesar2020nuscenes.md
+literature/extracted/146-lin2014coco.md
+literature/extracted/147-he2016resnet.md
+literature/extracted/148-qi2017pointnet.md
+literature/extracted/149-woo2018cbam.md
+literature/extracted/150-feng2021multimodalsurvey.md
+literature/extracted/151-zou2023objectdetectionsurvey.md
+literature/extracted/153-zhou2021rgbdsurvey.md
+literature/extracted/154-lopes2022rgbddatasets.md
+literature/extracted/155-zhao2024rtdetr.md
+literature/extracted/156-cheng2024yoloworld.md
+literature/extracted/157-wang2023goldyolo.md
+literature/extracted/158-zhang2023dino.md
+literature/extracted/159-li2022dndetr.md
+literature/extracted/160-meng2021conditionaldetr.md
+literature/extracted/161-sun2021sparsercnn.md
+literature/extracted/162-liu2022convnext.md
+literature/extracted/163-liu2022swinv2.md
+literature/extracted/164-wang2021pvt.md
+literature/extracted/165-zong2023codetr.md
+literature/extracted/166-ji2020conet.md
+literature/extracted/167-ji2021dcf.md
+literature/extracted/168-zhou2021spnet.md
+literature/extracted/169-pang2023caver.md
+literature/extracted/170-wu2022mobilesal.md
+literature/extracted/171-xie2021segformer.md
+literature/extracted/172-seichter2022emsanet.md
+literature/extracted/173-jia2024geminifusion.md
+literature/extracted/174-girdhar2022omnivore.md
+literature/extracted/175-yang2024depthanythingv2.md
+literature/extracted/176-bhat2023zoedepth.md
+literature/extracted/177-yin2023metric3d.md
+literature/extracted/178-ke2024marigold.md
+literature/extracted/179-yuan2022newcrfs.md
+literature/extracted/180-wang2021gdrnet.md
+literature/extracted/181-su2022zebrapose.md
+literature/extracted/182-sun2022onepose.md
+literature/extracted/183-sundermeyer2021contactgraspnet.md
+literature/extracted/184-breyer2021vgn.md
+literature/extracted/185-yin2021centerpoint.md
+literature/extracted/186-shi2020pvrcnn.md
+literature/extracted/187-li2022bevformer.md
+literature/extracted/188-wang2022detr3d.md
+literature/extracted/189-fang2022cft.md
+literature/extracted/190-campos2021orbslam3.md
+literature/extracted/191-teed2021droidslam.md
+literature/extracted/192-sapkota2025yolo26.md
+literature/extracted/193-robinson2025rfdetr.md
+literature/extracted/194-huang2026ledetr.md
+literature/extracted/195-hu2026riodetr.md
+literature/extracted/196-yi2025gldmnet.md
+literature/extracted/197-gong2025diffpixelformer.md
+literature/extracted/198-lin2025depthanything3.md
+literature/extracted/199-zhang2025metricdepthsurvey.md
+literature/extracted/200-ma2026asyncmde.md
+literature/extracted/201-ganesan2026unidac.md
+literature/extracted/202-du2026focusabledepth.md
+literature/extracted/INDEX.md
+literature/references/deep-research-report.md
+literature/references/revisi-dosen-2026-07-23/CEA_review_conventions_report.md
+literature/references/revisi-dosen-2026-07-23/Chat.txt
+literature/search/CEK-SAYA.md
+literature/search/PROTOCOL.md
+literature/search/derived/dedup-resolution-review-2026-08-09.md
+literature/search/derived/priority-selection-method-2026-08-10.md
+literature/search/scopus-queries.md
+literature/synthesis.md
+literature/withheld/033 - 2024 - Review YOLOv8 (Sohan dkk.) - Survei YOLO.md
+literature/withheld/034 - 2023 - Object Detection using YOLO (Diwan dkk.) - Survei YOLO.md
+literature/withheld/047 - 2023 - C2DFNet - RGB-D SOD.md
+literature/withheld/048 - 2022 - CCAFNet - RGB-D SOD.md
+literature/withheld/049 - 2023 - Cross-Modal Hierarchical Interaction Network - RGB-D SOD.md
+literature/withheld/059 - 2023 - PGDENet - Segmentasi RGB-D.md
+literature/withheld/105 - 2022 - CMPD (Uncertainty-Guided Cross-Modal) - Pedestrian RGB-T.md
+literature/withheld/106 - 2021 - RGB-D Fusion for Detection (Farahnakian & Heikkonen) - Pedestrian RGB-T.md
+literature/withheld/114 - 2024 - Pumpkin Pick-and-Place Robot (Ito dkk.) - YOLO plus RGB-D.md
+literature/withheld/116 - 2023 - Grasp via YOLO + RGB-D Fusion (Tian dkk.) - YOLO plus RGB-D.md
+literature/withheld/119 - 2023 - Distance Measurement via YOLO + Depth (Chen dkk.) - YOLO plus RGB-D.md
+literature/withheld/120 - 2019 - MangoYOLO - Pertanian.md
+literature/withheld/121 - 2019 - Apple Detection (Improved YOLOv3) - Pertanian.md
+literature/withheld/122 - 2020 - Apple Flower Detection (Pruned YOLOv4) - Pertanian.md
+literature/withheld/123 - 2020 - Apple Detection RGB+Depth (Faster R-CNN) - Pertanian.md
+literature/withheld/131 - 2022 - Breast Tumor Detection (Modified YOLOv5) - Medis.md
+literature/withheld/132 - 2023 - YOLO untuk Deteksi Polip (Wan dkk.) - Medis.md
+literature/withheld/135 - 2021 - Review Defect Detection (Bhatt dkk.) - Industri.md
+literature/withheld/138 - 2019 - Robust CNN High-Res Remote Sensing (Zhang dkk.) - Remote Sensing.md
+literature/withheld/152 - 2017 - Deep Multimodal Learning A Survey (Ramachandram & Taylor) - Fusi Multimodal.md
+manuscript/README.md
+manuscript/figures/C01-distribusi-tahun.md
+manuscript/figures/C02-distribusi-tema.md
+manuscript/figures/F01-taksonomi.md
+manuscript/figures/F02-timeline-yolo.md
+manuscript/figures/F03-silsilah-rgb.md
+manuscript/figures/F04-strategi-fusi.md
+manuscript/figures/F05-pola-yolorgbd.md
+manuscript/figures/F06-atensi-lintasmodal.md
+manuscript/figures/F07-funnel-sawit.md
+manuscript/figures/F08-pipeline-sawit.md
+manuscript/figures/THEME.md
+manuscript/figures/panduan-generate-gambar.md
+manuscript/guides/PANDUAN-PENULISAN.md
+manuscript/guides/PLAN-SITUS.md
+manuscript/guides/PLAN-TINJAUAN-PUSTAKA.md
+manuscript/guides/REFRAME-DECISIONS.md
+manuscript/guides/figure-english-labels.md
+manuscript/output/papers/revision-main/CEA_review_conventions_report.md
+manuscript/output/papers/revision-main/Chat.txt
+manuscript/source/RINGKASAN-MAIN5V2.md
+pipeline/README.md
+site/README.md
+tools/README.md
+tools/presentation/README.md

@@ -1,0 +1,1367 @@
+# Research-Pipeline @ 4aa9ad6
+
+## HEAD
+4aa9ad6778b1d154a301f70a797253adea9c1102
+
+## Recent history
+4aa9ad6 | 2026-08-10 | docs(review): streamline main5v2 submission package
+2b87a1d | 2026-08-10 | feat(review): add reproducible screening and revised manuscript
+f00528f | 2026-08-07 | Tambahkan README navigasi di 7 direktori utama
+8336689 | 2026-08-07 | Bangun ulang index.html setelah restrukturisasi
+ae0bd21 | 2026-08-07 | Perbarui seluruh referensi jalur setelah restrukturisasi
+eed9358 | 2026-08-07 | Restrukturisasi monorepo: dari kategori-berkas ke topik-riset
+fe85dc5 | 2026-08-06 | F-007 dihentikan: gate init-nol tidak pernah terbuka (gamma ~ 0) — seri F ditutup
+935b407 | 2026-08-06 | F-007: perbaiki cacat pratlatih — turunkan Backbone, jangan bungkus
+94e79d1 | 2026-08-06 | Seri F (Formulasi) dibuka: gerbang F-002 lolos, F-003 gugur, baseline F-004 3 seed
+9e2fa3c | 2026-08-04 | Laporan ringkas EN/ID + dek presentasi 16 slide
+78352a2 | 2026-08-03 | Update research flow figure and caption to English
+40e8882 | 2026-08-03 | Clarify evidence corpus scope and experimental claims
+6a1ebfb | 2026-08-03 | Clarify experiment audit status and evidence limits
+5b63297 | 2026-08-01 | Laporan lengkap E-001..E-032 + register gerbang; G7b ditandai TERBUKA
+2794338 | 2026-08-01 | STATUS: koreksi ukuran state di luar git ke hasil du sebenarnya (8,8 -> 12,1 GB)
+6ed16e1 | 2026-08-01 | jadwal.sh: kunci flock + bunuh grup proses + ambang VRAM puncak; pilah backlog Blok 3 ke handoff
+bde70c3 | 2026-08-01 | STATUS: serah-terima sesi berikutnya — bug penjadwalan terverifikasi, arah yang terbuka
+8e18174 | 2026-08-01 | SR-015 §7b + STATUS: serap hasil E-032, titik fusi dicoret dari kandidat penyebab
+f0341cd | 2026-08-01 | E-032: titik fusi awal/menengah/akhir — 12 kontras, tidak ada yang lolos ambang berbeda
+0250d4b | 2026-08-01 | E-023: skrip ringkasan 12 kontras + kriteria eksplisit temuan vs indikasi
+e35fd99 | 2026-08-01 | E-023: 15/15 run lengkap + arsip; shim modul fusi di evaluator; driver 12 kontras
+bc9633c | 2026-08-01 | E-023: arsipkan late_seed42 (12 dari 15 lengkap)
+218066e | 2026-08-01 | E-023: arsipkan rgb/awal seed2024 (11 dari 15 lengkap)
+c65e1af | 2026-08-01 | E-022: arsipkan kurva latihan + args + hash bobot 39 run (runs/ diabaikan git)
+b78c563 | 2026-08-01 | E-023: arsipkan results.csv/args.yaml/hash bobot 9 run yang sudah lengkap
+c3f3e1c | 2026-08-01 | E-023: penjadwal seed2024 berbasis anggaran VRAM, ganti barrier per-seed
+7d7e877 | 2026-08-01 | abaikan penanda .e023-tanda seperti .g2-tanda
+eb3d02d | 2026-08-01 | E-023: perluas fusi dua cabang ke RT-DETR; RF-DETR fusi akhir + rancangan fusi menengah
+5197deb | 2026-08-01 | CLAUDE.md: perjelas arti "jangan biarkan GPU nganggur"
+ff58a9e | 2026-08-01 | Handoff: prosedur mulai-dari-nol setelah jeda
+9c5d9dd | 2026-08-01 | G3: tandai restrukturisasi E-022 selesai — peta ke entri penggantinya
+8d38838 | 2026-08-01 | Handoff: rancangan lengkap E-023 opsi 2 (belum dijalankan)
+637b208 | 2026-08-01 | E-031: varians split terukur — menutup keterbatasan terakhir SR-015 §7
+7afd274 | 2026-08-01 | G7b: sapuan kapasitas diperluas ke seed 1337 & 2024
+ae1b1df | 2026-08-01 | G5: dua split baru untuk mengukur varians split (SR-015 §7)
+ff747b4 | 2026-08-01 | E-030: sapuan kapasitas n->m->l — klaim "kapasitas" SR-015 dipersempit
+86f8e65 | 2026-08-01 | G3: putusan SR-015 diselaraskan ke E-029 — klausa kapasitas dicabut penuh
+73b9d61 | 2026-08-01 | Metrik lengkap 25 run + tabel rujukan; perbaiki dua bug perhitungan
+35b2da5 | 2026-08-01 | E-029: matriks RT-DETR-L lengkap — klausa SR-015 "kapasitas tinggi" DICABUT
+b02ccd6 | 2026-08-01 | Metrik lengkap + provenans: mAP50, mAP50-95, per kelas, P/R/F1
+e7ac6b0 | 2026-08-01 | E-028: inkonsistensi lintas-sisi di SawitMVC — B2 kelas paling ambigu, bukan B4
+4ebcdae | 2026-08-01 | Hapus watcher.sh — mengamati tanpa bertindak
+91ac2d2 | 2026-08-01 | G8: driver SawitMVC + --split-root pada trainer (imgsz 640)
+d16b3d6 | 2026-08-01 | Analisis: SR-016 baru, koreksi SR-015, dan register diselaraskan ke E-027
+d9d17f4 | 2026-08-01 | E-027: matriks multi-seed YOLO26n selesai — depth MERUGIKAN, bukan netral
+9aff546 | 2026-08-01 | G8: parameterkan akar dataset pada ukuran inkonsistensi lintas-sisi
+d4e9ac5 | 2026-08-01 | G7: sapuan kapasitas YOLO26 n -> m -> l (permintaan pengguna, mengisolasi klaim SR-015)
+54b14cc | 2026-08-01 | G4/G6: perbaiki bug senyap pemilihan skala model
+0bd5530 | 2026-08-01 | G4/G6: arsitektur fusi menengah & akhir dua cabang — dibangun dan diverifikasi
+ea9ac1f | 2026-07-31 | G2: driver evaluasi multi-seed terikat protokol tunggal pycocotools
+6a6df54 | 2026-07-31 | E-026: depth TIDAK menstabilkan identitas lintas-sisi (dipalsukan)
+1d321d9 | 2026-07-31 | E-025: selisih evaluator terlacak — celah menskala dengan jumlah deteksi (G1 dibuka)
+baa3185 | 2026-07-31 | E-024: inkonsistensi prediksi lintas-sisi — pengganti class_mismatch, 19,5%
+3192444 | 2026-07-31 | G1 prep: perbaiki path yaml split yang tak bisa dipakai di mesin mana pun
+d58eae9 | 2026-07-31 | G0+G1: penjaga kelengkapan run, tautan mati, dan diagnostik selisih evaluator
+16aaa87 | 2026-07-31 | docs: jelaskan dua jalur depth sebagai keputusan, bukan peringatan terbuka
+3f3160e | 2026-07-30 | fix: publish manuscript PDFs in reading room
+ed5836b | 2026-07-30 | refactor: reorganize repository for human navigation and reproducibility
+f0901de | 2026-07-30 | E-022: cabut kesimpulan seed-tunggal + audit trainer/evaluator
+e8a0866 | 2026-07-30 | E-022: lengkapi tabel METRICS — semua run, mAP50-95, per-kelas 3 arsitektur
+28c00c3 | 2026-07-30 | Merge origin/main: selaraskan E-022 ke struktur repo baru
+46c7f06 | 2026-07-30 | E-022: lengkapi kontrol derau RF-DETR Nano — pola depth-vs-derau konsisten
+4e52ac8 | 2026-07-30 | E-022/SR-014: depth SENSOR Orbbec 4-kanal simultan — fusi awal dipalsukan
+1f44acc | 2026-07-25 | Merge reframe-design-space: protokol pencarian sistematis + lengan OpenAlex
+ac87684 | 2026-07-25 | T6: tutup sisa tautan mati antar-entri (bug lama sejak 20 entri ditahan)
+d59b178 | 2026-07-25 | T5: build ulang index.html + selaraskan CLAUDE.md ke struktur baru
+20190d6 | 2026-07-25 | T4: perbarui isi yang basi ke E-021
+eb8fdad | 2026-07-25 | T3: dokumen navigasi baru + README akar dirampingkan
+b3116c5 | 2026-07-25 | T2: perbaiki seluruh referensi jalur setelah pemindahan
+4c10117 | 2026-07-25 | T1: pindahkan berkas ke struktur baru (git mv, isi belum disunting)
+e26a7d0 | 2026-07-25 | E-021: tutup celah reproduksi — pin rfdetr==1.8.3 + dokumentasi REPRODUCE
+026f55f | 2026-07-25 | E-021: analisis tambahan #1-#4 (confusion, bootstrap CI, efisiensi, kurva PR/F1)
+eb36c8e | 2026-07-25 | E-021: dump metrik LENGKAP 4 model 1-protokol (COCO 12-stat + per-kelas AR + P/R/F1 macro/micro)
+156a7be | 2026-07-25 | E-021: arsipkan semua log jejak + catatan teknis (biar tak perlu run ulang)
+ecf26a1 | 2026-07-25 | E-021 lanjutan: YOLO26l @1280 baseline param-adil + tabel 1-protokol pycocotools
+3988b37 | 2026-07-24 | E-021: RF-DETR-L NMS-free = detektor 4-kelas terbaik baru (test mAP50 0,6038, lewat sasaran 0,60)
+2f4d5d5 | 2026-07-23 | Query Scopus final: batasi SUBJAREA (D-7), MULT wajib demi SawitMVC
+dd6ec05 | 2026-07-23 | Query Scopus siap tempel; sinkronkan Q6 (D-5) + angkat Q7 jadi set resmi
+f6d10cb | 2026-07-23 | Perbaiki aritmetika total n_raw: 16.656 unik (16.661 baris terunduh)
+2c947bd | 2026-07-23 | Q3 tuntas (6.422 unik); dedup duplikat paginasi OpenAlex (D-6)
+a7f58e1 | 2026-07-23 | CEK-SAYA: segarkan status Q7 dan daftar 'tidak dikerjakan'
+71f3168 | 2026-07-23 | Q6 dipersempit 15.609 -> 1.177; butir 7 tervalidasi, dua temuan besar
+24594d5 | 2026-07-23 | Q7 dijalankan (celah D-2 tertutup) + normalisasi label Tema di 6 entri
+a7e532b | 2026-07-23 | Hasil lengan OpenAlex Q1-Q6 + tiga deviasi yang tercatat
+b6aabf9 | 2026-07-23 | Lengan OpenAlex protokol pencarian + daftar periksa sesi otonom
+5dd4da8 | 2026-07-23 | Draf protokol pencarian: 6 set query, IC/EC, dua register asal-usul
+ea6819b | 2026-07-23 | Catat keputusan reframe K1-K4 + garis integritas + 5 konfirmasi ke dosen
+ec53974 | 2026-07-23 | Masukan revisi dosen 23 Juli 2026 + bedah konvensi CEA
+6332dc1 | 2026-07-23 | Tutup kerangka lama: section Pilot + sapuan em-dash
+ea1f277 | 2026-07-22 | Tutup celah reproduktibilitas: REPRODUCE.md + versi persis di requirements
+ee2ce89 | 2026-07-22 | Tangkap SEMUA metrik sebelum workspace mati: per-kelas lengkap + kurva + log
+aca7b3f | 2026-07-22 | Titik jeda: docs/STATUS.md + arsip skrip orkestrasi + tautan CLAUDE.md
+dc154f8 | 2026-07-22 | SR-013/E-020 final: RT-DETR-L NMS-free = detektor 4-kelas terbaik
+9fc4acb | 2026-07-21 | Selamatkan kode + hasil eksperimen ke experiments/ sebelum folder kerja dihapus
+71ef56f | 2026-07-21 | Rapikan repo: peta ide lengkap I-12..I-24, SR-013, status termutakhir
+bddd37b | 2026-07-21 | SR-011 ditarik: bukti plafon kematangan cacat
+76d9424 | 2026-07-21 | E-018: plafon lokalisasi — sasaran 0,60/0,30 ada di dalam batas anotasi
+15e5346 | 2026-07-21 | Koreksi arah kelas: B1 matang, B4 mentah
+ec246e6 | 2026-07-21 | SR-012: detektor dua tahap DIPALSUKAN
+1b08aed | 2026-07-21 | E-017: hasil tahap 1 dan tahap 2 detektor dua-tahap
+e6d7bd2 | 2026-07-21 | E-016: plafon kematangan + mAP tidak bisa mewakili toleransi ordinal
+3edd7d9 | 2026-07-21 | SR-011: plafon kematangan ~68% terukur tiga kali secara bebas
+b1784dd | 2026-07-21 | E-015: buka blokade SR-002 — pemetaan master mentah 3992/3992 lewat isi
+8cd32e2 | 2026-07-21 | Indeks SR: tambahkan SR-010
+1c17444 | 2026-07-21 | SR-010/E-014: hambatan mAP ada di klasifikasi kematangan, bukan deteksi
+fb1fb57 | 2026-07-21 | CLAUDE.md: arah baru sensor Gemini + aturan anti-teknik-siap-pakai
+b9dda17 | 2026-07-21 | Pipeline produksi YOLO 4-kanal (RGB+depth Gemini): latih, konversi depth, inferensi dua mode (E-013)
+9713014 | 2026-07-21 | Rangkum rantai temuan sembilan ide di indeks SR
+7613d34 | 2026-07-21 | SR-009: kematangan kontinu, melahirkan ide loss ordinal
+509892d | 2026-07-21 | E-012: kebingungan kematangan bersifat ordinal, bukan acak
+62d4adb | 2026-07-21 | SR-008: kanal tekstur sebagai modalitas keempat
+36c5a6e | 2026-07-21 | E-011: kanal tekstur memisahkan B4, penajam kontras tidak
+617a642 | 2026-07-21 | SR-007: diagnosis B4 -- tersamar, bukan bertumpuk
+d234d5a | 2026-07-21 | E-010: B4 tersamar, bukan bertumpuk -- tekstur jadi satu-satunya sinyal
+16c3dc4 | 2026-07-21 | E-009: ukuran kotak melemahkan dasar pemikiran tiling
+fdc4d46 | 2026-07-21 | E-007: penautan geometris DIPALSUKAN, arah dipersempit ke detektor
+4f2859d | 2026-07-21 | Tambahkan laporan deep research strategi menembus performance ceiling
+3b12cd5 | 2026-07-21 | Abaikan .ipynb_checkpoints/
+1cf9052 | 2026-07-21 | E-006 + struktur SR: sinyal depth tingkat tandan DIPALSUKAN
+e28475d | 2026-07-21 | E-005: DA3 memulihkan geometri 4 dan 8 sisi dengan benar
+
+## Files
+.gitignore
+CLAUDE.md
+README.md
+_config.yml
+audit/AUDIT-PRA-SUBMISI.md
+audit/README.md
+audit/claim-audit-182.md
+audit/core-claim-register.md
+audit/dosen-revision-status-2026-08-10.md
+audit/entri-accuracy-check.md
+audit/evidence-matrix-182.csv
+audit/evidence-matrix-182.md
+audit/evidence-matrix-v2.csv
+audit/evidence-matrix-v2.md
+datasets/README.md
+docs-readme-old.md
+experiments/AUDIT-E022.md
+experiments/BRIEF-DEEP-RESEARCH.md
+experiments/EKSPERIMEN.md
+experiments/LAPORAN-EKSPERIMEN.md
+experiments/METRICS.md
+experiments/METRIK-LENGKAP.md
+experiments/README.md
+experiments/REPORT_PLAN.md
+experiments/SERI-F.md
+experiments/SINTESIS-DEEP-RESEARCH.md
+experiments/SR/README.md
+experiments/SR/SR-001-ambiguitas-kematangan.md
+experiments/SR/SR-002-resolusi-master-mentah.md
+experiments/SR/SR-003-da3-video-orbit.md
+experiments/SR/SR-004-da3-empat-sisi.md
+experiments/SR/SR-005-sinyal-depth-tandan.md
+experiments/SR/SR-006-penautan-geometris.md
+experiments/SR/SR-007-diagnosis-b4.md
+experiments/SR/SR-008-kanal-tekstur.md
+experiments/SR/SR-009-ordinalitas-kelas.md
+experiments/SR/SR-010-hambatan-klasifikasi.md
+experiments/SR/SR-011-plafon-kematangan.md
+experiments/SR/SR-012-dua-tahap.md
+experiments/SR/SR-013-rtdetr-nms-free.md
+experiments/SR/SR-014-rfdetr-dinov2.md
+experiments/SR/SR-015-depth-sensor-4kanal.md
+experiments/SR/SR-016-konsistensi-lintas-sisi.md
+experiments/SR/SR-017-sintesis-deep-research.md
+experiments/STATUS.md
+experiments/archive/E022-seed42-awal.md
+experiments/code/CATATAN-TEKNIS-E021.md
+experiments/code/PETA-SKRIP.md
+experiments/code/README.md
+experiments/code/REPRODUCE.md
+experiments/code/analysis/box_size_analysis.py
+experiments/code/analysis/class_mismatch_stats.py
+experiments/code/analysis/class_separability.py
+experiments/code/analysis/contrast_boost_test.py
+experiments/code/analysis/conv8.py
+experiments/code/analysis/cross_side_consistency.py
+experiments/code/analysis/da3_sides_test.py
+experiments/code/analysis/da3_video_multi.py
+experiments/code/analysis/da3_video_test.py
+experiments/code/analysis/depth_bunch_signal.py
+experiments/code/analysis/diag_letterbox_pad.py
+experiments/code/analysis/freq_vs_pelepah.py
+experiments/code/analysis/geometric_linking.py
+experiments/code/analysis/head_vs_crop.py
+experiments/code/analysis/loc_ceiling.py
+experiments/code/analysis/massa_selisih_logit.py
+experiments/code/analysis/multiview_vote.py
+experiments/code/analysis/plafon_lintas_sisi.py
+experiments/code/analysis/ringkas_p0.py
+experiments/code/analysis/tiling.py
+experiments/code/analysis/two_stage.py
+experiments/code/analysis/verify_depth_align.py
+experiments/code/analysis/verify_depth_mi.py
+experiments/code/analysis/why_b4_fails.py
+experiments/code/build/build_crops.py
+experiments/code/build/build_crops_raw.py
+experiments/code/build/build_master_ds.py
+experiments/code/build/build_rfdetr_ds.py
+experiments/code/build/depth_calib.py
+experiments/code/build/gen_depth_dataset.py
+experiments/code/build/make_depth.py
+experiments/code/build/make_splits_depth.py
+experiments/code/build/match_raw.py
+experiments/code/build/reproject_depth.py
+experiments/code/config/antre_lanjut_p0.sh
+experiments/code/config/antre_tambal_p0.sh
+experiments/code/config/data_rgb.yaml
+experiments/code/config/data_rgbd4.yaml
+experiments/code/eval/bootstrap_pohon.py
+experiments/code/eval/diag_bottleneck.py
+experiments/code/eval/diag_evaluator_gap.py
+experiments/code/eval/dump_logits_rfdetr.py
+experiments/code/eval/eval_all_metrics.py
+experiments/code/eval/eval_all_pycoco.py
+experiments/code/eval/eval_baseline_test.py
+experiments/code/eval/eval_e022_paired.py
+experiments/code/eval/eval_e022_pycoco.py
+experiments/code/eval/eval_efficiency.py
+experiments/code/eval/eval_extras.py
+experiments/code/eval/eval_missing.py
+experiments/code/eval/eval_perkelas.py
+experiments/code/eval/eval_rfdetr_e022.py
+experiments/code/eval/eval_rfdetr_perkelas.py
+experiments/code/eval/eval_rtdetr.py
+experiments/code/eval/metric_variants.py
+experiments/code/eval/metrics_lengkap.py
+experiments/code/eval/ringkas_e023.py
+experiments/code/eval/stratified_eval.py
+experiments/code/requirements.txt
+experiments/code/shell/antre_dvd.sh
+experiments/code/shell/antre_rfdetr_derau.sh
+experiments/code/shell/antre_tukar.sh
+experiments/code/shell/chain_x.sh
+experiments/code/shell/driver_e022.sh
+experiments/code/shell/e023_fusi.sh
+experiments/code/shell/e023_seed2024.sh
+experiments/code/shell/eval_e023.sh
+experiments/code/shell/eval_e023_par.sh
+experiments/code/shell/eval_g2.sh
+experiments/code/shell/f004_baseline.sh
+experiments/code/shell/f007_frekuensi.sh
+experiments/code/shell/g8_sawitmvc.sh
+experiments/code/shell/jadwal.sh
+experiments/code/shell/matriks_g2.sh
+experiments/code/shell/periksa_run.sh
+experiments/code/shell/progress_report.sh
+experiments/code/shell/queue_e022.sh
+experiments/code/shell/queue_e022b.sh
+experiments/code/shell/run_final.sh
+experiments/code/shell/run_queue.sh
+experiments/code/shell/run_queue2.sh
+experiments/code/shell/run_queue3.sh
+experiments/code/shell/run_queue4.sh
+experiments/code/shell/sapuan_kapasitas.sh
+experiments/code/shell/stop_at_52.sh
+experiments/code/train/RANCANGAN-rfdetr-fusi-mid.md
+experiments/code/train/train_4cls_hi.py
+experiments/code/train/train_agnostic.py
+experiments/code/train/train_depth4ch.py
+experiments/code/train/train_fusion.py
+experiments/code/train/train_fusion_2branch.py
+experiments/code/train/train_maturity.py
+experiments/code/train/train_maturity_v2.py
+experiments/code/train/train_ordinal.py
+experiments/code/train/train_rfdetr.py
+experiments/code/train/train_rfdetr_4ch.py
+experiments/code/train/train_rfdetr_freq.py
+experiments/code/train/train_rfdetr_fusion_late.py
+experiments/code/train/train_rfdetr_ordinal.py
+experiments/code/train/train_rtdetr.py
+experiments/code/train/train_x.py
+experiments/code/train/train_yolo26l.py
+experiments/deep-research/Codex-DR.md
+experiments/deep-research/Gemini-DR.md
+experiments/figures/confusion_RF-DETR-L.png
+experiments/figures/confusion_RT-DETR-L.png
+experiments/figures/confusion_YOLO26l.png
+experiments/figures/confusion_YOLO26m.png
+experiments/figures/f1_conf_test.png
+experiments/figures/pr_micro_test.png
+experiments/logs/logs-agnostic.txt
+experiments/logs/logs-basetest.txt
+experiments/logs/logs-build-rgbd.txt
+experiments/logs/logs-c4hi.txt
+experiments/logs/logs-chain.txt
+experiments/logs/logs-chainx.txt
+experiments/logs/logs-conv8.txt
+experiments/logs/logs-cropsraw.txt
+experiments/logs/logs-evalmissing.txt
+experiments/logs/logs-extras.txt
+experiments/logs/logs-final.txt
+experiments/logs/logs-gd-fix.txt
+experiments/logs/logs-gd0.txt
+experiments/logs/logs-gd1.txt
+experiments/logs/logs-gd2.txt
+experiments/logs/logs-gd3.txt
+experiments/logs/logs-gendepth.txt
+experiments/logs/logs-headvscrop.txt
+experiments/logs/logs-install.txt
+experiments/logs/logs-locceil.txt
+experiments/logs/logs-matchraw.txt
+experiments/logs/logs-maturity-raw.txt
+experiments/logs/logs-maturity.txt
+experiments/logs/logs-metrics-full.txt
+experiments/logs/logs-metricvar.txt
+experiments/logs/logs-multiview.txt
+experiments/logs/logs-pm1fix.txt
+experiments/logs/logs-pycoco-all.txt
+experiments/logs/logs-queue.txt
+experiments/logs/logs-queue2.txt
+experiments/logs/logs-queue3.txt
+experiments/logs/logs-queue4.txt
+experiments/logs/logs-rawtest.txt
+experiments/logs/logs-rfdetr-e60.txt
+experiments/logs/logs-rfdetr-install.txt
+experiments/logs/logs-rfdetr-install2.txt
+experiments/logs/logs-rfdetr-perkelas.txt
+experiments/logs/logs-rfdetr-smoke.txt
+experiments/logs/logs-rtdetr.txt
+experiments/logs/logs-stop52.txt
+experiments/logs/logs-tilebuild.txt
+experiments/logs/logs-train-rgb-resume.txt
+experiments/logs/logs-train-rgb.txt
+experiments/logs/logs-train-rgbd.txt
+experiments/logs/logs-train-tile.txt
+experiments/logs/logs-ultra.txt
+experiments/logs/logs-x.txt
+experiments/logs/logs-yolo26l.txt
+experiments/peta-alur-penelitian-2026-08-02.png
+experiments/results/E-001/class_mismatch.json
+experiments/results/E-003/report.json
+experiments/results/E-003b/report.json
+experiments/results/E-004/report_rot.json
+experiments/results/E-005/report_4sides.json
+experiments/results/E-005/report_8sides.json
+experiments/results/E-006/report_res1008.json
+experiments/results/E-006/report_res504.json
+experiments/results/E-007/report_test.json
+experiments/results/E-007/sweep.json
+experiments/results/E-009/box_sizes.json
+experiments/results/E-010/why_b4.json
+experiments/results/E-011/contrast_boost.json
+experiments/results/E-012/separability.json
+experiments/results/E-014/diag_bottleneck.json
+experiments/results/E-015/raw_map.json
+experiments/results/E-016/head_vs_crop.json
+experiments/results/E-016/metric_pm1.json
+experiments/results/E-016/metric_variants.json
+experiments/results/E-016/multiview_val.json
+experiments/results/E-017/two_stage_val_A.json
+experiments/results/E-017/two_stage_val_B.json
+experiments/results/E-017/two_stage_val_mini_rawtest.json
+experiments/results/E-017/two_stage_val_smoke.json
+experiments/results/E-018/loc_ceiling.json
+experiments/results/E-020/rtdetr_eval.json
+experiments/results/E-021/bootstrap_ci.json
+experiments/results/E-021/confusion.json
+experiments/results/E-021/efficiency.json
+experiments/results/E-021/metrics_full.json
+experiments/results/E-021/perkelas_fair.json
+experiments/results/E-021/perkelas_pycoco.json
+experiments/results/E-021/pr_curves.json
+experiments/results/E-021/yolo26l_eval.json
+experiments/results/E-022/align.json
+experiments/results/E-022/depth_meta.json
+experiments/results/E-022/diag_evaluator_gap_rgb.json
+experiments/results/E-022/diag_evaluator_gap_rgbd.json
+experiments/results/E-022/diag_letterbox_pad.json
+experiments/results/E-022/kurva_latihan/rtdetr-l_derau_seed1337/args.yaml
+experiments/results/E-022/kurva_latihan/rtdetr-l_derau_seed1337/best.pt.sha256
+experiments/results/E-022/kurva_latihan/rtdetr-l_derau_seed1337/results.csv
+experiments/results/E-022/kurva_latihan/rtdetr-l_derau_seed2024/args.yaml
+experiments/results/E-022/kurva_latihan/rtdetr-l_derau_seed2024/best.pt.sha256
+experiments/results/E-022/kurva_latihan/rtdetr-l_derau_seed2024/results.csv
+experiments/results/E-022/kurva_latihan/rtdetr-l_derau_seed42/args.yaml
+experiments/results/E-022/kurva_latihan/rtdetr-l_derau_seed42/best.pt.sha256
+experiments/results/E-022/kurva_latihan/rtdetr-l_derau_seed42/results.csv
+experiments/results/E-022/kurva_latihan/rtdetr-l_rgb_seed1337/args.yaml
+experiments/results/E-022/kurva_latihan/rtdetr-l_rgb_seed1337/best.pt.sha256
+experiments/results/E-022/kurva_latihan/rtdetr-l_rgb_seed1337/results.csv
+experiments/results/E-022/kurva_latihan/rtdetr-l_rgb_seed2024/args.yaml
+experiments/results/E-022/kurva_latihan/rtdetr-l_rgb_seed2024/best.pt.sha256
+experiments/results/E-022/kurva_latihan/rtdetr-l_rgb_seed2024/results.csv
+experiments/results/E-022/kurva_latihan/rtdetr-l_rgb_seed42/args.yaml
+experiments/results/E-022/kurva_latihan/rtdetr-l_rgb_seed42/best.pt.sha256
+experiments/results/E-022/kurva_latihan/rtdetr-l_rgb_seed42/results.csv
+experiments/results/E-022/kurva_latihan/rtdetr-l_rgbd_seed1337/args.yaml
+experiments/results/E-022/kurva_latihan/rtdetr-l_rgbd_seed1337/best.pt.sha256
+experiments/results/E-022/kurva_latihan/rtdetr-l_rgbd_seed1337/results.csv
+experiments/results/E-022/kurva_latihan/rtdetr-l_rgbd_seed2024/args.yaml
+experiments/results/E-022/kurva_latihan/rtdetr-l_rgbd_seed2024/best.pt.sha256
+experiments/results/E-022/kurva_latihan/rtdetr-l_rgbd_seed2024/results.csv
+experiments/results/E-022/kurva_latihan/rtdetr-l_rgbd_seed42/args.yaml
+experiments/results/E-022/kurva_latihan/rtdetr-l_rgbd_seed42/best.pt.sha256
+experiments/results/E-022/kurva_latihan/rtdetr-l_rgbd_seed42/results.csv
+experiments/results/E-022/kurva_latihan/yolo26l_derau_seed1337/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26l_derau_seed1337/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26l_derau_seed1337/results.csv
+experiments/results/E-022/kurva_latihan/yolo26l_derau_seed42/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26l_derau_seed42/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26l_derau_seed42/results.csv
+experiments/results/E-022/kurva_latihan/yolo26l_rgb_seed1337/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26l_rgb_seed1337/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26l_rgb_seed1337/results.csv
+experiments/results/E-022/kurva_latihan/yolo26l_rgb_seed42/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26l_rgb_seed42/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26l_rgb_seed42/results.csv
+experiments/results/E-022/kurva_latihan/yolo26l_rgbd_seed1337/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26l_rgbd_seed1337/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26l_rgbd_seed1337/results.csv
+experiments/results/E-022/kurva_latihan/yolo26l_rgbd_seed42/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26l_rgbd_seed42/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26l_rgbd_seed42/results.csv
+experiments/results/E-022/kurva_latihan/yolo26m_derau_seed1337/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26m_derau_seed1337/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26m_derau_seed1337/results.csv
+experiments/results/E-022/kurva_latihan/yolo26m_derau_seed42/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26m_derau_seed42/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26m_derau_seed42/results.csv
+experiments/results/E-022/kurva_latihan/yolo26m_rgb_seed1337/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26m_rgb_seed1337/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26m_rgb_seed1337/results.csv
+experiments/results/E-022/kurva_latihan/yolo26m_rgb_seed2024/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26m_rgb_seed2024/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26m_rgb_seed2024/results.csv
+experiments/results/E-022/kurva_latihan/yolo26m_rgb_seed42/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26m_rgb_seed42/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26m_rgb_seed42/results.csv
+experiments/results/E-022/kurva_latihan/yolo26m_rgbd_seed1337/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26m_rgbd_seed1337/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26m_rgbd_seed1337/results.csv
+experiments/results/E-022/kurva_latihan/yolo26m_rgbd_seed42/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26m_rgbd_seed42/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26m_rgbd_seed42/results.csv
+experiments/results/E-022/kurva_latihan/yolo26n_derau_seed1337/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26n_derau_seed1337/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26n_derau_seed1337/results.csv
+experiments/results/E-022/kurva_latihan/yolo26n_derau_seed2024/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26n_derau_seed2024/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26n_derau_seed2024/results.csv
+experiments/results/E-022/kurva_latihan/yolo26n_derau_seed42/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26n_derau_seed42/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26n_derau_seed42/results.csv
+experiments/results/E-022/kurva_latihan/yolo26n_rgb_seed1337/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26n_rgb_seed1337/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26n_rgb_seed1337/results.csv
+experiments/results/E-022/kurva_latihan/yolo26n_rgb_seed2024/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26n_rgb_seed2024/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26n_rgb_seed2024/results.csv
+experiments/results/E-022/kurva_latihan/yolo26n_rgb_seed42/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26n_rgb_seed42/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26n_rgb_seed42/results.csv
+experiments/results/E-022/kurva_latihan/yolo26n_rgb_split1/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26n_rgb_split1/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26n_rgb_split1/results.csv
+experiments/results/E-022/kurva_latihan/yolo26n_rgb_split2/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26n_rgb_split2/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26n_rgb_split2/results.csv
+experiments/results/E-022/kurva_latihan/yolo26n_rgbd_seed1337/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26n_rgbd_seed1337/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26n_rgbd_seed1337/results.csv
+experiments/results/E-022/kurva_latihan/yolo26n_rgbd_seed2024/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26n_rgbd_seed2024/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26n_rgbd_seed2024/results.csv
+experiments/results/E-022/kurva_latihan/yolo26n_rgbd_seed42/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26n_rgbd_seed42/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26n_rgbd_seed42/results.csv
+experiments/results/E-022/kurva_latihan/yolo26n_rgbd_split1/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26n_rgbd_split1/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26n_rgbd_split1/results.csv
+experiments/results/E-022/kurva_latihan/yolo26n_rgbd_split2/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26n_rgbd_split2/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26n_rgbd_split2/results.csv
+experiments/results/E-022/kurva_latihan/yolo26n_sawitmvc_rgb_seed42/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26n_sawitmvc_rgb_seed42/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26n_sawitmvc_rgb_seed42/results.csv
+experiments/results/E-022/kurva_latihan/yolo26n_tukar_seed1337/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26n_tukar_seed1337/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26n_tukar_seed1337/results.csv
+experiments/results/E-022/kurva_latihan/yolo26n_tukar_seed2024/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26n_tukar_seed2024/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26n_tukar_seed2024/results.csv
+experiments/results/E-022/kurva_latihan/yolo26n_tukar_seed42/args.yaml
+experiments/results/E-022/kurva_latihan/yolo26n_tukar_seed42/best.pt.sha256
+experiments/results/E-022/kurva_latihan/yolo26n_tukar_seed42/results.csv
+experiments/results/E-022/metrics_lengkap.json
+experiments/results/E-022/mi.json
+experiments/results/E-022/paired_derau.json
+experiments/results/E-022/paired_rfdetrnano.json
+experiments/results/E-022/paired_rfdetrnano_depth_vs_derau.json
+experiments/results/E-022/paired_rtdetr-l_depth_vs_derau_seed1337.json
+experiments/results/E-022/paired_rtdetr-l_depth_vs_derau_seed2024.json
+experiments/results/E-022/paired_rtdetr-l_depth_vs_derau_seed42.json
+experiments/results/E-022/paired_rtdetr-l_depth_vs_rgb_seed1337.json
+experiments/results/E-022/paired_rtdetr-l_depth_vs_rgb_seed2024.json
+experiments/results/E-022/paired_rtdetr-l_depth_vs_rgb_seed42.json
+experiments/results/E-022/paired_rtdetr-l_derau_vs_rgb_seed1337.json
+experiments/results/E-022/paired_rtdetr-l_derau_vs_rgb_seed2024.json
+experiments/results/E-022/paired_rtdetr-l_derau_vs_rgb_seed42.json
+experiments/results/E-022/paired_rtdetrl.json
+experiments/results/E-022/paired_rtdetrl_depth_vs_derau.json
+experiments/results/E-022/paired_yolo26l_depth_vs_derau_seed42.json
+experiments/results/E-022/paired_yolo26l_depth_vs_rgb_seed42.json
+experiments/results/E-022/paired_yolo26l_derau_vs_rgb_seed42.json
+experiments/results/E-022/paired_yolo26m_depth_vs_derau_seed42.json
+experiments/results/E-022/paired_yolo26m_depth_vs_rgb_seed42.json
+experiments/results/E-022/paired_yolo26m_derau_vs_rgb_seed42.json
+experiments/results/E-022/paired_yolo26n.json
+experiments/results/E-022/paired_yolo26n_depth_vs_derau.json
+experiments/results/E-022/paired_yolo26n_depth_vs_derau_seed1337.json
+experiments/results/E-022/paired_yolo26n_depth_vs_derau_seed2024.json
+experiments/results/E-022/paired_yolo26n_depth_vs_derau_seed42.json
+experiments/results/E-022/paired_yolo26n_depth_vs_rgb_seed1337.json
+experiments/results/E-022/paired_yolo26n_depth_vs_rgb_seed2024.json
+experiments/results/E-022/paired_yolo26n_depth_vs_rgb_seed42.json
+experiments/results/E-022/paired_yolo26n_depth_vs_rgb_split1.json
+experiments/results/E-022/paired_yolo26n_depth_vs_rgb_split2.json
+experiments/results/E-022/paired_yolo26n_depth_vs_tukar.json
+experiments/results/E-022/paired_yolo26n_depth_vs_tukar_seed1337.json
+experiments/results/E-022/paired_yolo26n_depth_vs_tukar_seed2024.json
+experiments/results/E-022/paired_yolo26n_depth_vs_tukar_seed42.json
+experiments/results/E-022/paired_yolo26n_derau_vs_rgb_seed1337.json
+experiments/results/E-022/paired_yolo26n_derau_vs_rgb_seed2024.json
+experiments/results/E-022/paired_yolo26n_derau_vs_rgb_seed42.json
+experiments/results/E-022/pycoco_yolo26n.json
+experiments/results/E-023/README.md
+experiments/results/E-023/e023_awal_seed1337/args.yaml
+experiments/results/E-023/e023_awal_seed1337/best.pt.sha256
+experiments/results/E-023/e023_awal_seed1337/hasil.json
+experiments/results/E-023/e023_awal_seed1337/results.csv
+experiments/results/E-023/e023_awal_seed2024/args.yaml
+experiments/results/E-023/e023_awal_seed2024/best.pt.sha256
+experiments/results/E-023/e023_awal_seed2024/hasil.json
+experiments/results/E-023/e023_awal_seed2024/results.csv
+experiments/results/E-023/e023_awal_seed42/args.yaml
+experiments/results/E-023/e023_awal_seed42/best.pt.sha256
+experiments/results/E-023/e023_awal_seed42/hasil.json
+experiments/results/E-023/e023_awal_seed42/results.csv
+experiments/results/E-023/e023_derau_seed1337/args.yaml
+experiments/results/E-023/e023_derau_seed1337/best.pt.sha256
+experiments/results/E-023/e023_derau_seed1337/hasil.json
+experiments/results/E-023/e023_derau_seed1337/results.csv
+experiments/results/E-023/e023_derau_seed2024/args.yaml
+experiments/results/E-023/e023_derau_seed2024/best.pt.sha256
+experiments/results/E-023/e023_derau_seed2024/hasil.json
+experiments/results/E-023/e023_derau_seed2024/results.csv
+experiments/results/E-023/e023_derau_seed42/args.yaml
+experiments/results/E-023/e023_derau_seed42/best.pt.sha256
+experiments/results/E-023/e023_derau_seed42/hasil.json
+experiments/results/E-023/e023_derau_seed42/results.csv
+experiments/results/E-023/e023_late_seed1337/args.yaml
+experiments/results/E-023/e023_late_seed1337/best.pt.sha256
+experiments/results/E-023/e023_late_seed1337/hasil.json
+experiments/results/E-023/e023_late_seed1337/results.csv
+experiments/results/E-023/e023_late_seed2024/args.yaml
+experiments/results/E-023/e023_late_seed2024/best.pt.sha256
+experiments/results/E-023/e023_late_seed2024/hasil.json
+experiments/results/E-023/e023_late_seed2024/results.csv
+experiments/results/E-023/e023_late_seed42/args.yaml
+experiments/results/E-023/e023_late_seed42/best.pt.sha256
+experiments/results/E-023/e023_late_seed42/hasil.json
+experiments/results/E-023/e023_late_seed42/results.csv
+experiments/results/E-023/e023_mid_seed1337/args.yaml
+experiments/results/E-023/e023_mid_seed1337/best.pt.sha256
+experiments/results/E-023/e023_mid_seed1337/hasil.json
+experiments/results/E-023/e023_mid_seed1337/results.csv
+experiments/results/E-023/e023_mid_seed2024/args.yaml
+experiments/results/E-023/e023_mid_seed2024/best.pt.sha256
+experiments/results/E-023/e023_mid_seed2024/hasil.json
+experiments/results/E-023/e023_mid_seed2024/results.csv
+experiments/results/E-023/e023_mid_seed42/args.yaml
+experiments/results/E-023/e023_mid_seed42/best.pt.sha256
+experiments/results/E-023/e023_mid_seed42/results.csv
+experiments/results/E-023/e023_rgb_seed1337/args.yaml
+experiments/results/E-023/e023_rgb_seed1337/best.pt.sha256
+experiments/results/E-023/e023_rgb_seed1337/hasil.json
+experiments/results/E-023/e023_rgb_seed1337/results.csv
+experiments/results/E-023/e023_rgb_seed2024/args.yaml
+experiments/results/E-023/e023_rgb_seed2024/best.pt.sha256
+experiments/results/E-023/e023_rgb_seed2024/hasil.json
+experiments/results/E-023/e023_rgb_seed2024/results.csv
+experiments/results/E-023/e023_rgb_seed42/args.yaml
+experiments/results/E-023/e023_rgb_seed42/best.pt.sha256
+experiments/results/E-023/e023_rgb_seed42/hasil.json
+experiments/results/E-023/e023_rgb_seed42/results.csv
+experiments/results/E-023/paired_awal_vs_rgb_seed1337.json
+experiments/results/E-023/paired_awal_vs_rgb_seed2024.json
+experiments/results/E-023/paired_awal_vs_rgb_seed42.json
+experiments/results/E-023/paired_derau_vs_rgb_seed1337.json
+experiments/results/E-023/paired_derau_vs_rgb_seed2024.json
+experiments/results/E-023/paired_derau_vs_rgb_seed42.json
+experiments/results/E-023/paired_late_vs_rgb_seed1337.json
+experiments/results/E-023/paired_late_vs_rgb_seed2024.json
+experiments/results/E-023/paired_late_vs_rgb_seed42.json
+experiments/results/E-023/paired_mid_vs_rgb_seed1337.json
+experiments/results/E-023/paired_mid_vs_rgb_seed2024.json
+experiments/results/E-023/paired_mid_vs_rgb_seed42.json
+experiments/results/E-023/ringkasan.txt
+experiments/results/E-024/konsistensi_rgb_seed42.json
+experiments/results/E-024/konsistensi_rgbd_seed42.json
+experiments/results/E-028/konsistensi_sawitmvc_rgb_seed42.json
+experiments/results/F-001/prasyarat.json
+experiments/results/F-002/freq_vs_pelepah.json
+experiments/results/F-003/konsistensi_ulang_yolo26n.json
+experiments/results/F-003/plafon_lintas_sisi.json
+experiments/results/F-004/evaluation_seed1337.json
+experiments/results/F-004/evaluation_seed2024.json
+experiments/results/F-004/evaluation_seed42.json
+experiments/results/F-004/logits_test_seed1337.npz
+experiments/results/F-004/logits_test_seed2024.npz
+experiments/results/F-004/logits_test_seed42.npz
+experiments/results/F-004/metrics_seed1337.csv
+experiments/results/F-004/metrics_seed2024.csv
+experiments/results/F-004/metrics_seed42.csv
+experiments/results/F-004/sha256_seed1337.txt
+experiments/results/F-004/sha256_seed2024.txt
+experiments/results/F-004/sha256_seed42.txt
+experiments/results/F-005/massa_selisih_logit_seed1337.json
+experiments/results/F-005/massa_selisih_logit_seed2024.json
+experiments/results/F-005/massa_selisih_logit_seed42.json
+experiments/results/F-006/uji_sambungan.json
+experiments/results/F-007/evaluation_dwt_seed42.json
+experiments/results/F-007/evaluation_laplacian_seed42.json
+experiments/results/F-007/logits_test_dwt_seed42.npz
+experiments/results/F-007/logits_test_laplacian_seed42.npz
+experiments/results/F-007/sha256_dwt_seed42.txt
+experiments/results/F-007/sha256_laplacian_seed42.txt
+experiments/results/F-007/uji_sambungan_dwt.json
+experiments/results/F-007/uji_sambungan_fase_diacak.json
+experiments/results/F-007/uji_sambungan_freq_rendah.json
+experiments/results/F-007/uji_sambungan_laplacian.json
+experiments/results/README.md
+experiments/results/lintas-eksperimen/baseline_test.json
+experiments/results/lintas-eksperimen/eval_missing.json
+experiments/results/lintas-eksperimen/smoke_rgb.json
+experiments/runs/agn_e25_i960_s42/args.yaml
+experiments/runs/agn_e25_i960_s42/results.csv
+experiments/runs/c4_e50_i1280_warna/args.yaml
+experiments/runs/c4_e50_i1280_warna/results.csv
+experiments/runs/rfdetr_l_e60_i1280/evaluation.json
+experiments/runs/rfdetr_l_e60_i1280/metrics.csv
+experiments/runs/rfdetr_l_e60_i1280/training_config.json
+experiments/runs/rgb_e60_i640_s42/args.yaml
+experiments/runs/rgb_e60_i640_s42/results.csv
+experiments/runs/rgbd_e60_i640_s42/args.yaml
+experiments/runs/rgbd_e60_i640_s42/results.csv
+experiments/runs/rtdetr_l_e60_i1280/args.yaml
+experiments/runs/rtdetr_l_e60_i1280/results.csv
+experiments/runs/yolo26l_e60_i1280/args.yaml
+experiments/runs/yolo26l_e60_i1280/results.csv
+experiments/splits/depth/seed1/data_rgb.yaml
+experiments/splits/depth/seed1/data_rgbd4.yaml
+experiments/splits/depth/seed1/stats.json
+experiments/splits/depth/seed1/test.txt
+experiments/splits/depth/seed1/train.txt
+experiments/splits/depth/seed1/val.txt
+experiments/splits/depth/seed2/data_rgb.yaml
+experiments/splits/depth/seed2/data_rgbd4.yaml
+experiments/splits/depth/seed2/stats.json
+experiments/splits/depth/seed2/test.txt
+experiments/splits/depth/seed2/train.txt
+experiments/splits/depth/seed2/val.txt
+experiments/splits/depth/seed42/data_rgb.yaml
+experiments/splits/depth/seed42/data_rgbd4.yaml
+experiments/splits/depth/seed42/stats.json
+experiments/splits/depth/seed42/test.txt
+experiments/splits/depth/seed42/train.txt
+experiments/splits/depth/seed42/val.txt
+experiments/splits/rgb/sawitmvc/data_rgb.yaml
+experiments/splits/rgb/sawitmvc/test.txt
+experiments/splits/rgb/sawitmvc/train.txt
+experiments/splits/rgb/sawitmvc/val.txt
+experiments/splits/rgb/test.txt
+experiments/splits/rgb/train.txt
+experiments/splits/rgb/val.txt
+experiments/splits/rgb/val_mini.txt
+index.html
+legacy/README.md
+legacy/body.tex
+legacy/figures-legacy/F01-taksonomi-gpt-image-2.png
+legacy/figures-legacy/F02-timeline-yolo-gpt-image-2.png
+legacy/figures-legacy/F03-silsilah-rgb-gpt-image-2.png
+legacy/figures-legacy/F04-strategi-fusi-gpt-image-2.png
+legacy/figures-legacy/F05-pola-yolorgbd-gpt-image-2.png
+legacy/figures-legacy/F06-atensi-lintasmodal-gpt-image-2.png
+legacy/figures-legacy/F07-funnel-sawit-gpt-image-2.png
+legacy/figures-legacy/F08-pipeline-sawit-gpt-image-2.png
+legacy/tinjauan-pustaka.tex
+legacy/verified-body.tex
+literature/README.md
+literature/entries/001 - 2016 - You Only Look Once (YOLOv1) - Fondasi RGB.md
+literature/entries/002 - 2017 - YOLO9000 (YOLOv2) - Fondasi RGB.md
+literature/entries/003 - 2018 - YOLOv3 - Fondasi RGB.md
+literature/entries/004 - 2020 - YOLOv4 - Fondasi RGB.md
+literature/entries/005 - 2021 - YOLOX - Fondasi RGB.md
+literature/entries/006 - 2022 - YOLOv6 - Fondasi RGB.md
+literature/entries/007 - 2023 - YOLOv7 - Fondasi RGB.md
+literature/entries/008 - 2024 - YOLOv9 - Fondasi RGB.md
+literature/entries/009 - 2024 - YOLOv10 - Fondasi RGB.md
+literature/entries/010 - 2024 - YOLOv11 (Overview) - Fondasi RGB.md
+literature/entries/011 - 2020 - PP-YOLO - Fondasi RGB.md
+literature/entries/012 - 2014 - R-CNN - Fondasi RGB.md
+literature/entries/013 - 2015 - Fast R-CNN - Fondasi RGB.md
+literature/entries/014 - 2017 - Faster R-CNN - Fondasi RGB.md
+literature/entries/015 - 2016 - SSD - Fondasi RGB.md
+literature/entries/016 - 2017 - RetinaNet (Focal Loss) - Fondasi RGB.md
+literature/entries/017 - 2017 - Mask R-CNN - Fondasi RGB.md
+literature/entries/018 - 2017 - Feature Pyramid Networks (FPN) - Fondasi RGB.md
+literature/entries/019 - 2019 - FCOS - Fondasi RGB.md
+literature/entries/020 - 2019 - CenterNet (Objects as Points) - Fondasi RGB.md
+literature/entries/021 - 2020 - EfficientDet - Fondasi RGB.md
+literature/entries/022 - 2020 - DETR - Fondasi RGB.md
+literature/entries/023 - 2021 - Deformable DETR - Fondasi RGB.md
+literature/entries/024 - 2021 - Vision Transformer (ViT) - Fondasi RGB.md
+literature/entries/025 - 2021 - Swin Transformer - Fondasi RGB.md
+literature/entries/026 - 2023 - Review YOLO (Terven dkk.) - Survei YOLO.md
+literature/entries/027 - 2023 - Review YOLO Manufaktur (Hussain) - Survei YOLO.md
+literature/entries/028 - 2022 - Review Perkembangan YOLO (Jiang dkk.) - Survei YOLO.md
+literature/entries/029 - 2024 - Review YOLO Pertanian (Sapkota dkk.) - Survei YOLO.md
+literature/entries/030 - 2025 - Tinjauan Dekade YOLO (Sapkota dkk.) - Survei YOLO.md
+literature/entries/031 - 2024 - Systematic Review YOLO (Vijayakumar & Vairavasundaram) - Survei YOLO.md
+literature/entries/032 - 2024 - YOLO Evolution Benchmark (Alif & Hussain) - Survei YOLO.md
+literature/entries/035 - 2019 - DMRA - RGB-D SOD.md
+literature/entries/036 - 2020 - BBS-Net - RGB-D SOD.md
+literature/entries/037 - 2021 - D3Net (Rethinking RGB-D SOD) - RGB-D SOD.md
+literature/entries/038 - 2020 - JL-DCF - RGB-D SOD.md
+literature/entries/039 - 2020 - S2MA - RGB-D SOD.md
+literature/entries/040 - 2020 - HDFNet - RGB-D SOD.md
+literature/entries/041 - 2020 - UC-Net - RGB-D SOD.md
+literature/entries/042 - 2021 - Visual Saliency Transformer (VST) - RGB-D SOD.md
+literature/entries/043 - 2022 - SwinNet - RGB-D SOD.md
+literature/entries/044 - 2021 - TriTransNet - RGB-D SOD.md
+literature/entries/045 - 2021 - DSA2F - RGB-D SOD.md
+literature/entries/046 - 2022 - CIR-Net - RGB-D SOD.md
+literature/entries/050 - 2023 - HiDAnet - RGB-D SOD.md
+literature/entries/051 - 2016 - FuseNet - Segmentasi RGB-D.md
+literature/entries/052 - 2018 - RedNet - Segmentasi RGB-D.md
+literature/entries/053 - 2017 - RDFNet - Segmentasi RGB-D.md
+literature/entries/054 - 2019 - ACNet - Segmentasi RGB-D.md
+literature/entries/055 - 2020 - SA-Gate - Segmentasi RGB-D.md
+literature/entries/056 - 2021 - ESANet - Segmentasi RGB-D.md
+literature/entries/057 - 2021 - ShapeConv - Segmentasi RGB-D.md
+literature/entries/058 - 2023 - CMX - Segmentasi RGB-D.md
+literature/entries/060 - 2022 - Multimodal Token Fusion - Segmentasi RGB-D.md
+literature/entries/061 - 2024 - DFormer - Segmentasi RGB-D.md
+literature/entries/062 - 2014 - Depth dari Citra Tunggal (Eigen dkk.) - Estimasi Kedalaman.md
+literature/entries/063 - 2017 - Monodepth (Left-Right Consistency) - Estimasi Kedalaman.md
+literature/entries/064 - 2019 - Monodepth2 - Estimasi Kedalaman.md
+literature/entries/065 - 2019 - BTS (Local Planar Guidance) - Estimasi Kedalaman.md
+literature/entries/066 - 2021 - AdaBins - Estimasi Kedalaman.md
+literature/entries/067 - 2021 - DPT (Dense Prediction Transformer) - Estimasi Kedalaman.md
+literature/entries/068 - 2022 - MiDaS (Robust Monocular Depth) - Estimasi Kedalaman.md
+literature/entries/069 - 2020 - PackNet - Estimasi Kedalaman.md
+literature/entries/070 - 2021 - MonoIndoor - Estimasi Kedalaman.md
+literature/entries/071 - 2024 - Depth Anything - Estimasi Kedalaman.md
+literature/entries/072 - 2021 - Review Depth Monokular (Ming dkk.) - Estimasi Kedalaman.md
+literature/entries/073 - 2018 - PoseCNN - Pose 6D.md
+literature/entries/074 - 2019 - DenseFusion - Pose 6D.md
+literature/entries/075 - 2020 - PVN3D - Pose 6D.md
+literature/entries/076 - 2021 - FFB6D - Pose 6D.md
+literature/entries/077 - 2020 - G2L-Net - Pose 6D.md
+literature/entries/078 - 2024 - FoundationPose - Pose 6D.md
+literature/entries/079 - 2021 - Review Pose 6D & Deteksi 3D (Hoque dkk.) - Pose 6D.md
+literature/entries/080 - 2015 - Deep Learning Robotic Grasps (Lenz dkk.) - Grasp Robotik.md
+literature/entries/081 - 2018 - GG-CNN - Grasp Robotik.md
+literature/entries/082 - 2020 - GR-ConvNet - Grasp Robotik.md
+literature/entries/083 - 2022 - GR-ConvNet v2 - Grasp Robotik.md
+literature/entries/084 - 2020 - GraspNet-1Billion - Grasp Robotik.md
+literature/entries/085 - 2023 - BCMFNet (Bilateral Cross-Modal Fusion) - Grasp Robotik.md
+literature/entries/086 - 2018 - Jacquard Dataset - Grasp Robotik.md
+literature/entries/087 - 2018 - VoxelNet - Deteksi 3D.md
+literature/entries/088 - 2019 - PointPillars - Deteksi 3D.md
+literature/entries/089 - 2019 - PointRCNN - Deteksi 3D.md
+literature/entries/090 - 2018 - Frustum PointNets - Deteksi 3D.md
+literature/entries/091 - 2017 - MV3D - Deteksi 3D.md
+literature/entries/092 - 2018 - AVOD - Deteksi 3D.md
+literature/entries/093 - 2020 - PointPainting - Deteksi 3D.md
+literature/entries/094 - 2020 - 3D-CVF - Deteksi 3D.md
+literature/entries/095 - 2019 - Pseudo-LiDAR - Deteksi 3D.md
+literature/entries/096 - 2020 - Pseudo-LiDAR++ - Deteksi 3D.md
+literature/entries/097 - 2022 - TransFusion - Deteksi 3D.md
+literature/entries/098 - 2023 - BEVFusion - Deteksi 3D.md
+literature/entries/099 - 2019 - Survei Deteksi 3D (Arnold dkk.) - Deteksi 3D.md
+literature/entries/100 - 2015 - KAIST Multispectral Pedestrian - Pedestrian RGB-T.md
+literature/entries/101 - 2019 - IAF R-CNN (Illumination-Aware) - Pedestrian RGB-T.md
+literature/entries/102 - 2020 - MBNet - Pedestrian RGB-T.md
+literature/entries/103 - 2021 - GAFF - Pedestrian RGB-T.md
+literature/entries/104 - 2020 - Cyclic Fuse-and-Refine (CFR) - Pedestrian RGB-T.md
+literature/entries/107 - 2017 - ORB-SLAM2 - RGB-D SLAM.md
+literature/entries/108 - 2018 - DynaSLAM - RGB-D SLAM.md
+literature/entries/109 - 2018 - DS-SLAM - RGB-D SLAM.md
+literature/entries/110 - 2022 - CFP-SLAM - RGB-D SLAM.md
+literature/entries/111 - 2019 - Visual SLAM YOLO vs Mask R-CNN (Soares dkk.) - RGB-D SLAM.md
+literature/entries/112 - 2020 - Expandable YOLO - YOLO plus RGB-D.md
+literature/entries/113 - 2024 - FusionVision - YOLO plus RGB-D.md
+literature/entries/115 - 2025 - YOLOv8-URE 2D+Point Cloud Grasping - YOLO plus RGB-D.md
+literature/entries/117 - 2024 - Onboard Dynamic-Object Detection (Xu dkk.) - YOLO plus RGB-D.md
+literature/entries/118 - 2019 - Exploring RGB+Depth Fusion (Ophoff dkk.) - YOLO plus RGB-D.md
+literature/entries/124 - 2020 - Fruit Detection & 3D Location (Gene-Mola dkk.) - Pertanian.md
+literature/entries/125 - 2020 - Iceberg Lettuce Harvesting Robot - Pertanian.md
+literature/entries/126 - 2019 - Automated Fruit Harvesting Robot (Onishi dkk.) - Pertanian.md
+literature/entries/127 - 2020 - Fruit Detection & 3D Visualisation (Kang & Chen) - Pertanian.md
+literature/entries/128 - 2024 - Systematic Review YOLO Medis (Qureshi dkk.) - Medis.md
+literature/entries/129 - 2021 - COVID-19 CAD dari X-Ray (Al-Antari dkk.) - Medis.md
+literature/entries/130 - 2021 - Breast Lesion Detection (YOLO Fusion) - Medis.md
+literature/entries/133 - 2023 - EFC-YOLO (Steel Strip Defects) - Industri.md
+literature/entries/134 - 2024 - PCB-YOLO (PCB Defects) - Industri.md
+literature/entries/136 - 2021 - Safety Helmet Detection (Improved YOLOv5) - Industri.md
+literature/entries/137 - 2021 - TPH-YOLOv5 (Drone Detection) - Remote Sensing.md
+literature/entries/139 - 2023 - UAV-YOLOv8 (Small Object) - Remote Sensing.md
+literature/entries/140 - 2018 - YOLT (Satellite Imagery) - Remote Sensing.md
+literature/entries/141 - 2012 - NYU Depth v2 - Dataset.md
+literature/entries/142 - 2015 - SUN RGB-D - Dataset.md
+literature/entries/143 - 2017 - ScanNet - Dataset.md
+literature/entries/144 - 2012 - KITTI - Dataset.md
+literature/entries/145 - 2020 - nuScenes - Dataset.md
+literature/entries/146 - 2014 - Microsoft COCO - Dataset.md
+literature/entries/147 - 2016 - ResNet - Fusi Multimodal.md
+literature/entries/148 - 2017 - PointNet - Fusi Multimodal.md
+literature/entries/149 - 2018 - CBAM - Fusi Multimodal.md
+literature/entries/150 - 2021 - Survei Deteksi & Segmentasi Multimodal (Feng dkk.) - Fusi Multimodal.md
+literature/entries/151 - 2023 - Object Detection in 20 Years (Zou dkk.) - Fusi Multimodal.md
+literature/entries/153 - 2021 - Survei RGB-D SOD (Zhou dkk.) - Fusi Multimodal.md
+literature/entries/154 - 2022 - Survei Dataset RGB-D (Lopes dkk.) - Fusi Multimodal.md
+literature/entries/155 - 2024 - RT-DETR - Fondasi RGB.md
+literature/entries/156 - 2024 - YOLO-World - Fondasi RGB.md
+literature/entries/157 - 2023 - Gold-YOLO - Fondasi RGB.md
+literature/entries/158 - 2023 - DINO detector - Fondasi RGB.md
+literature/entries/159 - 2022 - DN-DETR - Fondasi RGB.md
+literature/entries/160 - 2021 - Conditional DETR - Fondasi RGB.md
+literature/entries/161 - 2021 - Sparse R-CNN - Fondasi RGB.md
+literature/entries/162 - 2022 - ConvNeXt - Fondasi RGB.md
+literature/entries/163 - 2022 - Swin Transformer V2 - Fondasi RGB.md
+literature/entries/164 - 2021 - Pyramid Vision Transformer - Fondasi RGB.md
+literature/entries/165 - 2023 - Co-DETR - Fondasi RGB.md
+literature/entries/166 - 2020 - CoNet - RGB-D SOD.md
+literature/entries/167 - 2021 - DCF - RGB-D SOD.md
+literature/entries/168 - 2021 - SPNet - RGB-D SOD.md
+literature/entries/169 - 2023 - CAVER - RGB-D SOD.md
+literature/entries/170 - 2022 - MobileSal - RGB-D SOD.md
+literature/entries/171 - 2021 - SegFormer - Segmentasi RGB-D.md
+literature/entries/172 - 2022 - EMSANet - Segmentasi RGB-D.md
+literature/entries/173 - 2024 - GeminiFusion - Segmentasi RGB-D.md
+literature/entries/174 - 2022 - Omnivore - Segmentasi RGB-D.md
+literature/entries/175 - 2024 - Depth Anything V2 - Estimasi Kedalaman.md
+literature/entries/176 - 2023 - ZoeDepth - Estimasi Kedalaman.md
+literature/entries/177 - 2023 - Metric3D - Estimasi Kedalaman.md
+literature/entries/178 - 2024 - Marigold - Estimasi Kedalaman.md
+literature/entries/179 - 2022 - NeWCRFs - Estimasi Kedalaman.md
+literature/entries/180 - 2021 - GDR-Net - Pose 6D.md
+literature/entries/181 - 2022 - ZebraPose - Pose 6D.md
+literature/entries/182 - 2022 - OnePose - Pose 6D.md
+literature/entries/183 - 2021 - Contact-GraspNet - Grasp Robotik.md
+literature/entries/184 - 2020 - VGN - Grasp Robotik.md
+literature/entries/185 - 2021 - CenterPoint - Deteksi 3D.md
+literature/entries/186 - 2020 - PV-RCNN - Deteksi 3D.md
+literature/entries/187 - 2022 - BEVFormer - Deteksi 3D.md
+literature/entries/188 - 2022 - DETR3D - Deteksi 3D.md
+literature/entries/189 - 2022 - CFT multispectral - Pedestrian RGB-T.md
+literature/entries/190 - 2021 - ORB-SLAM3 - RGB-D SLAM.md
+literature/entries/191 - 2021 - DROID-SLAM - RGB-D SLAM.md
+literature/entries/192 - 2025 - YOLO26 Detektor Real-Time End-to-End - Fondasi RGB.md
+literature/entries/193 - 2025 - RF-DETR NAS untuk Detektor Transformer Real-Time - Fondasi RGB.md
+literature/entries/194 - 2026 - Le-DETR Encoder Efisien untuk DETR Real-Time - Fondasi RGB.md
+literature/entries/195 - 2026 - RiO-DETR Deteksi Objek Berorientasi Real-Time - Remote Sensing.md
+literature/entries/196 - 2025 - GL-DMNet Dual Mutual Learning RGB-D SOD - RGB-D SOD.md
+literature/entries/197 - 2025 - DiffPixelFormer Segmentasi Scene RGB-D Indoor - Segmentasi RGB-D.md
+literature/entries/198 - 2025 - Depth Anything 3 Geometri dari Sembarang Pandangan - Estimasi Kedalaman.md
+literature/entries/199 - 2025 - Survei Estimasi Kedalaman Metrik Monokular - Estimasi Kedalaman.md
+literature/entries/200 - 2026 - AsyncMDE Kedalaman Monokular Real-Time Memori Spasial - Estimasi Kedalaman.md
+literature/entries/201 - 2026 - UniDAC Kedalaman Metrik Universal untuk Sembarang Kamera - Estimasi Kedalaman.md
+literature/entries/202 - 2026 - Focusable Monocular Depth Estimation - Estimasi Kedalaman.md
+literature/entries/INDEX-TAHUN.md
+literature/entries/INDEX.md
+literature/extracted/001-redmon2016yolo.md
+literature/extracted/002-redmon2017yolo9000.md
+literature/extracted/003-redmon2018yolov3.md
+literature/extracted/004-bochkovskiy2020yolov4.md
+literature/extracted/005-ge2021yolox.md
+literature/extracted/006-li2022yolov6.md
+literature/extracted/007-wang2023yolov7.md
+literature/extracted/008-wang2024yolov9.md
+literature/extracted/009-wang2024yolov10.md
+literature/extracted/010-khanam2024yolov11.md
+literature/extracted/011-long2020ppyolo.md
+literature/extracted/012-girshick2014rcnn.md
+literature/extracted/013-girshick2015fastrcnn.md
+literature/extracted/014-ren2017fasterrcnn.md
+literature/extracted/015-liu2016ssd.md
+literature/extracted/016-lin2017focal.md
+literature/extracted/017-he2017maskrcnn.md
+literature/extracted/018-lin2017fpn.md
+literature/extracted/019-tian2019fcos.md
+literature/extracted/020-zhou2019objects.md
+literature/extracted/021-tan2020efficientdet.md
+literature/extracted/022-carion2020detr.md
+literature/extracted/023-zhu2021deformabledetr.md
+literature/extracted/024-dosovitskiy2021vit.md
+literature/extracted/025-liu2021swin.md
+literature/extracted/026-terven2023yolo.md
+literature/extracted/027-hussain2023yolo.md
+literature/extracted/028-jiang2022yoloreview.md
+literature/extracted/029-sapkota2024yoloagri.md
+literature/extracted/030-sapkota2025yologenesis.md
+literature/extracted/031-vijayakumar2024yolo.md
+literature/extracted/032-alif2024yoloevolution.md
+literature/extracted/035-piao2019dmra.md
+literature/extracted/036-fan2020bbsnet.md
+literature/extracted/037-fan2020d3net.md
+literature/extracted/038-fu2020jldcf.md
+literature/extracted/039-liu2020s2ma.md
+literature/extracted/040-pang2020hdfnet.md
+literature/extracted/041-zhang2020ucnet.md
+literature/extracted/042-liu2021vst.md
+literature/extracted/043-liu2021swinnet.md
+literature/extracted/044-liu2021tritransnet.md
+literature/extracted/045-sun2021dsa2f.md
+literature/extracted/046-cong2022cirnet.md
+literature/extracted/050-wu2023hidanet.md
+literature/extracted/051-hazirbas2016fusenet.md
+literature/extracted/052-jiang2018rednet.md
+literature/extracted/053-park2017rdfnet.md
+literature/extracted/054-hu2019acnet.md
+literature/extracted/055-chen2020sagate.md
+literature/extracted/056-seichter2021esanet.md
+literature/extracted/057-cao2021shapeconv.md
+literature/extracted/058-zhang2023cmx.md
+literature/extracted/060-wang2022tokenfusion.md
+literature/extracted/061-yin2024dformer.md
+literature/extracted/062-eigen2014depth.md
+literature/extracted/063-godard2017monodepth.md
+literature/extracted/064-godard2019monodepth2.md
+literature/extracted/065-lee2019bts.md
+literature/extracted/066-bhat2021adabins.md
+literature/extracted/067-ranftl2021dpt.md
+literature/extracted/068-ranftl2022midas.md
+literature/extracted/069-guizilini2020packnet.md
+literature/extracted/070-ji2021monoindoor.md
+literature/extracted/071-yang2024depthanything.md
+literature/extracted/072-ming2021depthsurvey.md
+literature/extracted/073-xiang2018posecnn.md
+literature/extracted/074-wang2019densefusion.md
+literature/extracted/075-he2020pvn3d.md
+literature/extracted/076-he2021ffb6d.md
+literature/extracted/077-chen2020g2lnet.md
+literature/extracted/078-wen2024foundationpose.md
+literature/extracted/079-hoque2021posesurvey.md
+literature/extracted/080-lenz2015grasp.md
+literature/extracted/081-morrison2018ggcnn.md
+literature/extracted/082-kumra2020grconvnet.md
+literature/extracted/083-kumra2022grconvnetv2.md
+literature/extracted/084-fang2020graspnet.md
+literature/extracted/085-zhang2023bcmfnet.md
+literature/extracted/086-depierre2018jacquard.md
+literature/extracted/087-zhou2018voxelnet.md
+literature/extracted/088-lang2019pointpillars.md
+literature/extracted/089-shi2019pointrcnn.md
+literature/extracted/090-qi2018frustum.md
+literature/extracted/091-chen2017mv3d.md
+literature/extracted/092-ku2018avod.md
+literature/extracted/093-vora2020pointpainting.md
+literature/extracted/094-yoo20203dcvf.md
+literature/extracted/095-wang2019pseudolidar.md
+literature/extracted/096-you2020pseudolidarpp.md
+literature/extracted/097-bai2022transfusion.md
+literature/extracted/098-liu2023bevfusion.md
+literature/extracted/099-arnold2019survey3d.md
+literature/extracted/100-hwang2015kaist.md
+literature/extracted/101-li2019illumination.md
+literature/extracted/102-zhou2020mbnet.md
+literature/extracted/103-zhang2021gaff.md
+literature/extracted/104-zhang2020cfr.md
+literature/extracted/107-murartal2017orbslam2.md
+literature/extracted/108-bescos2018dynaslam.md
+literature/extracted/109-yu2018dsslam.md
+literature/extracted/110-hu2022cfpslam.md
+literature/extracted/111-soares2019visualslam.md
+literature/extracted/112-takahashi2020expandableyolo.md
+literature/extracted/113-elamraoui2024fusionvision.md
+literature/extracted/115-yang2025yolov8ure.md
+literature/extracted/117-xu2024onboard.md
+literature/extracted/118-ophoff2019multimodal.md
+literature/extracted/124-genemola2020fruit3d.md
+literature/extracted/125-birrell2020lettuce.md
+literature/extracted/126-onishi2019harvest.md
+literature/extracted/127-kang2020strawberry.md
+literature/extracted/128-qureshi2024medyolo.md
+literature/extracted/129-alantari2020covid.md
+literature/extracted/130-baccouche2021breast.md
+literature/extracted/133-yang2023efcyolo.md
+literature/extracted/134-tang2024pcbyolo.md
+literature/extracted/136-zhou2021helmet.md
+literature/extracted/137-zhu2021tphyolov5.md
+literature/extracted/139-wang2023uavyolo.md
+literature/extracted/140-vanetten2018yolt.md
+literature/extracted/141-silberman2012nyu.md
+literature/extracted/142-song2015sunrgbd.md
+literature/extracted/143-dai2017scannet.md
+literature/extracted/144-geiger2012kitti.md
+literature/extracted/145-caesar2020nuscenes.md
+literature/extracted/146-lin2014coco.md
+literature/extracted/147-he2016resnet.md
+literature/extracted/148-qi2017pointnet.md
+literature/extracted/149-woo2018cbam.md
+literature/extracted/150-feng2021multimodalsurvey.md
+literature/extracted/151-zou2023objectdetectionsurvey.md
+literature/extracted/153-zhou2021rgbdsurvey.md
+literature/extracted/154-lopes2022rgbddatasets.md
+literature/extracted/155-zhao2024rtdetr.md
+literature/extracted/156-cheng2024yoloworld.md
+literature/extracted/157-wang2023goldyolo.md
+literature/extracted/158-zhang2023dino.md
+literature/extracted/159-li2022dndetr.md
+literature/extracted/160-meng2021conditionaldetr.md
+literature/extracted/161-sun2021sparsercnn.md
+literature/extracted/162-liu2022convnext.md
+literature/extracted/163-liu2022swinv2.md
+literature/extracted/164-wang2021pvt.md
+literature/extracted/165-zong2023codetr.md
+literature/extracted/166-ji2020conet.md
+literature/extracted/167-ji2021dcf.md
+literature/extracted/168-zhou2021spnet.md
+literature/extracted/169-pang2023caver.md
+literature/extracted/170-wu2022mobilesal.md
+literature/extracted/171-xie2021segformer.md
+literature/extracted/172-seichter2022emsanet.md
+literature/extracted/173-jia2024geminifusion.md
+literature/extracted/174-girdhar2022omnivore.md
+literature/extracted/175-yang2024depthanythingv2.md
+literature/extracted/176-bhat2023zoedepth.md
+literature/extracted/177-yin2023metric3d.md
+literature/extracted/178-ke2024marigold.md
+literature/extracted/179-yuan2022newcrfs.md
+literature/extracted/180-wang2021gdrnet.md
+literature/extracted/181-su2022zebrapose.md
+literature/extracted/182-sun2022onepose.md
+literature/extracted/183-sundermeyer2021contactgraspnet.md
+literature/extracted/184-breyer2021vgn.md
+literature/extracted/185-yin2021centerpoint.md
+literature/extracted/186-shi2020pvrcnn.md
+literature/extracted/187-li2022bevformer.md
+literature/extracted/188-wang2022detr3d.md
+literature/extracted/189-fang2022cft.md
+literature/extracted/190-campos2021orbslam3.md
+literature/extracted/191-teed2021droidslam.md
+literature/extracted/192-sapkota2025yolo26.md
+literature/extracted/193-robinson2025rfdetr.md
+literature/extracted/194-huang2026ledetr.md
+literature/extracted/195-hu2026riodetr.md
+literature/extracted/196-yi2025gldmnet.md
+literature/extracted/197-gong2025diffpixelformer.md
+literature/extracted/198-lin2025depthanything3.md
+literature/extracted/199-zhang2025metricdepthsurvey.md
+literature/extracted/200-ma2026asyncmde.md
+literature/extracted/201-ganesan2026unidac.md
+literature/extracted/202-du2026focusabledepth.md
+literature/extracted/INDEX.md
+literature/references/SawitMVC-DiB-2026.pdf
+literature/references/deep-research-report.md
+literature/references/revisi-dosen-2026-07-23/CEA_review_conventions_report.md
+literature/references/revisi-dosen-2026-07-23/Chat.txt
+literature/references/revisi-dosen-2026-07-23/review_features.csv
+literature/search-data/openalex-counts.csv
+literature/search-data/raw/known-item-test_2026-07-23.csv
+literature/search-data/raw/openalex_Q1_2026-07-23.csv
+literature/search-data/raw/openalex_Q2_2026-07-23.csv
+literature/search-data/raw/openalex_Q3_2026-07-23.csv
+literature/search-data/raw/openalex_Q4_2026-07-23.csv
+literature/search-data/raw/openalex_Q5_2026-07-23.csv
+literature/search-data/raw/openalex_Q6_2026-07-23.csv
+literature/search-data/raw/openalex_Q7_2026-07-23.csv
+literature/search/CEK-SAYA.md
+literature/search/PROTOCOL.md
+literature/search/derived/abstract-screening-2026-08-10.csv
+literature/search/derived/abstract-screening-summary-2026-08-10.csv
+literature/search/derived/dedup-audit-2026-08-09.csv
+literature/search/derived/dedup-resolution-2026-08-09.csv
+literature/search/derived/dedup-resolution-review-2026-08-09.csv
+literature/search/derived/dedup-resolution-review-2026-08-09.html
+literature/search/derived/dedup-resolution-review-2026-08-09.md
+literature/search/derived/fulltext-review-ledger-2026-08-10.csv
+literature/search/derived/local-fulltext-audit-2026-08-10.csv
+literature/search/derived/local-fulltext-summary-2026-08-10.csv
+literature/search/derived/manual-dedup-review-2026-08-09.csv
+literature/search/derived/manual-dedup-review-resolved-2026-08-09.csv
+literature/search/derived/master-screening-2026-08-09.csv
+literature/search/derived/master-screening-exact-key-2026-08-09.csv
+literature/search/derived/master-screening-pre-abstract-2026-08-10.csv
+literature/search/derived/master-screening-pre-title-2026-08-09.csv
+literature/search/derived/master-screening-resolved-2026-08-09.csv
+literature/search/derived/priority-ranking-2026-08-10.csv
+literature/search/derived/priority-review-wave1-2026-08-10.csv
+literature/search/derived/priority-selection-method-2026-08-10.md
+literature/search/derived/priority-selection-summary-2026-08-10.csv
+literature/search/derived/priority-shortlist-2026-08-10.csv
+literature/search/derived/priority-shortlist-2026-08-10.html
+literature/search/derived/title-screening-2026-08-09.csv
+literature/search/derived/title-screening-summary-2026-08-09.csv
+literature/search/fulltext/00001_m-3f8f02033fe9db3a_applegrowthvision-a-large-scale-stereo-dataset-for-phenological-analysis-fruit-detection-a.pdf
+literature/search/fulltext/00002_r-0eda6374aaf85fae_horticultural-temporal-fruit-monitoring-via-3d-instance-segmentation-and-re-identification.pdf
+literature/search/fulltext/00004_r-143d70deec8d2b1d_image-segmentation-for-fruit-detection-and-yield-estimation-in-apple-orchards.pdf
+literature/search/fulltext/00005_r-408d13511cac4177_image-based-mango-fruit-detection-localisation-and-yield-estimation-using-multiple-view-ge.html
+literature/search/fulltext/00008_m-9966d81433d61ed3_robust-fruit-counting-combining-deep-learning-tracking-and-structure-from-motion.pdf
+literature/search/fulltext/00010_r-97003608b250cdc5_a-rapid-and-non-destructive-technique-in-determining-the-ripeness-of-oil-palm-fresh-fruit-.pdf
+literature/search/fulltext/00013_r-00f82e0f404d691b_monocular-camera-based-fruit-counting-and-mapping-with-semantic-data-association.pdf
+literature/search/fulltext/00015_r-1358c0868a62c84a_a-comparative-study-of-fruit-detection-and-counting-methods-for-yield-mapping-in-apple-orc.pdf
+literature/search/fulltext/00022_r-19d96439ecdda18d_object-detection-algorithms-for-ripeness-classification-of-oil-palm-fresh-fruit-bunch.pdf
+literature/search/fulltext/00025_r-2828a3937318ca86_citrus-green-fruit-detection-via-improved-feature-network-extraction.pdf
+literature/search/fulltext/00027_r-4b3d8d423dbd5d0e_pluggable-weakly-supervised-cross-view-learning-for-accurate-vehicle-re-identification.pdf
+literature/search/fulltext/00028_r-c79d61a639a09929_automatic-flower-cluster-estimation-in-apple-orchards-using-aerial-and-ground-based-point-.pdf
+literature/search/fulltext/00029_r-ee550a3e3a6fb318_deep-learning-based-in-field-citrus-fruit-detection-and-tracking.pdf
+literature/search/fulltext/00031_r-1c81e223679e4bfe_real-time-oil-palm-ripeness-classification-of-fresh-fruit-bunches-using-fluorescence-techn.pdf
+literature/search/fulltext/00033_r-2d972b94554c6cd1_video-based-fruit-detection-and-tracking-for-apple-counting-and-mapping.pdf
+literature/search/fulltext/00034_r-673ecfa1664481fe_counting-of-oil-palm-fresh-fruit-bunches-using-computer-vision.pdf
+literature/search/fulltext/00035_r-700d34dae0f20d78_development-and-evaluation-of-automated-localisation-and-reconstruction-of-all-fruits-on-t.pdf
+literature/search/fulltext/00036_r-9e1316b934e66409_recognition-and-counting-of-apples-in-a-dynamic-state-using-a-3d-camera-and-deep-learning-.pdf
+literature/search/fulltext/00037_r-b58382fe4393d60e_smallholder-oil-palm-plantation-sustainability-assessment-using-multi-criteria-analysis-an.pdf
+literature/search/fulltext/00038_r-d594d85dc382f9ff_fruit-detection-and-counting-in-apple-orchards-based-on-improved-yolov7-and-multi-object-t.pdf
+literature/search/fulltext/00040_r-e05253cccd616801_oil-palm-fresh-fruit-bunch-ripeness-detection-methods-a-systematic-review.pdf
+literature/search/fulltext/00041_r-fd5751e2ca2f7496_citdet-a-benchmark-dataset-for-citrus-fruit-detection.pdf
+literature/search/fulltext/00042_r-1c69e46dac45d45d_ag-yolo-a-rapid-citrus-fruit-detection-algorithm-with-global-context-fusion.pdf
+literature/search/fulltext/00043_r-3e129b7285059b95_field-grown-tomato-yield-estimation-using-point-cloud-segmentation-with-3d-shaping-and-rgb.pdf
+literature/search/fulltext/00044_r-659a7da54b8a43e6_escayard-precision-viticulture-multimodal-dataset-of-vineyards-affected-by-esca-disease-co.pdf
+literature/search/fulltext/00049_r-e8d88a31640ee300_robust-yolo-approach-for-mango-fruit-detection-using-computer-vision.pdf
+literature/search/fulltext/00050_m-66042c905cc191de_fruit-detection-and-yield-mass-estimation-from-a-uav-based-rgb-dense-cloud-for-an-apple-or.pdf
+literature/search/fulltext/00051_m-949f38a7336860d8_dataset-for-orange-fruit-detection-from-uav-in-citrus-orchards.pdf
+literature/search/fulltext/00052_m-dcfc5d3cb912146d_a-low-cost-uav-deep-learning-pipeline-for-integrated-apple-disease-diagnosis-freshness-ass.pdf
+literature/search/fulltext/00054_r-134385f2faed38a6_enhancing-oil-palm-fruit-detection-a-comparative-analysis-of-yolo-algorithms.pdf
+literature/search/fulltext/00055_r-22a356a76569c44a_outdoor-rgb-and-point-cloud-depth-dataset-for-palm-oil-fresh-fruit-bunch-ripeness-classifi.pdf
+literature/search/fulltext/00056_r-4d09eb83eea41b2f_tomato-growth-monitoring-and-phenological-analysis-using-deep-learning-based-instance-segm.pdf
+literature/search/fulltext/00057_r-504a1d386928344f_a-mini-review-on-sensor-and-artificial-intelligence-approaches-for-ripeness-detection-and-.pdf
+literature/search/fulltext/00059_r-722bfce242f37ecb_physical-properties-of-oil-palm-fresh-fruit-bunch-varieties.pdf
+literature/search/fulltext/00087_r-d4270ea8ab11f268_lidar-camera-fusion-for-3d-fruit-counting-and-density-mapping-in-horizontal-trellis-orchar.pdf
+literature/search/fulltext/00412_m-1210e3ea00486b68_fruitnerf-a-unified-neural-radiance-field-based-fruit-counting-framework.pdf
+literature/search/fulltext/01578_r-b2e0e9aabad17a97_phenotypic-trait-acquisition-method-for-tomato-plants-based-on-rgb-d-slam.pdf
+literature/search/prisma-counts-exact-key-2026-08-09.csv
+literature/search/prisma-counts.csv
+literature/search/raw/scopus_Q1_2026-08-09.csv
+literature/search/raw/scopus_Q2_2026-08-09.csv
+literature/search/raw/scopus_Q3_2026-08-09.csv
+literature/search/raw/scopus_Q4_2026-08-09.csv
+literature/search/raw/scopus_Q5_2026-08-09.csv
+literature/search/raw/scopus_Q6_2026-08-09.csv
+literature/search/raw/scopus_Q7_2026-08-09.csv
+literature/search/retrieval-failures/00012_m-084cfd5badbb63d3_unmanned-aerial-vehicle-uav-derived-structure-from-motion-photogrammetry-point-clouds-for-.waf-challenge.html
+literature/search/scopus-counts-2026-08-09.csv
+literature/search/scopus-queries.md
+literature/synthesis.md
+literature/withheld/033 - 2024 - Review YOLOv8 (Sohan dkk.) - Survei YOLO.md
+literature/withheld/034 - 2023 - Object Detection using YOLO (Diwan dkk.) - Survei YOLO.md
+literature/withheld/047 - 2023 - C2DFNet - RGB-D SOD.md
+literature/withheld/048 - 2022 - CCAFNet - RGB-D SOD.md
+literature/withheld/049 - 2023 - Cross-Modal Hierarchical Interaction Network - RGB-D SOD.md
+literature/withheld/059 - 2023 - PGDENet - Segmentasi RGB-D.md
+literature/withheld/105 - 2022 - CMPD (Uncertainty-Guided Cross-Modal) - Pedestrian RGB-T.md
+literature/withheld/106 - 2021 - RGB-D Fusion for Detection (Farahnakian & Heikkonen) - Pedestrian RGB-T.md
+literature/withheld/114 - 2024 - Pumpkin Pick-and-Place Robot (Ito dkk.) - YOLO plus RGB-D.md
+literature/withheld/116 - 2023 - Grasp via YOLO + RGB-D Fusion (Tian dkk.) - YOLO plus RGB-D.md
+literature/withheld/119 - 2023 - Distance Measurement via YOLO + Depth (Chen dkk.) - YOLO plus RGB-D.md
+literature/withheld/120 - 2019 - MangoYOLO - Pertanian.md
+literature/withheld/121 - 2019 - Apple Detection (Improved YOLOv3) - Pertanian.md
+literature/withheld/122 - 2020 - Apple Flower Detection (Pruned YOLOv4) - Pertanian.md
+literature/withheld/123 - 2020 - Apple Detection RGB+Depth (Faster R-CNN) - Pertanian.md
+literature/withheld/131 - 2022 - Breast Tumor Detection (Modified YOLOv5) - Medis.md
+literature/withheld/132 - 2023 - YOLO untuk Deteksi Polip (Wan dkk.) - Medis.md
+literature/withheld/135 - 2021 - Review Defect Detection (Bhatt dkk.) - Industri.md
+literature/withheld/138 - 2019 - Robust CNN High-Res Remote Sensing (Zhang dkk.) - Remote Sensing.md
+literature/withheld/152 - 2017 - Deep Multimodal Learning A Survey (Ramachandram & Taylor) - Fusi Multimodal.md
+manuscript/README.md
+manuscript/figures/C01-distribusi-tahun-gpt-image-2.png
+manuscript/figures/C01-distribusi-tahun.md
+manuscript/figures/C02-distribusi-tema-gpt-image-2.png
+manuscript/figures/C02-distribusi-tema.md
+manuscript/figures/F01-taksonomi-gpt-image-2-en.jpg
+manuscript/figures/F01-taksonomi.md
+manuscript/figures/F02-timeline-yolo-gpt-image-2-en.jpg
+manuscript/figures/F02-timeline-yolo.md
+manuscript/figures/F03-silsilah-rgb-gpt-image-2-en.jpg
+manuscript/figures/F03-silsilah-rgb.md
+manuscript/figures/F04-strategi-fusi-gpt-image-2-en.jpg
+manuscript/figures/F04-strategi-fusi.md
+manuscript/figures/F05-pola-yolorgbd-gpt-image-2-en.jpg
+manuscript/figures/F05-pola-yolorgbd.md
+manuscript/figures/F06-atensi-lintasmodal-gpt-image-2-en.jpg
+manuscript/figures/F06-atensi-lintasmodal.md
+manuscript/figures/F07-funnel-sawit-gpt-image-2-en.jpg
+manuscript/figures/F07-funnel-sawit.md
+manuscript/figures/F08-pipeline-sawit-gpt-image-2-en.jpg
+manuscript/figures/F08-pipeline-sawit.md
+manuscript/figures/H01-why-rgbd-ffb-perception-gpt-image-2-en.png
+manuscript/figures/H02-idea-to-testable-rgbd-hypotheses-gpt-image-2-en.png
+manuscript/figures/H03-research-story-phases-gpt-image-2-en.png
+manuscript/figures/H04-error-attribution-rgbd-failure-gpt-image-2-en.png
+manuscript/figures/H05-detector-architecture-comparison-gpt-image-2-en.png
+manuscript/figures/H06-physical-depth-replication-gpt-image-2-en.png
+manuscript/figures/H07-fusion-variants-experimental-tests-gpt-image-2-en.png
+manuscript/figures/H08-rgb-diagnostic-phase-e001-e008-gpt-image-2-en.png
+manuscript/figures/H09-rgb-bottleneck-e009-e012-gpt-image-2-en.png
+manuscript/figures/H10-pipeline-to-final-rgb-e013-e021-gpt-image-2-en.png
+manuscript/figures/N01-rgb-history-gpt-image-2.png
+manuscript/figures/N02-rgbd-hypothesis-gpt-image-2.png
+manuscript/figures/N03-causal-spine-gpt-image-2.png
+manuscript/figures/N04-rgb-diagnostic-funnel-gpt-image-2.png
+manuscript/figures/N05-physical-depth-audit-gpt-image-2.png
+manuscript/figures/N06-replication-fusion-gpt-image-2.png
+manuscript/figures/N07-evidence-boundary-gpt-image-2.png
+manuscript/figures/N08-measurement-before-modeling-gpt-image-2.png
+manuscript/figures/N09-tree-geometry-to-bunch-identity-gpt-image-2.png
+manuscript/figures/N10-fourth-channel-engineering-contract-gpt-image-2.png
+manuscript/figures/N11-rgb-model-triage-gpt-image-2.png
+manuscript/figures/N12-physical-depth-audit-gpt-image-2.png
+manuscript/figures/N13-one-evaluator-one-denominator-gpt-image-2.png
+manuscript/figures/N14-replication-replaces-seed-gpt-image-2.png
+manuscript/figures/N15-fusion-hypotheses-gpt-image-2.png
+manuscript/figures/N16-defect-or-limitation-gpt-image-2.png
+manuscript/figures/N17-field-inventory-gpt-image-2.png
+manuscript/figures/N18-complete-research-story-gpt-image-2.png
+manuscript/figures/N19-provenance-before-identity-gpt-image-2.png
+manuscript/figures/N20-geometry-transfer-bunch-identity-gpt-image-2.png
+manuscript/figures/N21-rgb-bottleneck-chain-gpt-image-2.png
+manuscript/figures/N22-detection-vs-maturity-gpt-image-2.png
+manuscript/figures/N23-mapping-to-rgb-baseline-gpt-image-2.png
+manuscript/figures/N24-rgb-detector-directions-gpt-image-2.png
+manuscript/figures/N25-physical-depth-audit-alias-fusion-gpt-image-2.png
+manuscript/figures/N26-identity-one-denominator-gpt-image-2.png
+manuscript/figures/N27-capacity-replication-gpt-image-2.png
+manuscript/figures/N28-split-seed-paired-delta-gpt-image-2.png
+manuscript/figures/N29-claim-boundary-gpt-image-2.png
+manuscript/figures/R01-complete-research-roadmap-gpt-image-2-en.png
+manuscript/figures/R02-physical-depth-audit-gpt-image-2-en.png
+manuscript/figures/R03-e021-model-comparison.png
+manuscript/figures/R04-e027-multiseed-deltas.png
+manuscript/figures/R05-e032-fusion-contrasts.png
+manuscript/figures/R06-e014-bottleneck.png
+manuscript/figures/R07-rgbd-experiment-architecture-gpt-image-2-en.png
+manuscript/figures/R08-three-fusion-implementation-gpt-image-2-id.png
+manuscript/figures/THEME.md
+manuscript/figures/fig-corpus-theme-gpt-image-2-en.png
+manuscript/figures/fig-corpus-theme.pdf
+manuscript/figures/fig-corpus-theme.png
+manuscript/figures/fig-corpus-year.pdf
+manuscript/figures/fig-corpus-year.png
+manuscript/figures/panduan-generate-gambar.md
+manuscript/guides/PANDUAN-PENULISAN.md
+manuscript/guides/PLAN-SITUS.md
+manuscript/guides/PLAN-TINJAUAN-PUSTAKA.md
+manuscript/guides/REFRAME-DECISIONS.md
+manuscript/guides/figure-english-labels.md
+manuscript/output/papers/evidence-body-preview.pdf
+manuscript/output/papers/main-elsarticle.pdf
+manuscript/output/papers/main.pdf
+manuscript/output/papers/main5.pdf
+manuscript/output/papers/main5v2.pdf
+manuscript/output/papers/manuscript-20260803/main-elsarticle.pdf
+manuscript/output/papers/manuscript-20260803/main.pdf
+manuscript/output/papers/manuscript-20260803/reports-gpt-image2-en-20260803-v2.pdf
+manuscript/output/papers/manuscript-20260803/reports-gpt-image2-en-20260803.pdf
+manuscript/output/papers/manuscript-20260803/reports.pdf
+manuscript/output/papers/reports-simple-id.pdf
+manuscript/output/papers/reports-simple.pdf
+manuscript/output/papers/reports.pdf
+manuscript/output/papers/revision-main/CEA_review_conventions_report.md
+manuscript/output/papers/revision-main/Chat.txt
+manuscript/output/papers/revision-main/review_features.csv
+manuscript/output/presentation/main-elsarticle-evidence-map-full-en-final.pptx
+manuscript/output/presentation/main-elsarticle-evidence-map-full-en-final.pptx.inspect.ndjson
+manuscript/output/presentation/reports-presentation-full-en-final.pptx
+manuscript/output/presentation/reports-presentation-full-en-final.pptx.inspect.ndjson
+manuscript/output/presentation/reports-simple-id.pptx
+manuscript/reports/reports-simple-id.tex
+manuscript/reports/reports-simple.tex
+manuscript/reports/reports.tex
+manuscript/source/RINGKASAN-MAIN5V2.md
+manuscript/source/appendix-synthesis.tex
+manuscript/source/evidence-body.tex
+manuscript/source/experiment-ledgers.tex
+manuscript/source/main-elsarticle.tex
+manuscript/source/main-elsarticle3.tex
+manuscript/source/main.tex
+manuscript/source/main2-body.tex
+manuscript/source/main2.tex
+manuscript/source/main3-body.tex
+manuscript/source/main3.tex
+manuscript/source/main4-body.tex
+manuscript/source/main4.tex
+manuscript/source/main5-body.tex
+manuscript/source/main5.tex
+manuscript/source/main5v2-body.tex
+manuscript/source/main5v2.tex
+manuscript/source/references.bib
+manuscript/source/references3.bib
+pipeline/README.md
+pipeline/fourch.py
+pipeline/infer_4ch.py
+pipeline/prepare_depth.py
+pipeline/train_4ch.py
+site/README.md
+site/build.js
+site/vendor/marked.min.js
+tools/README.md
+tools/audit_local_fulltext.py
+tools/build_abstract_screening.py
+tools/build_dedup_review_report.py
+tools/build_evidence_matrix.py
+tools/build_literature_priority_shortlist.py
+tools/build_literature_screening_master.py
+tools/build_main3_manuscript.py
+tools/build_synthesis_table.py
+tools/build_title_screening.py
+tools/initialize_fulltext_review_ledger.py
+tools/openalex_search.py
+tools/presentation/README.md
+tools/presentation/build_charts.py
+tools/presentation/build_deck.py
+tools/presentation/build_panel.py
+tools/presentation/chart_rgb.py
+tools/presentation/verify_deck.py
+tools/resolve_literature_dedup.py
+tools/retrieve_fulltext_candidate.py
+tools/update_fulltext_review.py
+
+## File counts by extension
+.bib 2
+.csv 108
+.gitignore 1
+.html 5
+.jpg 8
+.js 2
+.json 133
+.md 472
+.ndjson 2
+.npz 5
+.pdf 52
+.png 67
+.pptx 3
+.py 93
+.sh 28
+.sha256 54
+.tex 22
+.txt 73
+.yaml 69
+.yml 1
+
+## Root entries
+.gitignore
+CLAUDE.md
+README.md
+_config.yml
+audit
+datasets
+docs-readme-old.md
+experiments
+index.html
+legacy
+literature
+manuscript
+pipeline
+site
+tools

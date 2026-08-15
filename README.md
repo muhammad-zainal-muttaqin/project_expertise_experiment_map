@@ -19,6 +19,19 @@ Atlas menggabungkan katalog eksperimen aktif dan arsip historis dari empat repos
 
 Dataset utama yang ditampilkan adalah **SawitMVC 953** dan **SawitMVC-Depth 352**. Katalog mencakup hasil yang didukung, negatif, belum konklusif, dan audit/batas inferensi.
 
+## Dossier Audit Empat Repositori
+
+Selain atlas interaktif, empat dossier Markdown menyediakan pembacaan tekstual yang lebih panjang. Masing-masing dossier memakai commit sumber yang sama dengan node atlas, merangkum pertanyaan, eksperimen, metrik, keputusan, hasil negatif, dan batas interpretasi. Lampiran yang digenerasi otomatis memberi tautan inspeksi untuk dokumen, JSON/CSV/NPZ, kode, konfigurasi, serta direktori bervolume tinggi pada pohon Git yang dipasangi pin.
+
+| Repositori | Dossier teks | Commit audit | Cakupan khusus |
+|---|---|---|---|
+| `project-expertise` | [Buka dossier](docs/REPOSITORY-AUDIT-PROJECT-EXPERTISE.md) | [`225faaeb`](https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/225faaeb) | Volume 2, depth sensor, dua tahap, monocular depth, dan audit validitas. |
+| `Research-Pipeline` | [Buka dossier](docs/REPOSITORY-AUDIT-RESEARCH-PIPELINE.md) | [`4aa9ad6`](https://github.com/muhammad-zainal-muttaqin/Research-Pipeline/tree/4aa9ad6) | Literatur, register seri E/F, benchmark RGB final, serta audit RGB-D. |
+| `Baseline-SawitMVC` | [Buka dossier](docs/REPOSITORY-AUDIT-BASELINE-SAWITMVC.md) | [`ee2f0ac`](https://github.com/ULM-SawitMVC/Baseline-SawitMVC/tree/ee2f0ac) | Baseline deteksi→counting, oracle GT, dan matriks counter. |
+| `research-method-dedup` | [Buka dossier](docs/REPOSITORY-AUDIT-RESEARCH-METHOD-DEDUP.md) | [`a720f17`](https://github.com/muhammad-zainal-muttaqin/research-method-dedup/tree/a720f17) | Deduplikasi, audit GT, oracle counting, dan eksperimen E2E historis. |
+
+> **Cara memakai dossier:** gunakan ringkasan di bagian utama untuk orientasi, lalu buka artefak pada Lampiran A ketika ingin memeriksa angka, konfigurasi, log, atau path sumber tertentu. Direktori yang berisi ribuan hasil otomatis dikelompokkan dalam satu tautan pohon commit agar teks tetap dapat dibaca tanpa menyembunyikan sumbernya.
+
 ## Fitur Utama
 
 | Fitur | Cara penggunaan | Manfaat pembacaan |
@@ -120,6 +133,7 @@ client/
   deploy-pages.yml              # Validasi dan deploy GitHub Pages
 scripts/
   audit_artifacts.py            # Audit path raw GitHub pada commit tersemat
+  build_repo_dossier_catalogs.py # Pembuat lampiran tautan artefak empat dossier
 research_notes/
   artifact_audit_report.json    # Laporan audit artefak yang dapat ditinjau
 ```
@@ -129,6 +143,8 @@ research_notes/
 Tambahkan atau perbarui node di `client/src/lib/experimentData.ts`. Arsip dari repositori terdahulu berada di `client/src/lib/historicalExperiments.ts`. Gunakan kontrak data yang sama supaya peta, filter, lembar bukti, minimap, dan ekspor PNG dapat membaca node baru tanpa jalur khusus.
 
 Untuk prosedur lengkap—termasuk contoh node siap salin, pengaturan lineage, posisi peta, pembaruan dataset, penghapusan node, dan checklist publikasi—lihat **[Panduan Pemeliharaan Atlas](docs/MAINTENANCE.md)**.
+
+Keempat dossier repository berada di `docs/REPOSITORY-AUDIT-*.md`. Mereka adalah lapisan pembacaan/audit, bukan sumber data yang dipakai langsung aplikasi; perubahan simpulan atlas tetap harus dilakukan pada katalog TypeScript, lalu diselaraskan secara sadar di dossier terkait.
 
 | Bidang | Kegunaan |
 |---|---|

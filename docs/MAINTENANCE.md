@@ -15,6 +15,7 @@ Dokumen ini menjelaskan **di mana** informasi atlas disimpan, **bagaimana** mena
 | Menambah dataset baru | `client/src/lib/experimentData.ts` | `Home.tsx`, `atlasLayout.ts` | Perbarui tipe, metadata, root peta, dan kartu panel kiri bila perlu. |
 | Mengubah narasi lembar bukti | `client/src/components/ExperimentDetail.tsx` | `experimentData.ts` | Sebagian besar isi berasal dari `conclusion`, `findings`, dan `metrics`. |
 | Mengaudit artefak dan status file | `scripts/audit_artifacts.py` | `research_notes/artifact_audit_report.json`, `client/src/lib/artifactManifest.json` | Audit HTTP pada commit tersemat; manifest kedua dipakai oleh panel bukti. |
+| Memperbarui dossier audit repositori | `docs/REPOSITORY-AUDIT-*.md` | `scripts/build_repo_dossier_catalogs.py`, `research_notes/repo_inventory/` | Sintesis ditulis manual; lampiran tautan digenerasi dari pohon Git pada commit tersemat. |
 | Mengubah navigasi peta/tooltip/minimap | `client/src/components/ExperimentGraph.tsx` | `navigation.css` | Jangan mengubah routing edge tanpa memeriksa mode fokus dan fullscreen. |
 | Mengubah tema atau layout tiga-rail | `client/src/index.css` | `atlasEnhancements.css`, `themeReaderFix.css` | Uji terang, gelap, desktop, dan ponsel. |
 | Mengubah deploy | `.github/workflows/deploy-pages.yml` | `vite.config.ts` | Base path Pages berada pada konfigurasi Vite. |
@@ -181,6 +182,25 @@ cp research_notes/artifact_audit_report.json client/src/lib/artifactManifest.jso
 | `needs-audit` | Respons jaringan selain 200/404 atau kegagalan koneksi. | Jalankan ulang audit dan jangan menganggap file tersedia. |
 
 > Status **terverifikasi** hanya menyatakan bahwa berkas dapat diakses pada commit tersebut. Status itu tidak memverifikasi isi berkas, evaluator, atau kekuatan klaim ilmiahnya.
+
+### 5.2 Memperbarui dossier empat repositori
+
+Dossier di `docs/REPOSITORY-AUDIT-*.md` adalah pembacaan panjang untuk membandingkan atlas dengan empat repositori sumber. Bagian sebelum penanda `<!-- AUTO_CATALOG_START -->` adalah **sintesis editorial**: perbarui hanya setelah memeriksa register eksperimen, laporan, JSON/CSV, dan audit primer. Jangan mengganti hasil negatif, audit, atau catatan GT-fix dengan ringkasan “terbaik” semata.
+
+Lampiran A setiap dossier dibuat ulang dari pohon Git pada commit yang tertulis di identitas dokumen. Skrip sengaja mengelompokkan direktori bervolume tinggi—misalnya arsip run, prediksi per instance, atau payload anotasi—sebagai tautan ke pohon commit. Pengelompokan ini menjaga akses inspeksi lengkap tanpa menghasilkan puluhan ribu baris tautan individual.
+
+```bash
+python3 scripts/build_repo_dossier_catalogs.py
+```
+
+| Bila berubah | Tindakan aman |
+|---|---|
+| Commit sumber di atlas | Perbarui commit pada dossier dan konfigurasi `REPOSITORIES` dalam generator; pastikan checkout lokal ada pada commit tersebut; lalu jalankan generator. |
+| Hasil/metrik pada sumber | Baca kembali artefak primer, perbarui sintesis dan referensi dossier; kemudian sinkronkan node atlas bila simpulan memang berubah. |
+| Struktur file sumber | Jalankan generator agar Lampiran A mengikuti pohon terbaru yang disematkan. |
+| Banyak file baru dalam satu direktori | Pertahankan pengelompokan jika direktori melewati batas katalog; tambahkan tautan langsung ke artefak prioritas pada bagian “Artefak Inspeksi Prioritas”. |
+
+> Dossier tidak menggantikan laporan hasil primer. Jika ada perbedaan, JSON/CSV/log pada commit tersemat adalah rujukan untuk angka; register atau audit terbaru pada commit yang sama adalah rujukan untuk status dan batas interpretasi.
 
 ## 6. Menambah atau Mengubah Dataset
 

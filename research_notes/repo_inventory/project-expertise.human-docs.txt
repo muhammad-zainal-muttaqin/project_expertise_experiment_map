@@ -1,0 +1,16 @@
+CLAUDE.md
+README.md
+docs/CATATAN-TEKNIS-FASE1.md
+docs/DATASET.md
+docs/DIAGNOSIS-DEPTH.md
+docs/LAPORAN-AKHIR.md
+docs/REGENERASI.md
+docs/REKAP.md
+docs/RENCANA.md
+docs/REPRODUKSI-FASE6.md
+docs/SCHEMA-PERTREE.md
+experiments/EKSPERIMEN.md
+experiments/STATUS.md
+requirements-freeze.txt
+splits_fase6/pretrain953_images.txt
+splits_fase6/pretrain953_trees.txt

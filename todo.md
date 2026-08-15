@@ -153,3 +153,13 @@
 - [x] Tambahkan ringkasan status verifikasi artefak dan tindakan Raw/Unduh ke README.
 - [x] Tambahkan perintah audit Python serta tautan ke panduan pemeliharaan rinci.
 - [x] Tinjau, simpan checkpoint, dan sampaikan pembaruan dokumentasi.
+
+## Dossier Audit Empat Repositori
+
+- [x] Inventarisasi isi, struktur, riwayat, eksperimen, dan artefak primer pada empat commit sumber.
+- [x] Tulis dossier lengkap `project-expertise` dengan metrik, keputusan, batas, dan tautan artefak inspeksi.
+- [x] Tulis dossier lengkap `Research-Pipeline` dengan riwayat eksperimen dan dokumen sumber.
+- [x] Tulis dossier lengkap `Baseline-SawitMVC` dengan baseline, konfigurasi, dan bukti evaluasi.
+- [x] Tulis dossier lengkap `research-method-dedup` dengan metode deduplikasi, oracle, dan pembuktian terkait.
+- [x] Selaraskan indeks, tautan inspeksi, dan klaim dossier dengan atlas serta validasi Markdown.
+- [x] Simpan checkpoint dan sampaikan empat dossier audit.
