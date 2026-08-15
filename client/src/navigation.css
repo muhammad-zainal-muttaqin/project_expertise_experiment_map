@@ -19,3 +19,10 @@
 .graph-shell:fullscreen .graph-topbar { min-height:42px; }
 .graph-shell:fullscreen .graph-controls button { width:31px; height:31px; }
 @media (max-width:720px) { .graph-topbar { align-items:flex-start; }.graph-topbar .graph-note { min-height:48px; padding:8px 10px; font-size:9px; }.graph-note kbd { display:none; }.graph-controls { gap:0; margin:5px 4px 0 0; padding-left:4px; }.graph-controls button { width:24px; height:25px; }.graph-controls output { display:none; }.graph-shell:fullscreen .graph-scroll { height:calc(100vh - 58px); } }
+
+/* Semantic swimlanes: rows preserve the research question and reduce cross-map traffic. */
+.canvas-lane { position:absolute; z-index:0; right:18px; left:18px; border-top:1px solid rgba(223,225,181,.16); border-bottom:1px solid rgba(223,225,181,.09); background:linear-gradient(90deg,rgba(255,248,213,.035),transparent 42%); pointer-events:none; }
+.canvas-lane strong { position:absolute; top:12px; left:226px; color:rgba(236,231,191,.66); font-size:10px; font-weight:700; letter-spacing:.14em; }
+.canvas-lane span { position:absolute; top:27px; left:226px; color:rgba(167,195,166,.65); font-size:9px; letter-spacing:.03em; }
+.canvas-lane-depth { background:linear-gradient(90deg,rgba(140,198,211,.06),transparent 42%); }.canvas-lane-audit { background:linear-gradient(90deg,rgba(232,200,120,.06),transparent 42%); }.canvas-lane-archive { background:linear-gradient(90deg,rgba(230,222,181,.035),transparent 42%); }
+.lineage-path { opacity:.29; }.lineage-path.is-active { opacity:1; }.lineage-path.is-archive-bridge { stroke-dasharray:2 10; opacity:.2; }.lineage-path.is-archive-bridge.is-active { opacity:.72; }

@@ -4,6 +4,7 @@ import { Check, CircleAlert, CircleX, ShieldAlert } from "lucide-react";
 
 interface ExperimentNodeProps {
   experiment: Experiment;
+  position?: { x: number; y: number };
   selected: boolean;
   dimmed: boolean;
   lineageActive: boolean;
@@ -17,7 +18,7 @@ const statusIcons = {
   audit_needed: ShieldAlert,
 };
 
-export function ExperimentNode({ experiment, selected, dimmed, lineageActive, onSelect }: ExperimentNodeProps) {
+export function ExperimentNode({ experiment, position = experiment.position, selected, dimmed, lineageActive, onSelect }: ExperimentNodeProps) {
   const status = statusInfo[experiment.status];
   const Icon = statusIcons[experiment.status];
 
@@ -26,7 +27,7 @@ export function ExperimentNode({ experiment, selected, dimmed, lineageActive, on
       type="button"
       onClick={() => onSelect(experiment.id)}
       className={`experiment-node ${selected ? "is-selected" : ""} ${dimmed ? "is-dimmed" : ""} ${lineageActive ? "is-lineage" : ""}`}
-      style={{ left: experiment.position.x, top: experiment.position.y }}
+      style={{ left: position.x, top: position.y }}
       aria-pressed={selected}
       aria-label={`Buka bukti ${experiment.id}: ${experiment.title}`}
     >

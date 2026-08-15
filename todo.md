@@ -16,3 +16,11 @@
 - [x] Tambahkan mode layar penuh khusus peta beserta cara keluar yang jelas.
 - [x] Verifikasi peta dapat dinavigasi pada desktop dan layar kecil.
 - [ ] Simpan checkpoint navigasi peta dan sampaikan hasil.
+
+## Tata Letak dan Lineage
+
+- [x] Audit node berderajat tinggi, edge panjang, persilangan, dan klaster yang terlalu padat.
+- [x] Kelompokkan eksperimen ke jalur pertanyaan riset dan era yang lebih jelas.
+- [x] Terapkan posisi bertingkat serta routing ortogonal/berkoridor untuk mengurangi garis silang.
+- [x] Verifikasi peta pada desktop dan ponsel.
+- [ ] Simpan checkpoint tata letak baru dan sampaikan hasil.
