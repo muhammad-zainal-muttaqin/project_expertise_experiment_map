@@ -126,3 +126,10 @@
 - [x] Tambahkan panduan langkah demi langkah untuk menambah, mengubah, menghapus, dan mengaudit eksperimen.
 - [x] Sertakan contoh node, aturan lineage, checklist validasi, serta alur publikasi GitHub Pages.
 - [x] Validasi contoh panduan terhadap tipe dan skrip proyek.
+
+## Pengayaan Cerita Panel Bukti
+
+- [x] Inventarisasi dokumen primer, register eksperimen, hasil, dan commit dari project-expertise, Research-Pipeline, Baseline-SawitMVC, serta research-method-dedup.
+- [x] Rekonstruksi tujuan, kerja konkret, output/bukti, dampak, dan batas untuk node aktif maupun arsip.
+- [x] Rancang kontrak narasi panel kanan yang membedakan eksperimen, inventaris, audit, dan sintesis.
+- [x] Terapkan cerita sumber pada katalog eksperimen dan verifikasi keterbacaannya di panel normal serta fullscreen.

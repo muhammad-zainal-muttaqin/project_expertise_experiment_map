@@ -1,35 +1,15 @@
 /** Field Research Ledger evidence sheet — detailed proof record for the selected completed experiment. */
 import { datasetInfo, statusInfo, type Experiment } from "@/lib/experimentData";
+import { getEvidenceNarrative } from "@/lib/evidenceNarratives";
 import { ArrowUpRight, CalendarDays, Database, ExternalLink, GitBranch, Hash, Microscope, ScanSearch } from "lucide-react";
 
 interface ExperimentDetailProps {
   experiment: Experiment;
 }
 
-function makeReaderSummary(experiment: Experiment) {
-  const dataset = datasetInfo[experiment.dataset].short;
-  const inputs = experiment.inputs.length ? experiment.inputs.join(" + ") : "data yang tersedia";
-  const referenceMetric = experiment.metrics[0];
-  const statusMeaning: Record<Experiment["status"], string> = {
-    supported: "Temuan ini memberi alasan untuk melanjutkan pendekatan tersebut, tetapi tetap perlu dibaca bersama metrik dan batas evaluasinya.",
-    negative: "Jalur ini belum mengalahkan pembanding yang ada. Itu tetap berguna karena membantu menghindari percobaan lanjutan yang kemungkinan tidak efisien.",
-    inconclusive: "Arahnya belum cukup jelas untuk mengambil keputusan besar. Perlu data, pengulangan, atau evaluasi tambahan sebelum menyebutnya sebagai peningkatan.",
-    audit_needed: "Node ini terutama dipakai untuk memeriksa mutu bukti. Hasilnya membantu menentukan seberapa jauh klaim eksperimen lain boleh dipercaya.",
-  };
-
-  return {
-    tried: `Percobaan ini memakai ${experiment.model} pada ${dataset} dengan masukan ${inputs}. Tujuannya adalah menguji apakah pilihan tersebut memberi hasil yang lebih baik dibanding jalur riset yang sudah ada.`,
-    result: referenceMetric
-      ? `Angka rujukan yang paling mudah dibaca adalah ${referenceMetric.label}: ${referenceMetric.value}${referenceMetric.note ? ` (${referenceMetric.note})` : ""}. ${experiment.conclusion}`
-      : experiment.conclusion,
-    meaning: statusMeaning[experiment.status],
-    caution: `Batas yang perlu diingat: ${experiment.findings}`,
-  };
-}
-
 export function ExperimentDetail({ experiment }: ExperimentDetailProps) {
   const status = statusInfo[experiment.status];
-  const summary = makeReaderSummary(experiment);
+  const narrative = getEvidenceNarrative(experiment);
   const sourceUrl = experiment.source?.url ?? "https://github.com/muhammad-zainal-muttaqin/project-expertise";
   const sourceLabel = experiment.source ? `${experiment.source.repo} · ${experiment.source.commit}` : "project-expertise · 225faaeb";
   return (
@@ -45,12 +25,12 @@ export function ExperimentDetail({ experiment }: ExperimentDetailProps) {
         <div><ScanSearch size={14} /><span>Pengulangan uji</span><strong>{experiment.seeds}</strong></div>
       </div>
       <section className="sheet-section reader-summary">
-        <div className="section-title"><span>Mulai dari sini</span><small>ringkasan untuk pembaca baru</small></div>
+        <div className="section-title"><span>Cerita kerja</span><small>{narrative.kind}</small></div>
         <div className="reader-summary-grid">
-          <article><span>Apa yang dicoba?</span><p>{summary.tried}</p></article>
-          <article><span>Apa hasilnya?</span><p>{summary.result}</p></article>
-          <article><span>Mengapa ini penting?</span><p>{summary.meaning}</p></article>
-          <article><span>Apa batasnya?</span><p>{summary.caution}</p></article>
+          <article><span>Yang dikerjakan</span><p>{narrative.work}</p></article>
+          <article><span>Bukti yang ditemukan</span><p>{narrative.evidence}</p></article>
+          <article><span>Keputusan setelahnya</span><p>{narrative.impact}</p></article>
+          <article><span>Batas pembacaan</span><p>{narrative.caution}</p></article>
         </div>
       </section>
       <section className="sheet-section">
