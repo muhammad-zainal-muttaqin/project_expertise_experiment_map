@@ -107,3 +107,9 @@
 - [x] Audit perhitungan titik tooltip saat ini terhadap koordinat hover dan zoom peta.
 - [x] Tempatkan tooltip di dekat pointer/segmen edge yang sedang di-hover dengan batas aman layar.
 - [x] Verifikasi tooltip pada zoom serta mode layar penuh.
+
+## Panel Kiri Dapat Disembunyikan
+
+- [x] Audit struktur tiga-rail dan breakpoint yang mengatur panel kiri.
+- [x] Tambahkan kontrol sembunyikan/tampilkan panel kiri dengan status yang jelas.
+- [x] Verifikasi peta melebar, panel dapat dipulihkan, dan tampilan ponsel tetap aman.

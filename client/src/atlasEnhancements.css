@@ -1,5 +1,5 @@
 /* Field Research Ledger enhancements — dense evidence controls on paper-led surfaces with an optional daylight reading mode. */
-.atlas-header-actions { position:absolute;z-index:3;top:16px;right:17px; }
+.atlas-header-actions { position:absolute;z-index:3;top:16px;right:17px;display:flex;align-items:center;gap:6px; }
 .atlas-header-actions button { display:flex;align-items:center;gap:7px;padding:7px 9px;border:1px solid rgba(225,228,175,.34);background:rgba(7,31,22,.36);color:#f7f0cd;font:600 10px/1 "IBM Plex Sans",sans-serif;letter-spacing:.05em;text-transform:uppercase;backdrop-filter:blur(8px);transition:background .16s cubic-bezier(.23,1,.32,1),transform .16s cubic-bezier(.23,1,.32,1); }
 .atlas-header-actions button:hover { background:rgba(232,224,171,.15);transform:translateY(-1px); }
 .filter-bar--enhanced { display:grid;grid-template-columns:auto minmax(165px,1.5fr) repeat(2,minmax(104px,1fr));align-items:end; }
