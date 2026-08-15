@@ -49,4 +49,13 @@
 - [x] Tambahkan toggle tema gelap dan terang yang mempertahankan material Field Research Ledger.
 - [x] Tambahkan ekspor tampilan kanvas peta saat ini sebagai PNG beresolusi tinggi.
 - [x] Validasi skill dan uji fitur baru pada desktop serta ponsel.
-- [ ] Simpan checkpoint fitur eksplorasi dan sampaikan hasil.
+- [x] Simpan checkpoint fitur eksplorasi dan sampaikan hasil.
+
+## Tema dan Penjelasan Awam
+
+- [x] Audit kelas tema dan token CSS yang mencegah tampilan gelap diterapkan secara menyeluruh.
+- [x] Perbaiki toggle tema dan pastikan preferensi tersimpan secara konsisten.
+- [x] Tambahkan ringkasan awam: apa yang dicoba, hasilnya, maknanya, dan batasannya pada lembar detail.
+- [x] Sederhanakan label serta istilah teknis di panel detail tanpa menghapus metrik sumber.
+- [x] Uji tema dan keterbacaan panel detail pada desktop serta ponsel.
+- [ ] Simpan checkpoint perbaikan pengalaman baca dan sampaikan hasil.
