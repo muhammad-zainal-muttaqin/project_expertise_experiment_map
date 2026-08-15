@@ -1,0 +1,1440 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-15T15:28:33.978762+00:00",
+  "auditMethod": "HTTPS HEAD (fallback GET) ke raw.githubusercontent.com pada commit tersemat",
+  "summary": {
+    "verified": 78,
+    "unavailable": 5,
+    "needs-path": 6,
+    "commit-reference": 1,
+    "needs-audit": 0
+  },
+  "records": [
+    {
+      "id": "V2-E-001",
+      "artifact": "results/perkelas_pycoco_v2repro.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/perkelas_pycoco_v2repro.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/perkelas_pycoco_v2repro.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/perkelas_pycoco_v2repro.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-001",
+      "artifact": "models/yolo26l_e60_i1280_v2repro/best.pt",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "models/yolo26l_e60_i1280_v2repro/best.pt",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/models/yolo26l_e60_i1280_v2repro/best.pt",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/models/yolo26l_e60_i1280_v2repro/best.pt",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-002",
+      "artifact": "results/counting_v2repro.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/counting_v2repro.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/counting_v2repro.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/counting_v2repro.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-003",
+      "artifact": "results/perkelas_pycoco_rgb352.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/perkelas_pycoco_rgb352.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/perkelas_pycoco_rgb352.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/perkelas_pycoco_rgb352.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-004",
+      "artifact": "results/counting_rgb352.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/counting_rgb352.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/counting_rgb352.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/counting_rgb352.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-005",
+      "artifact": "results/perkelas_pycoco_rgbd352.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/perkelas_pycoco_rgbd352.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/perkelas_pycoco_rgbd352.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/perkelas_pycoco_rgbd352.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-006",
+      "artifact": "results/counting_rgbd352.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/counting_rgbd352.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/counting_rgbd352.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/counting_rgbd352.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-006",
+      "artifact": "results/bootstrap_ci_352.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/bootstrap_ci_352.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/bootstrap_ci_352.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/bootstrap_ci_352.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-007",
+      "artifact": "results/matrix_compiled.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/matrix_compiled.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/matrix_compiled.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/matrix_compiled.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-007",
+      "artifact": "results/bootstrap_ci_352.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/bootstrap_ci_352.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/bootstrap_ci_352.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/bootstrap_ci_352.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-008",
+      "artifact": "runs/yolo26l_screening_edge352/hasil.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "runs/yolo26l_screening_edge352/hasil.json",
+      "httpStatus": 404,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/runs/yolo26l_screening_edge352/hasil.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/runs/yolo26l_screening_edge352/hasil.json",
+      "status": "unavailable"
+    },
+    {
+      "id": "V2-E-009",
+      "artifact": "runs/yolo26l_screening_midfusion352/hasil.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "runs/yolo26l_screening_midfusion352/hasil.json",
+      "httpStatus": 404,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/runs/yolo26l_screening_midfusion352/hasil.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/runs/yolo26l_screening_midfusion352/hasil.json",
+      "status": "unavailable"
+    },
+    {
+      "id": "V2-E-010",
+      "artifact": "results/perkelas_pycoco_rgbd352.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/perkelas_pycoco_rgbd352.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/perkelas_pycoco_rgbd352.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/perkelas_pycoco_rgbd352.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-010",
+      "artifact": "results/counting_rgbd352.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/counting_rgbd352.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/counting_rgbd352.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/counting_rgbd352.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-011",
+      "artifact": "results/bootstrap_ci_352.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/bootstrap_ci_352.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/bootstrap_ci_352.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/bootstrap_ci_352.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-011",
+      "artifact": "results/counting_rgb352.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/counting_rgb352.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/counting_rgb352.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/counting_rgb352.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-012",
+      "artifact": "results/perkelas_pycoco_v2repro.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/perkelas_pycoco_v2repro.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/perkelas_pycoco_v2repro.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/perkelas_pycoco_v2repro.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-012",
+      "artifact": "results/perkelas_pycoco_rgb352.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/perkelas_pycoco_rgb352.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/perkelas_pycoco_rgb352.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/perkelas_pycoco_rgb352.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-013",
+      "artifact": "scripts/eval_twostage.py",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "scripts/eval_twostage.py",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/scripts/eval_twostage.py",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/scripts/eval_twostage.py",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-014",
+      "artifact": "results/probe_fitur_depth.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/probe_fitur_depth.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/probe_fitur_depth.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/probe_fitur_depth.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-014",
+      "artifact": "scripts/probe_depth_signal.py",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "scripts/probe_depth_signal.py",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/scripts/probe_depth_signal.py",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/scripts/probe_depth_signal.py",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-015",
+      "artifact": "runs_fase6/sd101_rgb/hasil.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "runs_fase6/sd101_rgb/hasil.json",
+      "httpStatus": 404,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/runs_fase6/sd101_rgb/hasil.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/runs_fase6/sd101_rgb/hasil.json",
+      "status": "unavailable"
+    },
+    {
+      "id": "V2-E-015",
+      "artifact": "runs_fase6/pre953v2/hasil.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "runs_fase6/pre953v2/hasil.json",
+      "httpStatus": 404,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/runs_fase6/pre953v2/hasil.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/runs_fase6/pre953v2/hasil.json",
+      "status": "unavailable"
+    },
+    {
+      "id": "V2-E-016",
+      "artifact": "results/probe_fitur_depth.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/probe_fitur_depth.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/probe_fitur_depth.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/probe_fitur_depth.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-016",
+      "artifact": "runs_fase6/sd*/hasil.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "pattern",
+      "path": null,
+      "httpStatus": null,
+      "status": "needs-path"
+    },
+    {
+      "id": "V2-E-017",
+      "artifact": "results/fase6_ringkas.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/fase6_ringkas.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/fase6_ringkas.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/fase6_ringkas.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-018",
+      "artifact": "results/fase6_ringkas.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/fase6_ringkas.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/fase6_ringkas.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/fase6_ringkas.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-018",
+      "artifact": "runs/agn*/results.csv",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "pattern",
+      "path": null,
+      "httpStatus": null,
+      "status": "needs-path"
+    },
+    {
+      "id": "V2-E-019",
+      "artifact": "results/detektor_pilihan_v4.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/detektor_pilihan_v4.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/detektor_pilihan_v4.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/detektor_pilihan_v4.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-019",
+      "artifact": "results/sweep_inferensi_v4.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/sweep_inferensi_v4.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/sweep_inferensi_v4.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/sweep_inferensi_v4.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-020",
+      "artifact": "results/twostage_final_v4.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/twostage_final_v4.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/twostage_final_v4.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/twostage_final_v4.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-021",
+      "artifact": "results/fase6_ringkas.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/fase6_ringkas.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/fase6_ringkas.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/fase6_ringkas.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-021",
+      "artifact": "results/counting_twostage.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/counting_twostage.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/counting_twostage.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/counting_twostage.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-022",
+      "artifact": "results/pergeseran_temporal.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/pergeseran_temporal.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/pergeseran_temporal.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/pergeseran_temporal.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-023",
+      "artifact": "results/bootstrap_map_awal.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/bootstrap_map_awal.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/bootstrap_map_awal.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/bootstrap_map_awal.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-024",
+      "artifact": "results/bootstrap_lokalisasi.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/bootstrap_lokalisasi.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/bootstrap_lokalisasi.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/bootstrap_lokalisasi.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-025",
+      "artifact": "results/test953_bersih.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/test953_bersih.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/test953_bersih.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/test953_bersih.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-025",
+      "artifact": "results/pred_agn953_bersih.npz",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/pred_agn953_bersih.npz",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/pred_agn953_bersih.npz",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/pred_agn953_bersih.npz",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-026",
+      "artifact": "results/bootstrap_map.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/bootstrap_map.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/bootstrap_map.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/bootstrap_map.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-026",
+      "artifact": "results/twostage_v4_ulang.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/twostage_v4_ulang.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/twostage_v4_ulang.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/twostage_v4_ulang.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-027",
+      "artifact": "results/eval_sel6_953_rgbmono_test.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/eval_sel6_953_rgbmono_test.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/eval_sel6_953_rgbmono_test.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/eval_sel6_953_rgbmono_test.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-027",
+      "artifact": "results/pred_sel6_953_rgbmono_test.npz",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/pred_sel6_953_rgbmono_test.npz",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/pred_sel6_953_rgbmono_test.npz",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/pred_sel6_953_rgbmono_test.npz",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-028",
+      "artifact": "results/tiff_korup.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/tiff_korup.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/tiff_korup.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/tiff_korup.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-028",
+      "artifact": "results/tiff_korup_setelah_perbaikan.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/tiff_korup_setelah_perbaikan.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/tiff_korup_setelah_perbaikan.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/tiff_korup_setelah_perbaikan.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-029",
+      "artifact": "results/boot_sel6_vs_sel5.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/boot_sel6_vs_sel5.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/boot_sel6_vs_sel5.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/boot_sel6_vs_sel5.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-030",
+      "artifact": "results/eval_sel3_352_rgbmono_test.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/eval_sel3_352_rgbmono_test.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/eval_sel3_352_rgbmono_test.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/eval_sel3_352_rgbmono_test.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-030",
+      "artifact": "results/boot_sel3_vs_sel1.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/boot_sel3_vs_sel1.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/boot_sel3_vs_sel1.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/boot_sel3_vs_sel1.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-031",
+      "artifact": "results/eval_sel4_352_rgbedgemono_test.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/eval_sel4_352_rgbedgemono_test.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/eval_sel4_352_rgbedgemono_test.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/eval_sel4_352_rgbedgemono_test.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-031",
+      "artifact": "results/boot_sel4_vs_sel2.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/boot_sel4_vs_sel2.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/boot_sel4_vs_sel2.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/boot_sel4_vs_sel2.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-032",
+      "artifact": "results/boot_sel6_vs_sel5.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/boot_sel6_vs_sel5.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/boot_sel6_vs_sel5.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/boot_sel6_vs_sel5.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-032",
+      "artifact": "results/boot_sel4_vs_sel2.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/boot_sel4_vs_sel2.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/boot_sel4_vs_sel2.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/boot_sel4_vs_sel2.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-032",
+      "artifact": "results/boot_sel3_vs_sel1.json",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "results/boot_sel3_vs_sel1.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/results/boot_sel3_vs_sel1.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/boot_sel3_vs_sel1.json",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-033",
+      "artifact": "experiments/EKSPERIMEN.md",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "experiments/EKSPERIMEN.md",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/experiments/EKSPERIMEN.md",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/experiments/EKSPERIMEN.md",
+      "status": "verified"
+    },
+    {
+      "id": "V2-E-033",
+      "artifact": "docs/LAPORAN-AKHIR.md",
+      "source": {
+        "key": "project-expertise",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "225faaeb"
+      },
+      "kind": "file",
+      "path": "docs/LAPORAN-AKHIR.md",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/225faaeb/docs/LAPORAN-AKHIR.md",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/docs/LAPORAN-AKHIR.md",
+      "status": "verified"
+    },
+    {
+      "id": "HD-001",
+      "artifact": "commit 5132ac7 · V5 dedup research",
+      "source": {
+        "key": "research-method-dedup",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "research-method-dedup",
+        "commit": "a720f17"
+      },
+      "kind": "commit-reference",
+      "path": null,
+      "httpStatus": null,
+      "status": "commit-reference"
+    },
+    {
+      "id": "HD-002",
+      "artifact": "reports/dedup_brand_new_953/accuracy_953.csv",
+      "source": {
+        "key": "research-method-dedup",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "research-method-dedup",
+        "commit": "a720f17"
+      },
+      "kind": "file",
+      "path": "reports/dedup_brand_new_953/accuracy_953.csv",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/research-method-dedup/a720f17/reports/dedup_brand_new_953/accuracy_953.csv",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/research-method-dedup/blob/a720f17/reports/dedup_brand_new_953/accuracy_953.csv",
+      "status": "verified"
+    },
+    {
+      "id": "HD-002",
+      "artifact": "algorithms/M01_selector_b2b3.py",
+      "source": {
+        "key": "research-method-dedup",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "research-method-dedup",
+        "commit": "a720f17"
+      },
+      "kind": "file",
+      "path": "algorithms/M01_selector_b2b3.py",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/research-method-dedup/a720f17/algorithms/M01_selector_b2b3.py",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/research-method-dedup/blob/a720f17/algorithms/M01_selector_b2b3.py",
+      "status": "verified"
+    },
+    {
+      "id": "HD-003",
+      "artifact": "reports/dedup_brand_new_953/accuracy_953.csv",
+      "source": {
+        "key": "research-method-dedup",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "research-method-dedup",
+        "commit": "a720f17"
+      },
+      "kind": "file",
+      "path": "reports/dedup_brand_new_953/accuracy_953.csv",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/research-method-dedup/a720f17/reports/dedup_brand_new_953/accuracy_953.csv",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/research-method-dedup/blob/a720f17/reports/dedup_brand_new_953/accuracy_953.csv",
+      "status": "verified"
+    },
+    {
+      "id": "HD-004",
+      "artifact": "reports/dedup_brand_new_953/accuracy_953.csv",
+      "source": {
+        "key": "research-method-dedup",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "research-method-dedup",
+        "commit": "a720f17"
+      },
+      "kind": "file",
+      "path": "reports/dedup_brand_new_953/accuracy_953.csv",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/research-method-dedup/a720f17/reports/dedup_brand_new_953/accuracy_953.csv",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/research-method-dedup/blob/a720f17/reports/dedup_brand_new_953/accuracy_953.csv",
+      "status": "verified"
+    },
+    {
+      "id": "HD-005",
+      "artifact": "algorithms/M07_weight_coverage.py",
+      "source": {
+        "key": "research-method-dedup",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "research-method-dedup",
+        "commit": "a720f17"
+      },
+      "kind": "file",
+      "path": "algorithms/M07_weight_coverage.py",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/research-method-dedup/a720f17/algorithms/M07_weight_coverage.py",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/research-method-dedup/blob/a720f17/algorithms/M07_weight_coverage.py",
+      "status": "verified"
+    },
+    {
+      "id": "HD-005",
+      "artifact": "reports/dedup_brand_new_953/accuracy_953.csv",
+      "source": {
+        "key": "research-method-dedup",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "research-method-dedup",
+        "commit": "a720f17"
+      },
+      "kind": "file",
+      "path": "reports/dedup_brand_new_953/accuracy_953.csv",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/research-method-dedup/a720f17/reports/dedup_brand_new_953/accuracy_953.csv",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/research-method-dedup/blob/a720f17/reports/dedup_brand_new_953/accuracy_953.csv",
+      "status": "verified"
+    },
+    {
+      "id": "HD-006",
+      "artifact": "reports/dedup_brand_new_953/accuracy_953.csv",
+      "source": {
+        "key": "research-method-dedup",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "research-method-dedup",
+        "commit": "a720f17"
+      },
+      "kind": "file",
+      "path": "reports/dedup_brand_new_953/accuracy_953.csv",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/research-method-dedup/a720f17/reports/dedup_brand_new_953/accuracy_953.csv",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/research-method-dedup/blob/a720f17/reports/dedup_brand_new_953/accuracy_953.csv",
+      "status": "verified"
+    },
+    {
+      "id": "HD-007",
+      "artifact": "archive/_to_review/exp_12 may 2026/RULES.txt",
+      "source": {
+        "key": "research-method-dedup",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "research-method-dedup",
+        "commit": "a720f17"
+      },
+      "kind": "file",
+      "path": "archive/_to_review/exp_12 may 2026/RULES.txt",
+      "httpStatus": 404,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/research-method-dedup/a720f17/archive/_to_review/exp_12%20may%202026/RULES.txt",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/research-method-dedup/blob/a720f17/archive/_to_review/exp_12%20may%202026/RULES.txt",
+      "status": "unavailable"
+    },
+    {
+      "id": "HD-008",
+      "artifact": "ml-track/baseline-run/weights/*_results.csv",
+      "source": {
+        "key": "research-method-dedup",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "research-method-dedup",
+        "commit": "a720f17"
+      },
+      "kind": "pattern",
+      "path": null,
+      "httpStatus": null,
+      "status": "needs-path"
+    },
+    {
+      "id": "HD-009",
+      "artifact": "ml-track/baseline-run/weights/y26s_*_results.csv",
+      "source": {
+        "key": "research-method-dedup",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "research-method-dedup",
+        "commit": "a720f17"
+      },
+      "kind": "pattern",
+      "path": null,
+      "httpStatus": null,
+      "status": "needs-path"
+    },
+    {
+      "id": "HD-010",
+      "artifact": "reports/counting_svm/metrics.json",
+      "source": {
+        "key": "research-method-dedup",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "research-method-dedup",
+        "commit": "a720f17"
+      },
+      "kind": "file",
+      "path": "reports/counting_svm/metrics.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/research-method-dedup/a720f17/reports/counting_svm/metrics.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/research-method-dedup/blob/a720f17/reports/counting_svm/metrics.json",
+      "status": "verified"
+    },
+    {
+      "id": "HD-010",
+      "artifact": "reports/counting_rf/metrics.json",
+      "source": {
+        "key": "research-method-dedup",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "research-method-dedup",
+        "commit": "a720f17"
+      },
+      "kind": "file",
+      "path": "reports/counting_rf/metrics.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/research-method-dedup/a720f17/reports/counting_rf/metrics.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/research-method-dedup/blob/a720f17/reports/counting_rf/metrics.json",
+      "status": "verified"
+    },
+    {
+      "id": "HD-011",
+      "artifact": "reports/e2e_y26n_vanilla_local_*/metrics.json",
+      "source": {
+        "key": "research-method-dedup",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "research-method-dedup",
+        "commit": "a720f17"
+      },
+      "kind": "pattern",
+      "path": null,
+      "httpStatus": null,
+      "status": "needs-path"
+    },
+    {
+      "id": "HD-012",
+      "artifact": "reports/e2e_y26s_*/metrics.json",
+      "source": {
+        "key": "research-method-dedup",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "research-method-dedup",
+        "commit": "a720f17"
+      },
+      "kind": "pattern",
+      "path": null,
+      "httpStatus": null,
+      "status": "needs-path"
+    },
+    {
+      "id": "HD-013",
+      "artifact": "reports/e2e_y26m_vanilla_local_svm/metrics.json",
+      "source": {
+        "key": "research-method-dedup",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "research-method-dedup",
+        "commit": "a720f17"
+      },
+      "kind": "file",
+      "path": "reports/e2e_y26m_vanilla_local_svm/metrics.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/research-method-dedup/a720f17/reports/e2e_y26m_vanilla_local_svm/metrics.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/research-method-dedup/blob/a720f17/reports/e2e_y26m_vanilla_local_svm/metrics.json",
+      "status": "verified"
+    },
+    {
+      "id": "HB-001",
+      "artifact": "README.md §6.1",
+      "source": {
+        "key": "Baseline-SawitMVC",
+        "owner": "ULM-SawitMVC",
+        "repo": "Baseline-SawitMVC",
+        "commit": "ee2f0ac"
+      },
+      "kind": "file",
+      "path": "README.md",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/ULM-SawitMVC/Baseline-SawitMVC/ee2f0ac/README.md",
+      "webUrl": "https://github.com/ULM-SawitMVC/Baseline-SawitMVC/blob/ee2f0ac/README.md",
+      "status": "verified"
+    },
+    {
+      "id": "HB-001",
+      "artifact": "results/heuristics_953/accuracy_full.csv",
+      "source": {
+        "key": "Baseline-SawitMVC",
+        "owner": "ULM-SawitMVC",
+        "repo": "Baseline-SawitMVC",
+        "commit": "ee2f0ac"
+      },
+      "kind": "file",
+      "path": "results/heuristics_953/accuracy_full.csv",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/ULM-SawitMVC/Baseline-SawitMVC/ee2f0ac/results/heuristics_953/accuracy_full.csv",
+      "webUrl": "https://github.com/ULM-SawitMVC/Baseline-SawitMVC/blob/ee2f0ac/results/heuristics_953/accuracy_full.csv",
+      "status": "verified"
+    },
+    {
+      "id": "HB-002",
+      "artifact": "README.md §6.1",
+      "source": {
+        "key": "Baseline-SawitMVC",
+        "owner": "ULM-SawitMVC",
+        "repo": "Baseline-SawitMVC",
+        "commit": "ee2f0ac"
+      },
+      "kind": "file",
+      "path": "README.md",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/ULM-SawitMVC/Baseline-SawitMVC/ee2f0ac/README.md",
+      "webUrl": "https://github.com/ULM-SawitMVC/Baseline-SawitMVC/blob/ee2f0ac/README.md",
+      "status": "verified"
+    },
+    {
+      "id": "HB-003",
+      "artifact": "README.md §6.1",
+      "source": {
+        "key": "Baseline-SawitMVC",
+        "owner": "ULM-SawitMVC",
+        "repo": "Baseline-SawitMVC",
+        "commit": "ee2f0ac"
+      },
+      "kind": "file",
+      "path": "README.md",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/ULM-SawitMVC/Baseline-SawitMVC/ee2f0ac/README.md",
+      "webUrl": "https://github.com/ULM-SawitMVC/Baseline-SawitMVC/blob/ee2f0ac/README.md",
+      "status": "verified"
+    },
+    {
+      "id": "HB-004",
+      "artifact": "README.md §6.2",
+      "source": {
+        "key": "Baseline-SawitMVC",
+        "owner": "ULM-SawitMVC",
+        "repo": "Baseline-SawitMVC",
+        "commit": "ee2f0ac"
+      },
+      "kind": "file",
+      "path": "README.md",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/ULM-SawitMVC/Baseline-SawitMVC/ee2f0ac/README.md",
+      "webUrl": "https://github.com/ULM-SawitMVC/Baseline-SawitMVC/blob/ee2f0ac/README.md",
+      "status": "verified"
+    },
+    {
+      "id": "HB-005",
+      "artifact": "results/experiments/counting_controlled_results.csv",
+      "source": {
+        "key": "Baseline-SawitMVC",
+        "owner": "ULM-SawitMVC",
+        "repo": "Baseline-SawitMVC",
+        "commit": "ee2f0ac"
+      },
+      "kind": "file",
+      "path": "results/experiments/counting_controlled_results.csv",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/ULM-SawitMVC/Baseline-SawitMVC/ee2f0ac/results/experiments/counting_controlled_results.csv",
+      "webUrl": "https://github.com/ULM-SawitMVC/Baseline-SawitMVC/blob/ee2f0ac/results/experiments/counting_controlled_results.csv",
+      "status": "verified"
+    },
+    {
+      "id": "HB-005",
+      "artifact": "README.md §6.4",
+      "source": {
+        "key": "Baseline-SawitMVC",
+        "owner": "ULM-SawitMVC",
+        "repo": "Baseline-SawitMVC",
+        "commit": "ee2f0ac"
+      },
+      "kind": "file",
+      "path": "README.md",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/ULM-SawitMVC/Baseline-SawitMVC/ee2f0ac/README.md",
+      "webUrl": "https://github.com/ULM-SawitMVC/Baseline-SawitMVC/blob/ee2f0ac/README.md",
+      "status": "verified"
+    },
+    {
+      "id": "HB-006",
+      "artifact": "results/experiments/counting_controlled_results.csv",
+      "source": {
+        "key": "Baseline-SawitMVC",
+        "owner": "ULM-SawitMVC",
+        "repo": "Baseline-SawitMVC",
+        "commit": "ee2f0ac"
+      },
+      "kind": "file",
+      "path": "results/experiments/counting_controlled_results.csv",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/ULM-SawitMVC/Baseline-SawitMVC/ee2f0ac/results/experiments/counting_controlled_results.csv",
+      "webUrl": "https://github.com/ULM-SawitMVC/Baseline-SawitMVC/blob/ee2f0ac/results/experiments/counting_controlled_results.csv",
+      "status": "verified"
+    },
+    {
+      "id": "HB-006",
+      "artifact": "README.md §6.5",
+      "source": {
+        "key": "Baseline-SawitMVC",
+        "owner": "ULM-SawitMVC",
+        "repo": "Baseline-SawitMVC",
+        "commit": "ee2f0ac"
+      },
+      "kind": "file",
+      "path": "README.md",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/ULM-SawitMVC/Baseline-SawitMVC/ee2f0ac/README.md",
+      "webUrl": "https://github.com/ULM-SawitMVC/Baseline-SawitMVC/blob/ee2f0ac/README.md",
+      "status": "verified"
+    },
+    {
+      "id": "HB-007",
+      "artifact": "README.md §6.8",
+      "source": {
+        "key": "Baseline-SawitMVC",
+        "owner": "ULM-SawitMVC",
+        "repo": "Baseline-SawitMVC",
+        "commit": "ee2f0ac"
+      },
+      "kind": "file",
+      "path": "README.md",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/ULM-SawitMVC/Baseline-SawitMVC/ee2f0ac/README.md",
+      "webUrl": "https://github.com/ULM-SawitMVC/Baseline-SawitMVC/blob/ee2f0ac/README.md",
+      "status": "verified"
+    },
+    {
+      "id": "HB-008",
+      "artifact": "experiments/exp_counting_v4.py",
+      "source": {
+        "key": "Baseline-SawitMVC",
+        "owner": "ULM-SawitMVC",
+        "repo": "Baseline-SawitMVC",
+        "commit": "ee2f0ac"
+      },
+      "kind": "file",
+      "path": "experiments/exp_counting_v4.py",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/ULM-SawitMVC/Baseline-SawitMVC/ee2f0ac/experiments/exp_counting_v4.py",
+      "webUrl": "https://github.com/ULM-SawitMVC/Baseline-SawitMVC/blob/ee2f0ac/experiments/exp_counting_v4.py",
+      "status": "verified"
+    },
+    {
+      "id": "HB-008",
+      "artifact": "README.md §6.9",
+      "source": {
+        "key": "Baseline-SawitMVC",
+        "owner": "ULM-SawitMVC",
+        "repo": "Baseline-SawitMVC",
+        "commit": "ee2f0ac"
+      },
+      "kind": "file",
+      "path": "README.md",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/ULM-SawitMVC/Baseline-SawitMVC/ee2f0ac/README.md",
+      "webUrl": "https://github.com/ULM-SawitMVC/Baseline-SawitMVC/blob/ee2f0ac/README.md",
+      "status": "verified"
+    },
+    {
+      "id": "HB-009",
+      "artifact": "README.md §6.10",
+      "source": {
+        "key": "Baseline-SawitMVC",
+        "owner": "ULM-SawitMVC",
+        "repo": "Baseline-SawitMVC",
+        "commit": "ee2f0ac"
+      },
+      "kind": "file",
+      "path": "README.md",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/ULM-SawitMVC/Baseline-SawitMVC/ee2f0ac/README.md",
+      "webUrl": "https://github.com/ULM-SawitMVC/Baseline-SawitMVC/blob/ee2f0ac/README.md",
+      "status": "verified"
+    },
+    {
+      "id": "HB-009",
+      "artifact": "benchmarks/check_release_claims.py",
+      "source": {
+        "key": "Baseline-SawitMVC",
+        "owner": "ULM-SawitMVC",
+        "repo": "Baseline-SawitMVC",
+        "commit": "ee2f0ac"
+      },
+      "kind": "file",
+      "path": "benchmarks/check_release_claims.py",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/ULM-SawitMVC/Baseline-SawitMVC/ee2f0ac/benchmarks/check_release_claims.py",
+      "webUrl": "https://github.com/ULM-SawitMVC/Baseline-SawitMVC/blob/ee2f0ac/benchmarks/check_release_claims.py",
+      "status": "verified"
+    },
+    {
+      "id": "RP-F001",
+      "artifact": "experiments/SERI-F.md §4",
+      "source": {
+        "key": "Research-Pipeline",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "Research-Pipeline",
+        "commit": "4aa9ad6"
+      },
+      "kind": "file",
+      "path": "experiments/SERI-F.md",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/Research-Pipeline/4aa9ad6/experiments/SERI-F.md",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/Research-Pipeline/blob/4aa9ad6/experiments/SERI-F.md",
+      "status": "verified"
+    },
+    {
+      "id": "RP-F002",
+      "artifact": "experiments/SERI-F.md §4",
+      "source": {
+        "key": "Research-Pipeline",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "Research-Pipeline",
+        "commit": "4aa9ad6"
+      },
+      "kind": "file",
+      "path": "experiments/SERI-F.md",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/Research-Pipeline/4aa9ad6/experiments/SERI-F.md",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/Research-Pipeline/blob/4aa9ad6/experiments/SERI-F.md",
+      "status": "verified"
+    },
+    {
+      "id": "RP-F003",
+      "artifact": "experiments/SERI-F.md §4",
+      "source": {
+        "key": "Research-Pipeline",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "Research-Pipeline",
+        "commit": "4aa9ad6"
+      },
+      "kind": "file",
+      "path": "experiments/SERI-F.md",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/Research-Pipeline/4aa9ad6/experiments/SERI-F.md",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/Research-Pipeline/blob/4aa9ad6/experiments/SERI-F.md",
+      "status": "verified"
+    },
+    {
+      "id": "RP-F004",
+      "artifact": "experiments/SERI-F.md §4",
+      "source": {
+        "key": "Research-Pipeline",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "Research-Pipeline",
+        "commit": "4aa9ad6"
+      },
+      "kind": "file",
+      "path": "experiments/SERI-F.md",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/Research-Pipeline/4aa9ad6/experiments/SERI-F.md",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/Research-Pipeline/blob/4aa9ad6/experiments/SERI-F.md",
+      "status": "verified"
+    },
+    {
+      "id": "RP-F005",
+      "artifact": "experiments/SERI-F.md §4",
+      "source": {
+        "key": "Research-Pipeline",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "Research-Pipeline",
+        "commit": "4aa9ad6"
+      },
+      "kind": "file",
+      "path": "experiments/SERI-F.md",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/Research-Pipeline/4aa9ad6/experiments/SERI-F.md",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/Research-Pipeline/blob/4aa9ad6/experiments/SERI-F.md",
+      "status": "verified"
+    },
+    {
+      "id": "RP-F007",
+      "artifact": "experiments/SERI-F.md §4",
+      "source": {
+        "key": "Research-Pipeline",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "Research-Pipeline",
+        "commit": "4aa9ad6"
+      },
+      "kind": "file",
+      "path": "experiments/SERI-F.md",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/Research-Pipeline/4aa9ad6/experiments/SERI-F.md",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/Research-Pipeline/blob/4aa9ad6/experiments/SERI-F.md",
+      "status": "verified"
+    }
+  ]
+}

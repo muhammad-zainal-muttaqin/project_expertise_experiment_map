@@ -14,6 +14,7 @@ Dokumen ini menjelaskan **di mana** informasi atlas disimpan, **bagaimana** mena
 | Mengubah nama, warna, atau status bukti | `client/src/lib/experimentData.ts` | `client/src/index.css` | Perbarui `statusInfo`; warna UI mengikuti kelas status. |
 | Menambah dataset baru | `client/src/lib/experimentData.ts` | `Home.tsx`, `atlasLayout.ts` | Perbarui tipe, metadata, root peta, dan kartu panel kiri bila perlu. |
 | Mengubah narasi lembar bukti | `client/src/components/ExperimentDetail.tsx` | `experimentData.ts` | Sebagian besar isi berasal dari `conclusion`, `findings`, dan `metrics`. |
+| Mengaudit artefak dan status file | `scripts/audit_artifacts.py` | `research_notes/artifact_audit_report.json`, `client/src/lib/artifactManifest.json` | Audit HTTP pada commit tersemat; manifest kedua dipakai oleh panel bukti. |
 | Mengubah navigasi peta/tooltip/minimap | `client/src/components/ExperimentGraph.tsx` | `navigation.css` | Jangan mengubah routing edge tanpa memeriksa mode fokus dan fullscreen. |
 | Mengubah tema atau layout tiga-rail | `client/src/index.css` | `atlasEnhancements.css`, `themeReaderFix.css` | Uji terang, gelap, desktop, dan ponsel. |
 | Mengubah deploy | `.github/workflows/deploy-pages.yml` | `vite.config.ts` | Base path Pages berada pada konfigurasi Vite. |
@@ -160,6 +161,27 @@ Ubah node asli pada berkas sumbernya; jangan menambal teks di `ExperimentDetail.
 
 Jika hasil lama benar-benar perlu dipensiunkan, jangan langsung menghapusnya. Lebih aman tambahkan node audit atau sintesis yang menerangkan mengapa hasil lama tidak lagi dapat ditafsirkan, lalu hubungkan keduanya lewat lineage.
 
+### 5.1 Audit artefak pada commit sumber
+
+Setiap string di `artifacts` diperlakukan sebagai path relatif pada commit sumber node. Jalankan audit setiap kali path, `source.commit`, atau katalog berubah. Perintah berikut membuat laporan untuk peninjauan dan menyalin manifest identik yang dibaca panel bukti.
+
+```bash
+python3 scripts/audit_artifacts.py \
+  --project-root . \
+  --output research_notes/artifact_audit_report.json
+cp research_notes/artifact_audit_report.json client/src/lib/artifactManifest.json
+```
+
+| Status laporan | Arti untuk pembaca | Perlakuan editor |
+|---|---|---|
+| `verified` | Path mengembalikan HTTP 200 dari `raw.githubusercontent.com` pada commit sumber. | Tautan file aktif; JSON/CSV juga menampilkan tombol Raw dan Unduh. |
+| `unavailable` | Path mengembalikan HTTP 404 pada commit sumber. | Jangan menyajikan tautan file; perbaiki path atau pertahankan sebagai catatan tidak tersedia. |
+| `needs-path` | Artefak memakai pola `*`, sehingga tidak ada file tunggal yang dapat diuji. | Ganti dengan path spesifik bila ingin memberi tautan. |
+| `commit-reference` | Artefak merujuk ke commit, bukan file. | Tetap gunakan tautan commit; Raw/Unduh tidak relevan. |
+| `needs-audit` | Respons jaringan selain 200/404 atau kegagalan koneksi. | Jalankan ulang audit dan jangan menganggap file tersedia. |
+
+> Status **terverifikasi** hanya menyatakan bahwa berkas dapat diakses pada commit tersebut. Status itu tidak memverifikasi isi berkas, evaluator, atau kekuatan klaim ilmiahnya.
+
 ## 6. Menambah atau Mengubah Dataset
 
 Dataset baru memerlukan perubahan di lebih dari satu lokasi. Urutan aman adalah memperluas tipe terlebih dahulu, lalu metadata dan akar peta.
@@ -202,6 +224,8 @@ Saat menambah istilah input yang benar-benar baruâ€”misalnya kanal sensor baruâ€
 Jalankan perintah berikut dari root repositori.
 
 ```bash
+python3 scripts/audit_artifacts.py --project-root . --output research_notes/artifact_audit_report.json
+cp research_notes/artifact_audit_report.json client/src/lib/artifactManifest.json
 pnpm check
 pnpm run build:pages
 ```

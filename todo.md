@@ -139,3 +139,11 @@
 - [x] Audit bentuk data artefak dan URL fallback pada panel bukti.
 - [x] Bentuk URL GitHub file spesifik menggunakan repositori, commit, dan path artefak.
 - [x] Verifikasi beberapa artefak dari empat repositori dan tampilkan fallback yang transparan bila perlu.
+
+## Audit Artefak dan Akses Data
+
+- [x] Inventarisasi serta normalisasi seluruh artefak dari katalog aktif dan historis.
+- [x] Audit keberadaan path pada commit sumber dan hasilkan manifest status verifikasi.
+- [x] Tambahkan indikator status serta tombol Raw dan Unduh untuk artefak JSON/CSV yang tersedia.
+- [x] Buat skill reusable untuk mengaudit serta memetakan artefak bersumber commit.
+- [x] Validasi panel, build Pages, manifest audit, dan skill reusable.

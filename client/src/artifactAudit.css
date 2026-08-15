@@ -1,0 +1,25 @@
+/* Field Research Ledger: status-first evidence records for pinned-commit artefacts. */
+.artifact-item { padding:8px;border:1px solid rgba(31,75,58,.17);background:rgba(255,252,235,.52); }
+.artifact-item-top { display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0; }
+.artifact-list .artifact-primary-link,.artifact-primary-label { display:flex;align-items:center;justify-content:space-between;gap:7px;min-width:0;flex:1;color:#355e46;text-decoration:none; }
+.artifact-list .artifact-primary-link:hover { color:#173d2e; }
+.artifact-primary-link code,.artifact-primary-label code { min-width:0;overflow:hidden;color:inherit;font-size:9px;text-overflow:ellipsis;white-space:nowrap; }
+.artifact-status { display:inline-flex;align-items:center;gap:3px;flex:0 0 auto;padding:3px 5px;border:1px solid currentColor;font-size:8px;font-weight:700;letter-spacing:.03em;white-space:nowrap; }
+.artifact-verified .artifact-status { color:#33744c;background:rgba(51,116,76,.08); }
+.artifact-unavailable .artifact-status { color:#9a533d;background:rgba(165,80,56,.08); }
+.artifact-audit-needed .artifact-status { color:#8a6a30;background:rgba(184,137,43,.09); }
+.artifact-actions { display:flex;gap:6px;margin-top:7px; }
+.artifact-actions a { display:inline-flex !important;align-items:center;justify-content:center;gap:4px;padding:4px 6px !important;border:1px solid rgba(31,75,58,.25) !important;background:rgba(255,250,225,.72) !important;color:#315d43 !important;font-size:9px !important;line-height:1;text-decoration:none; }
+.artifact-actions a:hover { border-color:rgba(31,75,58,.58) !important;color:#173d2e !important;transform:none !important; }
+.artifact-download-btn { border-color:rgba(81,110,55,.48) !important; }
+.artifact-audit-note { display:block;margin-top:5px;color:#8a6a30;font-size:8px;line-height:1.35; }
+
+html.dark .artifact-item { border-color:rgba(211,226,189,.14);background:rgba(255,255,255,.035); }
+html.dark .artifact-list .artifact-primary-link,html.dark .artifact-primary-label { color:#afc9b7; }
+html.dark .artifact-list .artifact-primary-link:hover { color:#fff4c6; }
+html.dark .artifact-verified .artifact-status { color:#a4d7ac;background:rgba(64,121,76,.2); }
+html.dark .artifact-unavailable .artifact-status { color:#f0aa91;background:rgba(165,80,56,.18); }
+html.dark .artifact-audit-needed .artifact-status { color:#e6cd85;background:rgba(184,137,43,.18); }
+html.dark .artifact-actions a { border-color:rgba(211,226,189,.25) !important;background:rgba(10,45,32,.68) !important;color:#d4df9d !important; }
+html.dark .artifact-actions a:hover { border-color:rgba(225,228,175,.6) !important;color:#fff4c6 !important; }
+html.dark .artifact-audit-note { color:#d9bd69; }

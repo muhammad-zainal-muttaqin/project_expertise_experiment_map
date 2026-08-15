@@ -117,6 +117,15 @@ html.dark .section-title { border-color:rgba(211,226,189,.17);color:#dce6b9; }
 html.dark .section-title small { color:#88a596; }
 html.dark .metric-list div { border-color:rgba(211,226,189,.10); }
 html.dark .artifact-list a { color:#afc9b7;background:rgba(255,255,255,.035);border-color:rgba(211,226,189,.1); }
+html.dark .artifact-item { border-color:rgba(211,226,189,.14);background:rgba(255,255,255,.035); }
+html.dark .artifact-list .artifact-primary-link,html.dark .artifact-primary-label { color:#afc9b7; }
+html.dark .artifact-list .artifact-primary-link:hover { color:#fff4c6; }
+html.dark .artifact-verified .artifact-status { color:#a4d7ac;background:rgba(64,121,76,.2); }
+html.dark .artifact-unavailable .artifact-status { color:#f0aa91;background:rgba(165,80,56,.18); }
+html.dark .artifact-audit-needed .artifact-status { color:#e6cd85;background:rgba(184,137,43,.18); }
+html.dark .artifact-actions a { border-color:rgba(211,226,189,.25) !important;background:rgba(10,45,32,.68) !important;color:#d4df9d !important; }
+html.dark .artifact-actions a:hover { border-color:rgba(225,228,175,.6) !important;color:#fff4c6 !important; }
+html.dark .artifact-audit-note { color:#d9bd69; }
 html.dark .repo-link { color:#d7e39e;border-color:rgba(211,226,189,.17); }
 html.dark .reader-summary-grid article { background:rgba(255,255,255,.035);border-left-color:#aebd83; }
 html.dark .reader-summary-grid span { color:#d4df9d; }

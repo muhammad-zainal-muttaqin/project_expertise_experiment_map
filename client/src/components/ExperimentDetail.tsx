@@ -1,30 +1,70 @@
 /** Field Research Ledger evidence sheet — detailed proof record for the selected completed experiment. */
 import { datasetInfo, statusInfo, type Experiment } from "@/lib/experimentData";
 import { getEvidenceNarrative } from "@/lib/evidenceNarratives";
-import { ArrowUpRight, CalendarDays, Database, ExternalLink, GitBranch, Hash, Microscope, ScanSearch } from "lucide-react";
+import artifactManifest from "@/lib/artifactManifest.json";
+import { ArrowUpRight, CalendarDays, Check, Database, ExternalLink, FileCode2, FileDown, GitBranch, Hash, Microscope, ScanSearch, X } from "lucide-react";
 
 interface ExperimentDetailProps {
   experiment: Experiment;
 }
 
 const defaultSource = { repo: "https://github.com/muhammad-zainal-muttaqin/project-expertise", commit: "225faaeb" };
-const unavailableAtPinnedCommit = new Set([
-  "runs_fase6/sd101_rgb/hasil.json",
-  "runs_fase6/pre953v2/hasil.json",
-]);
+type AuditState = "verified" | "unavailable" | "needs-path" | "commit-reference" | "needs-audit";
+type AuditRecord = {
+  id: string;
+  artifact: string;
+  kind: "file" | "pattern" | "commit-reference";
+  path: string | null;
+  status: AuditState;
+  httpStatus: number | null;
+  rawUrl?: string;
+  webUrl?: string;
+};
+const auditByArtifact = new Map<string, AuditRecord>((artifactManifest.records as AuditRecord[]).map((record) => [`${record.id}::${record.artifact}`, record]));
+const auditCopy: Record<AuditState, { label: string; note: string; className: string }> = {
+  verified: { label: "Terverifikasi", note: "Berkas tersedia pada commit yang diaudit.", className: "artifact-verified" },
+  unavailable: { label: "Tidak tersedia", note: "Path ini memberi 404 pada commit yang diaudit.", className: "artifact-unavailable" },
+  "needs-path": { label: "Perlu audit", note: "Ini pola beberapa berkas; satu path spesifik belum dapat diverifikasi.", className: "artifact-audit-needed" },
+  "commit-reference": { label: "Rujukan commit", note: "Ini merujuk ke commit, bukan satu berkas yang dapat diaudit.", className: "artifact-audit-needed" },
+  "needs-audit": { label: "Perlu audit", note: "Pemeriksaan HTTP belum memberi jawaban yang dapat dipakai.", className: "artifact-audit-needed" },
+};
 
 function getArtifactTarget(experiment: Experiment, artifact: string) {
+  const audit = auditByArtifact.get(`${experiment.id}::${artifact}`);
   const source = experiment.source;
   const repo = source?.url.replace(/\/tree\/[^/]+$/, "") ?? defaultSource.repo;
   const commit = source?.commit ?? defaultSource.commit;
   const commitMatch = artifact.match(/^commit\s+([0-9a-f]{7,40})/i);
-  if (commitMatch) return { href: `${repo}/commit/${commitMatch[1]}`, note: "commit yang dirujuk" };
-  if (artifact.includes("*")) return { href: null, note: "pola beberapa berkas; path tunggal belum diaudit" };
-  const path = artifact.split(" §")[0].trim();
-  if (repo === defaultSource.repo && commit === defaultSource.commit && unavailableAtPinnedCommit.has(path)) {
-    return { href: null, note: `tidak tersedia pada commit ${commit}` };
+  if (commitMatch) return { href: `${repo}/commit/${commitMatch[1]}`, rawUrl: null, isDataFile: false, audit: auditCopy["commit-reference"] };
+  if (audit) {
+    return {
+      href: audit.status === "verified" ? audit.webUrl ?? null : null,
+      rawUrl: audit.status === "verified" ? audit.rawUrl ?? null : null,
+      isDataFile: audit.status === "verified" && /\.(json|csv)$/i.test(audit.path ?? ""),
+      audit: auditCopy[audit.status],
+    };
   }
-  return { href: `${repo}/blob/${commit}/${path}`, note: `berkas pada commit ${commit}` };
+  if (artifact.includes("*")) return { href: null, rawUrl: null, isDataFile: false, audit: auditCopy["needs-path"] };
+  const path = artifact.split(" §")[0].trim();
+  return { href: `${repo}/blob/${commit}/${path}`, rawUrl: null, isDataFile: false, audit: auditCopy["needs-audit"] };
+}
+
+async function downloadArtifact(event: React.MouseEvent<HTMLAnchorElement>, rawUrl: string, filename: string) {
+  event.preventDefault();
+  try {
+    const response = await fetch(rawUrl);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const objectUrl = URL.createObjectURL(await response.blob());
+    const anchor = document.createElement("a");
+    anchor.href = objectUrl;
+    anchor.download = filename;
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    URL.revokeObjectURL(objectUrl);
+  } catch {
+    window.open(rawUrl, "_blank", "noopener,noreferrer");
+  }
 }
 
 export function ExperimentDetail({ experiment }: ExperimentDetailProps) {
@@ -63,9 +103,21 @@ export function ExperimentDetail({ experiment }: ExperimentDetailProps) {
       <section className="sheet-section provenance-section"><div className="section-title"><span>Jejak sumber</span><small>audit sumber</small></div><div className="provenance-card"><span>Era penelitian</span><strong>{experiment.era ?? "project-expertise · Agustus 2026"}</strong><span>Repositori / commit</span><code>{sourceLabel}</code></div></section>
       <section className="sheet-section artifact-section"><div className="section-title"><span>File pendukung</span><small>{experiment.artifacts.length} berkas</small></div><div className="artifact-list">{experiment.artifacts.map((artifact) => {
         const target = getArtifactTarget(experiment, artifact);
-        return target.href
-          ? <a key={artifact} href={target.href} target="_blank" rel="noreferrer" title={target.note} aria-label={`Buka ${artifact} pada sumber yang diaudit`}><code>{artifact}</code><ExternalLink size={13} /></a>
-          : <div className="artifact-unavailable" key={artifact} title={target.note}><code>{artifact}</code><small>{target.note}</small></div>;
+        const StatusIcon = target.audit.className === "artifact-verified" ? Check : target.audit.className === "artifact-unavailable" ? X : ScanSearch;
+        const filename = artifact.split("/").pop()?.split(" §")[0] || "artefak";
+        return <div className={`artifact-item ${target.audit.className}`} key={artifact} title={target.audit.note}>
+          <div className="artifact-item-top">
+            {target.href
+              ? <a className="artifact-primary-link" href={target.href} target="_blank" rel="noreferrer" aria-label={`Buka ${artifact} pada sumber yang diaudit`}><code>{artifact}</code><ExternalLink size={13} /></a>
+              : <div className="artifact-primary-label"><code>{artifact}</code></div>}
+            <span className="artifact-status"><StatusIcon size={12} aria-hidden="true" />{target.audit.label}</span>
+          </div>
+          {target.isDataFile && target.rawUrl && <div className="artifact-actions" aria-label={`Akses langsung ${artifact}`}>
+            <a className="artifact-raw-btn" href={target.rawUrl} target="_blank" rel="noreferrer"><FileCode2 size={12} />Raw</a>
+            <a className="artifact-download-btn" href={target.rawUrl} download={filename} onClick={(event) => downloadArtifact(event, target.rawUrl!, filename)}><FileDown size={12} />Unduh</a>
+          </div>}
+          {target.audit.className !== "artifact-verified" && <small className="artifact-audit-note">{target.audit.note}</small>}
+        </div>;
       })}</div></section>
       <a className="repo-link" href={sourceUrl} target="_blank" rel="noreferrer">Buka sumber pada commit yang diaudit <ArrowUpRight size={15} /></a>
     </aside>
