@@ -84,3 +84,10 @@
 - [x] Hapus duplikasi ringkasan fullscreen dan pakai ulang lembar bukti utama di dalam mode layar penuh.
 - [x] Sediakan kontrol buka/tutup panel tanpa mengubah data atau struktur pembuktian.
 - [x] Verifikasi konsistensi isi panel biasa dan panel fullscreen pada kedua tema.
+
+## Tata Letak Bukti dan Minimap
+
+- [x] Audit rantai tinggi kontainer pada tampilan normal agar lembar bukti memakai seluruh ruang baca.
+- [x] Buat lembar bukti normal penuh-tinggi dengan area isi yang dapat digulir secara mandiri.
+- [x] Dock atau kecilkan minimap ketika lembar bukti fullscreen terbuka agar keduanya tidak saling menutup.
+- [x] Verifikasi tata letak pada tema terang, gelap, dan layar penuh.

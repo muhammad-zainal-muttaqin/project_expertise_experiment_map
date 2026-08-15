@@ -174,7 +174,7 @@ export function ExperimentGraph({ selectedId, visible, onSelect }: ExperimentGra
   const tooltipReason = edgeTooltip && tooltipChild ? reasonForEdge(edgeTooltip.parentId, tooltipChild) : undefined;
 
   return (
-    <section ref={graphRef} className="graph-shell" aria-label="Peta garis keturunan eksperimen">
+    <section ref={graphRef} className={`graph-shell ${isFullscreen && isFullscreenEvidenceOpen ? "has-fullscreen-evidence" : ""}`} aria-label="Peta garis keturunan eksperimen">
       <div className="graph-topbar">
         <div className="graph-note"><span />Tarik latar untuk menggeser peta. Arahkan ke garis untuk membaca alasan; roda + <kbd>Ctrl</kbd> untuk zoom.</div>
         <div className="graph-controls" aria-label="Kontrol peta">
