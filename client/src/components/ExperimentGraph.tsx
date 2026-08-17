@@ -458,6 +458,7 @@ export function ExperimentGraph({
           <button
             type="button"
             onClick={() => setFocusMode(current => !current)}
+            data-tour="focus"
             aria-pressed={focusMode}
             aria-label={
               focusMode
@@ -516,8 +517,8 @@ export function ExperimentGraph({
         <div className="focus-strip">
           <ScanLine size={13} />
           <span>
-            <strong>Mode fokus cabang silsilah.</strong> Menampilkan garis dependensi leluhur dan turunan untuk{" "}
-            <b>{selected.id}</b>.
+            <strong>Mode fokus cabang silsilah.</strong> Menampilkan garis
+            dependensi leluhur dan turunan untuk <b>{selected.id}</b>.
           </span>
           <button type="button" onClick={() => setFocusMode(false)}>
             Tampilkan seluruh atlas
@@ -693,7 +694,8 @@ export function ExperimentGraph({
                 <p>{tooltipReason.relation}</p>
                 {tooltipReason.sourceConclusion && (
                   <small>
-                    <b>Temuan acuan pendahulu:</b> {tooltipReason.sourceConclusion}
+                    <b>Temuan acuan pendahulu:</b>{" "}
+                    {tooltipReason.sourceConclusion}
                   </small>
                 )}
               </aside>

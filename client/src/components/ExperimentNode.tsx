@@ -37,6 +37,7 @@ export function ExperimentNode({
       onClick={() => onSelect(experiment.id)}
       className={`experiment-node ${selected ? "is-selected" : ""} ${dimmed ? "is-dimmed" : ""} ${hidden ? "is-focus-hidden" : ""} ${lineageActive ? "is-lineage" : ""}`}
       style={{ left: position.x, top: position.y }}
+      data-node-id={experiment.id}
       aria-pressed={selected}
       aria-label={`Buka bukti ${experiment.id}: ${experiment.title}`}
       title={`${experiment.id} · ${experiment.title}`}

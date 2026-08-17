@@ -9,9 +9,17 @@ import {
   statusInfo,
   type ExperimentStatus,
 } from "@/lib/experimentData";
-import { ChevronLeft, ChevronRight, Moon, Sun } from "lucide-react";
+import { GuidedTour, hasSeenTour } from "@/components/GuidedTour";
+import {
+  ChevronLeft,
+  ChevronRight,
+  LifeBuoy,
+  Moon,
+  Sun,
+  X,
+} from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const defaultFilters: AtlasFilters = {
   dataset: "all",
@@ -39,9 +47,27 @@ export default function Home() {
   const [selectedId, setSelectedId] = useState("V2-E-032");
   const [filters, setFilters] = useState<AtlasFilters>(defaultFilters);
   const [isLeftRailHidden, setIsLeftRailHidden] = useState(false);
+  /* Below 1081px the evidence sheet has nowhere to sit beside the map, so it becomes a sheet that
+     rises over it. It opens on an actual node choice rather than on load: arriving on a phone to a
+     panel covering the map would hide the thing the visitor came to read. */
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
+  /* Kunjungan pertama membuka panduan; sesudahnya hanya tombol Panduan yang memutarnya kembali. */
+  const [isTourOpen, setIsTourOpen] = useState(() => !hasSeenTour());
+  const openNode = (id: string) => {
+    setSelectedId(id);
+    setIsSheetOpen(true);
+  };
   const selected =
     experiments.find(experiment => experiment.id === selectedId) ??
     experiments[0];
+  useEffect(() => {
+    if (!isSheetOpen) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsSheetOpen(false);
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [isSheetOpen]);
   const counts = useMemo(
     () =>
       Object.fromEntries(
@@ -172,6 +198,7 @@ export default function Home() {
             <div className="atlas-header-actions">
               <button
                 type="button"
+                className="rail-toggle"
                 onClick={() => setIsLeftRailHidden(current => !current)}
                 aria-label={
                   isLeftRailHidden
@@ -204,6 +231,15 @@ export default function Home() {
                 {theme === "dark" ? <Sun size={15} /> : <Moon size={15} />}
                 <span>{theme === "dark" ? "Terang" : "Gelap"}</span>
               </button>
+              <button
+                type="button"
+                onClick={() => setIsTourOpen(true)}
+                aria-label="Putar panduan penggunaan atlas"
+                title="Panduan penggunaan"
+              >
+                <LifeBuoy size={15} />
+                <span>Panduan</span>
+              </button>
             </div>
             <div className="atlas-stats">
               <div className="atlas-stat">
@@ -228,13 +264,30 @@ export default function Home() {
           <ExperimentGraph
             selectedId={selected.id}
             visible={visible}
-            onSelect={setSelectedId}
+            onSelect={openNode}
           />
         </main>
-        <div className="right-rail">
-          <ExperimentDetail experiment={selected} onSelect={setSelectedId} />
+        <div
+          className="sheet-scrim"
+          hidden={!isSheetOpen}
+          onClick={() => setIsSheetOpen(false)}
+        />
+        <div
+          className={`right-rail ${isSheetOpen ? "is-open" : ""}`}
+          data-tour="evidence"
+        >
+          <button
+            type="button"
+            className="sheet-dismiss"
+            onClick={() => setIsSheetOpen(false)}
+            aria-label="Tutup lembar bukti"
+          >
+            <X size={16} />
+          </button>
+          <ExperimentDetail experiment={selected} onSelect={openNode} />
         </div>
       </div>
+      {isTourOpen && <GuidedTour onClose={() => setIsTourOpen(false)} />}
     </div>
   );
 }

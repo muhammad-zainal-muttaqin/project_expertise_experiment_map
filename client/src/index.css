@@ -5,6 +5,8 @@
 @import "./navigation.css";
 @import "./atlasEnhancements.css";
 @import "./themeReaderFix.css";
+@import "./responsive.css";
+@import "./tour.css";
 
 @custom-variant dark (&:is(.dark *));
 

@@ -7,7 +7,8 @@ import {
   type DatasetId,
   type ExperimentStatus,
 } from "@/lib/experimentData";
-import { Filter, RotateCcw, Search, X } from "lucide-react";
+import { ChevronDown, Filter, RotateCcw, Search, X } from "lucide-react";
+import { useState } from "react";
 
 export interface AtlasFilters {
   dataset: "all" | DatasetId;
@@ -68,15 +69,28 @@ interface FilterBarProps {
 export function FilterBar({ filters, onChange }: FilterBarProps) {
   const reset = () => onChange(emptyFilters);
   const chips = activeChips(filters);
+  /* Seven controls cost 306px of a phone screen and push the map past the fold. On narrow widths the
+     bar collapses to its own heading; the chip count keeps an active filter visible while closed. */
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div
-      className="filter-bar filter-bar--enhanced"
+      className={`filter-bar filter-bar--enhanced ${isOpen ? "" : "is-collapsed"}`}
       aria-label="Filter peta eksperimen"
     >
       <div className="filter-label">
         <Filter size={15} />
         Penyaringan bukti
       </div>
+      <button
+        type="button"
+        className="filter-disclosure"
+        aria-expanded={isOpen}
+        onClick={() => setIsOpen(current => !current)}
+      >
+        <Filter size={15} />
+        <span>Penyaringan bukti</span>
+        <ChevronDown size={15} />
+      </button>
       <label className="filter-search">
         <span>Cari simpul / repositori</span>
         <div>
@@ -113,7 +127,9 @@ export function FilterBar({ filters, onChange }: FilterBarProps) {
         >
           <option value="all">Semua dataset</option>
           <option value="SawitMVC-953">SawitMVC · 953 (RGB)</option>
-          <option value="SawitMVC-Depth-352">SawitMVC-Depth · 352 (RGB-D)</option>
+          <option value="SawitMVC-Depth-352">
+            SawitMVC-Depth · 352 (RGB-D)
+          </option>
           <option value="Lintas-dataset">Lintas-dataset</option>
           <option value="Audit">Audit</option>
         </select>
