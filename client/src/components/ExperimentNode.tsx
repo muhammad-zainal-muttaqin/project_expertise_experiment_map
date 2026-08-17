@@ -19,7 +19,15 @@ const statusIcons = {
   audit_needed: ShieldAlert,
 };
 
-export function ExperimentNode({ experiment, position = experiment.position, selected, dimmed, hidden = false, lineageActive, onSelect }: ExperimentNodeProps) {
+export function ExperimentNode({
+  experiment,
+  position = experiment.position,
+  selected,
+  dimmed,
+  hidden = false,
+  lineageActive,
+  onSelect,
+}: ExperimentNodeProps) {
   const status = statusInfo[experiment.status];
   const Icon = statusIcons[experiment.status];
 
@@ -31,11 +39,19 @@ export function ExperimentNode({ experiment, position = experiment.position, sel
       style={{ left: position.x, top: position.y }}
       aria-pressed={selected}
       aria-label={`Buka bukti ${experiment.id}: ${experiment.title}`}
+      title={`${experiment.id} · ${experiment.title}`}
     >
-      <span className="node-index">{experiment.id.replace(/^(V2-E-|RP-|HB-|HD-)/, "")}</span>
-      <span className={`node-status ${status.className}`}><Icon size={11} strokeWidth={2.2} />{status.label}</span>
+      <span className="node-index">{experiment.id}</span>
+      <span className={`node-status ${status.className}`}>
+        <Icon size={11} strokeWidth={2.2} />
+        {status.label}
+      </span>
       <strong>{experiment.title}</strong>
-      <span className="node-meta"><i style={{ background: datasetInfo[experiment.dataset].color }} />{datasetInfo[experiment.dataset].short}{experiment.source && <em>{experiment.source.repo}</em>}</span>
+      <span className="node-meta">
+        <i style={{ background: datasetInfo[experiment.dataset].color }} />
+        {datasetInfo[experiment.dataset].short}
+        {experiment.source && <em>{experiment.source.repo}</em>}
+      </span>
     </button>
   );
 }
