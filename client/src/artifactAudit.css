@@ -1,4 +1,4 @@
-/* Field Research Ledger: status-first evidence records for pinned-commit artefacts. */
+/* Field Research Ledger: catatan bukti yang mengutamakan status untuk artefak pada commit tersemat. */
 .artifact-item { padding:8px;border:1px solid rgba(31,75,58,.17);background:rgba(255,252,235,.52); }
 .artifact-item-top { display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0; }
 .artifact-list .artifact-primary-link,.artifact-primary-label { display:flex;align-items:center;justify-content:space-between;gap:7px;min-width:0;flex:1;color:#355e46;text-decoration:none; }

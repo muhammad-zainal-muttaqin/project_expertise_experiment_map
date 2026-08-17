@@ -209,10 +209,9 @@ function vitePluginStorageProxy(): Plugin {
   };
 }
 
-// Editor and preview tooling inherited from the Manus scaffold. None of it has a
-// role in the published static site: the runtime alone inlines ~360 kB of
-// render-blocking script into index.html, and the storage proxy plus the debug
-// collector only ever answer on the dev server.
+// Perkakas editor dan pratinjau warisan scaffold Manus. Tidak satu pun berperan pada situs statis
+// yang dipublikasikan: runtime-nya saja menyisipkan sekitar 360 kB skrip pemblokir render ke dalam
+// index.html, sedangkan proksi storage dan pengumpul debug hanya menjawab pada server pengembangan.
 const devOnlyPlugins = () => [
   jsxLocPlugin(),
   vitePluginManusRuntime(),

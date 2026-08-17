@@ -1,13 +1,16 @@
-/** Field Research Ledger guided tour — a first-run walkthrough that advances on the real action.
+/** Panduan penggunaan Field Research Ledger — penelusuran kunjungan pertama yang maju mengikuti
+ *  tindakan yang benar-benar dilakukan.
  *
- *  Two of the five steps refuse to advance until the visitor actually performs them: selecting a
- *  node, then turning on branch focus. The surrounding panels block clicks so the only live target
- *  is the one being explained, which is what makes the step teach rather than narrate.
+ *  Dua dari lima langkahnya menolak maju sampai pengunjung benar-benar melakukannya: memilih satu
+ *  simpul, lalu menyalakan mode fokus cabang. Panel di sekelilingnya menahan sentuhan sehingga
+ *  satu-satunya sasaran yang hidup adalah yang sedang dijelaskan. Justru itulah yang membuat
+ *  langkahnya mengajar, bukan sekadar bercerita.
  *
- *  It is blocking, not inescapable. Esc, the skip control, and the close button all end the tour at
- *  any point, and the spotlight leaves the real control keyboard-reachable instead of trapping Tab
- *  inside the card. A tour that cannot be left is an accessibility defect, not an accessibility
- *  feature — the point is to make the path obvious, not to hold anyone in it. */
+ *  Lapisan ini menghalangi, tetapi tidak memerangkap. Esc, tautan lewati, dan tombol tutup
+ *  mengakhiri panduan kapan saja, dan sorotannya membiarkan kendali asli tetap terjangkau papan
+ *  tik alih-alih menjebak Tab di dalam kartu. Panduan yang tidak dapat ditinggalkan adalah cacat
+ *  aksesibilitas, bukan fitur aksesibilitas — tujuannya memperjelas jalannya, bukan menahan
+ *  siapa pun di dalamnya. */
 import { ArrowRight, Check, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -17,11 +20,11 @@ interface TourStep {
   id: string;
   title: string;
   body: string;
-  /** Selector of the element to cut out of the blocking layer. Omitted for centred steps. */
+  /** Selektor elemen yang dilubangi dari lapisan penghalang. Dikosongkan untuk langkah terpusat. */
   target?: string;
-  /** Instruction shown while the step waits, and the test that lets it pass. */
+  /** Instruksi yang tampil selama langkah menunggu, beserta uji yang meloloskannya. */
   action?: { hint: string; done: () => boolean };
-  /** Runs once when the step opens — used to clear the mobile sheet out of the way. */
+  /** Dijalankan sekali ketika langkah dibuka — dipakai untuk menyingkirkan sheet ponsel. */
   prepare?: () => void;
 }
 
@@ -34,15 +37,15 @@ const steps: TourStep[] = [
   {
     id: "pengantar",
     title: "Cara membaca atlas ini",
-    body: "Peta memuat 93 simpul eksperimen dari empat repositori, tersusun menurut garis keturunan: setiap simpul menunjuk pada eksperimen yang mendahuluinya. Panduan ini menempuh lima langkah dan meminta Anda mencoba dua kendali utamanya secara langsung.",
+    body: "Peta memuat 93 simpul eksperimen dari empat repositori, tersusun menurut silsilah: setiap simpul menunjuk pada eksperimen yang mendahuluinya. Panduan ini menempuh lima langkah dan meminta Anda mencoba dua kendali utamanya secara langsung.",
   },
   {
     id: "pilih-simpul",
     title: "Pilih satu simpul",
-    body: "Setiap kartu pada peta adalah satu eksperimen beserta status validitasnya. Menyentuh kartu membuka catatan lengkapnya.",
+    body: "Setiap kartu pada peta mewakili satu eksperimen beserta status validitasnya. Memilih kartu membuka catatan lengkapnya.",
     target: '[data-node-id="V2-E-001"]',
     action: {
-      hint: "Sentuh kartu V2-E-001 yang tersorot untuk melanjutkan.",
+      hint: "Pilih kartu V2-E-001 yang tersorot untuk melanjutkan.",
       done: () =>
         document
           .querySelector('[data-node-id="V2-E-001"]')
@@ -52,7 +55,7 @@ const steps: TourStep[] = [
   {
     id: "lembar-bukti",
     title: "Lembar bukti",
-    body: "Panel ini memuat kesimpulan, metrik, batasan validitas, glosarium istilah, silsilah relasi, dan tautan artefak yang statusnya sudah diaudit. Chip induk dan turunan di dalamnya berpindah simpul tanpa menutup panel.",
+    body: "Panel ini memuat Kesimpulan eksekutif, Metrik kuantitatif utama, Batasan validitas & audit, Glosarium istilah teknis, Silsilah relasi eksperimen, serta Artefak data pendukung yang statusnya sudah diaudit. Tombol induk dan turunan di dalamnya berpindah simpul tanpa menutup panel.",
     target: '[data-tour="evidence"]',
   },
   {
@@ -72,7 +75,7 @@ const steps: TourStep[] = [
   {
     id: "selesai",
     title: "Panduan selesai",
-    body: "Sisanya dapat ditelusuri sendiri: penyaringan bukti mempersempit peta tanpa memutus garis keturunan, dan tombol panduan di kepala halaman memutar ulang langkah-langkah ini kapan saja.",
+    body: "Bagian selebihnya dapat ditelusuri secara mandiri: penyaringan bukti mempersempit peta tanpa memutus silsilah, dan tombol Panduan pada bagian atas halaman memutar ulang langkah-langkah ini kapan saja.",
   },
 ];
 
@@ -134,8 +137,9 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [finish]);
 
-  /* Targets live inside a scrollable canvas and a sheet that can be open, so each step re-measures
-     after bringing its target into view, then keeps measuring while the layout settles. */
+  /* Sasarannya berada di dalam kanvas yang dapat digulir dan sheet yang dapat terbuka, sehingga
+     setiap langkah mengukur ulang setelah membawa sasarannya ke dalam pandangan, lalu terus
+     mengukur selama tata letaknya belum tenang. */
   useEffect(() => {
     setIsActionDone(false);
     step.prepare?.();
@@ -191,8 +195,8 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
 
   return (
     <div className="tour-layer">
-      {/* Four panels rather than one overlay: the gap between them is the only live region, which is
-          what stops a stray tap from wandering off mid-step. */}
+      {/* Empat panel, bukan satu lapisan tunggal: celah di antaranya adalah satu-satunya wilayah
+          yang hidup, dan itulah yang menahan sentuhan agar tidak menyimpang di tengah langkah. */}
       {rect ? (
         <>
           <div

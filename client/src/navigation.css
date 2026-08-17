@@ -10,8 +10,9 @@
 .graph-controls button:active:not(:disabled) { transform:scale(.94); }
 .graph-controls button:disabled { cursor:not-allowed; opacity:.35; }
 .graph-controls output { min-width:34px; color:#e7d98d; font-size:10px; font-variant-numeric:tabular-nums; text-align:center; }
-/* The scroll pane takes whatever the shell has left over. Subtracting a fixed topbar height
-   worked only until the focus strip appeared between them and pushed 30px past the clip. */
+/* Panel gulir mengambil sisa ruang yang ditinggalkan cangkangnya. Mengurangi tinggi topbar dengan
+   nilai tetap hanya bekerja sampai bilah fokus muncul di antara keduanya dan mendorong 30px
+   melewati batas pemotongan. */
 .graph-scroll { flex:1; min-height:0; cursor:grab; overscroll-behavior:contain; touch-action:none; user-select:none; }
 .graph-scroll.is-grabbing { cursor:grabbing; }
 .graph-scroll.is-grabbing .experiment-node,.graph-scroll.is-grabbing .dataset-root { pointer-events:none; }
@@ -26,18 +27,19 @@
 .focus-strip strong,.focus-strip b { color:#fff3bc; }.focus-strip button { margin-left:auto; border-bottom:1px solid rgba(255,242,183,.6); color:#fff3bc; font:inherit; font-weight:700; }
 @media (max-width:720px) { .graph-topbar { align-items:flex-start; }.graph-topbar .graph-note { min-height:48px; padding:8px 10px; font-size:9px; }.graph-note kbd { display:none; }.graph-controls { gap:0; margin:5px 4px 0 0; padding-left:4px; }.graph-controls button { width:24px; height:25px; }.graph-controls output { display:none; } }
 
-/* Semantic swimlanes: rows preserve the research question and reduce cross-map traffic. */
+/* Swimlane semantis: barisnya mempertahankan pertanyaan penelitian dan mengurangi lalu lintas garis lintas peta. */
 .canvas-lane { position:absolute; z-index:0; right:18px; left:18px; border-top:1px solid rgba(223,225,181,.16); border-bottom:1px solid rgba(223,225,181,.09); background:linear-gradient(90deg,rgba(255,248,213,.035),transparent 42%); pointer-events:none; }
 .canvas-lane strong { position:absolute; top:12px; left:226px; color:rgba(236,231,191,.66); font-size:10px; font-weight:700; letter-spacing:.14em; }
 .canvas-lane span { position:absolute; top:27px; left:226px; color:rgba(167,195,166,.65); font-size:9px; letter-spacing:.03em; }
 .canvas-lane-depth { background:linear-gradient(90deg,rgba(140,198,211,.06),transparent 42%); }.canvas-lane-audit { background:linear-gradient(90deg,rgba(232,200,120,.06),transparent 42%); }.canvas-lane-archive { background:linear-gradient(90deg,rgba(230,222,181,.035),transparent 42%); }
 .lineage-path { opacity:.34; stroke-linecap:round; stroke-linejoin:round; vector-effect:non-scaling-stroke; }.lineage-path.is-active { opacity:1; }.lineage-path.is-archive-bridge { opacity:.24; }.lineage-path.is-archive-bridge.is-active { opacity:.78; }
 .edge-hitarea { fill:none; stroke:transparent; stroke-linecap:round; stroke-linejoin:round; stroke-width:18; pointer-events:stroke; cursor:help; }
-/* Replacing the outline with a stroke is the only way to ring a path, but at .14 the ring was
-   invisible on both themes; the light theme gets its own ink in atlasEnhancements.css. */
+/* Mengganti outline dengan stroke adalah satu-satunya cara melingkari sebuah path, tetapi pada
+   nilai 0,14 lingkarannya tidak terlihat pada kedua tema; tema terang memperoleh tintanya sendiri
+   di atlasEnhancements.css. */
 .edge-hitarea:focus { outline:none; stroke:rgba(244,224,142,.45); }
-/* A pinned edge keeps the beam through pan and zoom; released by clicking it again
-   or by selecting another node. */
+/* Edge yang disematkan mempertahankan sorotannya selama peta digeser dan diperbesar; sematan
+   dilepas dengan mengeklik edge itu kembali atau dengan memilih simpul lain. */
 .edge-hitarea.is-pinned { stroke:rgba(244,224,142,.18); cursor:pointer; }
 .lineage-path.is-pinned { opacity:1; stroke-width:2.6; }
 .lineage-path.is-archive-bridge.is-pinned { opacity:1; }

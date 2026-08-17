@@ -1,4 +1,4 @@
-/** Field Research Ledger home — three-rail experimental archive, deliberately dense but traceable. */
+/** Beranda Field Research Ledger — arsip eksperimen tiga rail, sengaja dibuat padat tetapi tetap dapat dilacak. */
 import { ExperimentDetail } from "@/components/ExperimentDetail";
 import { ExperimentGraph } from "@/components/ExperimentGraph";
 import { FilterBar, type AtlasFilters } from "@/components/FilterBar";
@@ -47,9 +47,10 @@ export default function Home() {
   const [selectedId, setSelectedId] = useState("V2-E-032");
   const [filters, setFilters] = useState<AtlasFilters>(defaultFilters);
   const [isLeftRailHidden, setIsLeftRailHidden] = useState(false);
-  /* Below 1081px the evidence sheet has nowhere to sit beside the map, so it becomes a sheet that
-     rises over it. It opens on an actual node choice rather than on load: arriving on a phone to a
-     panel covering the map would hide the thing the visitor came to read. */
+  /* Di bawah 1081px tidak ada tempat bagi lembar bukti untuk duduk di samping peta, sehingga ia
+     menjadi sheet yang naik menutupinya. Sheet terbuka ketika simpul benar-benar dipilih, bukan
+     saat halaman dimuat: tiba di ponsel dan langsung disambut panel yang menutupi peta justru
+     menyembunyikan hal yang hendak dibaca pengunjung. */
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   /* Kunjungan pertama membuka panduan; sesudahnya hanya tombol Panduan yang memutarnya kembali. */
   const [isTourOpen, setIsTourOpen] = useState(() => !hasSeenTour());

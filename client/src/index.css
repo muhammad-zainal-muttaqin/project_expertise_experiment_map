@@ -97,7 +97,7 @@
   @media (prefers-reduced-motion:no-preference) { .experiment-node,.dataset-root { animation:ledger-in .32s cubic-bezier(.23,1,.32,1) both; }.experiment-node:nth-of-type(3n) { animation-delay:.04s; }.experiment-node:nth-of-type(4n) { animation-delay:.08s; } @keyframes ledger-in { from { opacity:0;transform:translateY(8px); } to { opacity:1;transform:translateY(0); } } }
 }
 
-/* Field Research Ledger refinement — default surface is warm paper; canopy ink concentrates attention in the map. */
+/* Penghalusan Field Research Ledger — permukaan bawaannya kertas hangat; tinta kanopi memusatkan perhatian di dalam peta. */
 @layer components {
   .atlas-page { background:#e9dfba; color:#1f4b3a; }
   .atlas-layout { background:linear-gradient(90deg,#eee4c6 0 20%,#1e4b39 20% 80%,#f0e5c5 80%); }

@@ -1,4 +1,4 @@
-/** Field Research Ledger evidence narrative — turns audited experiment records into reader-facing work stories. */
+/** Narasi bukti Field Research Ledger — mengubah catatan eksperimen yang telah diaudit menjadi uraian kerja yang terbaca pembaca. */
 import type { Experiment } from "@/lib/experimentData";
 
 export interface EvidenceNarrative {

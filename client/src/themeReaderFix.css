@@ -1,4 +1,4 @@
-/* Field Research Ledger theme contract: warm paper surrounds the Canopy Ink map, while status colors retain evidentiary meaning. */
+/* Kontrak tema Field Research Ledger: kertas hangat mengelilingi peta Canopy Ink, sedangkan warna status mempertahankan makna evidensialnya. */
 html.dark .map-control,html.dark .graph-toolbar button,html.dark .minimap { border-color:rgba(211,226,189,.2);background:rgba(10,37,27,.9);color:#e5ecd2; }
 
 .reader-summary-grid { display:grid;gap:8px;margin-top:10px; }
@@ -9,10 +9,11 @@ html.dark .map-control,html.dark .graph-toolbar button,html.dark .minimap { bord
 .reader-summary-grid span { display:block;color:#305d43;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase; }
 .reader-summary-grid p { margin:4px 0 0;color:#3d614c;font-size:12px;line-height:1.55; }
 
-/* Evidence colors are semantic ink, repeated in node stamps and selected-sheet stamps only.
-   These rules are unlayered, so they outrank both @layer blocks in index.css and decide the
-   stamp color on their own — which left the light inks below in force on the dark map too.
-   Bare values are the light theme, on the cream node gradient; html.dark restates all four. */
+/* Warna bukti adalah tinta semantis, diulang hanya pada stempel simpul dan stempel lembar terpilih.
+   Aturan ini tidak berlapis, sehingga mengungguli kedua blok @layer di index.css dan menentukan
+   warna stempel sendirian — akibatnya tinta terang di bawah ini sempat tetap berlaku pada peta
+   gelap. Nilai tanpa prefiks adalah tema terang, di atas gradien simpul krem; html.dark
+   menyatakan ulang keempatnya. */
 .status-stamp,.node-status { border:1px solid currentColor; box-shadow:inset 0 0 0 1px rgba(255,250,226,.14); }
 .status-stamp.status-supported,.node-status.status-supported { background:rgba(64,121,76,.13); color:#275639; }
 .status-stamp.status-negative,.node-status.status-negative { background:rgba(165,80,56,.13); color:#8a3520; }
@@ -23,7 +24,7 @@ html.dark .status-stamp.status-negative,html.dark .node-status.status-negative {
 html.dark .status-stamp.status-inconclusive,html.dark .node-status.status-inconclusive { color:#f1d78d; }
 html.dark .status-stamp.status-audit,html.dark .node-status.status-audit { color:#9bd7e5; }
 
-/* Dark contract: no paper panels leak into the night-reading state; color remains reserved for evidence status. */
+/* Kontrak gelap: tidak ada panel kertas yang bocor ke keadaan baca malam; warna tetap disediakan khusus untuk status bukti. */
 html.dark,html.dark body { color-scheme:dark;background:#0a2118; }
 html.dark .atlas-page { background:#0a2118;color:#e7edd2; }
 html.dark .atlas-layout { background:linear-gradient(90deg,#0b281d 0 20%,#102f23 20% 80%,#0b281d 80%); }
@@ -75,8 +76,9 @@ html.dark .section-title { border-color:rgba(211,226,189,.17);color:#dce6b9; }
 html.dark .section-title small { color:#88a596; }
 html.dark .metric-list div { border-color:rgba(211,226,189,.10); }
 html.dark .confidence-note { border-color:rgba(230,199,116,.52); }
-/* historical.css states the provenance card and the node repository tag once, unlayered and
-   unscoped, so both carried paper-on-paper values into the dark map until these pairs existed. */
+/* historical.css menyatakan kartu provenans dan tanda repositori simpul satu kali saja, tanpa
+   layer dan tanpa cakupan tema, sehingga keduanya membawa nilai kertas-di-atas-kertas ke peta
+   gelap sampai pasangan aturan ini ada. */
 html.dark .provenance-card { border-color:rgba(211,226,189,.24);background:rgba(255,255,255,.035); }
 html.dark .provenance-card span { color:#90a997; }
 html.dark .provenance-card strong,html.dark .provenance-card code { color:#e4ebd5; }

@@ -1,4 +1,4 @@
-/* Field Research Ledger historical expansion — April–August provenance and wide lineage canvas. */
+/* Perluasan arsip Field Research Ledger — provenans April–Agustus dan kanvas silsilah lebar. */
 .experiment-canvas { width:var(--canvas-width); height:var(--canvas-height); }
 .lineage-svg { width:var(--canvas-width); height:var(--canvas-height); }
 .node-meta em { overflow:hidden; max-width:72px; color:#3f5a4a; font-size:8px; font-style:normal; text-overflow:ellipsis; white-space:nowrap; }

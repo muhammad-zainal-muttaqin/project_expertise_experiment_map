@@ -1,4 +1,4 @@
-/** Field Research Ledger theme state — one explicit document class controls the full light or dark surface contract. */
+/** Keadaan tema Field Research Ledger — satu kelas eksplisit pada dokumen mengendalikan seluruh kontrak permukaan terang atau gelap. */
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 type Theme = "light" | "dark";

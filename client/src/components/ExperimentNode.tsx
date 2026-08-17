@@ -1,4 +1,4 @@
-/** Field Research Ledger node — compact archival marker with evidence-first status semantics. */
+/** Simpul Field Research Ledger — penanda arsip ringkas dengan semantik status yang mengutamakan bukti. */
 import { datasetInfo, statusInfo, type Experiment } from "@/lib/experimentData";
 import { Check, CircleAlert, CircleX, ShieldAlert } from "lucide-react";
 

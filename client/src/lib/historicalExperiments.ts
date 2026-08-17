@@ -1,4 +1,4 @@
-/** Field Research Ledger — historical SawitMVC evidence traced to audited repository commits. */
+/** Field Research Ledger — bukti historis SawitMVC yang dilacak sampai commit repositori yang telah diaudit. */
 import type { Experiment } from "@/lib/experimentData";
 
 const source = {

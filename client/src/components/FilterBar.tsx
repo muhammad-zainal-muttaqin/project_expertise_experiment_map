@@ -1,4 +1,4 @@
-/** Field Research Ledger filter strip — search and filters dim nodes rather than removing lineage context. */
+/** Bilah filter Field Research Ledger — pencarian dan filter meredupkan simpul, bukan menghapus konteks silsilahnya. */
 import {
   allInputs,
   defaultEra,
@@ -30,8 +30,9 @@ const emptyFilters: AtlasFilters = {
   phase: "all",
 };
 
-/** Six dropdowns and a search field cannot show at a glance which of them are narrowing the map, so the
- *  active ones are restated as chips that clear themselves. */
+/** Enam menu pilihan dan satu medan pencarian tidak dapat menunjukkan sekilas mana di antaranya yang
+ *  sedang mempersempit peta, sehingga yang aktif dinyatakan ulang sebagai tombol yang menghapus
+ *  dirinya sendiri. */
 function activeChips(filters: AtlasFilters) {
   const chips: { key: keyof AtlasFilters; label: string }[] = [];
   if (filters.search.trim())
@@ -69,8 +70,9 @@ interface FilterBarProps {
 export function FilterBar({ filters, onChange }: FilterBarProps) {
   const reset = () => onChange(emptyFilters);
   const chips = activeChips(filters);
-  /* Seven controls cost 306px of a phone screen and push the map past the fold. On narrow widths the
-     bar collapses to its own heading; the chip count keeps an active filter visible while closed. */
+  /* Tujuh kendali menghabiskan 306px tinggi layar ponsel dan mendorong peta ke bawah lipatan. Pada
+     layar sempit, bilahnya melipat menjadi judulnya sendiri; tombol filter aktif tetap terlihat
+     selama keadaan terlipat. */
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div

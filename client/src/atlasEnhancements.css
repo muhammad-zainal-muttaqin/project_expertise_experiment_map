@@ -1,13 +1,13 @@
-/* Field Research Ledger enhancements — dense evidence controls on paper-led surfaces with an optional daylight reading mode. */
+/* Penyempurnaan Field Research Ledger — kendali bukti yang padat pada permukaan bernuansa kertas, dengan mode baca siang sebagai pilihan. */
 
-/* Dataset roots carry their own identity hue instead of a photograph: the tint sits
-   where the card overlay fades out, so each root stays distinguishable at a glance. */
+/* Akar dataset memakai rona identitasnya sendiri alih-alih fotografi: warnanya diletakkan
+   pada bagian tempat lapisan kartu memudar, sehingga setiap akar tetap terbedakan sekilas. */
 .dataset-card--953 { background-color:#dfe8cd; }
 .dataset-card--352 { background-color:#d3e4ea; }
 html.dark .dataset-card--953 { background-color:#17402d; }
 html.dark .dataset-card--352 { background-color:#123c40; }
 
-/* Active filters restated as removable chips on their own row of the filter grid. */
+/* Filter aktif dinyatakan ulang sebagai tombol yang dapat dihapus, pada barisnya sendiri di dalam kisi filter. */
 .filter-active { grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px;margin-top:9px;padding-top:9px;border-top:1px solid rgba(31,75,58,.16); }
 .filter-chip { display:inline-flex;align-items:center;gap:6px;max-width:220px;padding:4px 7px;border:1px solid rgba(45,88,55,.38);background:rgba(45,88,55,.09);color:#2c5540;font:600 10px/1.3 "IBM Plex Sans",sans-serif;letter-spacing:.02em;transition:border-color .16s cubic-bezier(.23,1,.32,1),background .16s cubic-bezier(.23,1,.32,1); }
 .filter-chip span { overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }
@@ -18,8 +18,9 @@ html.dark .filter-active { border-top-color:rgba(211,226,189,.16); }
 html.dark .filter-chip { border-color:rgba(211,226,189,.28);background:rgba(211,226,189,.08);color:#d8e4bc; }
 html.dark .filter-chip:hover { border-color:rgba(225,228,175,.6);background:rgba(211,226,189,.15);color:#fff4c6; }
 
-/* Lineage chips restate parentIds/children as selectable evidence-sheet controls; dataset roots
-   are not experiments, so they render as plain dashed labels instead of buttons. */
+/* Tombol silsilah menyatakan ulang parentIds dan turunan sebagai kendali lembar bukti yang dapat
+   dipilih; akar dataset bukan eksperimen, sehingga dirender sebagai label bergaris putus-putus,
+   bukan sebagai tombol. */
 .lineage-row { display:grid;grid-template-columns:52px 1fr;gap:8px;align-items:start;margin-top:10px; }
 .lineage-row-label { padding-top:5px;color:#3f5d4a;font-size:9px;text-transform:uppercase;letter-spacing:.07em; }
 .lineage-chips { display:flex;flex-wrap:wrap;gap:6px; }
@@ -31,8 +32,8 @@ html.dark .lineage-chip { border-color:rgba(211,226,189,.24);background:rgba(211
 html.dark .lineage-chip:hover { border-color:rgba(225,228,175,.55);background:rgba(211,226,189,.13);color:#fff4c6; }
 html.dark .lineage-chip--root { color:#9db7a4; }
 
-/* Glossary definitions reuse the evidence-sheet term/definition rhythm without the metric-list's
-   right-aligned numeric emphasis, since entries here are prose, not measurements. */
+/* Definisi glosarium memakai kembali irama istilah-definisi lembar bukti tanpa penekanan angka
+   rata kanan milik metric-list, sebab isian di sini berupa prosa, bukan hasil pengukuran. */
 .term-list { margin:0; }
 .term-list div { padding:9px 0;border-bottom:1px solid rgba(31,75,58,.14); }
 .term-list div:last-child { border-bottom:0; }
@@ -93,7 +94,7 @@ html.ledger-light .section-title { border-color:rgba(47,83,53,.18);color:#365d42
 @media (max-width:680px) { .filter-bar--enhanced { grid-template-columns:1fr 1fr; }.filter-label { grid-column:1/-1; }.filter-search { grid-column:1/-1; }.reset-filter { justify-content:center; }.atlas-header-actions button span { display:none; } }
 @media (prefers-reduced-motion:reduce) { .is-spinning { animation:none; } }
 
-/* Light contract: all operational surfaces become an ivory field ledger; the map does not retain dark-dashboard chrome. */
+/* Kontrak terang: seluruh permukaan operasional menjadi buku catatan lapangan berwarna gading; peta tidak mempertahankan rangka dasbor gelap. */
 html.ledger-light .atlas-layout { background:linear-gradient(90deg,#f3e8c9 0 20%,#e4dcc0 20% 80%,#f5e9ca 80%); }
 html.ledger-light .atlas-main { background:#e4dcc0; }
 html.ledger-light .graph-shell { background:#d9ddc4; }

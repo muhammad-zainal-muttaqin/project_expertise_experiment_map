@@ -1,4 +1,4 @@
-/** Field Research Ledger layout — semantic swimlanes with legible, continuous lineage routing. */
+/** Tata letak Field Research Ledger — swimlane semantis dengan perutean silsilah yang terbaca dan tidak terputus. */
 import type { Experiment } from "@/lib/experimentData";
 
 export type AtlasPosition = { x: number; y: number };
@@ -7,8 +7,8 @@ export type AtlasLane = { id: string; label: string; caption: string; y: number;
 const CARD_GAP = 214;
 const START_X = 286;
 
-// Positions obey causal ordering: experimental evidence progresses to the right;
-// audit and synthesis nodes sit at the end of their own branch rather than returning left.
+// Koordinat mengikuti urutan kausal: bukti eksperimen bergerak ke kanan; simpul audit dan sintesis
+// berada di ujung cabangnya sendiri, bukan kembali ke kiri.
 const v2Positions: Record<string, AtlasPosition> = {
   // Lane 1: 953 · BENCHMARK & COUNTING (y: 28–206)
   "V2-E-001": { x: 286, y: 78 }, "V2-E-002": { x: 500, y: 78 },
@@ -75,8 +75,8 @@ export function buildAtlasLayout(experiments: Experiment[]) {
 }
 
 /**
- * Produces one unbroken cubic route per relationship. The deterministic offset
- * keeps sibling links out of the same narrow vertical corridor.
+ * Menghasilkan satu rute kubik utuh untuk setiap relasi. Ofset deterministiknya menjaga agar
+ * tautan bersaudara tidak menumpuk pada koridor vertikal sempit yang sama.
  */
 export function orthogonalPath(parent: AtlasPosition, child: AtlasPosition, route: { serial: number; sourceIndex: number; sourceCount: number; targetIndex: number; targetCount: number }, parentIsRoot = false) {
   const parentWidth = parentIsRoot ? 174 : 176;
@@ -97,8 +97,8 @@ export function orthogonalPath(parent: AtlasPosition, child: AtlasPosition, rout
     return `M ${startX} ${startY} C ${startX + handle} ${startY + sourceBias * 11}, ${targetX - handle} ${targetY + targetBias * 11}, ${targetX} ${targetY}`;
   }
 
-  // Backward audit/history links loop through unique vertical slots rather than
-  // stacking into a shared rectangular detour.
+  // Tautan audit dan arsip yang mengarah mundur memutar melalui slot vertikal yang unik, bukan
+  // menumpuk menjadi satu jalan memutar berbentuk persegi yang dipakai bersama.
   const loopX = Math.max(startX, targetX) + 68 + (route.serial % 7) * 18;
   const loopY = Math.max(parent.y + parentHeight, child.y + childHeight) + 32 + (route.serial % 5) * 18;
   return `M ${startX} ${startY} C ${loopX} ${startY + sourceBias * 11}, ${loopX} ${loopY}, ${loopX} ${loopY} C ${targetX - 54} ${loopY}, ${targetX - 42} ${targetY + targetBias * 11}, ${targetX} ${targetY}`;

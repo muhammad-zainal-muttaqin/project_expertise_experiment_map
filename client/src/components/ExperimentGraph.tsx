@@ -1,4 +1,4 @@
-/** Field Research Ledger graph — semantic lineage map with continuous, readable routed edges. */
+/** Graf Field Research Ledger — peta silsilah semantis dengan edge terutekan yang tidak terputus dan mudah dibaca. */
 import {
   datasetRoots,
   experiments,
@@ -47,8 +47,8 @@ type RoutedEdge = {
 const lookup = new Map<string, GraphRecord>(
   [...datasetRoots, ...experiments].map(item => [item.id, item])
 );
-// Nodes carry 8–11px type; below 1.0 the titles stop being readable without a
-// second zoom action, so the map opens at true size and zooms out on demand.
+// Simpul memuat huruf berukuran 8–11px; di bawah 1,0 judulnya tidak lagi terbaca tanpa tindakan
+// zoom kedua, sehingga peta dibuka pada ukuran sebenarnya dan diperkecil hanya bila diminta.
 const DEFAULT_ZOOM = 1;
 const MIN_ZOOM = 0.48;
 const MAX_ZOOM = 1.45;
@@ -195,9 +195,9 @@ export function ExperimentGraph({
   const [isFullscreenEvidenceOpen, setIsFullscreenEvidenceOpen] =
     useState(true);
   const [edgeTooltip, setEdgeTooltip] = useState<EdgeTooltip | null>(null);
-  // The focus ring used to be the only way an edge stayed lit, so panning the map
-  // blurred it away. A pinned key survives the drag; the tooltip stays hover-only
-  // so the reason card never covers the nodes being compared.
+  // Cincin fokus dahulu satu-satunya cara agar sebuah edge tetap menyala, sehingga menggeser peta
+  // membuatnya padam. Kunci yang disematkan bertahan selama penyeretan; tooltipnya tetap hanya
+  // muncul saat kursor diarahkan supaya kartu alasan tidak pernah menutupi simpul yang dibandingkan.
   const [pinnedEdgeKey, setPinnedEdgeKey] = useState<string | null>(null);
   const selectNode = (id: string) => {
     setPinnedEdgeKey(null);
@@ -212,11 +212,11 @@ export function ExperimentGraph({
     "--canvas-height": `${canvasHeight}px`,
   } as React.CSSProperties;
 
-  /* The minimap rectangle is the only thing that follows the scroll position. Holding it in
-     React state re-rendered 93 nodes, 120 edge paths and 104 minimap rects on every scroll
-     event — 50-80ms of scripting per pan frame — so it is written to the DOM directly instead,
-     coalesced to one write per animation frame. zoomRef keeps the divisor current without
-     rebinding the listeners. */
+  /* Persegi minimap adalah satu-satunya bagian yang mengikuti posisi gulir. Menyimpannya sebagai
+     state React membuat 93 simpul, 120 path edge, dan 104 persegi minimap dirender ulang pada
+     setiap kejadian gulir — 50–80 ms skrip per frame geseran — sehingga nilainya ditulis langsung
+     ke DOM dan digabungkan menjadi satu penulisan per frame animasi. zoomRef menyediakan pembagi
+     terkini tanpa perlu mendaftarkan ulang listener-nya. */
   const zoomRef = useRef(zoom);
   zoomRef.current = zoom;
   const viewportRectRef = useRef<SVGRectElement>(null);
@@ -247,8 +247,8 @@ export function ExperimentGraph({
   useEffect(() => {
     updateViewport();
   }, [zoom, isFullscreen]);
-  /* Resizing the window changes .graph-scroll directly, since .atlas-main is 100vh and the
-     shell takes the remainder — without this the minimap rectangle keeps the old dimensions. */
+  /* Mengubah ukuran jendela langsung mengubah .graph-scroll, sebab .atlas-main setinggi 100vh dan
+     cangkangnya mengambil sisanya — tanpa ini persegi minimap mempertahankan dimensi lamanya. */
   useEffect(() => {
     window.addEventListener("resize", updateViewport);
     return () => {
@@ -257,8 +257,8 @@ export function ExperimentGraph({
         cancelAnimationFrame(viewportFrameRef.current);
     };
   }, []);
-  /* React registers its wheel listener as passive, so preventDefault() inside an onWheel prop
-     is ignored and Ctrl+wheel zooms the browser as well as the map. */
+  /* React mendaftarkan listener wheel-nya sebagai passive, sehingga preventDefault() di dalam prop
+     onWheel diabaikan dan Ctrl+roda memperbesar peramban sekaligus petanya. */
   useEffect(() => {
     const element = scrollRef.current;
     if (!element) return;
@@ -577,8 +577,9 @@ export function ExperimentGraph({
             <svg
               className="lineage-svg"
               viewBox={`0 0 ${canvasWidth} ${canvasHeight}`}
-              /* Not role="img": that role makes its subtree presentational, which would hide
-                 every focusable edge button below from assistive technology. */
+              /* Bukan role="img": peran itu menjadikan seluruh subpohonnya presentasional, sehingga
+                 setiap tombol edge yang dapat difokuskan di bawahnya tersembunyi dari teknologi
+                 bantu. */
               role="group"
               aria-label="Garis hubungan antar eksperimen"
               shapeRendering="geometricPrecision"
@@ -770,8 +771,9 @@ export function ExperimentGraph({
               role="button"
               tabIndex={0}
               aria-label={`Lompat ke ${lane.label}`}
-              /* No pointer handler: lanes cover the whole minimap, so swallowing pointerdown
-                 here would kill the drag before it starts. Keyboard still jumps to the lane. */
+              /* Tanpa penangan pointer: lane menutupi seluruh minimap, sehingga menelan pointerdown
+                 di sini akan mematikan penyeretan sebelum dimulai. Papan tik tetap dapat melompat
+                 ke lane. */
               onKeyDown={event => {
                 if (event.key === "Enter" || event.key === " ") {
                   event.preventDefault();

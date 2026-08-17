@@ -1,4 +1,4 @@
-/** Field Research Ledger evidence sheet — detailed proof record for the selected completed experiment. */
+/** Lembar bukti Field Research Ledger — catatan pembuktian terperinci bagi eksperimen terpilih yang telah selesai. */
 import {
   datasetInfo,
   datasetRoots,
@@ -176,9 +176,9 @@ const auditGeneratedAt = formatAuditDate(
   (artifactManifest as { generatedAt?: string }).generatedAt
 );
 
-/** Glossary — only terms that actually occur in the node currently open are shown, detected by a
- *  substring/regex test against conclusion, findings, and the label/value/note of every metric,
- *  perClass entry, and confidence note. */
+/** Glosarium — hanya istilah yang benar-benar muncul pada simpul yang sedang terbuka yang
+ *  ditampilkan, dideteksi melalui uji substring atau regex terhadap conclusion, findings, serta
+ *  label, value, dan note pada setiap metrik, entri perClass, dan catatan selang kepercayaan. */
 const glossaryTerms: {
   term: string;
   definition: string;
@@ -262,9 +262,9 @@ function glossaryEntriesFor(experiment: Experiment) {
   return glossaryTerms.filter(entry => entry.test(text));
 }
 
-/** Lineage — parentIds resolve either to a sibling experiment (selectable) or a dataset root
- *  (shown as plain text; roots are not selectable nodes). Children are found by scanning every
- *  experiment whose parentIds includes this node's id. */
+/** Silsilah — parentIds mengarah ke eksperimen sejawat (dapat dipilih) atau ke akar dataset
+ *  (ditampilkan sebagai teks biasa; akar bukan simpul yang dapat dipilih). Turunan ditemukan
+ *  dengan memindai setiap eksperimen yang parentIds-nya memuat id simpul ini. */
 type LineageEntry = { id: string; label: string; selectable: boolean };
 function lineageParents(experiment: Experiment): LineageEntry[] {
   return experiment.parentIds

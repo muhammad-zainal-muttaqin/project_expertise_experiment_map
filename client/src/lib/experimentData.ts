@@ -1,8 +1,8 @@
 import { historicalExperiments } from "@/lib/historicalExperiments";
 
 /**
- * Field Research Ledger data layer — sourced from project-expertise commit 225faaeb.
- * Each node represents a completed experiment, audit, or synthesis logged in EKSPERIMEN.md.
+ * Lapisan data Field Research Ledger — bersumber dari commit 225faaeb project-expertise.
+ * Setiap simpul mewakili satu eksperimen, audit, atau sintesis yang tercatat pada EKSPERIMEN.md.
  */
 export type ExperimentStatus =
   | "supported"
