@@ -267,7 +267,7 @@ export const experiments: Experiment[] = [
       "results/matrix_compiled.json",
       "results/bootstrap_ci_352.json",
     ],
-    parentIds: ["V2-E-001", "V2-E-006"],
+    parentIds: ["V2-E-001", "V2-E-002", "V2-E-006"],
     position: { x: 452, y: 766 },
   },
   {

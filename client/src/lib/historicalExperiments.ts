@@ -844,6 +844,57 @@ const statusFor = (verdict: string): Experiment["status"] =>
         ? "inconclusive"
         : "audit_needed";
 
+/**
+ * Silsilah seri E ditetapkan eksplisit dari register `experiments/EKSPERIMEN.md`:
+ * penanda "lanjutan [E-NNN]", "pengganti E-NNN", gerbang G, blok Konteks yang
+ * menyebut SR pendahulu, dan berbagi nomor Ide I-NN. Sebelumnya induk diambil dari
+ * entri sebelumnya pada `pipelineRecords`, sehingga urutan penomoran register
+ * terbaca sebagai relasi kausal yang tidak pernah ada.
+ *
+ * Entri tanpa pendahulu eksperimental berlabuh pada HB-009. Register menyatakan
+ * baseline acuan itu sebagai pembanding seluruh seri, bukan sekadar simpul
+ * kronologis terdekat.
+ *
+ * Tipe `Record<PipelineId, string[]>` menjaga peta tetap lengkap: menambah entri
+ * pada `pipelineRecords` tanpa menetapkan induknya akan gagal pada `pnpm check`,
+ * bukan jatuh diam-diam ke induk bawaan.
+ */
+type PipelineId = (typeof pipelineRecords)[number][0];
+const pipelineParents: Record<PipelineId, string[]> = {
+  "RP-E001": ["HB-009"],
+  "RP-E002": ["HB-009"],
+  "RP-E003": ["RP-E002"],
+  "RP-E004": ["RP-E003"],
+  "RP-E005": ["RP-E004"],
+  "RP-E006": ["RP-E005"],
+  "RP-E007": ["RP-E005", "RP-E006"],
+  "RP-E009": ["HB-009"],
+  "RP-E010": ["RP-E009"],
+  "RP-E011": ["RP-E010"],
+  "RP-E012": ["RP-E001", "RP-E010"],
+  "RP-E013": ["RP-E006"],
+  "RP-E014": ["RP-E012"],
+  "RP-E015": ["RP-E002", "RP-E014"],
+  "RP-E016": ["RP-E014"],
+  "RP-E017": ["RP-E015", "RP-E016"],
+  "RP-E018": ["RP-E017"],
+  "RP-E019": ["RP-E018"],
+  "RP-E020": ["RP-E019"],
+  "RP-E021": ["RP-E020"],
+  "RP-E022": ["RP-E013", "RP-E021"],
+  "RP-E024": ["RP-E001", "RP-E022"],
+  "RP-E025": ["RP-E022"],
+  "RP-E026": ["RP-E024"],
+  "RP-E027": ["RP-E022", "RP-E025"],
+  "RP-E028": ["RP-E024", "RP-E026"],
+  "RP-E029": ["RP-E027"],
+  "RP-E030": ["RP-E027", "RP-E029"],
+  "RP-E031": ["RP-E030"],
+  "RP-E032": ["RP-E022", "RP-E031"],
+  "RP-E033": ["RP-E032"],
+  "RP-E033b": ["RP-E033"],
+};
+
 const pipeline: Experiment[] = pipelineRecords.map(
   ([id, title, code, verdict, detail], index) => {
     const isDepth = [
@@ -911,7 +962,7 @@ const pipeline: Experiment[] = pipelineRecords.map(
         { label: "Seri", value: code },
       ],
       artifacts: ["experiments/README.md", "experiments/EKSPERIMEN.md"],
-      parentIds: index === 0 ? ["HB-009"] : [pipelineRecords[index - 1][0]],
+      parentIds: pipelineParents[id],
       sourceKey: "pipeline",
       position: grid(index, 9, 13),
     });

@@ -62,6 +62,8 @@ Field `position` pada `Experiment` wajib secara tipe tetapi **tidak dipakai** ol
 
 `parentIds` membentuk graf. `ExperimentGraph.tsx` menghitung `lineageFor` (leluhur) dan `branchFor` (leluhur + turunan, untuk mode fokus), lalu `orthogonalPath` di `atlasLayout.ts` menggambar satu kurva kubik per relasi.
 
+Meskipun simpul seri `RP-E*` dibangkitkan dari `pipelineRecords`, silsilahnya **tidak** boleh ikut dibangkitkan dari urutan array. Induknya ditetapkan eksplisit pada tabel `pipelineParents` di `historicalExperiments.ts`, bersumber dari penanda register `experiments/EKSPERIMEN.md` (`lanjutan [E-NNN]`, `pengganti E-NNN`, gerbang G, blok Konteks yang menyebut SR pendahulu, dan nomor Ide I-NN yang dipakai bersama). Entri tanpa pendahulu eksperimental berlabuh pada `HB-009`, baseline acuan yang oleh register dinyatakan sebagai pembanding seluruh seri. Tabel itu bertipe `Record<PipelineId, string[]>`, sehingga menambah entri pada `pipelineRecords` tanpa menetapkan induknya akan gagal pada `pnpm check`.
+
 Teks tooltip edge **tidak disimpan sebagai data**. `reasonForEdge` menyusunnya secara heuristik dari status anak, selisih `inputs` induk–anak, `phase`, dan perbedaan `era`. Mengubah `inputs` atau `phase` sebuah node akan mengubah narasi hubungan yang tampil.
 
 Narasi lembar bukti mengikuti pola serupa di `client/src/lib/evidenceNarratives.ts`: ada tabel override per ID (`specialNarratives`) dengan *fallback* `classify()` berbasis prefiks ID dan kata kunci `phase`.
@@ -82,7 +84,7 @@ Empat repositori sumber dipasangi commit pin, dan commit tersebut diulang di beb
 
 ### Biaya render peta
 
-Satu render `ExperimentGraph` menghasilkan 93 kartu node, 120 pasang `path` lineage, dan 104 `rect` minimap. Nilai yang berubah pada setiap frame — posisi gulir, posisi kursor saat menyeret — karena itu tidak boleh disimpan sebagai state React. Persegi `.minimap-viewport` ditulis langsung ke DOM melalui `viewportRectRef` dan digabungkan menjadi satu penulisan per frame oleh `updateViewport`; `zoomRef` menyediakan pembagi terkini tanpa perlu mendaftarkan ulang listener. Mengembalikannya menjadi `useState` akan memunculkan kembali long task 50–80 ms pada setiap kejadian scroll.
+Satu render `ExperimentGraph` menghasilkan 93 kartu node, 131 pasang `path` lineage, dan 104 `rect` minimap. Nilai yang berubah pada setiap frame — posisi gulir, posisi kursor saat menyeret — karena itu tidak boleh disimpan sebagai state React. Persegi `.minimap-viewport` ditulis langsung ke DOM melalui `viewportRectRef` dan digabungkan menjadi satu penulisan per frame oleh `updateViewport`; `zoomRef` menyediakan pembagi terkini tanpa perlu mendaftarkan ulang listener. Mengembalikannya menjadi `useState` akan memunculkan kembali long task 50–80 ms pada setiap kejadian scroll.
 
 ### Build, base path, dan aset
 

@@ -117,7 +117,7 @@ Seri F berjalan paralel dengan seri E untuk perubahan formulasi di atas RF-DETR-
 
 ## Keterkaitan dengan Atlas
 
-Atlas menyajikan node `RP-E001` hingga `RP-E032` dan node seri F sebagai lapisan historis. Dossier ini harus dibaca bersama label *Final/Arsip/Audit/Ditangguhkan* di sumber asli. Node dapat memakai ringkasan satu kalimat agar peta terbaca; dossier mempertahankan konteks bahwa, misalnya, E-022 bukan hasil akhir dan E-032 bukan bukti ekuivalensi.
+Atlas menyajikan node `RP-E001` hingga `RP-E033b` dan node seri F sebagai lapisan historis. Silsilah antarnode seri E mengikuti penanda register (`lanjutan [E-NNN]`, `pengganti E-NNN`, gerbang G, dan nomor Ide yang dipakai bersama), bukan urutan penomoran; nomor E-008 yang tidak dipakai serta E-023 yang dijalankan sebagai E-032 karena itu tidak memutus rantai apa pun. Dossier ini harus dibaca bersama label *Final/Arsip/Audit/Ditangguhkan* di sumber asli. Node dapat memakai ringkasan satu kalimat agar peta terbaca; dossier mempertahankan konteks bahwa, misalnya, E-022 bukan hasil akhir dan E-032 bukan bukti ekuivalensi.
 
 ## Referensi
 
