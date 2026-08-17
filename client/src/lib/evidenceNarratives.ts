@@ -11,157 +11,157 @@ export interface EvidenceNarrative {
 
 const specialNarratives: Record<string, Partial<EvidenceNarrative>> = {
   "RP-E002": {
-    kind: "Inventaris data sumber",
-    work: "Mencocokkan arsip mentah dengan register SawitMVC: 3.992 JPG raw beresolusi 3024×4032 dan 45 video orbit diperiksa, lalu nama berkas dibandingkan dengan anotasi.",
+    kind: "Inventarisasi data sumber",
+    work: "Mencocokkan arsip citra mentah dengan basis data register SawitMVC: sebanyak 3.992 berkas citra mentah (resolusi 3024×4032) dan 45 video orbit diperiksa, kemudian struktur penamaan berkas dibandingkan terhadap anotasi terkait.",
     evidence:
-      "Rasio aspek raw sama dengan citra latih sehingga koordinat YOLO dapat dipakai kembali. Namun terdapat 936 nama berkas ganda, sehingga nama file saja tidak sah untuk memasangkan raw ke anotasi.",
+      "Rasio aspek citra mentah terbukti identik dengan citra latih sehingga koordinat bounding box YOLO dapat digunakan kembali. Namun, teridentifikasi 936 duplikasi penamaan berkas, sehingga penamaan berkas semata tidak valid untuk memetakan citra mentah ke anotasi.",
     impact:
-      "Eksperimen resolusi tinggi tidak boleh dimulai dari mapping nama file. Kerja berikutnya dialihkan ke matching konten atau tabel pengumpul data; video orbit tetap diprioritaskan sebagai jalur terpisah.",
+      "Eksperimen resolusi tinggi tidak dapat dilakukan melalui pemetaan nama berkas secara langsung. Tahapan riset dialihkan pada pencocokan konten citra atau metadata pengumpulan data, sedangkan video orbit tetap dipertahankan sebagai jalur eksperimen independen.",
   },
   "RP-E003": {
-    kind: "Probe geometri video",
-    work: "Memeriksa satu video orbit untuk melihat apakah pose kamera dapat dipulihkan sebelum merancang association lintas-view.",
+    kind: "Analisis kelayakan geometri video",
+    work: "Menganalisis satu rekaman video orbit untuk menguji kelayakan estimasi pose kamera sebelum merancang mekanisme asosiasi multi-sudut pandang (cross-view).",
     impact:
-      "Hasil ini hanya membuka kelayakan probe pose; belum membuktikan bahwa geometri video memperbaiki counting.",
+      "Temuan ini mengonfirmasi kelayakan estimasi pose awal secara geometris, namun belum membuktikan bahwa integrasi geometri video mampu meningkatkan akurasi pencacahan (counting).",
   },
   "RP-E006": {
     kind: "Uji falsifikasi representasi",
-    work: "Menguji pseudo-depth sebagai pemisah tandan dan latar, bukan melatih detector baru.",
+    work: "Menguji efektivitas representasi kedalaman semu (pseudo-depth) dalam memisahkan objek tandan dari latar belakang tanpa melatih arsitektur detektor baru.",
     impact:
-      "Jalur pseudo-depth dihentikan dan tidak dipromosikan menjadi eksperimen detector.",
+      "Jalur representasi pseudo-depth dihentikan dan tidak dilanjutkan ke tahap eksperimen integrasi detektor.",
   },
   "RP-E021": {
-    kind: "Benchmark detector final",
-    work: "Membandingkan RT-DETR dan RF-DETR dengan protokol evaluasi empat kelas yang sama, lalu menetapkan pembanding detector untuk eksperimen setelahnya.",
+    kind: "Evaluasi komparatif detektor final",
+    work: "Melakukan evaluasi komparatif antara arsitektur RT-DETR dan RF-DETR menggunakan protokol pengujian empat kelas yang terstandarisasi, guna menetapkan baseline detektor untuk eksperimen lanjutan.",
     evidence:
-      "RF-DETR-L mencapai test mAP50 0,6038 dan mAP50–95 0,2770 pada split pohon 716/96/141.",
+      "Model RF-DETR-L mencapai metrik mAP50 sebesar 0,6038 dan mAP50–95 sebesar 0,2770 pada data uji (split 716/96/141 pohon).",
     impact:
-      "RF-DETR-L menjadi referensi detector Research-Pipeline; angka ini bukan metrik counting tree-level.",
+      "RF-DETR-L ditetapkan sebagai model acuan detektor utama pada Research-Pipeline; metrik ini merupakan evaluasi deteksi tingkat citra, bukan estimasi pencacahan tingkat pohon (tree-level counting).",
   },
   "RP-E025": {
-    kind: "Audit evaluator",
-    work: "Menelusuri mengapa dua evaluator memberi angka berbeda dan menguji apakah selisih bertambah mengikuti jumlah deteksi.",
+    kind: "Audit protokol evaluator",
+    work: "Menyelidiki diskrepansi metrik antara dua modul evaluator serta menguji korelasi selisih evaluasi terhadap peningkatan densitas deteksi.",
     impact:
-      "pycocotools dikunci sebagai protokol pengukuran; hasil dari evaluator lama tidak boleh dicampur tanpa penyesuaian.",
+      "Protokol evaluasi dibakukan secara ketat menggunakan pustaka pycocotools; metrik dari evaluator terdahulu tidak diperkenankan untuk digabungkan tanpa penyesuaian formal.",
   },
   "HD-001": {
     kind: "Audit ground truth dan geometri",
-    work: "Mencoba menautkan tampakan tandan antar-view memakai geometri, lalu menelusuri koreksi ground truth yang mengubah interpretasi skor awal.",
+    work: "Menguji penautan objek tandan antarsudut pandang berbasis geometri kamera, kemudian melakukan penelusuran koreksi ground truth yang memengaruhi interpretasi metrik awal.",
     impact:
-      "Skor pra-perbaikan tidak dijadikan klaim akhir. Node ini dipakai sebagai pagar audit untuk semua hasil deduplikasi sesudahnya.",
+      "Metrik sebelum perbaikan ground truth dinyatakan tidak valid sebagai klaim performa final. Node ini difungsikan sebagai batasan audit bagi seluruh pengujian deduplikasi berikutnya.",
   },
   "HD-007": {
-    kind: "Audit kebocoran informasi",
-    work: "Menguji aturan pembagian yang tampak unggul, lalu memeriksa asal parameter pembaginya terhadap split training.",
+    kind: "Audit kebocoran informasi (data leakage)",
+    work: "Menguji aturan pembagi heuristik yang menunjukkan skor tinggi, kemudian menelusuri dependensi parameter pembagi terhadap data pelatihan (training split).",
     impact:
-      "Metode dibatalkan sebagai prediktor yang dapat digeneralisasi meskipun skornya tinggi; ini menjaga atlas dari klaim leakage.",
+      "Metode ini didiskualifikasi sebagai prediktor yang dapat digeneralisasi akibat kebocoran informasi (data leakage); keputusan ini menjaga integritas validitas ilmiah pada atlas eksperimen.",
   },
   "HB-001": {
-    kind: "Baseline masalah duplikasi",
-    work: "Menjumlahkan seluruh tampakan tandan di beberapa view sebagai kontrol negatif paling sederhana.",
+    kind: "Baseline masalah duplikasi naif",
+    work: "Menjumlahkan seluruh deteksi kemunculan tandan dari berbagai sudut pandang sebagai kontrol negatif mendasar (metode naif).",
     evidence:
-      "Class ±1 hanya 50,00% dan Tree ±1 6,38%, menunjukkan setiap tandan bisa muncul lebih dari sekali.",
+      "Akurasi Class ±1 hanya mencapai 50,00% dan Tree ±1 sebesar 6,38%, mengonfirmasi bahwa sebagian besar tandan terdeteksi berulang kali di berbagai sudut pandang.",
     impact:
-      "Counting tree-level perlu association atau koreksi visibility; menjumlahkan kotak deteksi mentah tidak sah.",
+      "Estimasi pencacahan tingkat pohon memerlukan pemodelan asosiasi data atau koreksi visibilitas; penjumlahan bounding box deteksi secara langsung terbukti tidak valid.",
   },
   "HB-004": {
-    kind: "Batas atas counting",
-    work: "Memberi ElasticNet fitur F0 dari deteksi ground truth, bukan keluaran detector, untuk memisahkan kualitas counter dari kesalahan deteksi.",
+    kind: "Batas atas teoretis pencacahan (oracle)",
+    work: "Melatih model ElasticNet menggunakan vektor fitur F0 yang diekstraksi dari ground truth (bukan keluaran detektor) untuk mengisolasi batas atas performa modul pencacah dari kesalahan deteksi.",
     evidence:
-      "Dengan input sempurna, Class ±1 mencapai 98,05% dan Tree ±1 92,20%.",
+      "Dengan representasi masukan sempurna (oracle), akurasi Class ±1 mencapai 98,05% dan Tree ±1 mencapai 92,20%.",
     impact:
-      "Kesenjangan dengan pipeline E2E menunjukkan bottleneck besar berada pada evidence detector/association sebelum regresi count.",
+      "Disparitas yang signifikan terhadap pipeline end-to-end membuktikan bahwa kendala utama (bottleneck) berada pada tahap deteksi dan asosiasi, bukan pada modul regresi pencacah.",
   },
   "HB-009": {
-    kind: "Baseline E2E rilis",
-    work: "Menetapkan pipeline praktis detector YOLO26m ke Ridge F_all sebagai pembanding counting tree-level yang dapat direproduksi.",
+    kind: "Baseline end-to-end resmi rilis",
+    work: "Menstandarisasi pipeline praktis yang menggabungkan detektor YOLO26m dengan regresi Ridge (fitur F_all) sebagai model acuan (baseline) pencacahan tingkat pohon yang dapat direproduksi.",
     impact:
-      "Semua eksperimen counting selanjutnya harus menyebut apakah mereka membandingkan diri dengan baseline ini dan memakai split yang sebanding.",
+      "Seluruh eksperimen pencacahan selanjutnya diwajibkan menyertakan perbandingan terhadap baseline ini dengan menggunakan pembagian data (split) yang sepadan.",
   },
   "V2-E-001": {
-    kind: "Reproduksi benchmark",
-    work: "Melatih ulang tiga detector pada 953 RGB dengan konfigurasi terkontrol untuk memeriksa apakah benchmark sebelumnya dapat direproduksi.",
+    kind: "Reproduksi benchmark detektor",
+    work: "Melatih ulang tiga arsitektur detektor pada dataset SawitMVC-953 RGB dalam kondisi eksperimen terkontrol untuk memverifikasi reproduktifitas benchmark terdahulu.",
     impact:
-      "Urutan detector yang stabil menjadi titik mula adil untuk ablation depth dan counting berikutnya.",
+      "Konsistensi hierarki performa antar-arsitektur detektor menjadi landasan komparasi yang valid bagi eksperimen ablasi sensor kedalaman dan pencacahan selanjutnya.",
   },
   "V2-E-002": {
-    kind: "Uji propagasi detector ke counting",
-    work: "Mengalirkan keluaran tiga detector baru ke counter Ridge F_all yang sama, lalu membandingkannya dengan YOLO26m baseline.",
+    kind: "Uji propagasi deteksi ke pencacahan",
+    work: "Meneruskan keluaran prediksi dari tiga arsitektur detektor ke modul pencacah Ridge (fitur F_all) yang sama, kemudian mengomparasikannya dengan baseline YOLO26m.",
     evidence:
-      "Tidak ada detector baru yang melampaui Class ±1 77,48%; RF-DETR-L masih memberi MAE terendah 0,993.",
+      "Tidak ada detektor baru yang melampaui akurasi Class ±1 sebesar 77,48%; model RF-DETR-L mencatatkan galat absolut rata-rata (MAE) terendah sebesar 0,993.",
     impact:
-      "Meningkatkan mAP detector tidak otomatis memperbaiki counting. Jalur berikutnya perlu menilai galat detector dan agregasi secara terpisah.",
+      "Peningkatan metrik mAP pada detektor terbukti tidak berkorelasi linier dengan kenaikan akurasi pencacahan; evaluasi berikutnya perlu memisahkan antara galat deteksi dan galat agregasi multi-sudut pandang.",
   },
   "V2-E-005": {
-    kind: "Ablasi early fusion sensor",
-    work: "Menambahkan depth inverse sebagai kanal keempat pada tiga arsitektur dan membandingkan setiap pasangan RGBD–RGB.",
+    kind: "Ablasi early fusion sensor kedalaman",
+    work: "Mengintegrasikan representasi depth inverse sebagai kanal keempat (early fusion) pada tiga arsitektur detektor dan membandingkan kinerja setiap pasangan konfigurasi RGB-D terhadap RGB.",
     impact:
-      "Karena arah hasil berbeda antar-arsitektur, early fusion inverse tidak dipakai sebagai klaim umum manfaat depth.",
+      "Karena dampak performa bervariasi antar-arsitektur (hanya satu yang meningkat, sementara dua lainnya menurun), early fusion depth inverse tidak dapat diklaim memberikan manfaat performa secara universal.",
   },
   "V2-E-006": {
-    kind: "Ablasi counting ber-bootstrap",
-    work: "Menguji apakah perubahan early fusion bertahan setelah keluaran detector masuk ke counter dan diulang melalui bootstrap.",
-    evidence: "Seluruh CI perbandingan RGBD–RGB mencakup nol.",
+    kind: "Ablasi pencacahan bootstrap",
+    work: "Menguji signifikansi statistik pengaruh early fusion pada tahap pencacahan akhir menggunakan metode resampling bootstrap sebanyak 10.000 iterasi.",
+    evidence: "Seluruh selang kepercayaan (CI 95%) selisih performa antara RGB-D dan RGB mencakup nilai nol.",
     impact:
-      "Tidak ada dasar statistik untuk mempromosikan depth inverse sebagai peningkatan counting.",
+      "Tidak ditemukan landasan statistik yang signifikan untuk menyimpulkan bahwa penambahan kanal depth inverse meningkatkan akurasi pencacahan.",
   },
   "V2-E-008": {
-    kind: "Penyaringan encoding depth",
-    work: "Menguji beberapa encoding depth pada training singkat 15 epoch untuk memilih kandidat yang layak menerima anggaran training penuh.",
+    kind: "Penyaringan representasi encoding depth",
+    work: "Mengevaluasi beberapa skema encoding kedalaman pada pelatihan singkat (15 epoch) untuk menyaring kandidat representasi yang layak dilatih penuh.",
     impact:
-      "Sobel edge dipromosikan sebagai kandidat, tetapi angka screening tidak boleh diperlakukan sebagai hasil final 60 epoch.",
+      "Representasi kontur Sobel (edge) terpilih sebagai kandidat terbaik untuk pelatihan penuh (60 epoch), namun skor penyaringan awal tidak boleh disamakan dengan metrik konvergensi final.",
   },
   "V2-E-010": {
-    kind: "Validasi detector edge-depth",
-    work: "Melatih kandidat Sobel edge hingga 60 epoch dan membandingkannya dengan inverse serta baseline RGB dengan evaluator yang sama.",
+    kind: "Validasi detektor edge-depth",
+    work: "Melatih model kandidat berbasis representasi edge-depth selama 60 epoch penuh, kemudian mengomparasikan hasilnya terhadap model inverse dan baseline RGB menggunakan evaluator yang terstandarisasi.",
     impact:
-      "Kenaikan deteksi memberi alasan untuk memeriksa mekanisme edge lebih lanjut, tetapi tidak membuktikan peningkatan counting.",
+      "Peningkatan metrik deteksi (mAP50) memberikan justifikasi untuk investigasi mekanisme representasi edge lebih lanjut, meskipun belum terbukti meningkatkan akurasi pencacahan akhir.",
   },
   "V2-E-011": {
-    kind: "Audit baseline counting",
-    work: "Menjalankan ulang RGB lalu membandingkan edge dengan RGB ulang dan RGB lama untuk menguji kestabilan klaim counting.",
+    kind: "Evaluasi stabilitas baseline pencacahan",
+    work: "Melakukan pelatihan ulang (retrain) pada baseline RGB, kemudian membandingkan performa edge-depth terhadap baseline baru maupun baseline historis untuk menguji stabilitas komparasi pencacahan.",
     impact:
-      "Perbedaan baseline mengubah kesimpulan; klaim kenaikan counting tidak dipromosikan tanpa pembanding yang dikunci.",
+      "Variasi performa antar-pelatihan baseline memengaruhi kesimpulan statistik; klaim peningkatan pencacahan tidak dapat dipromosikan tanpa standarisasi baseline yang terkunci.",
   },
   "V2-E-012": {
-    kind: "Diagnosis perbandingan dataset",
-    work: "Menghitung ulang komposisi kelas 953 dan 352 untuk menilai apakah selisih performa dapat dibaca sebagai efek depth.",
+    kind: "Diagnosis komparasi dataset",
+    work: "Menganalisis disparitas distribusi dan komposisi kelas antara dataset SawitMVC-953 dan SawitMVC-Depth-352 guna mengevaluasi validitas komparasi efek sensor kedalaman.",
     impact:
-      "Perbandingan 953 versus 352 bukan desain kausal depth karena distribusi kelas dan konteksnya berbeda.",
+      "Komparasi langsung antara dataset 953 dan 352 tidak memenuhi syarat desain kausal untuk pembuktian efek sensor kedalaman karena perbedaan signifikan pada distribusi kelas dan konteks pengambilan data.",
   },
   "V2-E-013": {
-    kind: "Diagnosis jenis galat",
-    work: "Mengevaluasi detector dengan kelas kematangan dan dengan label class-agnostic untuk memisahkan gagal menemukan tandan dari salah memberi kelas.",
+    kind: "Diagnosis pola galat detektor",
+    work: "Mengevaluasi detektor menggunakan label spesifik tingkat kematangan serta label agnostik kelas (class-agnostic) guna mengisolasi proporsi galat lokalisasi terhadap galat klasifikasi kematangan.",
     impact:
-      "Jalur perbaikan bergeser ke klasifikasi ordinal/crop, bukan hanya menaikkan kapasitas locator.",
+      "Sebanyak 44,5% penurunan performa detektor disebabkan oleh kesalahan klasifikasi kematangan (terutama antarkelas bertetangga), sehingga arah perbaikan dialihkan ke pemodelan klasifikasi ordinal pada citra terpotong (crop).",
   },
   "V2-E-014": {
-    kind: "Probe sinyal sensor",
-    work: "Mengukur relief lokal depth pada berbagai pooling untuk menguji apakah sensor membawa sinyal ordinal sebelum dimasukkan ke model.",
+    kind: "Analisis sinyal sensor kedalaman",
+    work: "Menganalisis karakteristik relief kedalaman lokal pada berbagai skala spatial pooling untuk menguji keberadaan sinyal ordinal kematangan sebelum dilakukan fusi ke dalam arsitektur pembelajaran mendalam.",
     impact:
-      "Depth memiliki sinyal setelah pooling, tetapi bukan peta metrik siap-fusion pada piksel mentah.",
+      "Data sensor kedalaman terbukti memuat sinyal ordinal yang signifikan setelah agregasi spasial (pooling), namun tidak berupa representasi metrik yang optimal jika diinjeksikan langsung pada tingkat piksel mentah.",
   },
   "V2-E-015": {
-    kind: "Klasifikasi tahap kedua",
-    work: "Mencrop tandan dari box lalu membandingkan classifier kematangan dengan klasifikasi satu tahap detector.",
+    kind: "Klasifikasi kematangan tahap kedua",
+    work: "Memotong area objek tandan (crop) dari bounding box hasil lokalisasi, kemudian membandingkan kinerja model pengklasifikasi kematangan independen terhadap mekanisme klasifikasi satu tahap pada detektor.",
     impact:
-      "Pemrosesan dua tahap layak diteruskan sebagai jalur klasifikasi; perbaikan ini tidak sama dengan kemenangan detector.",
+      "Arsitektur pipeline dua tahap terbukti mengungguli pengklasifikasi bawaan detektor; strategi ini dipromosikan sebagai jalur pemodelan klasifikasi kematangan.",
   },
   "V2-E-016": {
-    kind: "Replikasi ablasi depth",
-    work: "Menguji branch depth dan fitur depth terhadap RGB dengan tiga seed untuk membedakan sinyal awal dari efek yang berulang.",
+    kind: "Replikasi ablasi depth pada pengklasifikasi",
+    work: "Menguji integrasi cabang fitur kedalaman (depth branch) terhadap representasi RGB pada model pengklasifikasi menggunakan replikasi tiga random seed untuk memverifikasi reproduktifitas sinyal.",
     impact:
-      "Satu seed positif tidak cukup; pada replikasi depth tidak menambah informasi kondisional di atas RGB.",
+      "Peningkatan skor yang sempat terlihat pada satu seed terbukti merupakan variasi acak (noise); setelah replikasi multi-seed, kanal kedalaman tidak memberikan informasi kondisional tambahan yang signifikan dibandingkan representasi RGB murni.",
   },
   "V2-E-032": {
-    kind: "Matriks evaluasi monocular-depth",
-    work: "Menjalankan 15 eksperimen: lima pilihan masukan (RGB, edge, mono, dan kombinasinya) masing-masing tiga seed, lalu membandingkannya terhadap jalur RGB/edge yang sepadan.",
+    kind: "Matriks evaluasi depth monokular",
+    work: "Menjalankan 15 rancangan eksperimen yang mencakup lima variasi konfigurasi masukan (RGB, edge, depth monokular, dan kombinasinya) pada masing-masing tiga random seed, kemudian membandingkan hasilnya terhadap baseline RGB dan edge yang sepadan.",
     evidence:
-      "Dua kontras monocular terhadap pembanding menunjukkan kerugian signifikan; pada 12 dari 12 kontras lain, CI95 tetap memuat nol. Sinyal mid rata-rata +0,0139 tidak cukup untuk menyebut kenaikan.",
+      "Dari hasil pengujian, dua uji kontras monokular terhadap pembanding mengalami penurunan performa secara signifikan. Pada 12 uji kontras lainnya, selang kepercayaan 95% (CI95) masih mencakup nilai nol. Nilai rata-rata +0,0139 tidak cukup signifikan untuk dikategorikan sebagai peningkatan performa.",
     impact:
-      "Monocular-depth tidak diteruskan sebagai booster detector. Riset kembali berfokus pada evidence edge yang sudah memiliki dasar pembanding lebih jelas.",
+      "Pemanfaatan depth monokular dihentikan dan tidak dilanjutkan sebagai modul penguat (booster) detektor. Arah riset difokuskan kembali pada representasi edge yang memiliki dasar komparasi empiris lebih kokoh.",
     caution:
-      "Kontrol M_shuf belum dijalankan, sehingga mekanisme kerugian—isi mono atau bias kanal—belum dapat dipisahkan secara kausal.",
+      "Pengujian kontrol permutasi kanal (M_shuf) belum dilakukan, sehingga akar penurunan performa—apakah disebabkan oleh kandungan fitur monokular atau degradasi bobot kanal—belum dapat dipisahkan secara kausal.",
   },
 };
 
@@ -179,50 +179,50 @@ function classify(
   if (id.startsWith("HB-"))
     return {
       kind: "Baseline & batas atas (HB-*)",
-      work: "Sebagai kelompok, node berprefiks HB- menetapkan pembanding terkontrol untuk memisahkan masalah deteksi, agregasi multi-view, dan regresi count.",
+      work: "Kelompok node berprefiks HB- menetapkan model pembanding (baseline) terkontrol guna memisahkan evaluasi performa deteksi, agregasi multi-sudut pandang, dan regresi pencacahan.",
       impact:
-        "Node dalam kelompok ini berfungsi sebagai pembanding angka; kecocokan jenis input dan split perlu diperiksa sebelum skornya dibandingkan dengan node lain.",
+        "Node pada kelompok ini berfungsi sebagai tolok ukur kuantitatif; kesesuaian jenis masukan dan partisi data (split) harus diverifikasi sebelum melakukan komparasi performa dengan node lain.",
     };
   if (id.startsWith("HD-"))
     return {
       kind: "Arsip deduplikasi (HD-*)",
-      work: "Sebagai kelompok, node berprefiks HD- menguji aturan association atau counter pada evidence multi-view, dengan riwayat perbaikan ground truth sebagai bagian dari evaluasi.",
+      work: "Kelompok node berprefiks HD- menguji metode asosiasi data dan algoritma pencacah pada bukti multi-sudut pandang, dengan rekam jejak pembaruan ground truth sebagai parameter audit.",
       impact:
-        "Kelompok ini dipakai untuk membedakan metode valid, oracle berbasis GT, dan skor yang terdiskualifikasi.",
+        "Kelompok ini digunakan untuk memvalidasi kelayakan metode, mengevaluasi batas atas berbasis ground truth (oracle), dan memfilter skor yang didiskualifikasi akibat kebocoran data.",
     };
   if (id.startsWith("RP-F"))
     return {
       kind: "Gerbang formulasi (RP-F*)",
-      work: "Sebagai kelompok, node berprefiks RP-F menjalankan probe atau run terbatas untuk memutuskan apakah sebuah mekanisme layak menerima eksperimen penuh.",
+      work: "Kelompok node berprefiks RP-F menjalankan evaluasi terarah (probe) atau pelatihan skala kecil untuk menilai kelayakan hipotesis mekanisme sebelum dialokasikan ke eksperimen skala penuh.",
       impact:
-        "Lolos gerbang pada kelompok ini bukan klaim performa final; gugur berarti anggaran run dialihkan ke cabang yang lebih didukung.",
+        "Kelolosan pada gerbang formulasi merupakan validasi awal mekanisme, bukan klaim performa akhir; pengujian yang tidak memenuhi ambang batas dialihkan untuk efisiensi komputasi.",
     };
   if (id.startsWith("RP-"))
     return {
       kind: "Register Research-Pipeline (RP-E*)",
-      work: "Sebagai kelompok, node berprefiks RP-E menjalankan probe, audit, atau pembanding yang tercatat pada register primer Research-Pipeline.",
+      work: "Kelompok node berprefiks RP-E mencatat pengujian terarah, audit data, dan eksperimen komparatif yang terdata secara kronologis pada register primer Research-Pipeline.",
       impact:
-        "Putusan register pada kelompok ini menentukan apakah cabang diteruskan, dibatasi, atau dihentikan.",
+        "Hasil evaluasi pada register ini menentukan secara formal apakah suatu cabang metodologi diteruskan, dibatasi cakupannya, atau dihentikan.",
     };
   if (phase.includes("diagnosis") || phase.includes("audit"))
     return {
-      kind: "Audit atau diagnosis (kelompok fase)",
-      work: "Node dalam kelompok fase audit/diagnosis ini membaca ulang data, evaluasi, atau keluaran model untuk mengisolasi sumber galat tanpa menyatakan kenaikan performa baru.",
+      kind: "Audit dan diagnosis metodologi",
+      work: "Kelompok node audit dan diagnosis melakukan analisis mendalam terhadap integritas data, protokol evaluasi, dan keluaran model untuk mengisolasi anomali tanpa menyatakan klaim peningkatan performa baru.",
       impact:
-        "Temuan pada kelompok ini mengarahkan eksperimen berikutnya dan membatasi klaim yang sudah ada.",
+        "Temuan audit memberikan batasan ilmiah yang mengikat terhadap klaim sebelumnya dan mengarahkan perumusan hipotesis pada siklus eksperimen berikutnya.",
     };
   if (phase.includes("sintesis"))
     return {
-      kind: "Sintesis keputusan (kelompok fase)",
-      work: "Node dalam kelompok fase sintesis ini menggabungkan hasil yang sudah tersedia untuk memeriksa pola lintas eksperimen.",
+      kind: "Sintesis keputusan komparatif",
+      work: "Kelompok node sintesis mengagregasi hasil dari berbagai konfigurasi eksperimen yang telah selesai guna mengevaluasi konsistensi pola empiris lintas kondisi pengujian.",
       impact:
-        "Sintesis pada kelompok ini hanya sah sejauh benchmark, evaluator, dan desain pembandingnya sebanding.",
+        "Validitas sintesis berlaku sejauh rancangan eksperimen, distribusi data, dan protokol evaluator yang digunakan memiliki komparabilitas yang setara.",
     };
   return {
-    kind: "Eksperimen pembanding (kelompok umum)",
-    work: "Node dalam kelompok umum ini menjalankan konfigurasi yang tercatat dan membandingkannya dengan jalur yang menjadi referensi pada node induk.",
+    kind: "Eksperimen komparatif terstruktur",
+    work: "Kelompok node ini menjalankan konfigurasi eksperimen terdata dan mengomparasikan hasilnya secara sistematis terhadap jalur acuan pada node pendahulu.",
     impact:
-      "Hasil pada kelompok ini menentukan apakah konfigurasi diteruskan, diulang, atau ditutup.",
+      "Hasil pengujian empiris menentukan kelayakan konfigurasi untuk dilanjutkan ke tahap validasi lanjutan atau dihentikan.",
   };
 }
 

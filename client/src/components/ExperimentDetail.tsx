@@ -187,53 +187,55 @@ const glossaryTerms: {
   {
     term: "Class ±1",
     definition:
-      "akurasi jumlah tandan per kelas kematangan dengan toleransi meleset paling banyak satu tandan.",
+      "Metrik akurasi estimasi jumlah tandan per kelas kematangan dengan toleransi deviasi maksimal satu tandan.",
     test: text => text.includes("Class ±1"),
   },
   {
     term: "Tree ±1",
     definition:
-      "akurasi jumlah tandan per pohon dengan toleransi meleset paling banyak satu tandan.",
+      "Metrik akurasi estimasi total tandan per pohon dengan toleransi deviasi maksimal satu tandan.",
     test: text => text.includes("Tree ±1"),
   },
   {
     term: "mAP50",
     definition:
-      "rata-rata presisi deteksi pada ambang tumpang tindih IoU 0,50.",
+      "Rata-rata presisi rata-rata (mean Average Precision) pada ambang batas Intersection over Union (IoU) 0,50.",
     test: text => text.includes("mAP50"),
   },
   {
     term: "mAP50-95",
     definition:
-      "rata-rata presisi deteksi yang dirata-ratakan pada ambang IoU 0,50 sampai 0,95.",
+      "Rata-rata presisi rata-rata (mAP) yang dihitung lintas ambang batas IoU 0,50 hingga 0,95 dengan interval 0,05.",
     test: text => text.includes("mAP50-95"),
   },
   {
     term: "MAE",
     definition:
-      "rata-rata galat absolut antara jumlah prediksi dan jumlah sebenarnya.",
+      "Galat mutlak rata-rata (Mean Absolute Error) antara nilai estimasi prediksi model dan nilai acuan ground truth.",
     test: text => text.includes("MAE"),
   },
   {
     term: "B1–B4",
     definition:
-      "empat kelas kematangan tandan yang dipakai pada anotasi SawitMVC.",
+      "Empat kategori tingkat kematangan tandan kelapa sawit yang distandarisasi pada anotasi dataset SawitMVC.",
     test: text => /\bB[1-4]\b/.test(text),
   },
   {
     term: "CI95",
     definition:
-      "selang kepercayaan 95 persen; selang yang memuat nol berarti perbedaan tidak dapat dibedakan dari derau.",
-    test: text => text.includes("CI95"),
+      "Selang kepercayaan 95% (Confidence Interval 95%); selang selisih yang mencakup nilai nol menandakan perbedaan tidak signifikan secara statistik.",
+    test: text => text.includes("CI95") || text.includes("CI 95%"),
   },
 ];
 const statusGlossary: Record<ExperimentStatus, string> = {
-  supported: "klaim node ini ditopang bukti pada protokol yang tercatat.",
+  supported:
+    "Klaim eksperimen didukung secara empiris berdasarkan bukti dan protokol uji yang tercatat.",
   negative:
-    "hipotesis node ini tidak terdukung; hasilnya sengaja dipertahankan sebagai jejak keputusan.",
-  inconclusive: "bukti belum memisahkan efek dari derau.",
+    "Hipotesis eksperimen tidak terbukti (hasil negatif); temuan dipertahankan secara transparan sebagai rekam jejak keputusan riset.",
+  inconclusive:
+    "Bukti empiris belum konklusif untuk memisahkan efek perlakuan dari variasi acak (derau).",
   audit_needed:
-    "node ini mencatat batas validitas atau hasil audit, bukan klaim performa.",
+    "Node ini mendokumentasikan batas validitas metodologi atau hasil audit data, bukan klaim peningkatan performa.",
 };
 
 function glossaryEntriesFor(experiment: Experiment) {

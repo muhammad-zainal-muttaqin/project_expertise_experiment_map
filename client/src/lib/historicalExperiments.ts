@@ -46,9 +46,9 @@ const dedup: Experiment[] = [
     seeds: "inventaris 228 JSON + 725 non-JSON · ulangan tidak dicatat",
     status: "audit_needed",
     conclusion:
-      "Iterasi geometri awal sempat melaporkan 93,86%, namun angka pra-perbaikan GT tidak dipakai sebagai hasil final.",
+      "Iterasi geometri awal sempat melaporkan akurasi 93,86%, namun metrik pra-perbaikan ground truth tidak digunakan sebagai hasil akhir.",
     findings:
-      "Commit riwayat menyimpan capaian awal, sedangkan rilis pasca perbaikan GT menjadi dasar interpretasi berikutnya.",
+      "Rekam jejak commit mencatat evaluasi historis awal, sedangkan rilis pasca-perbaikan ground truth menjadi dasar acuan interpretasi ilmiah.",
     metrics: [
       { label: "Riwayat pra-fix", value: "93,86% Acc ±1" },
       { label: "Status", value: "digantikan GT-fix" },
@@ -69,9 +69,10 @@ const dedup: Experiment[] = [
     model: "M01_selector_b2b3",
     seeds: "post GT-fix · ulangan tidak dicatat",
     status: "supported",
-    conclusion: "Heuristik valid terbaik pada rilis pasca perbaikan GT.",
+    conclusion:
+      "Metode heuristik valid terbaik pada rilis pasca-perbaikan ground truth.",
     findings:
-      "Menjadi referensi historical-only untuk koreksi visibilitas tanpa training; bukan angka end-to-end detector.",
+      "Menjadi referensi historis untuk koreksi visibilitas tanpa pelatihan model; bukan metrik detektor end-to-end.",
     metrics: [
       { label: "Macro Acc ±1", value: "87,62%" },
       { label: "Macro MAE", value: "0,375" },
@@ -96,9 +97,10 @@ const dedup: Experiment[] = [
     model: "M05_blend_vis_divide",
     seeds: "post GT-fix · ulangan tidak dicatat",
     status: "supported",
-    conclusion: "Pembanding heuristik valid di bawah M01.",
+    conclusion:
+      "Metode pembanding heuristik valid dengan performa di bawah M01.",
     findings:
-      "M05 memperlihatkan bahwa koreksi visibilitas dapat bekerja tanpa model belajar, tetapi tidak mengungguli selector M01.",
+      "M05 menunjukkan bahwa koreksi visibilitas dapat beroperasi tanpa model pembelajaran mesin, namun tidak mengungguli algoritma selektor M01.",
     metrics: [
       { label: "Macro Acc ±1", value: "86,99%" },
       { label: "Macro MAE", value: "0,388" },
@@ -119,9 +121,10 @@ const dedup: Experiment[] = [
     model: "M06_weight_visibility",
     seeds: "post GT-fix · ulangan tidak dicatat",
     status: "supported",
-    conclusion: "Bobot visibilitas valid, namun bukan pemenang akurasi.",
+    conclusion:
+      "Formulasi bobot visibilitas valid, namun bukan konfigurasi dengan akurasi tertinggi.",
     findings:
-      "Hasil ini menegaskan beberapa formulasi valid bersaing ketat setelah GT diperbaiki.",
+      "Hasil pengujian menegaskan beberapa formulasi valid bersaing ketat setelah perbaikan ground truth.",
     metrics: [
       { label: "Macro Acc ±1", value: "86,88%" },
       { label: "Macro MAE", value: "0,371" },
@@ -142,9 +145,10 @@ const dedup: Experiment[] = [
     model: "M07_weight_coverage",
     seeds: "post GT-fix · ulangan tidak dicatat",
     status: "supported",
-    conclusion: "M07 memberi MAE heuristik valid terendah.",
+    conclusion:
+      "M07 mencatatkan nilai galat absolut rata-rata (MAE) terendah di antara metode heuristik valid.",
     findings:
-      "Kinerja akurasi setara M06, tetapi error numeriknya lebih rendah; tetap di bawah M01 pada Acc ±1.",
+      "Akurasi setara dengan M06 dengan simpangan galat numerik lebih kecil; tetap berada di bawah M01 pada metrik Acc ±1.",
     metrics: [
       { label: "Macro Acc ±1", value: "86,88%" },
       { label: "Macro MAE", value: "0,368" },
@@ -169,9 +173,9 @@ const dedup: Experiment[] = [
     seeds: "post GT-fix · ulangan tidak dicatat",
     status: "supported",
     conclusion:
-      "Koreksi global cepat menjadi baseline heuristik valid yang lebih sederhana.",
+      "Koreksi rasio global menjadi model acuan heuristik valid yang paling efisien secara komputasi.",
     findings:
-      "Metode sangat cepat, tetapi tidak mengungguli koreksi pola visibilitas.",
+      "Proses inferensi sangat cepat (0,005 ms/pohon), namun akurasinya berada di bawah pendekatan koreksi pola visibilitas spasial.",
     metrics: [
       { label: "Macro Acc ±1", value: "85,94%" },
       { label: "Macro MAE", value: "0,391" },
@@ -194,9 +198,9 @@ const dedup: Experiment[] = [
     seeds: "post GT-fix · ulangan tidak dicatat",
     status: "audit_needed",
     conclusion:
-      "Kedua metode mencapai 90,24% tetapi tidak valid karena divisor berasal dari statistik training split.",
+      "Metode M53 dan M60 mencapai akurasi 90,24% namun didiskualifikasi karena parameter pembagi diturunkan dari data pengujian (data leakage).",
     findings:
-      "Disimpan sebagai jejak keputusan: skor tinggi tidak boleh dibaca sebagai metode yang dapat digeneralisasi.",
+      "Dipelihara sebagai rekam jejak audit: skor tinggi tidak dapat diklaim sebagai algoritma yang memiliki validitas generalisasi.",
     metrics: [
       { label: "Macro Acc ±1", value: "90,24%" },
       { label: "Status", value: "tidak valid" },
@@ -218,9 +222,9 @@ const dedup: Experiment[] = [
     seeds: "1 run · seed 42",
     status: "supported",
     conclusion:
-      "YOLO26n lokal memimpin mAP50 dan menjadi pilihan kecepatan pada batch=16.",
+      "YOLO26n lokal mencatatkan mAP50 tertinggi dan menjadi konfigurasi paling efisien pada batch size 16.",
     findings:
-      "Membuktikan model lebih kecil tidak selalu kalah dalam konfigurasi dan environment ini.",
+      "Membuktikan bahwa model dengan parameter lebih kecil dapat berkinerja lebih optimal pada lingkungan komputasi dan konfigurasi ini.",
     metrics: [
       { label: "YOLO26n mAP50", value: "0,521" },
       { label: "YOLO26s", value: "0,506", note: "mAP50" },
@@ -243,9 +247,9 @@ const dedup: Experiment[] = [
     seeds: "1 run · seed 42",
     status: "negative",
     conclusion:
-      "Tanpa augmentasi mAP50 turun dan run overfit; scratch tidak mengalahkan konfigurasi vanilla.",
+      "Penonaktifan augmentasi menurunkan mAP50 dan memicu overfitting; inisialisasi dari awal (scratch) tidak mengungguli konfigurasi standar.",
     findings:
-      "Augmentasi adalah komponen penting pada baseline lokal, sementara pretraining COCO tidak menentukan kemenangan di ablation ini.",
+      "Augmentasi citra merupakan komponen esensial pada baseline lokal, sedangkan bobot pretraining COCO tidak menjadi faktor penentu utama.",
     metrics: [
       { label: "Scratch mAP50", value: "0,511" },
       { label: "Tanpa aug", value: "0,465", note: "mAP50" },
@@ -268,9 +272,9 @@ const dedup: Experiment[] = [
     seeds: "pencarian GridSearchCV · ulangan tidak dicatat",
     status: "supported",
     conclusion:
-      "Fitur GT 13-dim memberi batas atas counting yang sangat tinggi.",
+      "Ekstraksi fitur ground truth 13 dimensi menetapkan batas atas teoretis pencacahan yang sangat tinggi (96,1% Acc ±1).",
     findings:
-      "Perbedaan terhadap E2E kemudian memisahkan masalah counter dari propagasi galat detektor.",
+      "Disparitas terhadap pipeline end-to-end mengisolasi kendala utama pada propagasi galat detektor ke modul pencacahan.",
     metrics: [
       { label: "SVM Acc ±1", value: "96,1%" },
       { label: "SVM Macro MAE", value: "0,318" },
@@ -296,9 +300,9 @@ const dedup: Experiment[] = [
     seeds: "split test n=95",
     status: "inconclusive",
     conclusion:
-      "SVM menjadi terbaik di keluarga YOLO26n, tetap jauh dari counter berbasis GT.",
+      "Model SVM memberikan akurasi tertinggi pada keluarga YOLO26n, namun masih berjarak signifikan dari pencacah berbasis oracle ground truth.",
     findings:
-      "Pemilihan counter mengubah skor sedikit; pipeline tetap dibatasi bukti detektor.",
+      "Variasi modul pencacah hanya memberikan fluktuasi marjinal; performa sistem secara keseluruhan dibatasi oleh akurasi deteksi awal.",
     metrics: [
       { label: "SVM Acc ±1", value: "70,0%" },
       { label: "RF", value: "68,2%", note: "Acc ±1" },
@@ -320,9 +324,10 @@ const dedup: Experiment[] = [
     model: "YOLO26s → SVM/RF/M01",
     seeds: "split test n=95",
     status: "inconclusive",
-    conclusion: "Paket YOLO26s tidak mengalahkan keluarga y26m dalam E2E.",
+    conclusion:
+      "Konfigurasi YOLO26s tidak melampaui performa keluarga YOLO26m dalam evaluasi end-to-end.",
     findings:
-      "Konfigurasi scratch dan no-augmentation bertindak sebagai kontrol perubahan distribusi galat detector.",
+      "Eksperimen pelatihan scratch dan tanpa augmentasi berfungsi sebagai kontrol empiris perubahan distribusi galat detektor.",
     metrics: [
       { label: "Vanilla SVM", value: "68,9%" },
       { label: "Scratch SVM", value: "68,9%" },
@@ -345,9 +350,9 @@ const dedup: Experiment[] = [
     seeds: "split test n=95",
     status: "supported",
     conclusion:
-      "Hasil E2E terbaik generasi awal, namun masih jauh di bawah heuristik/ML dengan GT.",
+      "Mencapai performa end-to-end terbaik pada generasi awal (71,6% Acc ±1), namun masih berada di bawah metode berbasis oracle ground truth.",
     findings:
-      "Menguatkan diagnosis awal: ketidakakuratan deteksi mempropagasi ke fitur counting.",
+      "Mengonfirmasi hipotesis awal: ketidakakuratan lokalisasi dan klasifikasi deteksi terpropagasi secara langsung ke fitur pencacahan.",
     metrics: [
       { label: "Macro Acc ±1", value: "71,6%" },
       { label: "Macro MAE", value: "1,118" },
@@ -363,7 +368,7 @@ const dedup: Experiment[] = [
 const baseline: Experiment[] = [
   record({
     id: "HB-001",
-    title: "Penjumlahan appearance naif",
+    title: "Penjumlahan kemunculan naif",
     date: "16 Mei 2026",
     era: "Baseline publik · Mei 2026",
     phase: "Baseline · Duplikasi",
@@ -373,9 +378,9 @@ const baseline: Experiment[] = [
     seeds: "split 141 pohon test · GT",
     status: "negative",
     conclusion:
-      "Penjumlahan semua appearance tidak valid untuk count tandan unik.",
+      "Penjumlahan seluruh kemunculan bounding box secara naif tidak valid untuk estimasi jumlah tandan unik per pohon.",
     findings:
-      "Menetapkan masalah duplikasi yang kemudian menjadi fondasi semua counter tree-level.",
+      "Menetapkan perumusan formal masalah duplikasi multi-sudut pandang yang mendasari pengembangan seluruh modul pencacah tingkat pohon.",
     metrics: [
       { label: "Class ±1", value: "50,00%" },
       { label: "Tree ±1", value: "6,38%" },
@@ -398,9 +403,9 @@ const baseline: Experiment[] = [
     seeds: "split 141 pohon test · GT",
     status: "supported",
     conclusion:
-      "Koreksi duplikasi sederhana bekerja sangat baik bila deteksi sempurna.",
+      "Koreksi duplikasi berbasis rasio konstan berkinerja sangat tinggi saat menerima masukan deteksi sempurna (oracle).",
     findings:
-      "Bukan hasil detector E2E; tetap menjadi bukti bahwa aggregation dapat diatasi bila evidence benar.",
+      "Bukan merupakan evaluasi detektor end-to-end; membuktikan bahwa kendala agregasi dapat diselesaikan bila bukti deteksi akurat.",
     metrics: [
       { label: "Class ±1", value: "95,39%" },
       { label: "Tree ±1", value: "85,11%" },
@@ -423,9 +428,9 @@ const baseline: Experiment[] = [
     seeds: "split 141 pohon test · GT",
     status: "supported",
     conclusion:
-      "Koreksi pola visibilitas memimpin check heuristik pada GT versi baseline.",
+      "Koreksi pola visibilitas M01 mencatatkan performa heuristik tertinggi pada dataset ground truth versi baseline publik.",
     findings:
-      "Jejak ini kemudian direvisi lebih lanjut di repo dedup pasca perbaikan GT.",
+      "Rekam jejak ini kemudian diperbaiki lebih lanjut pada repositori deduplikasi pasca-standarisasi ground truth.",
     metrics: [
       { label: "Class ±1", value: "95,92%" },
       { label: "Tree ±1", value: "87,23%" },
@@ -448,9 +453,9 @@ const baseline: Experiment[] = [
     seeds: "split 141 pohon test · GT",
     status: "supported",
     conclusion:
-      "Counter ML hampir menyelesaikan counting saat input berupa deteksi sempurna.",
+      "Model regresi ElasticNet hampir menyelesaikan permasalahan pencacahan saat diberikan masukan deteksi sempurna (Class ±1 98,05%).",
     findings:
-      "Gap dengan baseline YOLO menjelaskan bahwa bottleneck utama berada sebelum regresi count.",
+      "Kesenjangan performa terhadap pipeline YOLO mengonfirmasi bahwa hambatan utama berada pada tahap deteksi dan asosiasi data.",
     metrics: [
       { label: "Class ±1", value: "98,05%" },
       { label: "Tree ±1", value: "92,20%" },
@@ -473,9 +478,9 @@ const baseline: Experiment[] = [
     seeds: "split 716 train / 141 test",
     status: "supported",
     conclusion:
-      "ElasticNet memimpin ketika semua model dibatasi fitur F0 yang sama.",
+      "ElasticNet memimpin performa pencacahan terkontrol ketika seluruh model dievaluasi menggunakan himpunan fitur F0 yang sama.",
     findings:
-      "Model comparison yang bersih; tidak boleh dicampur dengan ranking konfigurasi F_all.",
+      "Merupakan perbandingan model yang terstandarisasi; tidak dapat dicampuradukkan dengan evaluasi pada bank fitur F_all.",
     metrics: [
       { label: "ElasticNet Class ±1", value: "76,42%" },
       { label: "Tree ±1", value: "29,79%" },
@@ -501,9 +506,9 @@ const baseline: Experiment[] = [
     seeds: "split 716 train / 141 test",
     status: "supported",
     conclusion:
-      "Ridge memanfaatkan bank fitur 67-dim terbaik pada setelan train_only.",
+      "Regresi Ridge memanfaatkan representasi bank fitur F_all 67 dimensi secara paling optimal pada skema pelatihan train-only.",
     findings:
-      "F_all membantu Ridge dan RF, tetapi merugikan beberapa model lain; bukan keuntungan universal fitur lebih banyak.",
+      "Penambahan fitur F_all menguntungkan Ridge dan Random Forest, namun mendegradasi beberapa model lain; penambahan fitur tidak selalu menguntungkan secara universal.",
     metrics: [
       { label: "Class ±1", value: "77,48%" },
       { label: "Tree ±1", value: "32,62%" },
@@ -529,9 +534,9 @@ const baseline: Experiment[] = [
     seeds: "split 812 train+val / 141 test",
     status: "negative",
     conclusion:
-      "Menambah validation ke training tidak melampaui headline train-only.",
+      "Penggabungan data validasi ke dalam set pelatihan tidak melampaui performa acuan skema train-only.",
     findings:
-      "Check ini mengurangi kekhawatiran bahwa baseline utama hanya menang karena strategi latih yang kurang data.",
+      "Uji kontrol ini memastikan bahwa keunggulan baseline utama bukan disebabkan oleh strategi pelatihan yang kekurangan data sampel.",
     metrics: [
       { label: "Terbaik train+val", value: "76,60%" },
       { label: "Ridge F_all train-only", value: "77,48%" },
@@ -552,9 +557,10 @@ const baseline: Experiment[] = [
     model: "Ridge v4 · stacking · XGB-Optuna",
     seeds: "split 141 pohon test",
     status: "negative",
-    conclusion: "Counter lebih kompleks tidak mengungguli Ridge + F_all.",
+    conclusion:
+      "Arsitektur pencacah yang lebih kompleks dan metode stacking tidak mengungguli kombinasi Ridge + F_all.",
     findings:
-      "Memperkuat keputusan untuk tidak menambah kompleksitas counter sebelum evidence detector membaik.",
+      "Memperkuat keputusan strategis untuk tidak menambah kompleksitas modul pencacah sebelum akurasi deteksi ditingkatkan.",
     metrics: [
       { label: "Ridge full v4", value: "76,24%" },
       { label: "Stacking", value: "76,06%" },
@@ -577,9 +583,9 @@ const baseline: Experiment[] = [
     seeds: "1 run · seed 42 · split 716/96/141",
     status: "supported",
     conclusion:
-      "Benchmark E2E resmi rilis: Ridge + F_all pada deteksi YOLO26m.",
+      "Benchmark end-to-end resmi rilis: regresi Ridge + F_all berbasis deteksi YOLO26m (Class ±1 77,48%).",
     findings:
-      "Menjadi pembanding counting yang dilacak oleh reproduksi V2 serta analisis visibility/association berikutnya.",
+      "Ditetapkan sebagai garis dasar pembanding (baseline) resmi yang dirujuk oleh seluruh reproduksi Volume 2 dan analisis asosiasi lanjutan.",
     metrics: [
       { label: "Class ±1", value: "77,48%" },
       { label: "Tree ±1", value: "32,62%" },
@@ -598,224 +604,224 @@ const pipelineRecords = [
     "class_mismatch sebagai ambiguitas kematangan",
     "E-001",
     "Dipalsukan",
-    "class_mismatch bukan ukuran ambiguitas yang sah.",
+    "class_mismatch terbukti bukan metrik ambiguitas kematangan yang valid secara teoritis maupun empiris.",
   ],
   [
     "RP-E002",
     "Inventaris master mentah Sawit",
     "E-002",
     "Inventaris selesai",
-    "Membuka dasar data mentah bagi eksperimen resolusi tinggi.",
+    "Menyediakan inventaris data mentah terverifikasi bagi perancangan eksperimen resolusi tinggi.",
   ],
   [
     "RP-E003",
     "DA3 pada video orbit",
     "E-003",
     "Pose dikonfirmasi",
-    "Geometri video orbit terbaca untuk pose.",
+    "Estimasi geometri kamera dari rekaman video orbit terbukti layak untuk pemulihan pose.",
   ],
   [
     "RP-E004",
     "DA3 pada banyak video orbit",
     "E-004",
     "Dikonfirmasi",
-    "Konsistensi diperiksa lintas video orbit.",
+    "Konsistensi pemulihan pose geometris terverifikasi lintas berbagai rekaman video orbit.",
   ],
   [
     "RP-E005",
     "DA3 pada empat dan delapan sisi",
     "E-005",
     "Dikonfirmasi",
-    "Penautan sisi diuji pada foto asli.",
+    "Kesesuaian penautan sudut pandang diuji dan divalidasi pada kumpulan foto akuisisi riil.",
   ],
   [
     "RP-E006",
     "Pseudo-depth pemisah tandan",
     "E-006",
     "Dipalsukan",
-    "Pseudo-depth tidak memisahkan tandan dari latar secara memadai.",
+    "Representasi kedalaman semu (pseudo-depth) terbukti tidak memisahkan objek tandan dari latar belakang secara memadai.",
   ],
   [
     "RP-E007",
     "Penautan geometri lintas-sisi",
     "E-007",
     "Dipalsukan",
-    "Jalur penautan geometri tidak mendukung peningkatan.",
+    "Pendekatan penautan geometri antarsudut pandang tidak memberikan peningkatan akurasi yang diharapkan.",
   ],
   [
     "RP-E009",
     "Ukuran kotak pada resolusi latih",
     "E-009",
     "Diagnosis tersedia",
-    "Ukuran objek dipakai untuk mengurai kesulitan B4.",
+    "Distribusi dimensi bounding box dianalisis untuk mengurai faktor kesulitan deteksi kelas B4.",
   ],
   [
     "RP-E010",
     "Diagnosis kegagalan B4",
     "E-010",
     "Kontras dikonfirmasi",
-    "Kontras, bukan kepadatan, mendominasi diagnosis B4.",
+    "Faktor kontras visual, bukan densitas objek, teridentifikasi mendominasi kegagalan deteksi kelas B4.",
   ],
   [
     "RP-E011",
     "Praproses tekstur B4",
     "E-011",
     "Tekstur dikonfirmasi",
-    "Tekstur membantu; penajam kontras dipalsukan.",
+    "Ekstraksi tekstur terbukti membantu deteksi B4; teknik penajaman kontras piksel tidak didukung.",
   ],
   [
     "RP-E012",
     "Ordinalitas kelas kematangan",
     "E-012",
     "Dikonfirmasi",
-    "Kelas B1–B4 memperlihatkan struktur ordinal.",
+    "Distribusi kesalahan kelas kematangan B1–B4 mengonfirmasi adanya struktur ordinal yang teratur.",
   ],
   [
     "RP-E013",
     "Pipeline produksi empat kanal",
     "E-013",
     "Pipeline tersedia",
-    "Pipeline sensor disiapkan, tanpa bobot sensor sebagai klaim performa.",
+    "Pipeline sensor empat kanal terstandarisasi disiapkan tanpa mengklaim bobot kanal sensor sebagai peningkatan performa.",
   ],
   [
     "RP-E014",
     "Deteksi atau klasifikasi?",
     "E-014",
     "Klasifikasi jadi hambatan",
-    "Memisahkan hambatan lokalisasi dan kematangan.",
+    "Berhasil mengisolasi hambatan klasifikasi kematangan dari kendala lokalisasi spasial tandan.",
   ],
   [
     "RP-E015",
     "Pemetaan master mentah ke SawitMVC",
     "E-015",
     "3.992/3.992 terpetakan",
-    "Seluruh citra master dipetakan.",
+    "Seluruh 3.992 citra master mentah berhasil dipetakan secara terverifikasi ke dataset SawitMVC.",
   ],
   [
     "RP-E016",
     "Plafon kematangan",
     "E-016",
     "Ditarik",
-    "Bukti plafon cacat dan ditarik.",
+    "Klaim plafon teoritis kematangan sebelumnya dinyatakan memiliki cacat metodologis dan ditarik.",
   ],
   [
     "RP-E017",
     "Detektor dua tahap",
     "E-017",
     "Dipalsukan",
-    "Dua tahap tidak mengungguli jalur yang diuji.",
+    "Arsitektur detektor dua tahap terbukti tidak mengungguli jalur pemodelan acuan yang diuji.",
   ],
   [
     "RP-E018",
     "Target 0,60/0,30 secara geometri",
     "E-018",
     "Mungkin",
-    "Geometri anotasi tidak menutup target secara prinsip.",
+    "Karakteristik geometri anotasi membuktikan bahwa target 0,60 mAP50 secara prinsipil masih dapat dicapai.",
   ],
   [
     "RP-E019",
     "Resolusi tinggi & augmentasi aman-warna",
     "E-019",
     "Tidak konklusif",
-    "Kombinasi tidak menghasilkan keputusan yang kuat.",
+    "Kombinasi resolusi tinggi dan augmentasi pelestari warna belum menghasilkan kesimpulan arah yang konklusif.",
   ],
   [
     "RP-E020",
     "RT-DETR NMS-free",
     "E-020",
     "Dikonfirmasi",
-    "RT-DETR melampaui baseline sebelum kemudian dilampaui RF-DETR.",
+    "Model RT-DETR melampaui baseline awal sebelum kemudian diungguli secara definitif oleh RF-DETR.",
   ],
   [
     "RP-E021",
     "RF-DETR-L vs RT-DETR",
     "E-021",
     "Final",
-    "RF-DETR-L menjadi hasil empat kelas final di Research-Pipeline.",
+    "RF-DETR-L ditetapkan sebagai capaian detektor empat kelas final pada repositori Research-Pipeline.",
   ],
   [
     "RP-E022",
     "Depth sensor Orbbec & early fusion",
     "E-022",
     "Audit",
-    "Registrasi tervalidasi; klaim kenaikan deteksi belum sah.",
+    "Registrasi sensor kedalaman tervalidasi; klaim peningkatan akurasi deteksi belum terbukti secara empiris.",
   ],
   [
     "RP-E024",
     "Inkonsistensi prediksi lintas-sisi",
     "E-024",
     "Terukur",
-    "Ambiguitas lintas-sisi diukur pada SawitMVC-Depth.",
+    "Tingkat ambiguitas klasifikasi lintas sudut pandang terukur secara kuantitatif pada SawitMVC-Depth.",
   ],
   [
     "RP-E025",
     "Audit selisih evaluator",
     "E-025",
     "Audit selesai",
-    "Selisih menskala dengan jumlah deteksi; pycocotools menjadi protokol mengikat.",
+    "Diskrepansi evaluator terbukti berkorelasi dengan jumlah deteksi; protokol pycocotools ditetapkan sebagai standar mengikat.",
   ],
   [
     "RP-E026",
     "Depth untuk stabilitas identitas",
     "E-026",
     "Tidak konklusif",
-    "Denominator RGB dan RGB-D berbeda sehingga tidak ada klaim ekuivalensi.",
+    "Perbedaan penyebut (denominator) antara RGB dan RGB-D membatasi klaim kesetaraan stabilitas identitas.",
   ],
   [
     "RP-E027",
     "Matriks multi-seed depth YOLO26n",
     "E-027",
     "Dipalsukan",
-    "Depth merugikan pada YOLO26n.",
+    "Penambahan kanal kedalaman terbukti menurunkan performa deteksi pada arsitektur YOLO26n.",
   ],
   [
     "RP-E028",
     "Ambiguitas lintas-sisi skala besar",
     "E-028",
     "Dikonfirmasi",
-    "B2 terukur sebagai kelas paling ambigu.",
+    "Tingkat ambiguitas klasifikasi terukur secara luas dengan kelas B2 sebagai kategori paling ambigu.",
   ],
   [
     "RP-E029",
     "Matriks multi-seed RT-DETR-L",
     "E-029",
     "Dicabut",
-    "Klausa kapasitas tinggi untuk depth dicabut.",
+    "Hipotesis keunggulan kanal kedalaman pada model berkapasitas tinggi resmi dicabut.",
   ],
   [
     "RP-E030",
     "Sapuan kapasitas YOLO26",
     "E-030",
     "Dibatasi",
-    "Pola satu-seed tidak cukup untuk klaim kapasitas umum.",
+    "Pola evaluasi berbasis satu seed tidak memadai untuk menyimpulkan hubungan kapasitas model secara umum.",
   ],
   [
     "RP-E031",
     "Varians split versus seed",
     "E-031",
     "Terukur",
-    "Varians split nyata dan setiap mAP harus menyebut split.",
+    "Varians partisi data (split) terbukti nyata; setiap pelaporan metrik mAP wajib menyertakan identitas split.",
   ],
   [
     "RP-E032",
     "Titik fusi RGB-D",
     "E-032",
     "Tidak konklusif",
-    "12/12 CI95 memuat nol; mid hanya indikasi.",
+    "Sebanyak 12 dari 12 selang kepercayaan 95% memuat nol; nilai rata-rata hanya bersifat indikatif.",
   ],
   [
     "RP-E033",
     "Rentang metrik depth terkalibrasi",
     "E-033",
     "Audit",
-    "Mengoreksi rentang kanal depth yang sebelumnya salah.",
+    "Mengoreksi rentang skala kanal kedalaman yang pada eksperimen sebelumnya mengalami kesalahan kalibrasi.",
   ],
   [
     "RP-E033b",
     "Replikasi tiga seed E-033",
     "E-033b",
     "Tidak bertahan",
-    "Efek mAP50 E-033 tidak bertahan replikasi.",
+    "Peningkatan performa mAP50 pada E-033 terbukti tidak bertahan setelah replikasi multi-seed.",
   ],
 ] as const;
 
@@ -924,9 +930,10 @@ const formulation: Experiment[] = [
     model: "RF-DETR-L",
     seeds: "GPU A4500 · ulangan tidak dicatat",
     status: "supported",
-    conclusion: "Resep E-021 muat dengan paralelisme satu run.",
+    conclusion:
+      "Konfigurasi komputasi RF-DETR-L memenuhi batas kapasitas memori VRAM GPU pada eksekusi run tunggal.",
     findings:
-      "Pra-syarat replikasi dan anggaran VRAM dibuktikan sebelum jalur arsitektur baru dinilai.",
+      "Persyaratan reproduksi dan batas alokasi VRAM diverifikasi sebelum mengevaluasi perubahan arsitektur baru.",
     metrics: [
       { label: "Puncak VRAM", value: "10.331 / 20.470 MiB" },
       { label: "Waktu", value: "9,2 menit/epoch" },
@@ -947,9 +954,10 @@ const formulation: Experiment[] = [
     model: "DWT-HH · Laplacian",
     seeds: "probe · ulangan tidak dicatat",
     status: "supported",
-    conclusion: "Gerbang frekuensi tinggi lolos untuk keterpisahan B4.",
+    conclusion:
+      "Fitur spasial frekuensi tinggi lolos ambang penyaringan awal untuk diferensiasi kelas B4.",
     findings:
-      "Ini pra-saring mekanisme, bukan klaim kenaikan mAP detector akhir.",
+      "Merupakan penyaringan mekanisme representasi awal, bukan klaim peningkatan mAP detektor final.",
     metrics: [
       { label: "DWT-HH Δ B4", value: "+0,0731" },
       { label: "Laplacian Δ B4", value: "+0,0721" },
@@ -971,9 +979,10 @@ const formulation: Experiment[] = [
     model: "K3 cross-side",
     seeds: "probe · ulangan tidak dicatat",
     status: "negative",
-    conclusion: "Gerbang K3 gugur dan jalur lintas-sisi dibatalkan.",
+    conclusion:
+      "Gerbang mekanisme K3 tidak memenuhi kriteria kelayakan sehingga jalur komparasi lintas-sudut pandang dibatalkan.",
     findings:
-      "Mayoritas galat salah di semua sisi, sehingga konsistensi query bukan prioritas yang didukung.",
+      "Sebagian besar galat klasifikasi terjadi serentak di semua sudut pandang, sehingga konsistensi query bukan prioritas yang didukung data.",
     metrics: [
       { label: "Plafon", value: "0,2794 < 0,30" },
       { label: "Galat salah semua sisi", value: "72%" },
@@ -996,9 +1005,9 @@ const formulation: Experiment[] = [
     seeds: "3 run · seed tidak dicatat",
     status: "supported",
     conclusion:
-      "Varians seed baseline jauh lebih kecil dari asumsi perencanaan.",
+      "Varians performa antar-seed pada model baseline RF-DETR-L terbukti jauh lebih kecil dari asumsi awal.",
     findings:
-      "Menetapkan baseline multi-seed untuk menilai perubahan arsitektur pada seri F.",
+      "Menetapkan acuan multi-seed terstandarisasi untuk menguji modifikasi arsitektur pada eksperimen Seri F.",
     metrics: [
       { label: "Rerata test mAP50", value: "0,5949" },
       { label: "SD seed", value: "0,0049", note: "mAP50" },
@@ -1019,9 +1028,10 @@ const formulation: Experiment[] = [
     model: "Probe logit ordinal",
     seeds: "probe · ulangan tidak dicatat",
     status: "supported",
-    conclusion: "Gerbang ordinal lolos dan massa tersulit berada pada B3.",
+    conclusion:
+      "Gerbang representasi ordinal terkonfirmasi valid dengan konsentrasi galat terbesar berada pada kelas B3.",
     findings:
-      "Temuan ini menempatkan masalah ordinal lebih spesifik daripada dugaan B2 awal.",
+      "Temuan ini mendefinisikan fokus masalah ordinal secara lebih presisi daripada dugaan awal pada kelas B2.",
     metrics: [
       { label: "Massa selisih logit", value: "0,7113" },
       { label: "Ambang", value: "0,30" },
@@ -1044,9 +1054,9 @@ const formulation: Experiment[] = [
     seeds: "2 dari 12 run terjadwal · dihentikan dini",
     status: "negative",
     conclusion:
-      "Seri dihentikan karena gate tidak pernah aktif pada run parsial.",
+      "Eksperimen dihentikan karena cabang gerbang adaptif tidak aktif secara konvergen pada iterasi pengujian awal.",
     findings:
-      "Tidak boleh dibaca sebagai pengujian lengkap; justru menjelaskan keputusan menghentikan seri dan menghemat run lanjutan.",
+      "Keputusan penghentian dini didokumentasikan untuk transparansi riset dan efisiensi alokasi komputasi lanjutan.",
     metrics: [
       { label: "γ akhir DWT", value: "+0,0003" },
       { label: "γ akhir Laplacian", value: "−6e−5" },

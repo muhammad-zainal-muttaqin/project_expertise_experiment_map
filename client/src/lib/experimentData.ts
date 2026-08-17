@@ -77,9 +77,9 @@ export const experiments: Experiment[] = [
     seeds: "1 run · seed 42",
     status: "supported",
     conclusion:
-      "Tiga arsitektur mereproduksi benchmark Volume 1 dalam ±0,014 mAP50.",
+      "Tiga arsitektur berhasil mereproduksi benchmark Volume 1 dengan toleransi selisih ±0,014 mAP50.",
     findings:
-      "RF-DETR-L memimpin deteksi RGB-953; ini menjadi acuan lintas eksperimen berikutnya.",
+      "RF-DETR-L mencatatkan performa deteksi RGB-953 tertinggi dan ditetapkan sebagai acuan komparasi pada eksperimen selanjutnya.",
     metrics: [
       { label: "YOLO26l mAP50", value: "0,5435" },
       { label: "RT-DETR-L mAP50", value: "0,5781" },
@@ -105,7 +105,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-002",
-    title: "Counting tiga detektor 953",
+    title: "Evaluasi pencacahan tiga detektor pada 953",
     date: "09 Agu 2026",
     phase: "Fondasi",
     dataset: "SawitMVC-953",
@@ -114,9 +114,9 @@ export const experiments: Experiment[] = [
     seeds: "1 run · seed 42",
     status: "negative",
     conclusion:
-      "Tidak ada detektor baru yang melampaui baseline YOLO26m untuk Class ±1 Acc.",
+      "Tidak ada arsitektur detektor baru yang melampaui baseline YOLO26m pada metrik akurasi Class ±1.",
     findings:
-      "Detektor terbaik secara mAP tidak otomatis menghasilkan counter terbaik.",
+      "Detektor dengan nilai mAP tertinggi tidak secara otomatis menghasilkan estimasi pencacahan (counting) terbaik.",
     metrics: [
       { label: "Baseline YOLO26m", value: "77,48%", note: "Class ±1" },
       { label: "YOLO26l", value: "72,16%", note: "Class ±1" },
@@ -133,7 +133,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-003",
-    title: "Deteksi tiga arsitektur 352 RGB",
+    title: "Deteksi tiga arsitektur pada 352 RGB",
     date: "09 Agu 2026",
     phase: "Fondasi",
     dataset: "SawitMVC-Depth-352",
@@ -142,8 +142,9 @@ export const experiments: Experiment[] = [
     seeds: "1 run · seed 42",
     status: "supported",
     conclusion:
-      "Urutan RF-DETR-L > RT-DETR-L > YOLO26l bertahan pada dataset 352.",
-    findings: "B3 dan B4 jauh lebih sulit dalam dataset Depth-352.",
+      "Hierarki performa RF-DETR-L > RT-DETR-L > YOLO26l terbukti konsisten pada dataset SawitMVC-Depth-352.",
+    findings:
+      "Tingkat kesulitan deteksi kelas B3 dan B4 meningkat secara signifikan pada dataset Depth-352.",
     metrics: [
       { label: "YOLO26l mAP50", value: "0,3606" },
       { label: "RT-DETR-L mAP50", value: "0,4343" },
@@ -162,7 +163,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-004",
-    title: "Counting tiga detektor 352 RGB",
+    title: "Evaluasi pencacahan tiga detektor pada 352 RGB",
     date: "09 Agu 2026",
     phase: "Fondasi",
     dataset: "SawitMVC-Depth-352",
@@ -170,9 +171,10 @@ export const experiments: Experiment[] = [
     model: "Ridge + F_all",
     seeds: "1 run · seed 42",
     status: "negative",
-    conclusion: "Urutan counting tidak mengikuti urutan mAP50 deteksi.",
+    conclusion:
+      "Urutan akurasi pencacahan tidak berbanding lurus dengan urutan metrik mAP50 pada tahap deteksi.",
     findings:
-      "RT-DETR-L memiliki Class ±1 Acc terbaik, walau RF-DETR-L memimpin deteksi.",
+      "RT-DETR-L menghasilkan akurasi Class ±1 tertinggi meskipun RF-DETR-L memimpin pada tahap deteksi.",
     metrics: [
       { label: "YOLO26l", value: "89,55%", note: "Class ±1" },
       { label: "RT-DETR-L", value: "90,91%", note: "Class ±1" },
@@ -194,9 +196,9 @@ export const experiments: Experiment[] = [
     seeds: "1 run · seed 42",
     status: "negative",
     conclusion:
-      "Early fusion depth tidak meningkatkan deteksi secara konsisten lintas arsitektur.",
+      "Integrasi early fusion depth tidak memberikan peningkatan deteksi yang konsisten lintas arsitektur.",
     findings:
-      "Hanya YOLO26l naik; RT-DETR-L dan RF-DETR-L turun, terutama pada B4.",
+      "Peningkatan performa hanya teramati pada YOLO26l, sedangkan RT-DETR-L dan RF-DETR-L mengalami penurunan (terutama pada kelas B4).",
     metrics: [
       { label: "YOLO26l Δ mAP50", value: "+0,0313", note: "0,3919 vs 0,3606" },
       { label: "RT-DETR-L Δ", value: "−0,0466", note: "Δ mAP50 terhadap RGB" },
@@ -214,7 +216,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-006",
-    title: "Counting RGB + depth inverse",
+    title: "Evaluasi pencacahan RGB + depth inverse",
     date: "09 Agu 2026",
     phase: "Fondasi",
     dataset: "SawitMVC-Depth-352",
@@ -223,8 +225,9 @@ export const experiments: Experiment[] = [
     seeds: "10.000 resampling bootstrap · seed 42",
     status: "negative",
     conclusion:
-      "Depth early fusion tidak meningkatkan counting pada satu pun arsitektur.",
-    findings: "CI semua perbandingan RGBD − RGB mencakup nol.",
+      "Metode early fusion kedalaman tidak meningkatkan akurasi pencacahan pada seluruh arsitektur yang diuji.",
+    findings:
+      "Selang kepercayaan (CI 95%) pada seluruh perbandingan RGB-D terhadap RGB mencakup nilai nol.",
     metrics: [
       { label: "YOLO26l Δ Class ±1", value: "−1,82 pp" },
       { label: "RT-DETR-L Δ", value: "−2,27 pp", note: "Δ Class ±1" },
@@ -252,9 +255,9 @@ export const experiments: Experiment[] = [
     seeds: "agregasi · ulangan tidak dicatat",
     status: "audit_needed",
     conclusion:
-      "Sintesis awal kemudian dibatasi oleh temuan pergeseran temporal dan power.",
+      "Sintesis awal dibatasi secara metodologis oleh temuan pergeseran temporal dan keterbatasan daya statistik data.",
     findings:
-      "Tetap disimpan sebagai simpul keputusan historis, bukan bukti efek depth lintas dataset.",
+      "Disimpan sebagai rekam jejak keputusan historis, bukan sebagai bukti empiris efek kedalaman lintas dataset.",
     metrics: [
       { label: "Sel deteksi", value: "3 × 3" },
       { label: "Sel counting", value: "3 × 3" },
@@ -269,7 +272,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-008",
-    title: "Screening encoding depth",
+    title: "Penyaringan representasi encoding depth",
     date: "10–11 Agu 2026",
     phase: "Fase 5",
     dataset: "SawitMVC-Depth-352",
@@ -278,8 +281,9 @@ export const experiments: Experiment[] = [
     seeds: "1 run · seed 42",
     status: "supported",
     conclusion:
-      "Encoding edge (Sobel) menang dalam screening dan dipromosikan ke training penuh.",
-    findings: "Tidak boleh dibandingkan langsung dengan angka final 60 epoch.",
+      "Representasi kontur Sobel (edge) unggul pada tahap penyaringan awal dan dipromosikan ke pelatihan penuh.",
+    findings:
+      "Metrik evaluasi 15 epoch bersifat indikatif dan tidak dapat disetarakan dengan hasil konvergensi 60 epoch.",
     metrics: [
       { label: "Edge val mAP50", value: "0,3777" },
       { label: "Valid mask", value: "0,3321", note: "val mAP50" },
@@ -292,7 +296,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-009",
-    title: "Mid-fusion depth + gate",
+    title: "Mid-fusion depth + gating",
     date: "11 Agu 2026",
     phase: "Fase 5",
     dataset: "SawitMVC-Depth-352",
@@ -301,8 +305,9 @@ export const experiments: Experiment[] = [
     seeds: "1 run · seed 42",
     status: "negative",
     conclusion:
-      "Konfigurasi mid-fusion spesifik ini gagal di screening dan tidak dipromosikan.",
-    findings: "Gate bergerak dari 0,02 ke 0,025 tetapi B3/B4 nyaris nol.",
+      "Konfigurasi mid-fusion teruji tidak memenuhi ambang batas penyaringan awal sehingga tidak dipromosikan.",
+    findings:
+      "Mekanisme gating bergeser ke rentang 0,020–0,025, namun nilai presisi kelas B3 dan B4 mendekati nol.",
     metrics: [
       { label: "Val mAP50 terbaik", value: "0,2087", note: "epoch 3" },
       { label: "B3 AP50", value: "0,056" },
@@ -314,7 +319,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-010",
-    title: "RGB + edge-depth · training penuh",
+    title: "Validasi detektor RGB + edge-depth pelatihan penuh",
     date: "11 Agu 2026",
     phase: "Fase 5",
     dataset: "SawitMVC-Depth-352",
@@ -323,9 +328,9 @@ export const experiments: Experiment[] = [
     seeds: "1 run · seed 42",
     status: "supported",
     conclusion:
-      "Edge-depth meningkatkan mAP50 deteksi jelas atas inverse dan semua baseline RGB yang diuji.",
+      "Representasi edge-depth meningkatkan mAP50 deteksi secara nyata dibandingkan depth inverse dan baseline RGB.",
     findings:
-      "Kenaikan deteksi tidak diterjemahkan menjadi kemenangan Class ±1 counting.",
+      "Peningkatan performa deteksi tidak bertranslasi menjadi keunggulan pada akurasi pencacahan Class ±1.",
     metrics: [
       { label: "mAP50 edge", value: "0,4316" },
       { label: "Δ vs inverse", value: "+0,0397", note: "Δ mAP50" },
@@ -347,7 +352,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-011",
-    title: "Retrain RGB + bootstrap counting edge",
+    title: "Evaluasi stabilitas baseline pencacahan edge",
     date: "11 Agu 2026",
     phase: "Fase 5",
     dataset: "SawitMVC-Depth-352",
@@ -356,9 +361,9 @@ export const experiments: Experiment[] = [
     seeds: "10.000 resampling bootstrap · seed 42",
     status: "inconclusive",
     conclusion:
-      "Kesimpulan counting berubah menurut baseline RGB; tidak konklusif secara ketat.",
+      "Kesimpulan perbandingan pencacahan sensitif terhadap variasi pelatihan ulang baseline sehingga belum konklusif secara ketat.",
     findings:
-      "Retrain RGB menghasilkan 84,09%, berbeda 5,46 pp dari angka RGB asli 89,55%.",
+      "Pelatihan ulang RGB menghasilkan akurasi 84,09%, berselisih 5,46 pp dari baseline historis (89,55%).",
     metrics: [
       { label: "Edge vs retrain RGB", value: "+3,18 pp", note: "Class ±1" },
       { label: "P(Δ>0)", value: "94,3%" },
@@ -374,7 +379,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-012",
-    title: "Gap 953 vs 352: diagnosis komposisi kelas",
+    title: "Diagnosis disparitas komposisi kelas 953 vs 352",
     date: "11 Agu 2026",
     phase: "Diagnosis",
     dataset: "Lintas-dataset",
@@ -383,9 +388,9 @@ export const experiments: Experiment[] = [
     seeds: "protokol deterministik · ulangan tidak dicatat",
     status: "audit_needed",
     conclusion:
-      "Temuan angka benar, tetapi sebab awal dikoreksi oleh V2-E-022: ini bukan sekadar ukuran dataset.",
+      "Disparitas data terkonfirmasi nyata, dengan faktor kausal utama dikoreksi oleh pergeseran sesi akuisisi (V2-E-022).",
     findings:
-      "B3/B4 jauh lebih jarang pada 352; perbandingan lintas dataset tidak valid sebagai uji depth.",
+      "Proporsi kelas B3/B4 sangat langka pada dataset 352; komparasi lintas dataset tidak valid untuk menguji efek kedalaman.",
     metrics: [
       { label: "B3 train 953 → 352", value: "7.333 → 215", note: "34×" },
       { label: "B4 train 953 → 352", value: "2.513 → 98", note: "26×" },
@@ -400,7 +405,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-013",
-    title: "Lokalisasi vs salah kelas",
+    title: "Diagnosis lokalisasi vs kesalahan klasifikasi",
     date: "11 Agu 2026",
     phase: "Diagnosis",
     dataset: "SawitMVC-Depth-352",
@@ -409,9 +414,9 @@ export const experiments: Experiment[] = [
     seeds: "1 run · seed 42",
     status: "supported",
     conclusion:
-      "44,5% kemampuan detektor hilang karena salah kelas, bukan gagal menemukan tandan.",
+      "Sebanyak 44,5% degradasi performa detektor disebabkan oleh kesalahan klasifikasi kematangan, bukan kegagalan lokalisasi objek.",
     findings:
-      "Konfusi seluruhnya berada pada kelas bersebelahan; masalahnya ordinal.",
+      "Matriks konfusi terkonsentrasi antarkelas bersebelahan, mengonfirmasi bahwa masalah bersifat ordinal.",
     metrics: [
       { label: "mAP50 class-aware", value: "0,3707" },
       { label: "AP50 agnostik", value: "0,6677" },
@@ -428,7 +433,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-014",
-    title: "Probe relief depth",
+    title: "Analisis sinyal relief depth",
     date: "11 Agu 2026",
     phase: "Diagnosis",
     dataset: "SawitMVC-Depth-352",
@@ -437,9 +442,9 @@ export const experiments: Experiment[] = [
     seeds: "protokol deterministik · ulangan tidak dicatat",
     status: "supported",
     conclusion:
-      "Depth bukan skala metrik; relief lokal menunjukkan sinyal ordinal yang nyata setelah pooling.",
+      "Sensor kedalaman memuat sinyal ordinal yang signifikan secara statistik setelah proses spatial pooling.",
     findings:
-      "SNR per piksel ≈0,3; early fusion pada stem berada pada rezim yang tidak menguntungkan.",
+      "Rasio sinyal terhadap derau (SNR) per piksel ≈0,3; fusi langsung pada stem masukan berada pada kondisi yang tidak optimal.",
     metrics: [
       { label: "Relief B1 → B4", value: "+2,8 → −5,1 cm" },
       { label: "Kruskal-Wallis", value: "p=1,7×10⁻²¹" },
@@ -455,7 +460,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-015",
-    title: "Classifier crop kematangan",
+    title: "Pengklasifikasi kematangan berbasis crop",
     date: "11 Agu 2026",
     phase: "Fase 6",
     dataset: "SawitMVC-Depth-352",
@@ -464,9 +469,9 @@ export const experiments: Experiment[] = [
     seeds: "3 run · seed 101/202/303",
     status: "supported",
     conclusion:
-      "Classifier crop mengalahkan klasifikasi detektor satu-tahap atas seluruh GT.",
+      "Model pengklasifikasi independen berbasis crop mengungguli mekanisme klasifikasi bawaan detektor satu tahap.",
     findings:
-      "Mask box dan augmentasi warna ringan merupakan koreksi implementasi yang krusial.",
+      "Penggunaan mask bounding box dan augmentasi warna terukur menjadi koreksi implementasi yang krusial.",
     metrics: [
       { label: "Classifier crop test", value: "0,6309 ± 0,0203" },
       { label: "Detektor atas GT", value: "0,4659" },
@@ -482,7 +487,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-016",
-    title: "Ablasi depth pada classifier",
+    title: "Ablasi depth pada model pengklasifikasi",
     date: "11 Agu 2026",
     phase: "Fase 6",
     dataset: "SawitMVC-Depth-352",
@@ -491,9 +496,9 @@ export const experiments: Experiment[] = [
     seeds: "3 run · seed 101/202/303",
     status: "negative",
     conclusion:
-      "Depth redundan secara kondisional terhadap RGB untuk klasifikasi kematangan dataset ini.",
+      "Kanal kedalaman terbukti redundan secara kondisional terhadap fitur RGB untuk klasifikasi tingkat kematangan.",
     findings:
-      "Satu seed positif +5,9 pp menjadi derau setelah replikasi tiga seed.",
+      "Keunggulan awal pada satu seed (+5,9 pp) terbukti merupakan variasi acak setelah replikasi tiga seed.",
     metrics: [
       { label: "Δ test CNN", value: "−0,0203", note: "p=0,42" },
       { label: "RGB fitur test", value: "0,6415" },
@@ -506,7 +511,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-017",
-    title: "Plafon lokalisasi RGB",
+    title: "Batas atas lokalisasi agnostik RGB",
     date: "12 Agu 2026",
     phase: "Fase 6",
     dataset: "Lintas-dataset",
@@ -515,9 +520,9 @@ export const experiments: Experiment[] = [
     seeds: "1 run · seed 42",
     status: "audit_needed",
     conclusion:
-      "Plafon ≈0,733 hanya berlaku bagi input RGB; generalisasi awal dibatasi oleh V2-E-024.",
+      "Plafon lokalisasi ≈0,733 berlaku spesifik untuk representasi RGB; generalisasinya dibatasi oleh temuan V2-E-024.",
     findings:
-      "Dataset 953 dengan 9,8× box latih hampir sama dengan 352 dalam AP50 RGB.",
+      "Dataset 953 dengan jumlah anotasi 9,8× lebih besar menghasilkan nilai AP50 yang setara dengan dataset 352 pada masukan RGB.",
     metrics: [
       { label: "AP50 953 RGB", value: "0,7374" },
       { label: "AP50 352 RGB", value: "0,7330" },
@@ -529,7 +534,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-018",
-    title: "Transfer 953 → 352 dan patience",
+    title: "Transfer belajar 953 → 352 dan analisis patience",
     date: "12 Agu 2026",
     phase: "Fase 6",
     dataset: "Lintas-dataset",
@@ -537,9 +542,10 @@ export const experiments: Experiment[] = [
     model: "YOLO26l class-agnostic",
     seeds: "1 run · seed 42",
     status: "negative",
-    conclusion: "Pretrain lebih baik pada 953 tidak meningkatkan finetune 352.",
+    conclusion:
+      "Model pretraining 953 yang lebih baik tidak meningkatkan performa adaptasi (finetuning) pada dataset 352.",
     findings:
-      "Patience 10 menghentikan run pada puncak palsu; patience 45 mengembalikan hasil menjadi seri.",
+      "Nilai patience 10 menyebabkan penghentian prematur pada puncak lokal palsu; patience 45 menunjukkan hasil yang ekuivalen.",
     metrics: [
       { label: "agn352_ft", value: "0,7522", note: "val AP50" },
       { label: "agn352_ft3", value: "0,7473", note: "val AP50" },
@@ -551,7 +557,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-019",
-    title: "WBF + sweep inference",
+    title: "Ensemble WBF dan optimasi inferensi",
     date: "12 Agu 2026",
     phase: "Fase 6",
     dataset: "SawitMVC-Depth-352",
@@ -560,9 +566,9 @@ export const experiments: Experiment[] = [
     seeds: "checkpoint val-selected · ulangan tidak dicatat",
     status: "supported",
     conclusion:
-      "WBF dua detektor dan inference tuning meningkatkan AP50 val tanpa training baru.",
+      "Penerapan Weighted Boxes Fusion (WBF) dan optimasi inferensi meningkatkan AP50 validasi tanpa pelatihan ulang.",
     findings:
-      "Menambah RT-DETR justru merugikan; nilai ensemble tidak setara skor tunggal.",
+      "Penambahan model RT-DETR ke dalam ensemble menurunkan performa; kapasitas ensemble tidak identik dengan skor model tunggal.",
     metrics: [
       { label: "WBF dua model", value: "0,7577", note: "val AP50" },
       { label: "agn352_ft tunggal", value: "0,7370", note: "val AP50" },
@@ -578,7 +584,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-020",
-    title: "Pipeline dua-tahap",
+    title: "Evaluasi pipeline deteksi dua tahap",
     date: "12 Agu 2026",
     phase: "Fase 6",
     dataset: "SawitMVC-Depth-352",
@@ -587,9 +593,9 @@ export const experiments: Experiment[] = [
     seeds: "multi-run · ulangan tidak dicatat",
     status: "inconclusive",
     conclusion:
-      "Dua-tahap naik jelas atas YOLO26l namun belum melampaui RF-DETR-L dan kemudian tidak terbedakan secara statistik.",
+      "Pipeline dua tahap mengungguli YOLO26l secara signifikan, namun tidak berbeda secara statistik terhadap RF-DETR-L.",
     findings:
-      "Keuntungan terutama tampak di B3/B4, tetapi evaluasi 410 box belum cukup presisi.",
+      "Peningkatan teramati terutama pada kelas B3 dan B4, tetapi ukuran sampel uji (410 box) membatasi kekuatan uji statistik.",
     metrics: [
       { label: "Dua-tahap v4 mAP50", value: "0,4500" },
       { label: "Δ vs YOLO26l RGB", value: "+0,0789", note: "Δ mAP50" },
@@ -605,7 +611,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-021",
-    title: "Classifier gabungan 953 + 352",
+    title: "Pengklasifikasi gabungan domain 953 + 352",
     date: "12 Agu 2026",
     phase: "Fase 6",
     dataset: "Lintas-dataset",
@@ -614,9 +620,9 @@ export const experiments: Experiment[] = [
     seeds: "3 run · seed tidak dicatat",
     status: "inconclusive",
     conclusion:
-      "Training gabungan merugikan mAP50 tetapi menaikkan counting pada konfigurasi v3.",
+      "Pelatihan gabungan menurunkan mAP50 deteksi secara umum, namun memberikan peningkatan pencacahan pada konfigurasi v3.",
     findings:
-      "92% crop latihan berasal dari domain 953; kelas seimbang bukan domain seimbang.",
+      "Sebanyak 92% data pelatihan berasal dari domain 953; keseimbangan distribusi kelas tidak menjamin keseimbangan representasi domain.",
     metrics: [
       { label: "ftS crop test", value: "0,6837" },
       { label: "ftG crop test", value: "0,6724" },
@@ -629,7 +635,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-022",
-    title: "Pergeseran temporal 953 vs 352",
+    title: "Audit pergeseran temporal 953 vs 352",
     date: "12 Agu 2026",
     phase: "Audit validitas",
     dataset: "Lintas-dataset",
@@ -638,9 +644,9 @@ export const experiments: Experiment[] = [
     seeds: "protokol deterministik · ulangan tidak dicatat",
     status: "audit_needed",
     conclusion:
-      "Dua dataset adalah sesi akuisisi berbeda ~80 hari; bukan dua view tandan yang sama.",
+      "Kedua dataset berasal dari sesi akuisisi lapangan yang terpisah ~80 hari; bukan sudut pandang berbeda dari objek yang sama.",
     findings:
-      "Temuan ini membatasi seluruh klaim transfer dan perbandingan lintas dataset untuk efek depth.",
+      "Temuan ini membatasi secara ketat validitas seluruh klaim transfer belajar dan komparasi lintas dataset untuk efek kedalaman.",
     metrics: [
       { label: "Jeda akuisisi", value: "~80 hari" },
       { label: "B3 label 953 → 352", value: "3.604 → 321" },
@@ -653,7 +659,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-023",
-    title: "Power split test 352",
+    title: "Analisis daya statistik split uji 352",
     date: "12 Agu 2026",
     phase: "Audit validitas",
     dataset: "SawitMVC-Depth-352",
@@ -662,9 +668,9 @@ export const experiments: Experiment[] = [
     seeds: "500 resampling bootstrap · seed 42",
     status: "audit_needed",
     conclusion:
-      "Split 352 tidak mampu membedakan selisih kecil yang selama ini diperingkatkan dengan titik estimasi.",
+      "Partisi uji dataset 352 memiliki daya statistik rendah untuk membedakan selisih performa marjinal antar-model.",
     findings:
-      "Selisih 0,0044 antara dua-tahap dan RF-DETR-L adalah 26× lebih kecil dari lebar CI.",
+      "Selisih 0,0044 antara model dua tahap dan RF-DETR-L bernilai 26× lebih kecil dibandingkan lebar selang kepercayaan bootstrap.",
     metrics: [
       { label: "n citra / GT", value: "220 / 410" },
       { label: "CI edge", value: "[0,3771; 0,4938]", note: "mAP" },
@@ -678,7 +684,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-024",
-    title: "Depth untuk lokalisasi agnostik",
+    title: "Evaluasi depth untuk lokalisasi agnostik",
     date: "12 Agu 2026",
     phase: "Fase 6",
     dataset: "SawitMVC-Depth-352",
@@ -687,9 +693,9 @@ export const experiments: Experiment[] = [
     seeds: "1.000 resampling bootstrap · seed 42",
     status: "inconclusive",
     conclusion:
-      "Arah efek depth pada lokalisasi positif, tetapi CI masih mencakup nol.",
+      "Arah efek penambahan depth pada lokalisasi bernilai positif, namun selang kepercayaan bootstrap masih memuat nol.",
     findings:
-      "Ini bukti positif terkuat yang tidak dikotori pergeseran label kematangan.",
+      "Merupakan indikasi empiris terkuat untuk manfaat depth yang terbebas dari distorsi pergeseran label kematangan.",
     metrics: [
       { label: "RGB+D AP50", value: "0,7636" },
       { label: "RGB AP50", value: "0,7358" },
@@ -703,7 +709,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-025",
-    title: "Test bersih agnostik 953",
+    title: "Evaluasi test set bersih agnostik 953",
     date: "12 Agu 2026",
     phase: "Audit validitas",
     dataset: "SawitMVC-953",
@@ -712,9 +718,9 @@ export const experiments: Experiment[] = [
     seeds: "evaluasi ulang · ulangan tidak dicatat",
     status: "audit_needed",
     conclusion:
-      "Angka sah test bersih adalah 0,7702; evaluasi penuh/val terkontaminasi pretraining.",
+      "Metrik valid pada set uji bersih adalah AP50 0,7702; evaluasi penuh sebelumnya terkontaminasi data pelatihan awal.",
     findings:
-      "Set bersih kecil sehingga angka tetap indikatif, bukan estimasi presisi.",
+      "Ukuran set uji bersih yang terbatas menjadikan metrik ini bersifat indikatif terkalibrasi, bukan estimasi presisi tinggi.",
     metrics: [
       { label: "AP50 test bersih", value: "0,7702" },
       { label: "AP50 test penuh", value: "0,8090" },
@@ -734,7 +740,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-026",
-    title: "CI dua-tahap v4",
+    title: "Uji bootstrap selang kepercayaan dua tahap v4",
     date: "12 Agu 2026",
     phase: "Audit validitas",
     dataset: "SawitMVC-Depth-352",
@@ -743,9 +749,9 @@ export const experiments: Experiment[] = [
     seeds: "1.000 resampling bootstrap · seed 42",
     status: "inconclusive",
     conclusion:
-      "Dua-tahap v4 tidak terbedakan dari edge-depth atau pembanding yang lebih sederhana.",
+      "Model dua tahap v4 tidak terbedakan secara signifikan dari representasi edge-depth maupun baseline yang lebih sederhana.",
     findings:
-      "Reproduksi ulang persis; batas bukti terletak pada ukuran split, bukan dump prediksi.",
+      "Reproduksi metrik terbukti presisi; batas konklusif bukti terletak pada keterbatasan ukuran sampel uji, bukan pada inferensi.",
     metrics: [
       { label: "mAP50 v4", value: "0,4500" },
       { label: "mAP50 edge", value: "0,4270" },
@@ -759,7 +765,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-027",
-    title: "RGB + monocular depth pada 953",
+    title: "RGB + depth monokular pada 953",
     date: "15 Agu 2026",
     phase: "Fase 7 · Mono",
     dataset: "SawitMVC-953",
@@ -768,9 +774,9 @@ export const experiments: Experiment[] = [
     seeds: "1 run · seed 42 · dihentikan ep31",
     status: "negative",
     conclusion:
-      "Monocular depth tidak didukung sebagai kanal tambahan: turun di empat kelas.",
+      "Integrasi depth monokular tidak didukung sebagai kanal tambahan: terjadi penurunan performa pada seluruh kelas kematangan.",
     findings:
-      "Run dihentikan di epoch 31/60; arah tampak negatif, besar penurunan kemudian diuji pada V2-E-029.",
+      "Pelatihan dihentikan pada epoch 31/60 karena tren negatif yang konsisten; besaran penurunan diuji lebih lanjut pada V2-E-029.",
     metrics: [
       { label: "RGB+Mono mAP50", value: "0,4960" },
       { label: "RGB mAP50", value: "0,5436" },
@@ -789,7 +795,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-028",
-    title: "Audit TIFF korup",
+    title: "Audit integritas berkas citra TIFF",
     date: "15 Agu 2026",
     phase: "Fase 7 · Mono",
     dataset: "Audit",
@@ -798,9 +804,9 @@ export const experiments: Experiment[] = [
     seeds: "protokol deterministik · ulangan tidak dicatat",
     status: "audit_needed",
     conclusion:
-      "39 TIFF turunan korup dilewati diam-diam oleh Ultralytics; dataset diregenerasi dan divalidasi.",
+      "Sebanyak 39 berkas TIFF korup terlewati tanpa peringatan oleh kerangka kerja Ultralytics; dataset telah diregenerasi dan divalidasi penuh.",
     findings:
-      "Metrik test sel 6 direkam setelah perbaikan; kurva val lama tidak sepenuhnya sebanding.",
+      "Metrik evaluasi uji sel 6 direkam ulang pasca-perbaikan integritas data; kurva validasi terdahulu tidak sepenuhnya dapat dikomparasikan.",
     metrics: [
       { label: "TIFF korup", value: "39" },
       { label: "Test 953 korup", value: "22 / 588" },
@@ -815,7 +821,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-029",
-    title: "CI RGB+Mono vs RGB pada 953",
+    title: "Uji bootstrap CI RGB+Mono vs RGB pada 953",
     date: "15 Agu 2026",
     phase: "Fase 7 · Mono",
     dataset: "SawitMVC-953",
@@ -824,9 +830,9 @@ export const experiments: Experiment[] = [
     seeds: "2.000 resampling bootstrap · seed 42",
     status: "negative",
     conclusion:
-      "Penurunan RGB+Mono signifikan pada test 953 yang berdaya cukup.",
+      "Penurunan performa akibat penambahan kanal monokular terbukti signifikan secara statistik pada data uji 953.",
     findings:
-      "Besar dampak mungkin dilebihkan karena early stop, tetapi tanda negatif stabil di semua 2.000 ulangan.",
+      "Arah penurunan konsisten negatif pada seluruh 2.000 iterasi resampling bootstrap (P(Δ>0) = 0,000).",
     metrics: [
       { label: "Δ mAP50", value: "−0,0476" },
       { label: "P(Δ>0)", value: "0,000" },
@@ -839,7 +845,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-030",
-    title: "RGB + monocular depth pada 352",
+    title: "RGB + depth monokular pada 352",
     date: "15 Agu 2026",
     phase: "Fase 7 · Mono",
     dataset: "SawitMVC-Depth-352",
@@ -848,9 +854,9 @@ export const experiments: Experiment[] = [
     seeds: "1 run · seed 42 · dihentikan ep54",
     status: "inconclusive",
     conclusion:
-      "Titik estimasi naik atas RGB tetapi tidak signifikan dan masih di bawah sensor depth.",
+      "Estimasi titik menunjukkan sedikit peningkatan atas RGB namun tidak signifikan secara statistik dan berada di bawah sensor depth.",
     findings:
-      "Peringkat val berbalik persis dengan test; val 352 tidak valid untuk pemeringkatan model.",
+      "Peringkat metrik validasi berbanding terbalik dengan data uji; set validasi 352 tidak valid untuk pemeringkatan akhir model.",
     metrics: [
       { label: "RGB+Mono mAP50", value: "0,3943" },
       { label: "RGB mAP50", value: "0,3677" },
@@ -867,7 +873,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-031",
-    title: "RGB + edge-depth + mono",
+    title: "RGB + edge-depth + depth monokular",
     date: "15 Agu 2026",
     phase: "Fase 7 · Mono",
     dataset: "SawitMVC-Depth-352",
@@ -876,9 +882,9 @@ export const experiments: Experiment[] = [
     seeds: "1 run · seed 42",
     status: "negative",
     conclusion:
-      "Menambahkan mono di atas sensor depth menurunkan mAP50 secara signifikan.",
+      "Penambahan kanal monokular di atas representasi sensor depth menurunkan mAP50 secara signifikan.",
     findings:
-      "Ini menguatkan hasil negatif early fusion mono; sensor depth tetap kanal keempat terbaik di matriks 352.",
+      "Memperkuat kesimpulan negatif early fusion monokular; sensor depth fisik tetap merupakan kanal tambahan terbaik pada matriks 352.",
     metrics: [
       { label: "5 kanal mAP50", value: "0,3766" },
       { label: "Edge-depth", value: "0,4270", note: "mAP50" },
@@ -895,7 +901,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-032",
-    title: "Matriks monocular depth lengkap",
+    title: "Matriks depth monokular lengkap",
     date: "15 Agu 2026",
     phase: "Fase 7 · Mono",
     dataset: "Lintas-dataset",
@@ -904,9 +910,9 @@ export const experiments: Experiment[] = [
     seeds: "1 run · seed 42",
     status: "negative",
     conclusion:
-      "Mono tidak pernah menang; dua perbandingan menunjukkan kerugian signifikan.",
+      "Representasi depth monokular tidak menunjukkan keunggulan performa; dua pengujian komparasi bahkan membuktikan penurunan performa yang signifikan.",
     findings:
-      "Kontrol M_shuf belum dijalankan, sehingga mekanisme kerugian—isi mono atau biaya kanal—masih terbuka.",
+      "Eksperimen kontrol permutasi kanal (M_shuf) belum dilakukan, sehingga mekanisme penurunan performa—antara keterbatasan informasi monokular atau degradasi bobot kanal—masih memerlukan verifikasi lanjutan.",
     metrics: [
       { label: "Sel 6 − sel 5", value: "−0,0476 · signifikan" },
       { label: "Sel 4 − sel 2", value: "−0,0504 · signifikan" },
@@ -923,7 +929,7 @@ export const experiments: Experiment[] = [
   },
   {
     id: "V2-E-033",
-    title: "Dua kebocoran split",
+    title: "Audit kebocoran partisi data (split leakage)",
     date: "15 Agu 2026",
     phase: "Audit validitas",
     dataset: "Audit",
@@ -932,9 +938,9 @@ export const experiments: Experiment[] = [
     seeds: "protokol deterministik · ulangan tidak dicatat",
     status: "audit_needed",
     conclusion:
-      "Kebocoran membatasi cara mengutip jalur agnostik dan transfer 953→352; angka tidak ditarik tanpa penjelasan.",
+      "Temuan kebocoran data membatasi generalisasi klaim jalur agnostik dan transfer 953→352; data terdahulu dikontekstualisasikan secara transparan.",
     findings:
-      "87% test penuh agnostik 953 pernah terlihat dalam pretraining; 44/55 test-352 masuk train-953 untuk transfer.",
+      "Sebanyak 87% data uji penuh agnostik 953 teridentifikasi pernah masuk dalam data pelatihan; 44 dari 55 pohon uji 352 terdapat pada data latih 953.",
     metrics: [
       { label: "Test penuh terkontaminasi", value: "512 / 588 citra" },
       { label: "Test-352 di train-953", value: "44 / 55 pohon" },

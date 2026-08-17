@@ -106,11 +106,40 @@ Hanya `index.css` yang membungkus aturannya dalam `@layer components`; `historic
 
 ## Konvensi
 
-- Seluruh teks antarmuka, komentar dokumentasi, dan dossier ditulis dalam Bahasa Indonesia.
+- Seluruh teks antarmuka, komentar dokumentasi, dan dossier ditulis dalam Bahasa Indonesia baku ragam ilmiah formal (sesuai EYD Edisi V / PUEBI).
 - Aturan editorial: node berstatus `negative`, `inconclusive`, dan `audit_needed` tidak boleh dihapus atau dinaikkan statusnya karena metrik sekunder membaik. Untuk memensiunkan hasil lama, tambahkan node audit yang menjelaskan alasannya lalu hubungkan melalui `parentIds`.
 - ID bersifat unik dan stabil; ID yang sudah dihapus tidak boleh dipakai ulang.
 - Katalog ditulis padat, satu node per beberapa baris panjang. `printWidth` pada `.prettierrc` adalah 80, sehingga `pnpm format` akan menulis ulang katalog dan komponen secara masif. Jalankan hanya bila memang diinginkan, dan jangan pada perubahan kecil.
 - Semua `value` metrik berupa string agar format angka gaya paper (koma desimal) tetap terjaga.
 - Ubah node pada katalog sumbernya; jangan menambal teks di `ExperimentDetail.tsx` atau `ExperimentGraph.tsx`.
+
+### Standar Bahasa & Penulisan Ilmiah Baku
+
+Seluruh teks narasi, judul, kesimpulan, dan temuan teknis node harus mematuhi kaidah penulisan karya ilmiah:
+
+1. **Hindari Terjemahan Harfiah / Mesin (*Calque*):**
+   - Gunakan **"penurunan performa yang signifikan"** atau **"degradasi performa"** (bukan *"kerugian signifikan"* atau *"loss"*).
+   - Gunakan **"selang kepercayaan 95% mencakup nilai nol (tidak signifikan secara statistik)"** (bukan *"CI95 memuat nol"*).
+   - Gunakan **"tidak menunjukkan keunggulan performa"** atau **"mengalami penurunan"** (bukan *"tidak pernah menang"* atau *"kalah"*).
+   - Gunakan **"disimpulkan sebagai peningkatan"** atau **"terbukti meningkatkan"** (bukan *"menyebut kenaikan"*).
+   - Gunakan **"kemunculan objek (*appearance*)"** (bukan *"appearance"* mentah).
+
+2. **Daftar Padanan Istilah Teknis Baku (EYD V / KBBI):**
+   - `detector` $\rightarrow$ **detektor**
+   - `monocular / monocular-depth` $\rightarrow$ **depth monokular / monokular**
+   - `classifier` $\rightarrow$ **pengklasifikasi / model pengklasifikasi**
+   - `counting` $\rightarrow$ **pencacahan (*counting*)**
+   - `screening` $\rightarrow$ **penyaringan awal (*screening*)**
+   - `early stopping / early stop` $\rightarrow$ **penghentian dini (*early stopping*)**
+   - `data leakage` $\rightarrow$ **kebocoran data (*data leakage*)** / **kebocoran partisi data**
+   - `booster detector` $\rightarrow$ **modul penguat (*booster*) detektor**
+   - `spatial pooling` $\rightarrow$ **agregasi spasial (*spatial pooling*)**
+   - `crop` $\rightarrow$ **citra terpotong (*crop*)** / **pemotongan objek**
+
+3. **Struktur Narasi Empat Bagian (Lembar Bukti):**
+   - **Yang Dikerjakan:** Ringkasan desain eksperimen, konfigurasi input/model, dan komparasi yang dijalankan.
+   - **Bukti yang Ditemukan:** Ringkasan kuantitatif terukur dengan signifikansi statistik (*confidence interval*, *p-value*, *bootstrap*).
+   - **Keputusan Setelahnya:** Implikasi metodologis terhadap kelanjutan arah riset.
+   - **Batas Pembacaan:** Peringatan audit, asumsi kontrol yang belum tuntas, atau batasan generalisasi.
 
 `docs/MAINTENANCE.md` memuat prosedur rinci: template node siap salin, aturan lineage, penambahan dataset, penghapusan node, dan checklist publikasi.
