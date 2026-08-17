@@ -115,31 +115,63 @@ Hanya `index.css` yang membungkus aturannya dalam `@layer components`; `historic
 
 ### Standar Bahasa & Penulisan Ilmiah Baku
 
-Seluruh teks narasi, judul, kesimpulan, dan temuan teknis node harus mematuhi kaidah penulisan karya ilmiah:
+Seluruh teks narasi, judul, kesimpulan, temuan teknis node, dan label antarmuka (UI) wajib mematuhi kaidah penulisan ilmiah formal (EYD Edisi V / PUEBI):
 
-1. **Hindari Terjemahan Harfiah / Mesin (*Calque*):**
+1. **Prinsip Anti-Calque (Pencegahan Terjemahan Harfiah / Mesin):**
    - Gunakan **"penurunan performa yang signifikan"** atau **"degradasi performa"** (bukan *"kerugian signifikan"* atau *"loss"*).
    - Gunakan **"selang kepercayaan 95% mencakup nilai nol (tidak signifikan secara statistik)"** (bukan *"CI95 memuat nol"*).
    - Gunakan **"tidak menunjukkan keunggulan performa"** atau **"mengalami penurunan"** (bukan *"tidak pernah menang"* atau *"kalah"*).
    - Gunakan **"disimpulkan sebagai peningkatan"** atau **"terbukti meningkatkan"** (bukan *"menyebut kenaikan"*).
    - Gunakan **"kemunculan objek (*appearance*)"** (bukan *"appearance"* mentah).
 
-2. **Daftar Padanan Istilah Teknis Baku (EYD V / KBBI):**
+2. **Notasi Matematika, Statistika, dan Angka:**
+   - **Tanda Desimal & Ribuan:** Gunakan tanda koma (`,`) untuk desimal (misal `0,6038`) dan tanda titik (`.`) untuk pemisah ribuan (misal `3.992 citra`, `2.612 objek`).
+   - **Tanda Minus Matematis:** Gunakan simbol minus asli `−` (*Unicode U+2212*), bukan tanda hubung keyboard biasa `-`. Contoh: `−0,0476`.
+   - **Selang Kepercayaan (*Confidence Interval*):** Tuliskan dengan format `[min; max]` menggunakan kurung siku dan titik koma, contoh: `[−0,0270; +0,0739]`.
+   - **Simbol Variabel:** Cetak miring simbol matematis/variabel seperti *$p$-value*, *$n$ sampel*, *IoU*, *$\Delta$ mAP*, *$M_{shuf}$*.
+   - **Rentang Satuan:** Gunakan *en dash* (`–`) untuk rentang: `B1–B4`, `10–11 Agu 2026`.
+
+3. **Taksonomi Padanan Istilah Teknis Baku (EYD V / KBBI):**
    - `detector` $\rightarrow$ **detektor**
    - `monocular / monocular-depth` $\rightarrow$ **depth monokular / monokular**
    - `classifier` $\rightarrow$ **pengklasifikasi / model pengklasifikasi**
    - `counting` $\rightarrow$ **pencacahan (*counting*)**
    - `screening` $\rightarrow$ **penyaringan awal (*screening*)**
    - `early stopping / early stop` $\rightarrow$ **penghentian dini (*early stopping*)**
-   - `data leakage` $\rightarrow$ **kebocoran data (*data leakage*)** / **kebocoran partisi data**
-   - `booster detector` $\rightarrow$ **modul penguat (*booster*) detektor**
+   - `data leakage` $\rightarrow$ **kebocoran data (*data leakage*) / kebocoran partisi data**
+   - `ground truth (GT)` $\rightarrow$ **nilai acuan kebenaran (*ground truth*) / data acuan riil**
+   - `oracle` $\rightarrow$ **model batas atas teoretis (*oracle*)**
+   - `ablation study` $\rightarrow$ **studi ablasi / uji eliminasi komponen**
+   - `baseline` $\rightarrow$ **garis dasar pembanding (*baseline*) / model acuan**
+   - `bounding box` $\rightarrow$ **kotak pembatas (*bounding box*)**
+   - `fine-tuning` $\rightarrow$ **penyesuaian terarah (*fine-tuning*) / adaptasi model**
    - `spatial pooling` $\rightarrow$ **agregasi spasial (*spatial pooling*)**
-   - `crop` $\rightarrow$ **citra terpotong (*crop*)** / **pemotongan objek**
+   - `temporal shift` $\rightarrow$ **pergeseran temporal (*temporal shift*)**
+   - `booster detector` $\rightarrow$ **modul penguat (*booster*) detektor**
+   - `crop` $\rightarrow$ **citra terpotong (*crop*) / pemotongan objek**
+   - `noise` $\rightarrow$ **variasi acak (*noise*) / derau**
 
-3. **Struktur Narasi Empat Bagian (Lembar Bukti):**
-   - **Yang Dikerjakan:** Ringkasan desain eksperimen, konfigurasi input/model, dan komparasi yang dijalankan.
-   - **Bukti yang Ditemukan:** Ringkasan kuantitatif terukur dengan signifikansi statistik (*confidence interval*, *p-value*, *bootstrap*).
-   - **Keputusan Setelahnya:** Implikasi metodologis terhadap kelanjutan arah riset.
-   - **Batas Pembacaan:** Peringatan audit, asumsi kontrol yang belum tuntas, atau batasan generalisasi.
+4. **Konvensi Terminologi Antarmuka (UI):**
+   - *Akar data* $\rightarrow$ **Dataset acuan**
+   - *Node / jejak* $\rightarrow$ **Simpul eksperimen**
+   - *Status bukti* $\rightarrow$ **Status validitas bukti**
+   - *Filter bukti* $\rightarrow$ **Penyaringan bukti**
+   - *Alasan lineage* $\rightarrow$ **Rasional relasi silsilah**
+   - *Kesimpulan singkat* $\rightarrow$ **Kesimpulan eksekutif**
+   - *Cerita kerja* $\rightarrow$ **Narasi metodologi & pembuktian**
+   - *Yang dikerjakan* $\rightarrow$ **Rancangan eksperimen**
+   - *Bukti yang ditemukan* $\rightarrow$ **Temuan empiris terukur**
+   - *Keputusan setelahnya* $\rightarrow$ **Keputusan metodologis**
+   - *Batas pembacaan* $\rightarrow$ **Batasan validitas & audit**
+   - *Angka utama* $\rightarrow$ **Metrik kuantitatif utama**
+   - *Penjelasan teknis* $\rightarrow$ **Catatan sintesis teknis**
+   - *Arti istilah* $\rightarrow$ **Glosarium istilah teknis**
+   - *File pendukung* $\rightarrow$ **Artefak data pendukung**
+
+5. **Struktur Narasi Empat Bagian (Lembar Bukti):**
+   - **Rancangan Eksperimen:** Ringkasan desain eksperimen, konfigurasi input/model, dan komparasi yang dijalankan.
+   - **Temuan Empiris Terukur:** Ringkasan kuantitatif terukur dengan signifikansi statistik (*confidence interval*, *p-value*, *bootstrap*).
+   - **Keputusan Metodologis:** Implikasi terhadap kelanjutan arah riset.
+   - **Batasan Validitas & Audit:** Peringatan audit, asumsi kontrol yang belum tuntas, atau batasan generalisasi.
 
 `docs/MAINTENANCE.md` memuat prosedur rinci: template node siap salin, aturan lineage, penambahan dataset, penghapusan node, dan checklist publikasi.
