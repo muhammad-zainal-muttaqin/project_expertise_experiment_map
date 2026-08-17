@@ -54,13 +54,13 @@ export const datasetRoots: DatasetRoot[] = [
   {
     id: "dataset-953",
     label: "SawitMVC · 953",
-    detail: "RGB · 953 pohon · 3.992 citra",
+    detail: "Modalitas RGB · 953 pohon · 3.992 citra",
     position: { x: 38, y: 94 },
   },
   {
     id: "dataset-352",
     label: "SawitMVC-Depth · 352",
-    detail: "RGB + sensor depth · 352 pohon · 1.408 citra",
+    detail: "Modalitas RGB + sensor depth · 352 pohon · 1.408 citra",
     position: { x: 38, y: 584 },
   },
 ];

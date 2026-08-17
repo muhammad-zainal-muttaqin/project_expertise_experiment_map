@@ -75,10 +75,10 @@ export function FilterBar({ filters, onChange }: FilterBarProps) {
     >
       <div className="filter-label">
         <Filter size={15} />
-        Filter bukti
+        Penyaringan bukti
       </div>
       <label className="filter-search">
-        <span>Cari node / proyek</span>
+        <span>Cari simpul / repositori</span>
         <div>
           <Search size={14} />
           <input
@@ -86,14 +86,14 @@ export function FilterBar({ filters, onChange }: FilterBarProps) {
             onChange={event =>
               onChange({ ...filters, search: event.target.value })
             }
-            placeholder="ID, judul, model, repo…"
-            aria-label="Cari node atau proyek"
+            placeholder="ID, judul eksperimen, model, repositori…"
+            aria-label="Cari simpul eksperimen atau repositori"
           />
           {filters.search && (
             <button
               type="button"
               onClick={() => onChange({ ...filters, search: "" })}
-              aria-label="Hapus pencarian"
+              aria-label="Hapus kata kunci pencarian"
             >
               <X size={13} />
             </button>
@@ -101,7 +101,7 @@ export function FilterBar({ filters, onChange }: FilterBarProps) {
         </div>
       </label>
       <label>
-        <span>Dataset</span>
+        <span>Dataset acuan</span>
         <select
           value={filters.dataset}
           onChange={event =>
@@ -112,14 +112,14 @@ export function FilterBar({ filters, onChange }: FilterBarProps) {
           }
         >
           <option value="all">Semua dataset</option>
-          <option value="SawitMVC-953">SawitMVC · 953 RGB</option>
-          <option value="SawitMVC-Depth-352">SawitMVC-Depth · 352</option>
+          <option value="SawitMVC-953">SawitMVC · 953 (RGB)</option>
+          <option value="SawitMVC-Depth-352">SawitMVC-Depth · 352 (RGB-D)</option>
           <option value="Lintas-dataset">Lintas-dataset</option>
           <option value="Audit">Audit</option>
         </select>
       </label>
       <label>
-        <span>Status</span>
+        <span>Status validitas</span>
         <select
           value={filters.status}
           onChange={event =>
@@ -138,7 +138,7 @@ export function FilterBar({ filters, onChange }: FilterBarProps) {
         </select>
       </label>
       <label>
-        <span>Kanal / metode</span>
+        <span>Modalitas kanal</span>
         <select
           value={filters.input}
           onChange={event =>
@@ -161,7 +161,7 @@ export function FilterBar({ filters, onChange }: FilterBarProps) {
             onChange({ ...filters, repository: event.target.value })
           }
         >
-          <option value="all">Semua proyek</option>
+          <option value="all">Semua repositori</option>
           {projectOptions.map(project => (
             <option key={project} value={project}>
               {project}
@@ -170,7 +170,7 @@ export function FilterBar({ filters, onChange }: FilterBarProps) {
         </select>
       </label>
       <label>
-        <span>Era riset</span>
+        <span>Era penelitian</span>
         <select
           value={filters.era}
           onChange={event => onChange({ ...filters, era: event.target.value })}
@@ -184,14 +184,14 @@ export function FilterBar({ filters, onChange }: FilterBarProps) {
         </select>
       </label>
       <label>
-        <span>Keluarga riset</span>
+        <span>Rumpun fase</span>
         <select
           value={filters.phase}
           onChange={event =>
             onChange({ ...filters, phase: event.target.value })
           }
         >
-          <option value="all">Semua keluarga</option>
+          <option value="all">Semua rumpun</option>
           {phaseOptions.map(phase => (
             <option key={phase} value={phase}>
               {phase}
@@ -201,7 +201,7 @@ export function FilterBar({ filters, onChange }: FilterBarProps) {
       </label>
       <button type="button" className="reset-filter" onClick={reset}>
         <RotateCcw size={14} />
-        Reset
+        Reset filter
       </button>
       {chips.length > 0 && (
         <div

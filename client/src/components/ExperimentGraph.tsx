@@ -104,25 +104,25 @@ function reasonForEdge(parentId: string, child: Experiment) {
   const childInputs = inputsFor(child);
   const added = childInputs.filter(input => !parentInputs.includes(input));
   let relation =
-    "Meneruskan bukti dan konfigurasi dari eksperimen sebelumnya ke pertanyaan berikutnya.";
+    "Meneruskan konfigurasi eksperimental dan bukti empiris dari node pendahulu ke tahapan uji berikutnya.";
 
   if (parentId.startsWith("dataset-"))
-    relation = `Menetapkan ${parent && "label" in parent ? parent.label : "dataset"} sebagai sumber data dan protokol evaluasi untuk run ini.`;
+    relation = `Menetapkan ${parent && "label" in parent ? parent.label : "dataset"} sebagai sumber data rujukan dan protokol evaluasi terstandarisasi untuk rangkaian eksperimen ini.`;
   else if (child.status === "audit_needed")
     relation =
-      "Menjadikan hasil sebelumnya sebagai objek audit untuk membatasi klaim, mengecek kebocoran, atau mengukur ketidakpastian.";
+      "Menjadikan temuan pendahulu sebagai objek audit metodologis untuk menguji kebocoran data, batas validitas, atau ketidakpastian statistik.";
   else if (
     childInputs.includes("Counting") &&
     !parentInputs.includes("Counting")
   )
     relation =
-      "Menguji apakah perubahan pada deteksi atau representasi benar-benar diterjemahkan ke metrik counting end-to-end.";
+      "Menguji apakah perbaikan representasi atau deteksi benar-benar berkorelasi positif terhadap metrik pencacahan (counting) end-to-end.";
   else if (child.phase.includes("Diagnosis"))
     relation =
-      "Menggunakan hasil pendahulu sebagai titik diagnosis untuk mencari mekanisme kesalahan, bukan sekadar membandingkan skor.";
+      "Menggunakan hasil pendahulu sebagai titik diagnosis analitis untuk mengisolasi mekanisme galat, bukan sekadar membandingkan skor numerik.";
   else if (child.phase.includes("Mono"))
     relation =
-      "Memakai baseline atau representasi sebelumnya sebagai pembanding langsung untuk menguji tambahan monocular depth.";
+      "Menggunakan baseline atau representasi sebelumnya sebagai pembanding langsung guna mengevaluasi efektivitas penambahan kanal depth monokular.";
   else if (
     parent &&
     "era" in parent &&
@@ -131,9 +131,9 @@ function reasonForEdge(parentId: string, child: Experiment) {
     parent.era !== child.era
   )
     relation =
-      "Mewarisi temuan arsip sebagai konteks historis; koneksi lintas era/repositori dibuat lebih lembut agar tidak mendominasi bukti aktif.";
+      "Mewariskan temuan arsip sebagai konteks historis komparatif; relasi lintas era diformulasikan untuk memperjelas trajektori riset.";
   else if (added.length)
-    relation = `Mengubah atau menambahkan ${added.join(", ")} sambil mempertahankan konteks keputusan dari node asal.`;
+    relation = `Memodifikasi atau mengintegrasikan masukan ${added.join(", ")} sambil mempertahankan konteks acuan keputusan dari node asal.`;
   return { parentTitle, relation, sourceConclusion };
 }
 
@@ -516,11 +516,11 @@ export function ExperimentGraph({
         <div className="focus-strip">
           <ScanLine size={13} />
           <span>
-            <strong>Mode fokus cabang.</strong> Dependensi dan turunan{" "}
-            <b>{selected.id}</b> dipertahankan.
+            <strong>Mode fokus cabang silsilah.</strong> Menampilkan garis dependensi leluhur dan turunan untuk{" "}
+            <b>{selected.id}</b>.
           </span>
           <button type="button" onClick={() => setFocusMode(false)}>
-            Tampilkan semua
+            Tampilkan seluruh atlas
           </button>
         </div>
       )}
@@ -681,7 +681,7 @@ export function ExperimentGraph({
               >
                 <span className="edge-tooltip-kicker">
                   <Crosshair size={12} />
-                  ALASAN LINEAGE
+                  RASIONAL RELASI SILSILAH
                 </span>
                 <strong>
                   {tooltipParent &&
@@ -693,7 +693,7 @@ export function ExperimentGraph({
                 <p>{tooltipReason.relation}</p>
                 {tooltipReason.sourceConclusion && (
                   <small>
-                    <b>Bukti asal:</b> {tooltipReason.sourceConclusion}
+                    <b>Temuan acuan pendahulu:</b> {tooltipReason.sourceConclusion}
                   </small>
                 )}
               </aside>
@@ -743,8 +743,8 @@ export function ExperimentGraph({
       </div>
       <div className="graph-minimap" aria-label="Minimap atlas eksperimen">
         <div className="minimap-title">
-          <span>MINIMAP</span>
-          <small>Seret untuk menggeser peta</small>
+          <span>MINIMAP ATLAS</span>
+          <small>Navigasi cepat area kanvas</small>
         </div>
         <svg
           viewBox={`0 0 ${canvasWidth} ${canvasHeight}`}

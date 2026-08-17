@@ -316,17 +316,17 @@ export function ExperimentDetail({
       </div>
       <h2>{experiment.title}</h2>
       <p className="sheet-conclusion">
-        <strong>Kesimpulan singkat.</strong> {experiment.conclusion}
+        <strong>Kesimpulan eksekutif.</strong> {experiment.conclusion}
       </p>
       <div className="sheet-meta-grid">
         <div>
           <Database size={14} />
-          <span>Dataset</span>
+          <span>Dataset acuan</span>
           <strong>{datasetInfo[experiment.dataset].short}</strong>
         </div>
         <div>
           <Microscope size={14} />
-          <span>Model / metode</span>
+          <span>Arsitektur / metode</span>
           <strong>{experiment.model}</strong>
         </div>
         <div>
@@ -341,38 +341,38 @@ export function ExperimentDetail({
         </div>
         <div>
           <Layers size={14} />
-          <span>Keluarga riset</span>
+          <span>Rumpun penelitian</span>
           <strong>{experiment.phase}</strong>
         </div>
         <div>
           <Waves size={14} />
-          <span>Kanal / metode</span>
+          <span>Modalitas kanal</span>
           <strong>{experiment.inputs.join(" · ")}</strong>
         </div>
       </div>
       <section className="sheet-section reader-summary">
         <div className="section-title">
-          <span>Cerita kerja</span>
+          <span>Narasi metodologi & pembuktian</span>
           <small>{narrative.kind}</small>
         </div>
         <div className="reader-summary-grid">
           <article className="reader-card--work">
-            <span>Yang dikerjakan</span>
+            <span>Rancangan eksperimen</span>
             <p>{narrative.work}</p>
           </article>
           {narrative.evidence && (
             <article className="reader-card--evidence">
-              <span>Bukti yang ditemukan</span>
+              <span>Temuan empiris terukur</span>
               <p>{narrative.evidence}</p>
             </article>
           )}
           <article className="reader-card--impact">
-            <span>Keputusan setelahnya</span>
+            <span>Keputusan metodologis</span>
             <p>{narrative.impact}</p>
           </article>
           {narrative.caution && (
             <article className="reader-card--caution">
-              <span>Batas pembacaan</span>
+              <span>Batasan validitas & audit</span>
               <p>{narrative.caution}</p>
             </article>
           )}
@@ -380,8 +380,8 @@ export function ExperimentDetail({
       </section>
       <section className="sheet-section">
         <div className="section-title">
-          <span>Angka utama</span>
-          <small>rincian teknis</small>
+          <span>Metrik kuantitatif utama</span>
+          <small>rincian hasil evaluasi</small>
         </div>
         <dl className="metric-list">
           {experiment.metrics.map(metric => (
@@ -398,8 +398,8 @@ export function ExperimentDetail({
       {experiment.perClass && (
         <section className="sheet-section">
           <div className="section-title">
-            <span>Catatan tambahan</span>
-            <small>kelas atau konteks</small>
+            <span>Evaluasi spesifik kelas</span>
+            <small>rincian per kategori kematangan</small>
           </div>
           <dl className="metric-list compact">
             {experiment.perClass.map(metric => (
@@ -422,19 +422,19 @@ export function ExperimentDetail({
       )}
       <section className="sheet-section">
         <div className="section-title">
-          <span>Penjelasan teknis</span>
-          <small>untuk pembacaan lebih lanjut</small>
+          <span>Catatan sintesis teknis</span>
+          <small>analisis mendalam temuan</small>
         </div>
         <p className="finding-text">{experiment.findings}</p>
       </section>
       {(parentEntries.length > 0 || childEntries.length > 0) && (
         <section className="sheet-section lineage-section">
           <div className="section-title">
-            <span>Rantai lineage</span>
+            <span>Silsilah relasi eksperimen</span>
           </div>
           {parentEntries.length > 0 && (
             <div className="lineage-row">
-              <span className="lineage-row-label">Induk</span>
+              <span className="lineage-row-label">Node pendahulu (induk)</span>
               <div className="lineage-chips">
                 {parentEntries.map(entry =>
                   entry.selectable ? (
@@ -460,7 +460,7 @@ export function ExperimentDetail({
           )}
           {childEntries.length > 0 && (
             <div className="lineage-row">
-              <span className="lineage-row-label">Turunan</span>
+              <span className="lineage-row-label">Node turunan (anak)</span>
               <div className="lineage-chips">
                 {childEntries.map(entry => (
                   <button
@@ -479,7 +479,7 @@ export function ExperimentDetail({
       )}
       <section className="sheet-section glossary-section">
         <div className="section-title">
-          <span>Arti istilah</span>
+          <span>Glosarium istilah teknis</span>
         </div>
         <dl className="term-list">
           {glossaryEntries.map(entry => (
@@ -496,8 +496,8 @@ export function ExperimentDetail({
       </section>
       <section className="sheet-section provenance-section">
         <div className="section-title">
-          <span>Jejak sumber</span>
-          <small>audit sumber</small>
+          <span>Sumber data & repositori</span>
+          <small>audit rekam jejak</small>
         </div>
         <div className="provenance-card">
           <span>Era penelitian</span>
@@ -508,7 +508,7 @@ export function ExperimentDetail({
       </section>
       <section className="sheet-section artifact-section">
         <div className="section-title">
-          <span>File pendukung</span>
+          <span>Artefak data pendukung</span>
           <small>
             {experiment.artifacts.length} berkas
             {auditGeneratedAt ? ` · audit ${auditGeneratedAt}` : ""}

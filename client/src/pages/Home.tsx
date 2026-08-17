@@ -108,7 +108,7 @@ export default function Home() {
             </div>
           </div>
           <section className="rail-section">
-            <div className="rail-heading">Akar data</div>
+            <div className="rail-heading">Dataset acuan</div>
             <button
               type="button"
               className="dataset-card dataset-card--953"
@@ -117,8 +117,8 @@ export default function Home() {
               }
             >
               <strong>SawitMVC · 953</strong>
-              <span>RGB only · 953 pohon · 3.992 citra</span>
-              <b>{count953} jejak eksperimen →</b>
+              <span>Modalitas RGB · 953 pohon · 3.992 citra</span>
+              <b>{count953} simpul eksperimen →</b>
             </button>
             <button
               type="button"
@@ -128,12 +128,12 @@ export default function Home() {
               }
             >
               <strong>SawitMVC-Depth · 352</strong>
-              <span>RGB + sensor depth · 352 pohon · 1.408 citra</span>
-              <b>{count352} jejak eksperimen →</b>
+              <span>RGB + sensor kedalaman · 352 pohon · 1.408 citra</span>
+              <b>{count352} simpul eksperimen →</b>
             </button>
           </section>
           <section className="rail-section">
-            <div className="rail-heading">Status bukti</div>
+            <div className="rail-heading">Status validitas bukti</div>
             <div className="status-tally">
               {(Object.keys(statusInfo) as ExperimentStatus[]).map(status => (
                 <button
@@ -157,7 +157,7 @@ export default function Home() {
             </div>
           </section>
           <div className="rail-source">
-            <strong>Basis audit</strong>
+            <strong>Basis audit repositori</strong>
             <code>project-expertise@225faaeb</code>
             <br />
             <code>Research-Pipeline@4aa9ad6</code>
@@ -175,13 +175,13 @@ export default function Home() {
                 onClick={() => setIsLeftRailHidden(current => !current)}
                 aria-label={
                   isLeftRailHidden
-                    ? "Tampilkan panel kiri"
-                    : "Sembunyikan panel kiri"
+                    ? "Tampilkan panel data"
+                    : "Sembunyikan panel data"
                 }
                 title={
                   isLeftRailHidden
-                    ? "Tampilkan panel kiri"
-                    : "Sembunyikan panel kiri"
+                    ? "Tampilkan panel data"
+                    : "Sembunyikan panel data"
                 }
               >
                 {isLeftRailHidden ? (
@@ -208,15 +208,15 @@ export default function Home() {
             <div className="atlas-stats">
               <div className="atlas-stat">
                 <strong>{experiments.length}</strong>
-                <span>node terdokumentasi</span>
+                <span>simpul eksperimen</span>
               </div>
               <div className="atlas-stat">
                 <strong>{historicalCount}</strong>
-                <span>node historis terlacak</span>
+                <span>simpul historis</span>
               </div>
               <div className="atlas-stat">
                 <strong>{counts.negative}</strong>
-                <span>hasil negatif terjaga</span>
+                <span>temuan negatif</span>
               </div>
               <div className="atlas-stat">
                 <strong>4</strong>
