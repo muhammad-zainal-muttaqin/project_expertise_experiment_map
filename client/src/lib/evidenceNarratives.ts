@@ -127,7 +127,8 @@ const specialNarratives: Record<string, Partial<EvidenceNarrative>> = {
   "V2-E-006": {
     kind: "Ablasi pencacahan bootstrap",
     work: "Menguji signifikansi statistik pengaruh early fusion pada tahap pencacahan akhir menggunakan metode resampling bootstrap sebanyak 10.000 iterasi.",
-    evidence: "Seluruh selang kepercayaan (CI 95%) selisih performa antara RGB-D dan RGB mencakup nilai nol.",
+    evidence:
+      "Seluruh selang kepercayaan (CI 95%) selisih performa antara RGB-D dan RGB mencakup nilai nol.",
     impact:
       "Tidak ditemukan landasan statistik yang signifikan untuk menyimpulkan bahwa penambahan kanal depth inverse meningkatkan akurasi pencacahan.",
     caution:
