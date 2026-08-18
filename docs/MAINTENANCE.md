@@ -16,6 +16,7 @@ Dokumen ini menjelaskan **di mana** informasi atlas disimpan, **bagaimana** mena
 | Mengubah narasi lembar bukti | `client/src/components/ExperimentDetail.tsx` | `experimentData.ts` | Sebagian besar isi berasal dari `conclusion`, `findings`, dan `metrics`. |
 | Mengaudit artefak dan status file | `scripts/audit_artifacts.py` | `research_notes/artifact_audit_report.json`, `client/src/lib/artifactManifest.json` | Audit HTTP pada commit tersemat; manifest kedua dipakai oleh panel bukti. |
 | Memperbarui dossier audit repositori | `docs/REPOSITORY-AUDIT-*.md` | `scripts/build_repo_dossier_catalogs.py`, `research_notes/repo_inventory/` | Sintesis ditulis manual; lampiran tautan digenerasi dari pohon Git pada commit tersemat. |
+| Menambah cabang dari commit lebih baru | `client/src/lib/<cabang>Experiments.ts` | `experimentData.ts`, `atlasLayout.ts`, `evidenceNarratives.ts`, `audit_artifacts.py` | Jangan mengganti node lama; beri `source.commit` terpisah dan daftarkan katalog pada audit. |
 | Mengubah navigasi peta/tooltip/minimap | `client/src/components/ExperimentGraph.tsx` | `navigation.css` | Jangan mengubah routing edge tanpa memeriksa mode fokus dan fullscreen. |
 | Mengubah tema atau layout tiga-rail | `client/src/index.css` | `atlasEnhancements.css`, `themeReaderFix.css` | Uji terang, gelap, desktop, dan ponsel. |
 | Mengubah deploy | `.github/workflows/deploy-pages.yml` | `vite.config.ts` | Base path Pages berada pada konfigurasi Vite. |
@@ -34,6 +35,7 @@ Gunakan ID yang **unik dan stabil**. Jangan menggunakan ulang ID yang telah diha
 | Dedup/oracle arsip | `historicalExperiments.ts` | `HD-*` |
 | Baseline publik | `historicalExperiments.ts` | `HB-*` |
 | Research pipeline | `historicalExperiments.ts` | `RP-E*` atau `RP-F*` |
+| Cabang commit terbaru | `pipelinePertandanExperiments.ts` | `PT-E-*` |
 
 ### 2.2 Salin template node
 
@@ -201,6 +203,18 @@ python3 scripts/build_repo_dossier_catalogs.py
 | Banyak file baru dalam satu direktori | Pertahankan pengelompokan jika direktori melewati batas katalog; tambahkan tautan langsung ke artefak prioritas pada bagian “Artefak Inspeksi Prioritas”. |
 
 > Dossier tidak menggantikan laporan hasil primer. Jika ada perbedaan, JSON/CSV/log pada commit tersemat adalah rujukan untuk angka; register atau audit terbaru pada commit yang sama adalah rujukan untuk status dan batas interpretasi.
+
+### 5.3 Menambah cabang eksperimen dari commit lebih baru
+
+Commit baru pada repositori sumber tidak otomatis menggantikan node yang sudah dipasangi pin. Untuk cabang seperti `pipeline-pertandan` pada `c19906bbfbb4`, buat modul katalog terpisah, beri setiap node `source` dengan commit lengkap serta URL folder tepat, lalu tempatkan cabang pada lane sendiri di `atlasLayout.ts`. Tambahkan awalan ID pada `evidenceNarratives.ts` bila cabang membutuhkan penjelasan metodologis khusus.
+
+Daftarkan modul pada `scripts/audit_artifacts.py` memakai fallback pemilik, repositori, dan commit yang sesuai. Hanya artefak dengan status `verified` yang boleh menawarkan tindakan Raw atau Unduh.
+
+```bash
+python3 scripts/audit_artifacts.py --project-root . --output research_notes/artifact_audit_report.json
+cp research_notes/artifact_audit_report.json client/src/lib/artifactManifest.json
+pnpm check && pnpm run build:pages
+```
 
 ## 6. Menambah atau Mengubah Dataset
 

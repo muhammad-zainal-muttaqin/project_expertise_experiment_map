@@ -90,10 +90,18 @@ export const atlasLanes: AtlasLane[] = [
     tone: "audit",
   },
   {
+    id: "pertandan",
+    label: "CABANG · PIPELINE PER-TANDAN",
+    caption: "Agu 2026 · oracle, penaut, counter, prior arah, dan koreksi diagnosis",
+    y: 1100,
+    height: 320,
+    tone: "primary",
+  },
+  {
     id: "dedup",
     label: "ARSIP · DEDUPLIKASI & ORACLE",
     caption: "Apr–Mei 2026 · heuristik, GT, dan E2E awal",
-    y: 1100,
+    y: 1460,
     height: 310,
     tone: "archive",
   },
@@ -101,7 +109,7 @@ export const atlasLanes: AtlasLane[] = [
     id: "baseline",
     label: "ARSIP · BASELINE PUBLIK",
     caption: "Mei–Jun 2026 · counter terkontrol dan rilis E2E",
-    y: 1450,
+    y: 1810,
     height: 150,
     tone: "archive",
   },
@@ -109,7 +117,7 @@ export const atlasLanes: AtlasLane[] = [
     id: "pipeline",
     label: "ARSIP · RESEARCH PIPELINE",
     caption: "Jul–Agu 2026 · diagnosis, sensor, audit, dan replikasi",
-    y: 1640,
+    y: 2000,
     height: 520,
     tone: "archive",
   },
@@ -117,7 +125,7 @@ export const atlasLanes: AtlasLane[] = [
     id: "formulation",
     label: "ARSIP · FORMULASI",
     caption: "Aug 2026 · prasyarat dan cabang yang dihentikan",
-    y: 2200,
+    y: 2560,
     height: 154,
     tone: "archive",
   },
@@ -157,20 +165,25 @@ export function buildAtlasLayout(experiments: Experiment[]) {
   const formulation = experiments
     .filter(item => item.id.startsWith("RP-F"))
     .map(item => item.id);
-  setRow(positions, dedup, 1144, 7);
+  const perTandan = experiments
+    .filter(item => item.id.startsWith("PT-E-"))
+    .map(item => item.id);
+  setRow(positions, perTandan, 1144, 7);
+  perTandan.forEach(id => placed.add(id));
+  setRow(positions, dedup, 1504, 7);
   dedup.forEach(id => placed.add(id));
-  setRow(positions, baseline, 1492, 9);
+  setRow(positions, baseline, 1852, 9);
   baseline.forEach(id => placed.add(id));
-  setRow(positions, pipeline, 1684, 10);
+  setRow(positions, pipeline, 2044, 10);
   pipeline.forEach(id => placed.add(id));
-  setRow(positions, formulation, 2240, 6);
+  setRow(positions, formulation, 2604, 6);
   formulation.forEach(id => placed.add(id));
 
   const residual = experiments.filter(item => !placed.has(item.id));
   setRow(
     positions,
     residual.map(item => item.id),
-    2440,
+    2800,
     8
   );
   const maxX = Math.max(
@@ -182,7 +195,7 @@ export function buildAtlasLayout(experiments: Experiment[]) {
   return {
     positions,
     canvasWidth: Math.max(3060, maxX + 260),
-    canvasHeight: Math.max(2640, maxY + 190),
+    canvasHeight: Math.max(3000, maxY + 190),
     lanes: atlasLanes,
   };
 }

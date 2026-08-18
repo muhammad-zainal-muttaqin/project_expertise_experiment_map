@@ -304,5 +304,4 @@ Lampiran ini digenerasi dari pohon Git pada commit yang dinyatakan di bagian ide
 | `.lock` | 1 |
 | `.parquet` | 1 |
 | `tanpa ekstensi` | 1 |
-
 <!-- AUTO_CATALOG_END -->

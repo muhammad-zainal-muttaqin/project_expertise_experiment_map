@@ -7,8 +7,9 @@
 | Atribut | Nilai |
 |---|---|
 | Repositori | [`muhammad-zainal-muttaqin/project-expertise`](https://github.com/muhammad-zainal-muttaqin/project-expertise) |
-| Commit yang diaudit | [`225faaeb`](https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/225faaeb) |
-| Peran dalam program riset | Volume 2: reproduksi benchmark RGB, eksperimen RGB+depth, diagnosis, dua tahap, monocular-depth, dan audit validitas. |
+| Commit Volume 2 yang diaudit | [`225faaeb`](https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/225faaeb) |
+| Commit cabang per-tandan | [`c19906bbfbb4`](https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/c19906bbfbb4/pipeline-pertandan) |
+| Peran dalam program riset | Volume 2: reproduksi benchmark RGB, eksperimen RGB+depth, diagnosis, dua tahap, monocular-depth, dan audit validitas; dilanjutkan cabang pipeline per-tandan. |
 | Unit utama | Deteksi B1–B4 per citra dan counting per pohon. |
 | Dataset yang tercatat | SawitMVC RGB: 953 pohon/3.992 citra; SawitMVC-Depth: 352 pohon/1.408 citra. |
 | Register primer | [`experiments/EKSPERIMEN.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/experiments/EKSPERIMEN.md) dan [`experiments/STATUS.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/experiments/STATUS.md). |
@@ -20,6 +21,28 @@ Pembacaan harus berangkat dari dua batas yang menjadi keputusan audit, bukan dar
 Repositori memulai Volume 2 dengan tiga tujuan: mereproduksi pembanding RGB Volume 1 pada 953 pohon, menjalankan matriks yang sebanding pada 352 pohon dengan sensor depth, dan menguji apakah kanal keempat dapat membantu deteksi atau counting. Seiring audit, ruang lingkup diperluas secara benar menjadi diagnosis: apakah hambatan terutama lokalisasi atau klasifikasi ordinal; apakah sinyal depth ada setelah pooling; apakah dua tahap dapat memakai crop classifier; dan apakah bukti statistik cukup kuat untuk menyatakan kenaikan. [1] [2]
 
 > **Aturan baca yang dipakai dossier:** sebuah angka hanya dilabeli *didukung* jika bukti di commit tersebut mendukung pertanyaan yang tepat. Label *negatif* berarti jalur diuji dan tidak membantu pada rezimnya. Label *belum konklusif* berarti bukti belum memisahkan efek dari nol atau pembandingnya. Label *audit/batas* merekam masalah desain, leakage, atau keterbatasan interpretasi.
+
+## Cabang Pipeline Per-Tandan — Commit `c19906bbfbb4`
+
+Tiga commit setelah snapshot Volume 2 menambahkan `pipeline-pertandan/`: sebuah cabang yang menggeser satuan analisis dari kemunculan deteksi per citra menjadi **tandan fisik per pohon**. Register PT-E memisahkan empat hal yang sebelumnya mudah tercampur: plafon penggabungan kelas apabila asosiasi benar, mutu penaut lintas-sisi, hasil end-to-end setelah deteksi, serta efek terhadap counting. Tiga belas node PT-E berikut sudah masuk ke atlas dengan sumber yang dipasangi pin. [8] [9]
+
+| ID | Pertanyaan / tindakan | Putusan | Angka atau batas penting |
+|---|---|---|---|
+| PT-E-000 | Probe kelayakan representasi per-tandan | Audit awal | F1 penaut `0,4282`; ARI `0,3912`; belum ada klaim gain akhir. |
+| PT-E-001 | Oracle penggabungan kelas lintas-tampak | Didukung; G0 lolos | Gain test pool ≥2 `+4,36 pp`, CI `[+2,33; +6,25]`. |
+| PT-E-002 | Penaut geometri/penampilan/re-ID awal | Negatif; G1 awal gugur | F1 sah terbaik `0,3979`, di bawah ambang G1 `0,65`. |
+| PT-E-003 | Pipeline per-tandan end-to-end awal | Negatif; G2 awal gugur | R4 `0,7124`, F1 penaut deteksi `0,1766`. |
+| PT-E-004 | Counting kelompok versus Ridge `F_all` | Negatif; G3 gugur | C4 `3,3422` MAE versus Ridge `1,0542`. |
+| PT-E-006 | Audit counter historis M01 | Audit/batas | `0,3404` MAE memakai kotak GT; skor itu bukan E2E. |
+| PT-E-007 | Rem penggabungan berbasis target cacah | Dipalsukan | Bahkan target cacah GT menurunkan R4 menjadi `0,6454`. |
+| PT-E-008 | Prior arah putar | Didukung; G1/G2 lolos | F1 GT `0,3979 → 0,6486`; R4 pipeline `0,7179`. |
+| PT-E-009 | Sapu confidence setelah prior arah | Negatif sebagai perbaikan | Metrik seluruh GT `0,6474`; metrik penyebut menyusut dibatalkan. |
+| PT-E-010 | Replikasi pada Depth-352 | Belum konklusif | F1 deteksi `0,7083`, tetapi CI gain kelas mencakup nol. |
+| PT-E-011 | Audit kepadatan kandidat 953 vs 352 | Audit yang mengubah diagnosis | ~235 versus ~28 pasangan/pohon; klaim bottleneck detektor dibatalkan. |
+| PT-E-012 | Classifier multi-tampak C3 | Negatif | C3 attention `0,6781` di bawah C1 skor detektor `0,7208`. |
+| PT-E-013 | Depth+arah untuk rekonstruksi 3D | Dipalsukan | AUC `0,4511/0,5083`; pose handheld tidak cukup terkendali. |
+
+> **Putusan sintesis PT-E.** Penggabungan kelas memang bernilai ketika tandan yang sama telah diketahui; masalah dominan pada 953 adalah kombinatorik kandidat asosiasi. Prior urutan sisi yang berasal dari protokol akuisisi memperbaiki G1/G2, sedangkan memaksa target cacah, menaikkan confidence, classifier C3, dan rekonstruksi 3D tidak membuka jalur perbaikan yang sah. Counting E2E tetap kalah dari Ridge `F_all`; karenanya G3 belum lolos. [8] [9]
 
 ## Data, Protokol, dan Metrik
 
@@ -118,13 +141,14 @@ Sampel lima run kecil dibaca melalui `args.yaml`, `hasil.json` bila tersedia, da
 | Diagnosis / dua tahap | [`probe_fitur_depth.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/probe_fitur_depth.json) · [`twostage_final_v4.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/twostage_final_v4.json) |
 | Validitas | [`pergeseran_temporal.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/pergeseran_temporal.json) · [`test953_bersih.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/test953_bersih.json) |
 | Monocular depth | [`boot_sel6_vs_sel5.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/boot_sel6_vs_sel5.json) · [`boot_sel4_vs_sel2.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/boot_sel4_vs_sel2.json) · [`boot_sel3_vs_sel1.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/boot_sel3_vs_sel1.json) |
+| Pipeline per-tandan | [`EKSPERIMEN.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/EKSPERIMEN.md) · [`STATUS.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/STATUS.md) · [`hasil PT-E-001`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pt_e_001_oracle.json) · [`hasil PT-E-003`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pt_e_003_endtoend.json) · [`hasil PT-E-009`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pt_e_009_sapu_conf.json) · [`hasil PT-E-012`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pt_e_012_c3.json) |
 | Pelengkap bucket mutable | [`Bucket project-expertise-backup`](https://huggingface.co/buckets/ULM-DS-Lab/project-expertise-backup) · `hf://buckets/ULM-DS-Lab/project-expertise-backup/project-expertise/runs/` · [catatan inventaris lokal](../research_notes/repo_inventory/hf_backup_audit_notes.md) |
 
 ## Keterkaitan dengan Atlas
 
 Atlas mengimpor node V2-E-001 sampai V2-E-033 dari kontrak data `client/src/lib/experimentData.ts`. Dossier ini menggunakan ID yang sama dan mengembalikan pembaca ke artefak primer. Jika sebuah simpul dan dossier tidak sepakat, rujukan otoritatif untuk angka adalah JSON/CSV pada commit di atas; rujukan otoritatif untuk putusan adalah entri yang lebih baru di register dan auditnya. Perbedaan tersebut harus dicatat sebagai pembaruan katalog, bukan diam-diam dirapikan.
 
-Artefak bucket yang dijelaskan di atas berfungsi sebagai petunjuk pemeriksaan tambahan. Ia baru dapat mengubah atlas bila konfigurasi, split, evaluator, dan artefak testnya dapat direkonstruksi, lalu hasilnya diberi sumber/tanggal bucket secara eksplisit dan diaudit kembali.
+Artefak bucket yang dijelaskan di atas berfungsi sebagai petunjuk pemeriksaan tambahan. Ia baru dapat mengubah atlas bila konfigurasi, split, evaluator, dan artefak testnya dapat direkonstruksi, lalu hasilnya diberi sumber/tanggal bucket secara eksplisit dan diaudit kembali. Cabang PT-E berbeda: ia berasal dari commit Git `c19906bbfbb4`, sehingga setiap node dapat diaudit sebagai sumber versioned yang terpisah dari snapshot V2 `225faaeb`.
 
 ## Referensi
 
@@ -135,11 +159,15 @@ Artefak bucket yang dijelaskan di atas berfungsi sebagai petunjuk pemeriksaan ta
 [5]: https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/225faaeb/results/boot_sel6_vs_sel5.json "Bootstrap monocular depth 953"
 [6]: https://huggingface.co/buckets/ULM-DS-Lab/project-expertise-backup "ULM-DS-Lab/project-expertise-backup — storage bucket pelengkap, diinventaris 15 Agu 2026"
 [7]: https://huggingface.co/docs/hub/en/storage-buckets "Dokumentasi Hugging Face Storage Buckets — object storage mutable dan non-versioned"
+[8]: https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/EKSPERIMEN.md "Register eksperimen pipeline per-tandan"
+[9]: https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/STATUS.md "Status board dan gerbang bukti pipeline per-tandan"
 
 <!-- AUTO_CATALOG_START -->
 ## Lampiran A — Katalog Artefak yang Dapat Diaudit
 
 Lampiran ini digenerasi dari pohon Git pada commit yang dinyatakan di bagian identitas. Setiap tautan file memakai commit tersemat, sehingga isinya tidak bergerak ketika cabang `main` berubah. Katalog sengaja memisahkan narasi, hasil terstruktur, dan kode. Payload anotasi per-gambar tidak direntangkan ribuan baris; ia diringkas sebagai kelompok direktori dan dapat dibuka dari pohon commit.
+
+### Snapshot Volume 2 — commit `225faaeb`
 
 | Inventaris | Jumlah | Keterangan |
 |---|---:|---|
@@ -308,5 +336,79 @@ Tidak ada payload anotasi atau citra yang perlu dikelompokkan.
 | `.yaml` | 3 |
 | `.sh` | 2 |
 | `.pt` | 1 |
+---
 
+### Cabang pipeline per-tandan — commit `c19906bbfbb4`
+
+| Inventaris | Jumlah | Keterangan |
+|---|---:|---|
+| Seluruh path Git | 42 | [Buka pohon commit](https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/c19906bbfbb4) |
+| Dokumen naratif / log | 6 | Markdown, TXT, atau RST di luar payload anotasi |
+| Hasil terstruktur | 22 | JSON, CSV, Parquet, atau NPZ di luar payload anotasi |
+| Kode dan konfigurasi | 13 | Python, shell, YAML, TOML, atau notebook |
+| Payload anotasi atau citra dikelompokkan | 0 | Diwakili direktori agar catalogue tetap dapat dibaca |
+
+### Dokumen Naratif dan Log
+
+- [`pipeline-pertandan/CLAUDE.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/CLAUDE.md)
+- [`pipeline-pertandan/EKSPERIMEN.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/EKSPERIMEN.md)
+- [`pipeline-pertandan/README.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/README.md)
+- [`pipeline-pertandan/STATUS.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/STATUS.md)
+- [`pipeline-pertandan/docs/HASIL.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/docs/HASIL.md)
+- [`pipeline-pertandan/docs/PROPOSAL.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/docs/PROPOSAL.md)
+
+### Hasil Terstruktur — JSON, CSV, Parquet, NPZ
+
+- [`pipeline-pertandan/results/harapan_geser.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/harapan_geser.json)
+- [`pipeline-pertandan/results/pred_skorpenuh_352_test.npz`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pred_skorpenuh_352_test.npz)
+- [`pipeline-pertandan/results/pred_skorpenuh_352_train.npz`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pred_skorpenuh_352_train.npz)
+- [`pipeline-pertandan/results/pred_skorpenuh_352_val.npz`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pred_skorpenuh_352_val.npz)
+- [`pipeline-pertandan/results/pred_skorpenuh_test.npz`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pred_skorpenuh_test.npz)
+- [`pipeline-pertandan/results/pred_skorpenuh_train.npz`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pred_skorpenuh_train.npz)
+- [`pipeline-pertandan/results/pred_skorpenuh_val.npz`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pred_skorpenuh_val.npz)
+- [`pipeline-pertandan/results/probe_penautan_953.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/probe_penautan_953.json)
+- [`pipeline-pertandan/results/pt_e_001_oracle.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pt_e_001_oracle.json)
+- [`pipeline-pertandan/results/pt_e_002_penaut.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pt_e_002_penaut.json)
+- [`pipeline-pertandan/results/pt_e_002_penaut_kontaminasi_fold.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pt_e_002_penaut_kontaminasi_fold.json)
+- [`pipeline-pertandan/results/pt_e_003_endtoend.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pt_e_003_endtoend.json)
+- [`pipeline-pertandan/results/pt_e_003_endtoend_tanpa_arah.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pt_e_003_endtoend_tanpa_arah.json)
+- [`pipeline-pertandan/results/pt_e_003_endtoend_varianB_kelasGT.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pt_e_003_endtoend_varianB_kelasGT.json)
+- [`pipeline-pertandan/results/pt_e_004_counting.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pt_e_004_counting.json)
+- [`pipeline-pertandan/results/pt_e_004_counting_tanpa_arah.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pt_e_004_counting_tanpa_arah.json)
+- [`pipeline-pertandan/results/pt_e_006_baseline_counting.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pt_e_006_baseline_counting.json)
+- [`pipeline-pertandan/results/pt_e_007_rem_hitung.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pt_e_007_rem_hitung.json)
+- [`pipeline-pertandan/results/pt_e_009_sapu_conf.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pt_e_009_sapu_conf.json)
+- [`pipeline-pertandan/results/pt_e_010_uji_352.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pt_e_010_uji_352.json)
+- [`pipeline-pertandan/results/pt_e_012_c3.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pt_e_012_c3.json)
+- [`pipeline-pertandan/results/validasi_dump_test.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/validasi_dump_test.json)
+
+### Kode, Konfigurasi, dan Notebook
+
+- [`pipeline-pertandan/scripts/c3_multitampak.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/scripts/c3_multitampak.py)
+- [`pipeline-pertandan/scripts/eval_counting.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/scripts/eval_counting.py)
+- [`pipeline-pertandan/scripts/eval_counting_baseline.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/scripts/eval_counting_baseline.py)
+- [`pipeline-pertandan/scripts/eval_endtoend.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/scripts/eval_endtoend.py)
+- [`pipeline-pertandan/scripts/eval_pertandan.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/scripts/eval_pertandan.py)
+- [`pipeline-pertandan/scripts/eval_rem_hitung.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/scripts/eval_rem_hitung.py)
+- [`pipeline-pertandan/scripts/infer_skor_penuh.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/scripts/infer_skor_penuh.py)
+- [`pipeline-pertandan/scripts/penaut_pertandan.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/scripts/penaut_pertandan.py)
+- [`pipeline-pertandan/scripts/probe_penautan_953.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/scripts/probe_penautan_953.py)
+- [`pipeline-pertandan/scripts/reid_pertandan.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/scripts/reid_pertandan.py)
+- [`pipeline-pertandan/scripts/sapu_conf.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/scripts/sapu_conf.py)
+- [`pipeline-pertandan/scripts/uji_352.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/scripts/uji_352.py)
+- [`pipeline-pertandan/scripts/validasi_dump.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/scripts/validasi_dump.py)
+
+### Payload Anotasi atau Citra yang Dikelompokkan
+
+Tidak ada payload anotasi atau citra yang perlu dikelompokkan.
+
+### Komposisi Ekstensi Pohon Git
+
+| Ekstensi | Jumlah path |
+|---|---:|
+| `.json` | 16 |
+| `.py` | 13 |
+| `.md` | 6 |
+| `.npz` | 6 |
+| `.png` | 1 |
 <!-- AUTO_CATALOG_END -->

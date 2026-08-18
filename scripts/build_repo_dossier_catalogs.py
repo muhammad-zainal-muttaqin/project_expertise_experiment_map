@@ -23,9 +23,16 @@ REPOSITORIES = (
     {
         "name": "project-expertise",
         "checkout": Path("/home/ubuntu/project-expertise"),
-        "commit": "225faaeb",
         "web": "https://github.com/muhammad-zainal-muttaqin/project-expertise",
         "document": PROJECT / "docs/REPOSITORY-AUDIT-PROJECT-EXPERTISE.md",
+        "sources": (
+            {"label": "Snapshot Volume 2", "commit": "225faaeb"},
+            {
+                "label": "Cabang pipeline per-tandan",
+                "commit": "c19906bbfbb4",
+                "prefix": "pipeline-pertandan/",
+            },
+        ),
     },
     {
         "name": "Research-Pipeline",
@@ -104,8 +111,12 @@ def section(title: str, paths: list[str], repo: dict, empty: str) -> list[str]:
     return lines
 
 
-def build_catalog(repo: dict) -> str:
-    paths = git_paths(repo["checkout"], repo["commit"])
+def build_catalog_section(repo: dict, source: dict, include_heading: bool) -> list[str]:
+    source_repo = {**repo, "commit": source["commit"]}
+    paths = git_paths(source_repo["checkout"], source_repo["commit"])
+    prefix = source.get("prefix")
+    if prefix:
+        paths = [path for path in paths if path.startswith(prefix)]
     narrative_ext = {".md", ".txt", ".rst"}
     result_ext = {".json", ".csv", ".parquet", ".npz"}
     code_ext = {".py", ".sh", ".yaml", ".yml", ".toml", ".ipynb"}
@@ -118,31 +129,36 @@ def build_catalog(repo: dict) -> str:
     annotation_dirs = Counter("/".join(p.split("/")[:2]) for p in annotation)
     suffixes = Counter(Path(p).suffix.lower() or "tanpa ekstensi" for p in paths)
 
-    lines = [
-        START,
-        "## Lampiran A — Katalog Artefak yang Dapat Diaudit",
-        "",
-        "Lampiran ini digenerasi dari pohon Git pada commit yang dinyatakan di bagian identitas. Setiap tautan file memakai commit tersemat, sehingga isinya tidak bergerak ketika cabang `main` berubah. Katalog sengaja memisahkan narasi, hasil terstruktur, dan kode. Payload anotasi per-gambar tidak direntangkan ribuan baris; ia diringkas sebagai kelompok direktori dan dapat dibuka dari pohon commit.",
-        "",
+    lines = []
+    if include_heading:
+        lines.extend(
+            [
+                f"### {source['label']} — commit `{source_repo['commit']}`",
+                "",
+            ]
+        )
+    lines.extend(
+        [
         "| Inventaris | Jumlah | Keterangan |",
         "|---|---:|---|",
-        f"| Seluruh path Git | {len(paths)} | [Buka pohon commit]({repo['web']}/tree/{repo['commit']}) |",
+        f"| Seluruh path Git | {len(paths)} | [Buka pohon commit]({source_repo['web']}/tree/{source_repo['commit']}) |",
         f"| Dokumen naratif / log | {len(narrative)} | Markdown, TXT, atau RST di luar payload anotasi |",
         f"| Hasil terstruktur | {len(structured)} | JSON, CSV, Parquet, atau NPZ di luar payload anotasi |",
         f"| Kode dan konfigurasi | {len(code)} | Python, shell, YAML, TOML, atau notebook |",
         f"| Payload anotasi atau citra dikelompokkan | {len(annotation)} | Diwakili direktori agar catalogue tetap dapat dibaca |",
         "",
-    ]
-    lines += section("Dokumen Naratif dan Log", narrative, repo, "Tidak ada dokumen naratif pada commit ini.")
-    lines += section("Hasil Terstruktur — JSON, CSV, Parquet, NPZ", structured, repo, "Tidak ada hasil terstruktur pada commit ini.")
-    lines += section("Kode, Konfigurasi, dan Notebook", code, repo, "Tidak ada kode atau konfigurasi pada commit ini.")
+            ]
+        )
+    lines += section("Dokumen Naratif dan Log", narrative, source_repo, "Tidak ada dokumen naratif pada commit ini.")
+    lines += section("Hasil Terstruktur — JSON, CSV, Parquet, NPZ", structured, source_repo, "Tidak ada hasil terstruktur pada commit ini.")
+    lines += section("Kode, Konfigurasi, dan Notebook", code, source_repo, "Tidak ada kode atau konfigurasi pada commit ini.")
 
     lines.extend(["### Payload Anotasi atau Citra yang Dikelompokkan", ""])
     if annotation_dirs:
         lines.extend(["| Direktori | Jumlah path | Inspeksi |", "|---|---:|---|"])
         for directory, count in sorted(annotation_dirs.items()):
             lines.append(
-                f"| `{directory}/` | {count} | [Buka direktori]({repo['web']}/tree/{repo['commit']}/{quote(directory, safe='/')}) |"
+                f"| `{directory}/` | {count} | [Buka direktori]({source_repo['web']}/tree/{source_repo['commit']}/{quote(directory, safe='/')}) |"
             )
         lines.append("")
     else:
@@ -151,7 +167,26 @@ def build_catalog(repo: dict) -> str:
     lines.extend(["### Komposisi Ekstensi Pohon Git", "", "| Ekstensi | Jumlah path |", "|---|---:|"])
     for suffix, count in sorted(suffixes.items(), key=lambda item: (-item[1], item[0])):
         lines.append(f"| `{suffix}` | {count} |")
-    lines.extend(["", END])
+    return lines
+
+
+def build_catalog(repo: dict) -> str:
+    sources = repo.get("sources")
+    if sources is None:
+        sources = ({"label": "Commit sumber", "commit": repo["commit"]},)
+    lines = [
+        START,
+        "## Lampiran A — Katalog Artefak yang Dapat Diaudit",
+        "",
+        "Lampiran ini digenerasi dari pohon Git pada commit yang dinyatakan di bagian identitas. Setiap tautan file memakai commit tersemat, sehingga isinya tidak bergerak ketika cabang `main` berubah. Katalog sengaja memisahkan narasi, hasil terstruktur, dan kode. Payload anotasi per-gambar tidak direntangkan ribuan baris; ia diringkas sebagai kelompok direktori dan dapat dibuka dari pohon commit.",
+        "",
+    ]
+    multiple_sources = len(sources) > 1
+    for index, source in enumerate(sources):
+        if index:
+            lines.extend(["---", ""])
+        lines.extend(build_catalog_section(repo, source, multiple_sources))
+    lines.extend([END])
     return "\n".join(lines)
 
 

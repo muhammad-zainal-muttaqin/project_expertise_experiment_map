@@ -221,6 +221,16 @@ function classify(
 ): Pick<EvidenceNarrative, "kind" | "work" | "impact" | "caution"> {
   const phase = experiment.phase.toLowerCase();
   const id = experiment.id;
+  if (id.startsWith("PT-E"))
+    return {
+      kind: "Pipeline per-tandan (PT-E-*)",
+      work: "Cabang PT-E mengubah satuan analisis dari deteksi per citra menjadi tandan fisik per pohon: menguji penautan lintas-sisi, agregasi kelas, dan dampaknya terhadap counting secara berurutan.",
+      impact:
+        "Setiap gerbang memisahkan nilai oracle, mutu penaut, dampak end-to-end, dan counting; hasilnya mencegah satu skor mencampur manfaat agregasi dengan galat deteksi atau asosiasi.",
+      caution:
+        "Status cabang harus dibaca menurut urutan koreksi: prior arah putar membuat G1/G2 lolos, G3 tetap gugur, dan diagnosis " +
+          "mutu detektor kemudian dibatalkan oleh audit kepadatan kandidat PT-E-011.",
+    };
   if (id.startsWith("HB-"))
     return {
       kind: "Baseline & batas atas (HB-*)",

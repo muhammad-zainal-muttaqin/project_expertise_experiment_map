@@ -1,9 +1,10 @@
 import { historicalExperiments } from "@/lib/historicalExperiments";
 
 /**
- * Lapisan data Field Research Ledger — bersumber dari commit 225faaeb project-expertise.
- * Setiap simpul mewakili satu eksperimen, audit, atau sintesis yang tercatat pada EKSPERIMEN.md.
+ * Lapisan data Field Research Ledger — inti V2 bersumber dari commit 225faaeb,
+ * cabang per-tandan dari commit c19906bbfbb4. Setiap simpul menaut ke commit sumbernya.
  */
+import { pipelinePertandanExperiments } from "@/lib/pipelinePertandanExperiments";
 export type ExperimentStatus =
   | "supported"
   | "negative"
@@ -951,6 +952,7 @@ export const experiments: Experiment[] = [
     position: { x: 2378, y: 52 },
   },
   ...historicalExperiments,
+  ...pipelinePertandanExperiments,
 ];
 
 export const statusInfo: Record<
@@ -1001,6 +1003,7 @@ export const allInputs = [
   "Transfer",
   "Multi-view",
   "Geometry",
+  "Re-ID",
   "Ordinal",
   "Training",
   "Audit",

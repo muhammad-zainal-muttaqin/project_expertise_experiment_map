@@ -189,3 +189,12 @@
 - [x] Perbaiki sintaks atau referensi stylesheet yang gagal dimuat ulang.
 - [x] Verifikasi HMR, pemeriksaan tipe, dan build Pages.
 - [x] Simpan checkpoint serta sampaikan perbaikan.
+
+## Integrasi Run Terbaru project-expertise
+
+- [x] Inventarisasi run, dokumentasi, skrip, dan hasil dari commit `a8f6569` hingga `c19906b`.
+- [x] Verifikasi metrik, split, evaluator, status gerbang, serta batas klaim PT-E baru.
+- [x] Tambahkan eksperimen dan lineage PT-E ke katalog serta narasi panel atlas.
+- [x] Selaraskan dossier project-expertise, audit artefak, dan indeks sumber commit terbaru.
+- [x] Validasi data, tampilan, HMR, TypeScript, dan build Pages.
+- [x] Simpan checkpoint dan sampaikan pembaruan atlas.

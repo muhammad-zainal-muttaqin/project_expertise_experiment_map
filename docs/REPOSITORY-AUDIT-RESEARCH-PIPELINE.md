@@ -298,5 +298,4 @@ Tidak ada payload anotasi atau citra yang perlu dikelompokkan.
 | `.ndjson` | 2 |
 | `.yml` | 1 |
 | `tanpa ekstensi` | 1 |
-
 <!-- AUTO_CATALOG_END -->

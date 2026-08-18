@@ -251,5 +251,4 @@ Tidak ada payload anotasi atau citra yang perlu dikelompokkan.
 | `.zip` | 2 |
 | `.gz` | 1 |
 | `.yaml` | 1 |
-
 <!-- AUTO_CATALOG_END -->

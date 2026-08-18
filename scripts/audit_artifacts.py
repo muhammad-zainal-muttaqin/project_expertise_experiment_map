@@ -19,6 +19,12 @@ DEFAULT_SOURCE = {
     "repo": "project-expertise",
     "commit": "225faaeb",
 }
+PIPELINE_PERTANDAN_SOURCE = {
+    "key": "project-expertise-pipeline-pertandan",
+    "owner": "muhammad-zainal-muttaqin",
+    "repo": "project-expertise",
+    "commit": "c19906bbfbb4",
+}
 HISTORICAL_SOURCES = {
     "dedup": {"key": "research-method-dedup", "owner": "muhammad-zainal-muttaqin", "repo": "research-method-dedup", "commit": "a720f17"},
     "baseline": {"key": "Baseline-SawitMVC", "owner": "ULM-SawitMVC", "repo": "Baseline-SawitMVC", "commit": "ee2f0ac"},
@@ -97,14 +103,19 @@ def main() -> int:
     parser.add_argument("--timeout", type=int, default=20)
     arguments = parser.parse_args()
     catalogs = [
-        arguments.project_root / "client/src/lib/experimentData.ts",
-        arguments.project_root / "client/src/lib/historicalExperiments.ts",
+        (arguments.project_root / "client/src/lib/experimentData.ts", DEFAULT_SOURCE),
+        (arguments.project_root / "client/src/lib/historicalExperiments.ts", DEFAULT_SOURCE),
+        (arguments.project_root / "client/src/lib/pipelinePertandanExperiments.ts", PIPELINE_PERTANDAN_SOURCE),
     ]
-    missing = [str(path) for path in catalogs if not path.exists()]
+    missing = [str(path) for path, _ in catalogs if not path.exists()]
     if missing:
         print(f"Katalog tidak ditemukan: {', '.join(missing)}", file=sys.stderr)
         return 2
-    records = [record for catalog in catalogs for record in parse_catalog(catalog, DEFAULT_SOURCE)]
+    records = [
+        record
+        for catalog, fallback in catalogs
+        for record in parse_catalog(catalog, fallback)
+    ]
     results: list[dict] = [None] * len(records)
     with ThreadPoolExecutor(max_workers=max(1, arguments.workers)) as pool:
         pending = {pool.submit(audit_record, record, arguments.timeout): index for index, record in enumerate(records)}

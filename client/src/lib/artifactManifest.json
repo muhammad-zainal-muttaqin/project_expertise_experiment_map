@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-15T15:28:33.978762+00:00",
+  "generatedAt": "2026-08-18T00:57:56.322021+00:00",
   "auditMethod": "HTTPS HEAD (fallback GET) ke raw.githubusercontent.com pada commit tersemat",
   "summary": {
-    "verified": 78,
+    "verified": 107,
     "unavailable": 5,
     "needs-path": 6,
     "commit-reference": 1,
@@ -1434,6 +1434,470 @@
       "httpStatus": 200,
       "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/Research-Pipeline/4aa9ad6/experiments/SERI-F.md",
       "webUrl": "https://github.com/muhammad-zainal-muttaqin/Research-Pipeline/blob/4aa9ad6/experiments/SERI-F.md",
+      "status": "verified"
+    },
+    {
+      "id": "PT-E-000",
+      "artifact": "pipeline-pertandan/results/probe_penautan_953.json",
+      "source": {
+        "key": "project-expertise-pipeline-pertandan",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "c19906bbfbb4"
+      },
+      "kind": "file",
+      "path": "pipeline-pertandan/results/probe_penautan_953.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/c19906bbfbb4/pipeline-pertandan/results/probe_penautan_953.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/probe_penautan_953.json",
+      "status": "verified"
+    },
+    {
+      "id": "PT-E-000",
+      "artifact": "pipeline-pertandan/scripts/probe_penautan_953.py",
+      "source": {
+        "key": "project-expertise-pipeline-pertandan",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "c19906bbfbb4"
+      },
+      "kind": "file",
+      "path": "pipeline-pertandan/scripts/probe_penautan_953.py",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/c19906bbfbb4/pipeline-pertandan/scripts/probe_penautan_953.py",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/scripts/probe_penautan_953.py",
+      "status": "verified"
+    },
+    {
+      "id": "PT-E-001",
+      "artifact": "pipeline-pertandan/results/pt_e_001_oracle.json",
+      "source": {
+        "key": "project-expertise-pipeline-pertandan",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "c19906bbfbb4"
+      },
+      "kind": "file",
+      "path": "pipeline-pertandan/results/pt_e_001_oracle.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/c19906bbfbb4/pipeline-pertandan/results/pt_e_001_oracle.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pt_e_001_oracle.json",
+      "status": "verified"
+    },
+    {
+      "id": "PT-E-001",
+      "artifact": "pipeline-pertandan/EKSPERIMEN.md § PT-E-001",
+      "source": {
+        "key": "project-expertise-pipeline-pertandan",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "c19906bbfbb4"
+      },
+      "kind": "file",
+      "path": "pipeline-pertandan/EKSPERIMEN.md",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/c19906bbfbb4/pipeline-pertandan/EKSPERIMEN.md",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/EKSPERIMEN.md",
+      "status": "verified"
+    },
+    {
+      "id": "PT-E-002",
+      "artifact": "pipeline-pertandan/results/pt_e_002_penaut.json",
+      "source": {
+        "key": "project-expertise-pipeline-pertandan",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "c19906bbfbb4"
+      },
+      "kind": "file",
+      "path": "pipeline-pertandan/results/pt_e_002_penaut.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/c19906bbfbb4/pipeline-pertandan/results/pt_e_002_penaut.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pt_e_002_penaut.json",
+      "status": "verified"
+    },
+    {
+      "id": "PT-E-002",
+      "artifact": "pipeline-pertandan/scripts/penaut_pertandan.py",
+      "source": {
+        "key": "project-expertise-pipeline-pertandan",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "c19906bbfbb4"
+      },
+      "kind": "file",
+      "path": "pipeline-pertandan/scripts/penaut_pertandan.py",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/c19906bbfbb4/pipeline-pertandan/scripts/penaut_pertandan.py",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/scripts/penaut_pertandan.py",
+      "status": "verified"
+    },
+    {
+      "id": "PT-E-003",
+      "artifact": "pipeline-pertandan/results/pt_e_003_endtoend.json",
+      "source": {
+        "key": "project-expertise-pipeline-pertandan",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "c19906bbfbb4"
+      },
+      "kind": "file",
+      "path": "pipeline-pertandan/results/pt_e_003_endtoend.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/c19906bbfbb4/pipeline-pertandan/results/pt_e_003_endtoend.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pt_e_003_endtoend.json",
+      "status": "verified"
+    },
+    {
+      "id": "PT-E-003",
+      "artifact": "pipeline-pertandan/scripts/eval_endtoend.py",
+      "source": {
+        "key": "project-expertise-pipeline-pertandan",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "c19906bbfbb4"
+      },
+      "kind": "file",
+      "path": "pipeline-pertandan/scripts/eval_endtoend.py",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/c19906bbfbb4/pipeline-pertandan/scripts/eval_endtoend.py",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/scripts/eval_endtoend.py",
+      "status": "verified"
+    },
+    {
+      "id": "PT-E-004",
+      "artifact": "pipeline-pertandan/results/pt_e_004_counting.json",
+      "source": {
+        "key": "project-expertise-pipeline-pertandan",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "c19906bbfbb4"
+      },
+      "kind": "file",
+      "path": "pipeline-pertandan/results/pt_e_004_counting.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/c19906bbfbb4/pipeline-pertandan/results/pt_e_004_counting.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pt_e_004_counting.json",
+      "status": "verified"
+    },
+    {
+      "id": "PT-E-004",
+      "artifact": "pipeline-pertandan/scripts/eval_counting.py",
+      "source": {
+        "key": "project-expertise-pipeline-pertandan",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "c19906bbfbb4"
+      },
+      "kind": "file",
+      "path": "pipeline-pertandan/scripts/eval_counting.py",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/c19906bbfbb4/pipeline-pertandan/scripts/eval_counting.py",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/scripts/eval_counting.py",
+      "status": "verified"
+    },
+    {
+      "id": "PT-E-006",
+      "artifact": "pipeline-pertandan/results/pt_e_006_baseline_counting.json",
+      "source": {
+        "key": "project-expertise-pipeline-pertandan",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "c19906bbfbb4"
+      },
+      "kind": "file",
+      "path": "pipeline-pertandan/results/pt_e_006_baseline_counting.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/c19906bbfbb4/pipeline-pertandan/results/pt_e_006_baseline_counting.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pt_e_006_baseline_counting.json",
+      "status": "verified"
+    },
+    {
+      "id": "PT-E-006",
+      "artifact": "pipeline-pertandan/scripts/eval_counting_baseline.py",
+      "source": {
+        "key": "project-expertise-pipeline-pertandan",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "c19906bbfbb4"
+      },
+      "kind": "file",
+      "path": "pipeline-pertandan/scripts/eval_counting_baseline.py",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/c19906bbfbb4/pipeline-pertandan/scripts/eval_counting_baseline.py",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/scripts/eval_counting_baseline.py",
+      "status": "verified"
+    },
+    {
+      "id": "PT-E-007",
+      "artifact": "pipeline-pertandan/results/pt_e_007_rem_hitung.json",
+      "source": {
+        "key": "project-expertise-pipeline-pertandan",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "c19906bbfbb4"
+      },
+      "kind": "file",
+      "path": "pipeline-pertandan/results/pt_e_007_rem_hitung.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/c19906bbfbb4/pipeline-pertandan/results/pt_e_007_rem_hitung.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pt_e_007_rem_hitung.json",
+      "status": "verified"
+    },
+    {
+      "id": "PT-E-007",
+      "artifact": "pipeline-pertandan/scripts/eval_rem_hitung.py",
+      "source": {
+        "key": "project-expertise-pipeline-pertandan",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "c19906bbfbb4"
+      },
+      "kind": "file",
+      "path": "pipeline-pertandan/scripts/eval_rem_hitung.py",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/c19906bbfbb4/pipeline-pertandan/scripts/eval_rem_hitung.py",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/scripts/eval_rem_hitung.py",
+      "status": "verified"
+    },
+    {
+      "id": "PT-E-008",
+      "artifact": "pipeline-pertandan/results/harapan_geser.json",
+      "source": {
+        "key": "project-expertise-pipeline-pertandan",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "c19906bbfbb4"
+      },
+      "kind": "file",
+      "path": "pipeline-pertandan/results/harapan_geser.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/c19906bbfbb4/pipeline-pertandan/results/harapan_geser.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/harapan_geser.json",
+      "status": "verified"
+    },
+    {
+      "id": "PT-E-008",
+      "artifact": "pipeline-pertandan/results/pt_e_002_penaut.json",
+      "source": {
+        "key": "project-expertise-pipeline-pertandan",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "c19906bbfbb4"
+      },
+      "kind": "file",
+      "path": "pipeline-pertandan/results/pt_e_002_penaut.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/c19906bbfbb4/pipeline-pertandan/results/pt_e_002_penaut.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pt_e_002_penaut.json",
+      "status": "verified"
+    },
+    {
+      "id": "PT-E-008",
+      "artifact": "pipeline-pertandan/results/pt_e_003_endtoend.json",
+      "source": {
+        "key": "project-expertise-pipeline-pertandan",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "c19906bbfbb4"
+      },
+      "kind": "file",
+      "path": "pipeline-pertandan/results/pt_e_003_endtoend.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/c19906bbfbb4/pipeline-pertandan/results/pt_e_003_endtoend.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pt_e_003_endtoend.json",
+      "status": "verified"
+    },
+    {
+      "id": "PT-E-008",
+      "artifact": "pipeline-pertandan/scripts/penaut_pertandan.py",
+      "source": {
+        "key": "project-expertise-pipeline-pertandan",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "c19906bbfbb4"
+      },
+      "kind": "file",
+      "path": "pipeline-pertandan/scripts/penaut_pertandan.py",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/c19906bbfbb4/pipeline-pertandan/scripts/penaut_pertandan.py",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/scripts/penaut_pertandan.py",
+      "status": "verified"
+    },
+    {
+      "id": "PT-E-009",
+      "artifact": "pipeline-pertandan/results/pt_e_009_sapu_conf.json",
+      "source": {
+        "key": "project-expertise-pipeline-pertandan",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "c19906bbfbb4"
+      },
+      "kind": "file",
+      "path": "pipeline-pertandan/results/pt_e_009_sapu_conf.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/c19906bbfbb4/pipeline-pertandan/results/pt_e_009_sapu_conf.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pt_e_009_sapu_conf.json",
+      "status": "verified"
+    },
+    {
+      "id": "PT-E-009",
+      "artifact": "pipeline-pertandan/scripts/sapu_conf.py",
+      "source": {
+        "key": "project-expertise-pipeline-pertandan",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "c19906bbfbb4"
+      },
+      "kind": "file",
+      "path": "pipeline-pertandan/scripts/sapu_conf.py",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/c19906bbfbb4/pipeline-pertandan/scripts/sapu_conf.py",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/scripts/sapu_conf.py",
+      "status": "verified"
+    },
+    {
+      "id": "PT-E-010",
+      "artifact": "pipeline-pertandan/results/pt_e_010_uji_352.json",
+      "source": {
+        "key": "project-expertise-pipeline-pertandan",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "c19906bbfbb4"
+      },
+      "kind": "file",
+      "path": "pipeline-pertandan/results/pt_e_010_uji_352.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/c19906bbfbb4/pipeline-pertandan/results/pt_e_010_uji_352.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pt_e_010_uji_352.json",
+      "status": "verified"
+    },
+    {
+      "id": "PT-E-010",
+      "artifact": "pipeline-pertandan/scripts/uji_352.py",
+      "source": {
+        "key": "project-expertise-pipeline-pertandan",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "c19906bbfbb4"
+      },
+      "kind": "file",
+      "path": "pipeline-pertandan/scripts/uji_352.py",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/c19906bbfbb4/pipeline-pertandan/scripts/uji_352.py",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/scripts/uji_352.py",
+      "status": "verified"
+    },
+    {
+      "id": "PT-E-011",
+      "artifact": "pipeline-pertandan/results/pred_skorpenuh_test.npz",
+      "source": {
+        "key": "project-expertise-pipeline-pertandan",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "c19906bbfbb4"
+      },
+      "kind": "file",
+      "path": "pipeline-pertandan/results/pred_skorpenuh_test.npz",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/c19906bbfbb4/pipeline-pertandan/results/pred_skorpenuh_test.npz",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pred_skorpenuh_test.npz",
+      "status": "verified"
+    },
+    {
+      "id": "PT-E-011",
+      "artifact": "pipeline-pertandan/results/pred_skorpenuh_352_test.npz",
+      "source": {
+        "key": "project-expertise-pipeline-pertandan",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "c19906bbfbb4"
+      },
+      "kind": "file",
+      "path": "pipeline-pertandan/results/pred_skorpenuh_352_test.npz",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/c19906bbfbb4/pipeline-pertandan/results/pred_skorpenuh_352_test.npz",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pred_skorpenuh_352_test.npz",
+      "status": "verified"
+    },
+    {
+      "id": "PT-E-011",
+      "artifact": "pipeline-pertandan/EKSPERIMEN.md § PT-E-011",
+      "source": {
+        "key": "project-expertise-pipeline-pertandan",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "c19906bbfbb4"
+      },
+      "kind": "file",
+      "path": "pipeline-pertandan/EKSPERIMEN.md",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/c19906bbfbb4/pipeline-pertandan/EKSPERIMEN.md",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/EKSPERIMEN.md",
+      "status": "verified"
+    },
+    {
+      "id": "PT-E-012",
+      "artifact": "pipeline-pertandan/results/pt_e_012_c3.json",
+      "source": {
+        "key": "project-expertise-pipeline-pertandan",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "c19906bbfbb4"
+      },
+      "kind": "file",
+      "path": "pipeline-pertandan/results/pt_e_012_c3.json",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/c19906bbfbb4/pipeline-pertandan/results/pt_e_012_c3.json",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/results/pt_e_012_c3.json",
+      "status": "verified"
+    },
+    {
+      "id": "PT-E-012",
+      "artifact": "pipeline-pertandan/scripts/c3_multitampak.py",
+      "source": {
+        "key": "project-expertise-pipeline-pertandan",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "c19906bbfbb4"
+      },
+      "kind": "file",
+      "path": "pipeline-pertandan/scripts/c3_multitampak.py",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/c19906bbfbb4/pipeline-pertandan/scripts/c3_multitampak.py",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/scripts/c3_multitampak.py",
+      "status": "verified"
+    },
+    {
+      "id": "PT-E-013",
+      "artifact": "pipeline-pertandan/EKSPERIMEN.md § PT-E-013",
+      "source": {
+        "key": "project-expertise-pipeline-pertandan",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "c19906bbfbb4"
+      },
+      "kind": "file",
+      "path": "pipeline-pertandan/EKSPERIMEN.md",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/c19906bbfbb4/pipeline-pertandan/EKSPERIMEN.md",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/EKSPERIMEN.md",
+      "status": "verified"
+    },
+    {
+      "id": "PT-E-013",
+      "artifact": "pipeline-pertandan/docs/HASIL.md",
+      "source": {
+        "key": "project-expertise-pipeline-pertandan",
+        "owner": "muhammad-zainal-muttaqin",
+        "repo": "project-expertise",
+        "commit": "c19906bbfbb4"
+      },
+      "kind": "file",
+      "path": "pipeline-pertandan/docs/HASIL.md",
+      "httpStatus": 200,
+      "rawUrl": "https://raw.githubusercontent.com/muhammad-zainal-muttaqin/project-expertise/c19906bbfbb4/pipeline-pertandan/docs/HASIL.md",
+      "webUrl": "https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/docs/HASIL.md",
       "status": "verified"
     }
   ]
