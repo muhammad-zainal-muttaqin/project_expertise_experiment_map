@@ -14,9 +14,12 @@ html.dark .dataset-card--352 { background-color:#123c40; }
 .filter-chip:hover { border-color:rgba(45,88,55,.7);background:rgba(45,88,55,.16); }
 .filter-chip svg { flex:0 0 auto;opacity:.7; }
 .filter-chip:hover svg { opacity:1; }
+.filter-quick-pte { align-self:end;justify-self:start;min-height:29px;white-space:nowrap; }
+.filter-quick-pte.is-active { border-color:#8e6d23;background:rgba(169,127,37,.16);color:#674d1d;box-shadow:inset 3px 0 0 #a17a26; }
 html.dark .filter-active { border-top-color:rgba(211,226,189,.16); }
 html.dark .filter-chip { border-color:rgba(211,226,189,.28);background:rgba(211,226,189,.08);color:#d8e4bc; }
 html.dark .filter-chip:hover { border-color:rgba(225,228,175,.6);background:rgba(211,226,189,.15);color:#fff4c6; }
+html.dark .filter-quick-pte.is-active { border-color:rgba(235,207,111,.72);background:rgba(201,162,53,.18);color:#fff0bd;box-shadow:inset 3px 0 0 #dfbd53; }
 
 /* Tombol silsilah menyatakan ulang parentIds dan turunan sebagai kendali lembar bukti yang dapat
    dipilih; akar dataset bukan eksperimen, sehingga dirender sebagai label bergaris putus-putus,
@@ -91,7 +94,7 @@ html.ledger-light .sheet-meta-grid span,html.ledger-light .metric-list dt { colo
 html.ledger-light .sheet-meta-grid strong,html.ledger-light .metric-list dd { color:#254a34; }
 html.ledger-light .section-title { border-color:rgba(47,83,53,.18);color:#365d42; }
 @media (max-width:1100px) { .filter-bar--enhanced { grid-template-columns:auto repeat(2,minmax(120px,1fr)); }.filter-search { grid-column:span 2; } }
-@media (max-width:680px) { .filter-bar--enhanced { grid-template-columns:1fr 1fr; }.filter-label { grid-column:1/-1; }.filter-search { grid-column:1/-1; }.reset-filter { justify-content:center; }.atlas-header-actions button span { display:none; } }
+@media (max-width:680px) { .filter-bar--enhanced { grid-template-columns:1fr 1fr; }.filter-label { grid-column:1/-1; }.filter-quick-pte { grid-column:1/-1;justify-content:center; }.filter-search { grid-column:1/-1; }.reset-filter { justify-content:center; }.atlas-header-actions button span { display:none; } }
 @media (prefers-reduced-motion:reduce) { .is-spinning { animation:none; } }
 
 /* Kontrak terang: seluruh permukaan operasional menjadi buku catatan lapangan berwarna gading; peta tidak mempertahankan rangka dasbor gelap. */

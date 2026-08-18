@@ -198,3 +198,10 @@
 - [x] Selaraskan dossier project-expertise, audit artefak, dan indeks sumber commit terbaru.
 - [x] Validasi data, tampilan, HMR, TypeScript, dan build Pages.
 - [x] Simpan checkpoint dan sampaikan pembaruan atlas.
+
+## Filter Cepat Keluarga PT-E
+
+- [x] Audit kontrak filter, metadata rumpun PT-E, dan komposisi kontrol atlas.
+- [x] Tambahkan kontrol interaktif untuk mengisolasi atau membatalkan isolasi keluarga PT-E.
+- [x] Verifikasi filter cepat, reset, akses keyboard, serta tata letak desktop dan ponsel.
+- [x] Simpan checkpoint dan sampaikan fitur filter PT-E.
