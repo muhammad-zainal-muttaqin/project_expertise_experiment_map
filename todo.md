@@ -198,3 +198,10 @@
 - [x] Selaraskan dossier project-expertise, audit artefak, dan indeks sumber commit terbaru.
 - [x] Validasi data, tampilan, HMR, TypeScript, dan build Pages.
 - [x] Simpan checkpoint dan sampaikan pembaruan atlas.
+
+## Perbaikan Clipping Bilah Filter
+
+- [x] Periksa batas lebar, grid, dan breakpoint kontrol pencarian serta dataset.
+- [x] Sesuaikan tata letak filter agar label dan selector tidak terpotong pada lebar sempit.
+- [x] Verifikasi keterbacaan desktop, panel sempit, dan ponsel; lalu uji build.
+- [x] Simpan checkpoint dan sampaikan perbaikan clipping.
