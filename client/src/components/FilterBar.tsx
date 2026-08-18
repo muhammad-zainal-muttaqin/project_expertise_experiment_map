@@ -1,4 +1,4 @@
-/** Bilah filter Field Research Ledger — pencarian dan filter meredupkan simpul, bukan menghapus konteks silsilahnya; kontrol PT-E memakai chip ledger agar cabang baru mudah diisolasi. */
+/** Bilah filter Field Research Ledger — pencarian dan filter meredupkan simpul, bukan menghapus konteks silsilahnya. */
 import {
   allInputs,
   defaultEra,
@@ -7,7 +7,7 @@ import {
   type DatasetId,
   type ExperimentStatus,
 } from "@/lib/experimentData";
-import { ChevronDown, Filter, GitBranch, RotateCcw, Search, X } from "lucide-react";
+import { ChevronDown, Filter, RotateCcw, Search, X } from "lucide-react";
 import { useState } from "react";
 
 export interface AtlasFilters {
@@ -18,7 +18,6 @@ export interface AtlasFilters {
   repository: "all" | string;
   era: "all" | string;
   phase: "all" | string;
-  family: "all" | "PT-E";
 }
 
 const emptyFilters: AtlasFilters = {
@@ -29,7 +28,6 @@ const emptyFilters: AtlasFilters = {
   repository: "all",
   era: "all",
   phase: "all",
-  family: "all",
 };
 
 /** Enam menu pilihan dan satu medan pencarian tidak dapat menunjukkan sekilas mana di antaranya yang
@@ -50,8 +48,6 @@ function activeChips(filters: AtlasFilters) {
   if (filters.era !== "all") chips.push({ key: "era", label: filters.era });
   if (filters.phase !== "all")
     chips.push({ key: "phase", label: filters.phase });
-  if (filters.family === "PT-E")
-    chips.push({ key: "family", label: "Keluarga PT-E" });
   return chips;
 }
 
@@ -65,7 +61,6 @@ const eraOptions = Array.from(
 const phaseOptions = Array.from(
   new Set(experiments.map(experiment => experiment.phase))
 ).sort();
-const ptECount = experiments.filter(experiment => experiment.id.startsWith("PT-E-")).length;
 
 interface FilterBarProps {
   filters: AtlasFilters;
@@ -75,7 +70,6 @@ interface FilterBarProps {
 export function FilterBar({ filters, onChange }: FilterBarProps) {
   const reset = () => onChange(emptyFilters);
   const chips = activeChips(filters);
-  const isPtEActive = filters.family === "PT-E";
   /* Tujuh kendali menghabiskan 306px tinggi layar ponsel dan mendorong peta ke bawah lipatan. Pada
      layar sempit, bilahnya melipat menjadi judulnya sendiri; tombol filter aktif tetap terlihat
      selama keadaan terlipat. */
@@ -89,29 +83,6 @@ export function FilterBar({ filters, onChange }: FilterBarProps) {
         <Filter size={15} />
         Penyaringan bukti
       </div>
-      <button
-        type="button"
-        className={`filter-chip filter-quick-pte ${isPtEActive ? "is-active" : ""}`}
-        aria-pressed={isPtEActive}
-        aria-label={
-          isPtEActive
-            ? "Batalkan isolasi keluarga PT-E"
-            : `Isolasi keluarga PT-E, ${ptECount} simpul`
-        }
-        onClick={() =>
-          onChange({
-            ...filters,
-            family: isPtEActive ? "all" : "PT-E",
-          })
-        }
-      >
-        <GitBranch size={12} aria-hidden="true" />
-        <span>
-          {isPtEActive
-            ? `PT-E aktif · ${ptECount} simpul`
-            : `Isolasi PT-E · ${ptECount} simpul`}
-        </span>
-      </button>
       <button
         type="button"
         className="filter-disclosure"

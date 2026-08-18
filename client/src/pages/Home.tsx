@@ -1,4 +1,4 @@
-/** Beranda Field Research Ledger — arsip eksperimen tiga rail; isolasi PT-E tetap meredupkan konteks lain agar lineage dapat dibaca. */
+/** Beranda Field Research Ledger — arsip eksperimen tiga rail, sengaja dibuat padat tetapi tetap dapat dilacak. */
 import { ExperimentDetail } from "@/components/ExperimentDetail";
 import { ExperimentGraph } from "@/components/ExperimentGraph";
 import { FilterBar, type AtlasFilters } from "@/components/FilterBar";
@@ -29,7 +29,6 @@ const defaultFilters: AtlasFilters = {
   repository: "all",
   era: "all",
   phase: "all",
-  family: "all",
 };
 
 function LineageMark() {
@@ -112,7 +111,6 @@ export default function Home() {
       (filters.repository === "all" || repository === filters.repository) &&
       (filters.era === "all" || era === filters.era) &&
       (filters.phase === "all" || experiment.phase === filters.phase) &&
-      (filters.family === "all" || experiment.id.startsWith("PT-E-")) &&
       (!search || text.includes(search))
     );
   };
