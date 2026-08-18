@@ -170,3 +170,15 @@
 - [x] Bandingkan artefak bucket dengan commit audit dan identifikasi bukti tambahan yang substantif.
 - [x] Perbarui dossier hanya dengan tambahan yang dapat diverifikasi serta beri label sumber bucket.
 - [x] Validasi tautan, provenance, dan ringkasan temuan bucket.
+
+## Pemeriksaan Akses project-expertise
+
+- [x] Verifikasi checkout lokal, remote, commit aktif, dan akses baca ke project-expertise.
+- [x] Sampaikan status akses serta commit yang tersedia untuk langkah riset berikutnya.
+
+## Pembaruan project-expertise
+
+- [x] Catat commit checkout sebelum pembaruan dan kondisi worktree.
+- [x] Tarik tiga commit terbaru dari remote project-expertise secara fast-forward.
+- [x] Inventarisasi perubahan dan nilai dampaknya pada dossier, artefak, serta atlas.
+- [x] Sampaikan commit baru dan ringkasan pembaruan.
