@@ -8,7 +8,8 @@ Dokumen ini menjelaskan **di mana** informasi atlas disimpan, **bagaimana** mena
 
 | Kebutuhan | Berkas utama | Berkas terkait | Catatan |
 |---|---|---|---|
-| Menambah atau mengubah eksperimen aktif | `client/src/lib/experimentData.ts` | `client/src/lib/atlasLayout.ts` | Dipakai untuk seri `V2-E-*` dan katalog utama. |
+| Menambah atau mengubah eksperimen aktif | `client/src/lib/experimentData.ts` | `client/src/lib/atlasLayout.ts` | Dipakai untuk seri `V2-E-*` pada snapshot yang sama dengan katalog inti. |
+| Menambah batch dari commit terbaru | `client/src/lib/latestProjectExpertiseExperiments.ts` | `experimentData.ts`, `atlasLayout.ts`, `audit_artifacts.py` | Pisahkan provenance batch baru dari snapshot lama dan isi `sourceKey`. |
 | Menambah arsip penelitian lama | `client/src/lib/historicalExperiments.ts` | `client/src/lib/atlasLayout.ts` | Gunakan untuk keluarga `HD-*`, `HB-*`, `RP-E*`, atau `RP-F*`. |
 | Mengubah posisi/lane node aktif | `client/src/lib/atlasLayout.ts` | `experimentData.ts` | Seri aktif memakai posisi eksplisit `v2Positions`. |
 | Mengubah nama, warna, atau status bukti | `client/src/lib/experimentData.ts` | `client/src/index.css` | Perbarui `statusInfo`; warna UI mengikuti kelas status. |
@@ -25,7 +26,7 @@ Dokumen ini menjelaskan **di mana** informasi atlas disimpan, **bagaimana** mena
 
 ### 2.1 Pilih berkas yang benar
 
-Tambahkan penelitian baru yang merupakan kelanjutan proyek aktif ke array `experiments` di `client/src/lib/experimentData.ts`. Tambahkan rekonstruksi dari repositori lampau ke `client/src/lib/historicalExperiments.ts` agar asal arsipnya tetap jelas.
+Tambahkan penelitian baru pada snapshot aktif ke array `experiments` di `client/src/lib/experimentData.ts`. Bila sumber terbaru berasal dari commit berbeda, buat atau gunakan katalog batch terpisah seperti `latestProjectExpertiseExperiments.ts`, lalu impor katalog itu ke kontrak utama. Tambahkan rekonstruksi dari repositori lampau ke `client/src/lib/historicalExperiments.ts` agar asal arsipnya tetap jelas.
 
 Gunakan ID yang **unik dan stabil**. Jangan menggunakan ulang ID yang telah dihapus karena tautan parent, catatan paper, atau rujukan commit dapat menjadi ambigu.
 
@@ -35,7 +36,8 @@ Gunakan ID yang **unik dan stabil**. Jangan menggunakan ulang ID yang telah diha
 | Dedup/oracle arsip | `historicalExperiments.ts` | `HD-*` |
 | Baseline publik | `historicalExperiments.ts` | `HB-*` |
 | Research pipeline | `historicalExperiments.ts` | `RP-E*` atau `RP-F*` |
-| Cabang commit terbaru | `pipelinePertandanExperiments.ts` | `PT-E-*` |
+| Cabang commit tersemat | `pipelinePertandanExperiments.ts` | `PT-E-*` dari snapshot cabang lama |
+| Batch commit terbaru | `latestProjectExpertiseExperiments.ts` | `V2-E-*` atau `PT-E-*` pada `sourceKey` terbaru |
 
 ### 2.2 Salin template node
 
@@ -74,6 +76,7 @@ Salin template berikut ke dalam array yang sesuai, lalu ganti seluruh nilai cont
     commit: "abcdef0",
     url: "https://github.com/muhammad-zainal-muttaqin/project-expertise/commit/abcdef0",
   },
+  sourceKey: "latest-project-expertise",
 },
 ```
 
@@ -94,7 +97,7 @@ Salin template berikut ke dalam array yang sesuai, lalu ganti seluruh nilai cont
 | `artifacts` | Ya | Cantumkan path hasil, konfigurasi, checkpoint, atau laporan yang dapat diaudit. |
 | `parentIds` | Ya | ID dataset root atau node pendahulu yang benar-benar menjadi dasar eksperimen. |
 | `position` | Ya | Tetap isi untuk memenuhi kontrak data; lihat pengaturan posisi pada Bagian 4. |
-| `perClass`, `confidence`, `era`, `source` | Tidak | Isi ketika bukti tersedia; `source` sangat dianjurkan untuk node historis/audit. |
+| `perClass`, `confidence`, `era`, `source`, `sourceKey` | Tidak | Isi ketika bukti tersedia; untuk batch commit baru, `source` dan `sourceKey` harus cocok dengan sumber di auditor artefak. |
 
 ## 3. Menulis Simpulan dan Status Secara Aman
 

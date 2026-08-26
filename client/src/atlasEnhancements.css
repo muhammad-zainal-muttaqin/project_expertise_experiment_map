@@ -8,6 +8,10 @@
 .dataset-card--352 { background-color:#d3e4ea; }
 html.dark .dataset-card--953 { background-color:#17402d; }
 html.dark .dataset-card--352 { background-color:#123c40; }
+.dataset-quick-list { display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:9px; }
+.dataset-quick { display:flex;align-items:center;justify-content:space-between;gap:6px;min-width:0;padding:8px 9px;border:1px solid rgba(31,75,58,.24);background:#eee0b8;color:#244b39;text-align:left;transition:transform .16s cubic-bezier(.23,1,.32,1),border-color .16s cubic-bezier(.23,1,.32,1); }
+.dataset-quick:hover { transform:translateY(-1px);border-color:rgba(31,75,58,.52); }.dataset-quick span { min-width:0; }.dataset-quick strong,.dataset-quick small { display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }.dataset-quick strong { font-family:"Fraunces",Georgia,serif;font-size:11px;line-height:1.2; }.dataset-quick small { margin-top:2px;color:#557361;font-size:8px;line-height:1.25; }.dataset-quick b { color:#315d43;font-family:"Fraunces",Georgia,serif;font-size:15px; }.dataset-quick--763 { background:#f0dfbd; }.dataset-quick--combined { background:#e4d8ee; }
+html.dark .dataset-quick { border-color:rgba(211,226,189,.2);background:#183b2c;color:#eef0d2; }.dataset-quick--763 { background:#3c3420; }.dataset-quick--combined { background:#332947; } html.dark .dataset-quick small { color:#b9cabb; } html.dark .dataset-quick b { color:#e9d990; }
 
 /* Filter aktif dinyatakan ulang sebagai tombol yang dapat dihapus, pada barisnya sendiri di dalam kisi filter. */
 .filter-active { grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px;margin-top:9px;padding-top:9px;border-top:1px solid rgba(31,75,58,.16); }

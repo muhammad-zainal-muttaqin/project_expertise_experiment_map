@@ -208,6 +208,48 @@ const specialNarratives: Record<string, Partial<EvidenceNarrative>> = {
     caution:
       "Pengujian kontrol permutasi kanal (M_shuf) belum dilakukan, sehingga akar penurunan performa—apakah disebabkan oleh kandungan fitur monokular atau degradasi bobot kanal—belum dapat dipisahkan secara kausal.",
   },
+  "V2-E-034": {
+    kind: "Baseline korpus SawitMVC-Depth v2.0.0",
+    work: "Melatih YOLO26l, RT-DETR-L, dan RF-DETR-L dari bobot COCO pada rilis baru 763 pohon yang menggabungkan kampanye DAMIMAS, MARIHAT, dan TOPAZ; prediksi validation dan test disimpan saat evaluasi.",
+    impact: "Urutan RF-DETR-L > RT-DETR-L > YOLO26l kembali muncul pada korpus baru, sehingga dapat dijadikan baseline deteksi untuk eksperimen DAMIMAS selanjutnya.",
+    caution: "Anggaran pelatihan tidak setara: RF-DETR dibatasi 20 epoch sementara dua arsitektur lain 60 epoch. Rankingnya dapat dibaca, tetapi besar keunggulan tidak boleh diperlakukan sebagai perbandingan waktu latih yang adil.",
+  },
+  "V2-E-035": {
+    kind: "Baseline korpus gabungan group-safe",
+    work: "Membangun korpus gabungan 1.716 record dengan split tingkat pohon, lalu melatih tiga arsitektur menggunakan budget nominal 60 epoch yang sama.",
+    impact: "Konsistensi urutan tiga arsitektur di korpus yang lebih luas menguatkan RF-DETR-L sebagai model in-domain terkuat pada protokol ini.",
+    caution: "RT-DETR dihentikan manual saat plateau dan runner otomatis gagal karena path relatif; bobot yang dievaluasi tetap sah, tetapi catatan operasional ini penting untuk replikasi.",
+  },
+  "V2-E-036": {
+    kind: "Audit plafon lokalisasi class-agnostic",
+    work: "Menghitung ulang AP50 setelah semua kategori dilipat menjadi satu kelas dari dump prediksi test yang telah ada, tanpa inferensi ulang atau perubahan model.",
+    impact: "Rekor 0,7951 menunjukkan kapasitas lokalisasi RF-DETR-L pada new763; selisih terhadap mAP empat kelas memperjelas ruang perbaikan klasifikasi kematangan.",
+    caution: "new763 dan combined1716 adalah dua populasi dengan komposisi serta ukuran test berbeda. Keduanya adalah pengukuran plafon terpisah, bukan uji beda langsung.",
+  },
+  "V2-E-038": {
+    kind: "Uji urutan arsitektur berpasangan",
+    work: "Meresampling citra yang sama untuk ketiga model secara berpasangan dan menghitung ulang mAP50 pada 500 replikasi dari dump prediksi test.",
+    impact: "Urutan RF-DETR-L > RT-DETR-L > YOLO26l tidak lagi hanya berupa ranking titik estimasi: seluruh enam perbandingan antar-model memiliki CI selisih yang tidak melintasi nol.",
+    caution: "Bootstrap masih berada pada tingkat citra, bukan pohon. Kesimpulannya menjawab urutan mAP untuk split tersebut, bukan variasi biologis antarpohon atau generalisasi lapangan.",
+  },
+  "V2-E-039": {
+    kind: "Audit titik operasi dan ensemble WBF",
+    work: "Menghitung precision, recall, F1, sweep confidence, dan fusi WBF dari prediksi yang sama untuk membedakan lokalisasi agnostik dari klasifikasi empat kelas.",
+    impact: "WBF memecahkan rekor lokalisasi agnostik, tetapi membuktikan bahwa fusi kotak per kelas bukan strategi yang tepat bila tiga model memberi label kematangan berbeda pada objek fisik yang sama.",
+    caution: "Rekor AP50 agnostik bukan mAP empat kelas dan bukan metrik counting. Untuk klasifikasi kematangan, RF-DETR tunggal tetap lebih baik pada hasil ini.",
+  },
+  "V2-E-040": {
+    kind: "Audit robustness lintas-domain",
+    work: "Menjalankan 12 evaluasi tanpa melatih ulang terhadap domain 953 dan 352 yang tidak dipakai sebagai test in-domain model baru, sambil mengaudit tumpang tindih pohon sebelum membaca skor.",
+    impact: "Hasil menunjukkan bahwa paparan domain kamera saat training jauh lebih menentukan robustness daripada ranking mAP in-domain; YOLO26l new763 justru paling tahan pada domain 953.",
+    caution: "Empat hasil menuju 352 ditandai terkontaminasi karena test-352 masuk train+val korpus baru. Nilainya hanya referensi dan tidak dipakai sebagai bukti generalisasi.",
+  },
+  "V2-E-041": {
+    kind: "Replikasi independen domain shift",
+    work: "Mengevaluasi enam model yang dilatih melalui Ultralytics HUB dengan toolchain terpisah pada subset combined1716 yang memisahkan domain training depth_rgb dan domain sawitmvc.",
+    impact: "Pola RT-DETR-L sebagai model in-domain terbaik tetapi paling rapuh di domain kamera baru berulang pada jalur pelatihan independen, memperkuat temuan V2-E-040.",
+    caution: "Ini baseline eksploratif, bukan angka kanonik langsung: batch, seed, dan toolchain berbeda, serta 56 gambar LONSUM dikecualikan dari evaluasi karena distribusi kelasnya timpang.",
+  },
 };
 
 /**
@@ -224,12 +266,11 @@ function classify(
   if (id.startsWith("PT-E"))
     return {
       kind: "Pipeline per-tandan (PT-E-*)",
-      work: "Cabang PT-E mengubah satuan analisis dari deteksi per citra menjadi tandan fisik per pohon: menguji penautan lintas-sisi, agregasi kelas, dan dampaknya terhadap counting secara berurutan.",
+      work: "Cabang PT-E mengubah satuan analisis dari deteksi per citra menjadi tandan fisik per pohon: register ini menguji penaut lintas-sisi, proposal fisik, propagasi bukti kelas, evaluasi end-to-end, dan counting dalam tahap yang dipisahkan.",
       impact:
-        "Setiap gerbang memisahkan nilai oracle, mutu penaut, dampak end-to-end, dan counting; hasilnya mencegah satu skor mencampur manfaat agregasi dengan galat deteksi atau asosiasi.",
+        "Setiap gerbang memisahkan nilai oracle, mutu penaut, dampak end-to-end, dan counting; hasilnya mencegah satu skor mencampur manfaat agregasi dengan galat deteksi, asosiasi, atau pemilihan ensemble.",
       caution:
-        "Status cabang harus dibaca menurut urutan koreksi: prior arah putar membuat G1/G2 lolos, G3 tetap gugur, dan diagnosis " +
-          "mutu detektor kemudian dibatalkan oleh audit kepadatan kandidat PT-E-011.",
+        "Baca penyebut dan ruang evaluasi setiap node: skor oracle/crop GT, proposal fisik, dan hasil end-to-end bukan metrik yang saling menggantikan. Hasil negatif counting serta gerbang ensemble tetap dipertahankan sebagai batas cabang.",
     };
   if (id.startsWith("HB-"))
     return {

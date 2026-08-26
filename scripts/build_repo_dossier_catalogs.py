@@ -32,6 +32,10 @@ REPOSITORIES = (
                 "commit": "c19906bbfbb4",
                 "prefix": "pipeline-pertandan/",
             },
+            {
+                "label": "Batch eksperimen terbaru",
+                "commit": "5d13720ee9c29faae0e60a8d1d00e0af9068646c",
+            },
         ),
     },
     {

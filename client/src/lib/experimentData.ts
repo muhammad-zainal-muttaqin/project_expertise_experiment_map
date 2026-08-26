@@ -1,10 +1,11 @@
 import { historicalExperiments } from "@/lib/historicalExperiments";
 
 /**
- * Lapisan data Field Research Ledger — inti V2 bersumber dari commit 225faaeb,
- * cabang per-tandan dari commit c19906bbfbb4. Setiap simpul menaut ke commit sumbernya.
+ * Lapisan data Field Research Ledger — snapshot V2 lama, cabang per-tandan,
+ * dan batch eksperimen terbaru selalu menaut ke commit sumber masing-masing.
  */
 import { pipelinePertandanExperiments } from "@/lib/pipelinePertandanExperiments";
+import { latestProjectExpertiseExperiments } from "@/lib/latestProjectExpertiseExperiments";
 export type ExperimentStatus =
   | "supported"
   | "negative"
@@ -13,6 +14,8 @@ export type ExperimentStatus =
 export type DatasetId =
   | "SawitMVC-953"
   | "SawitMVC-Depth-352"
+  | "SawitMVC-Depth-763"
+  | "SawitMVC-Combined-1716"
   | "Lintas-dataset"
   | "Audit";
 
@@ -42,6 +45,7 @@ export interface Experiment {
   position: { x: number; y: number };
   era?: string;
   source?: { repo: string; commit: string; url: string };
+  sourceKey?: string;
 }
 
 export interface DatasetRoot {
@@ -63,6 +67,18 @@ export const datasetRoots: DatasetRoot[] = [
     label: "SawitMVC-Depth · 352",
     detail: "Modalitas RGB + sensor depth · 352 pohon · 1.408 citra",
     position: { x: 38, y: 584 },
+  },
+  {
+    id: "dataset-763",
+    label: "SawitMVC-Depth · 763",
+    detail: "RGB · 763 pohon · DAMIMAS, MARIHAT, TOPAZ",
+    position: { x: 38, y: 1124 },
+  },
+  {
+    id: "dataset-combined",
+    label: "SawitMVC-Combined · 1.716",
+    detail: "RGB · 1.364 grup pohon unik · split group-safe",
+    position: { x: 38, y: 1258 },
   },
 ];
 
@@ -953,6 +969,7 @@ export const experiments: Experiment[] = [
   },
   ...historicalExperiments,
   ...pipelinePertandanExperiments,
+  ...latestProjectExpertiseExperiments,
 ];
 
 export const statusInfo: Record<
@@ -985,6 +1002,8 @@ export const datasetInfo: Record<DatasetId, { short: string; color: string }> =
   {
     "SawitMVC-953": { short: "953 RGB", color: "#AACD90" },
     "SawitMVC-Depth-352": { short: "352 Depth", color: "#8AC4D3" },
+    "SawitMVC-Depth-763": { short: "763 RGB", color: "#D9A85C" },
+    "SawitMVC-Combined-1716": { short: "1.716 Gabung", color: "#B49BD7" },
     "Lintas-dataset": { short: "Lintas", color: "#E8C878" },
     Audit: { short: "Audit", color: "#CDBAEB" },
   };
@@ -1007,4 +1026,22 @@ export const allInputs = [
   "Ordinal",
   "Training",
   "Audit",
+  "Deteksi",
+  "COCO",
+  "Group-safe split",
+  "Prediksi tersimpan",
+  "Confusion",
+  "P/R/F1",
+  "Cross-dataset",
+  "HUB",
+  "Graph",
+  "Crop classifier",
+  "Ensemble",
+  "Linker",
+  "Proposal unik",
+  "Relabel",
+  "Confidence propagation",
+  "MoE",
+  "CatBoost",
+  "Disagreement",
 ];

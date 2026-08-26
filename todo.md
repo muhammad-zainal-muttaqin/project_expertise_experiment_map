@@ -205,3 +205,11 @@
 - [x] Sesuaikan tata letak filter agar label dan selector tidak terpotong pada lebar sempit.
 - [x] Verifikasi keterbacaan desktop, panel sempit, dan ponsel; lalu uji build.
 - [x] Simpan checkpoint dan sampaikan perbaikan clipping.
+
+## Pembaruan Eksperimen Terbaru project-expertise
+
+- [x] Bandingkan commit sumber terbaru dengan commit project-expertise yang telah dipetakan pada atlas.
+- [x] Ekstrak eksperimen, metrik, keputusan, batas, lineage, dan artefak yang benar-benar tercatat.
+- [x] Perbarui katalog atlas, narasi bukti, dossier, dan manifest audit berdasarkan sumber tersemat.
+- [x] Verifikasi data, tautan artefak, tampilan, serta build GitHub Pages.
+- [x] Simpan checkpoint dan sinkronkan pembaruan atlas ke GitHub.

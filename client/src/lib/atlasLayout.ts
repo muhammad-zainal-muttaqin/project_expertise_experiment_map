@@ -54,6 +54,15 @@ const v2Positions: Record<string, AtlasPosition> = {
   "V2-E-023": { x: 1998, y: 918 },
   "V2-E-022": { x: 2212, y: 918 },
   "V2-E-033": { x: 2640, y: 918 },
+  // Lane 5: KORPUS BARU & GENERALISASI (y: 1100–1310)
+  "V2-E-034": { x: 286, y: 1152 },
+  "V2-E-035": { x: 500, y: 1152 },
+  "V2-E-036": { x: 714, y: 1152 },
+  "V2-E-037": { x: 928, y: 1152 },
+  "V2-E-038": { x: 1142, y: 1152 },
+  "V2-E-039": { x: 1356, y: 1152 },
+  "V2-E-040": { x: 1570, y: 1152 },
+  "V2-E-041": { x: 1784, y: 1152 },
 };
 
 export const atlasLanes: AtlasLane[] = [
@@ -90,18 +99,26 @@ export const atlasLanes: AtlasLane[] = [
     tone: "audit",
   },
   {
+    id: "new-corpora",
+    label: "KORPUS BARU · GENERALISASI",
+    caption: "Agu 2026 · new763, combined1716, ensemble, inferensi, dan domain shift",
+    y: 1100,
+    height: 210,
+    tone: "audit",
+  },
+  {
     id: "pertandan",
     label: "CABANG · PIPELINE PER-TANDAN",
-    caption: "Agu 2026 · oracle, penaut, counter, prior arah, dan koreksi diagnosis",
-    y: 1100,
-    height: 320,
+    caption: "Agu 2026 · oracle, penaut, proposal fisik, counter, ensemble, dan batas inferensi",
+    y: 1350,
+    height: 850,
     tone: "primary",
   },
   {
     id: "dedup",
     label: "ARSIP · DEDUPLIKASI & ORACLE",
     caption: "Apr–Mei 2026 · heuristik, GT, dan E2E awal",
-    y: 1460,
+    y: 2260,
     height: 310,
     tone: "archive",
   },
@@ -109,7 +126,7 @@ export const atlasLanes: AtlasLane[] = [
     id: "baseline",
     label: "ARSIP · BASELINE PUBLIK",
     caption: "Mei–Jun 2026 · counter terkontrol dan rilis E2E",
-    y: 1810,
+    y: 2610,
     height: 150,
     tone: "archive",
   },
@@ -117,7 +134,7 @@ export const atlasLanes: AtlasLane[] = [
     id: "pipeline",
     label: "ARSIP · RESEARCH PIPELINE",
     caption: "Jul–Agu 2026 · diagnosis, sensor, audit, dan replikasi",
-    y: 2000,
+    y: 2800,
     height: 520,
     tone: "archive",
   },
@@ -125,7 +142,7 @@ export const atlasLanes: AtlasLane[] = [
     id: "formulation",
     label: "ARSIP · FORMULASI",
     caption: "Aug 2026 · prasyarat dan cabang yang dihentikan",
-    y: 2560,
+    y: 3360,
     height: 154,
     tone: "archive",
   },
@@ -149,6 +166,8 @@ export function buildAtlasLayout(experiments: Experiment[]) {
   const positions: Record<string, AtlasPosition> = {
     "dataset-953": { x: 42, y: 76 },
     "dataset-352": { x: 42, y: 302 },
+    "dataset-763": { x: 42, y: 1142 },
+    "dataset-combined": { x: 42, y: 1266 },
   };
   const placed = new Set<string>(Object.keys(v2Positions));
   Object.assign(positions, v2Positions);
@@ -168,22 +187,22 @@ export function buildAtlasLayout(experiments: Experiment[]) {
   const perTandan = experiments
     .filter(item => item.id.startsWith("PT-E-"))
     .map(item => item.id);
-  setRow(positions, perTandan, 1144, 7);
+  setRow(positions, perTandan, 1394, 7);
   perTandan.forEach(id => placed.add(id));
-  setRow(positions, dedup, 1504, 7);
+  setRow(positions, dedup, 2304, 7);
   dedup.forEach(id => placed.add(id));
-  setRow(positions, baseline, 1852, 9);
+  setRow(positions, baseline, 2652, 9);
   baseline.forEach(id => placed.add(id));
-  setRow(positions, pipeline, 2044, 10);
+  setRow(positions, pipeline, 2844, 10);
   pipeline.forEach(id => placed.add(id));
-  setRow(positions, formulation, 2604, 6);
+  setRow(positions, formulation, 3404, 6);
   formulation.forEach(id => placed.add(id));
 
   const residual = experiments.filter(item => !placed.has(item.id));
   setRow(
     positions,
     residual.map(item => item.id),
-    2800,
+    3600,
     8
   );
   const maxX = Math.max(
@@ -195,7 +214,7 @@ export function buildAtlasLayout(experiments: Experiment[]) {
   return {
     positions,
     canvasWidth: Math.max(3060, maxX + 260),
-    canvasHeight: Math.max(3000, maxY + 190),
+    canvasHeight: Math.max(3800, maxY + 190),
     lanes: atlasLanes,
   };
 }

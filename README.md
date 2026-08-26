@@ -12,12 +12,12 @@ Atlas menggabungkan katalog eksperimen aktif dan arsip historis dari empat repos
 
 | Sumber | Peran di atlas | Contoh identitas node |
 |---|---|---|
-| `project-expertise` | Volume 2 SawitMVC-Depth, audit, *monocular depth*, dan cabang pipeline per-tandan | `V2-E-001`–`V2-E-033`, `PT-E-*` |
+| `project-expertise` | Volume 2, korpus new763/combined1716, audit generalisasi, dan pipeline per-tandan | `V2-E-001`–`V2-E-041`, `PT-E-*` |
 | `Research-Pipeline` | Riwayat pipeline, diagnosis sensor, serta formulasi | `RP-E*`, `RP-F*` |
 | `Baseline-SawitMVC` | Baseline dan pembandingan metode | `HB-*` |
 | `research-method-dedup` | Eksperimen deduplikasi dan oracle historis | `HD-*` |
 
-Dataset utama yang ditampilkan adalah **SawitMVC 953** dan **SawitMVC-Depth 352**. Katalog mencakup hasil yang didukung, negatif, belum konklusif, dan audit/batas inferensi.
+Dataset utama yang ditampilkan adalah **SawitMVC 953**, **SawitMVC-Depth 352**, **SawitMVC-Depth 763**, dan **SawitMVC-Combined 1.716 record**. Katalog mencakup hasil yang didukung, negatif, belum konklusif, dan audit/batas inferensi.
 
 ## Dossier Audit Empat Repositori
 
@@ -25,7 +25,7 @@ Selain atlas interaktif, empat dossier Markdown menyediakan pembacaan tekstual y
 
 | Repositori | Dossier teks | Commit audit | Cakupan khusus |
 |---|---|---|---|
-| `project-expertise` | [Buka dossier](docs/REPOSITORY-AUDIT-PROJECT-EXPERTISE.md) | [`225faaeb`](https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/225faaeb) + [`c19906bbfbb4`](https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/c19906bbfbb4/pipeline-pertandan) | Volume 2, depth sensor, dua tahap, monocular depth, audit validitas, dan pipeline per-tandan PT-E. |
+| `project-expertise` | [Buka dossier](docs/REPOSITORY-AUDIT-PROJECT-EXPERTISE.md) | [`225faaeb`](https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/225faaeb) + [`c19906bbfbb4`](https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/c19906bbfbb4/pipeline-pertandan) + [`5d13720`](https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/5d13720ee9c29faae0e60a8d1d00e0af9068646c) | Volume 2, depth sensor, dua tahap, monocular depth, new763, combined1716, domain shift, dan pipeline per-tandan PT-E. |
 | `Research-Pipeline` | [Buka dossier](docs/REPOSITORY-AUDIT-RESEARCH-PIPELINE.md) | [`4aa9ad6`](https://github.com/muhammad-zainal-muttaqin/Research-Pipeline/tree/4aa9ad6) | Literatur, register seri E/F, benchmark RGB final, serta audit RGB-D. |
 | `Baseline-SawitMVC` | [Buka dossier](docs/REPOSITORY-AUDIT-BASELINE-SAWITMVC.md) | [`ee2f0ac`](https://github.com/ULM-SawitMVC/Baseline-SawitMVC/tree/ee2f0ac) | Baseline deteksi→counting, oracle GT, dan matriks counter. |
 | `research-method-dedup` | [Buka dossier](docs/REPOSITORY-AUDIT-RESEARCH-METHOD-DEDUP.md) | [`a720f17`](https://github.com/muhammad-zainal-muttaqin/research-method-dedup/tree/a720f17) | Deduplikasi, audit GT, oracle counting, dan eksperimen E2E historis. |
@@ -87,7 +87,7 @@ pnpm run build:pages
 
 ## Audit Artefak
 
-Atlas tidak hanya menyimpan nama artefak. Setiap path diaudit terhadap **commit sumber yang dipasangi pin**, lalu hasilnya disimpan sebagai manifest statis agar tetap dapat dibaca di GitHub Pages. Audit saat ini mencakup 119 entri katalog: 107 file terverifikasi, 5 path tidak tersedia, 6 pola yang belum menunjuk ke satu berkas, dan 1 rujukan commit. Cabang PT-E pada commit `c19906bbfbb4` menyumbang 29 artefak dan seluruhnya terverifikasi.
+Atlas tidak hanya menyimpan nama artefak. Setiap path diaudit terhadap **commit sumber yang dipasangi pin**, lalu hasilnya disimpan sebagai manifest statis agar tetap dapat dibaca di GitHub Pages. Audit terbaru mencakup **189 entri**: **177 terverifikasi**, **5 tidak tersedia**, **6 pola path** yang belum menunjuk ke berkas tunggal, dan **1 rujukan commit**. Node batch `5d13720` tidak pernah meminjam status dari snapshot lama.
 
 | Badge panel | Makna | Akses yang diberikan |
 |---|---|---|
@@ -122,6 +122,7 @@ client/
       experimentData.ts         # Kontrak data dan katalog eksperimen utama
       historicalExperiments.ts  # Arsip node historis dan provenance commit
       pipelinePertandanExperiments.ts # Cabang PT-E pada commit project-expertise terbaru
+      latestProjectExpertiseExperiments.ts # V2-E-034–041 dan PT-E-014–036 pada commit 5d13720
       artifactManifest.json     # Status artefak yang dihasilkan audit dan dibaca panel
       atlasLayout.ts            # Swimlane, posisi node, dan routing edge
     pages/
@@ -141,7 +142,7 @@ research_notes/
 
 ## Memelihara Katalog Eksperimen
 
-Tambahkan atau perbarui node di `client/src/lib/experimentData.ts`. Arsip dari repositori terdahulu berada di `client/src/lib/historicalExperiments.ts`. Gunakan kontrak data yang sama supaya peta, filter, lembar bukti, minimap, dan ekspor PNG dapat membaca node baru tanpa jalur khusus.
+Tambahkan atau perbarui node di `client/src/lib/experimentData.ts` untuk katalog inti, `client/src/lib/latestProjectExpertiseExperiments.ts` untuk batch sumber terbaru, dan `client/src/lib/historicalExperiments.ts` untuk arsip repositori terdahulu. Gunakan kontrak data yang sama supaya peta, filter, lembar bukti, minimap, dan ekspor PNG dapat membaca node baru tanpa jalur khusus.
 
 Untuk prosedur lengkap—termasuk contoh node siap salin, pengaturan lineage, posisi peta, pembaruan dataset, penghapusan node, dan checklist publikasi—lihat **[Panduan Pemeliharaan Atlas](docs/MAINTENANCE.md)**.
 
@@ -156,7 +157,7 @@ Keempat dossier repository berada di `docs/REPOSITORY-AUDIT-*.md`. Mereka adalah
 | `metrics` | Nilai teknis yang tampil pada lembar bukti. |
 | `conclusion` dan `findings` | Ringkasan hasil serta batas yang perlu diingat pembaca. |
 | `parentIds` | Hubungan lineage dengan node pendahulu. |
-| `source` dan `artifacts` | Commit, file, atau artefak yang memungkinkan audit ulang. |
+| `source`, `sourceKey`, dan `artifacts` | Commit, kunci snapshot auditor, file, atau artefak yang memungkinkan audit ulang. |
 
 Sesudah mengubah `artifacts` atau `source`, jalankan audit artefak dan salin manifest sebagaimana dijelaskan pada bagian **Audit Artefak**. Panel akan otomatis menampilkan status terbaru serta menawarkan Raw/Unduh hanya untuk JSON/CSV yang benar-benar tersedia pada commit sumber.
 

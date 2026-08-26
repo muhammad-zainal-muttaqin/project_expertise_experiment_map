@@ -21,6 +21,7 @@ import {
 import { useTheme } from "@/contexts/ThemeContext";
 import { useEffect, useMemo, useState } from "react";
 
+/* Field Research Ledger: index kiri adalah kartu katalog, tengah peta tinta Canopy Ink, dan kanan lembar bukti gading. */
 const defaultFilters: AtlasFilters = {
   dataset: "all",
   status: "all",
@@ -34,10 +35,13 @@ const defaultFilters: AtlasFilters = {
 function LineageMark() {
   return (
     <svg viewBox="0 0 48 48" aria-hidden="true">
-      <path d="M9 10c9 2 11 10 20 12s10 8 10 16" />
-      <path d="M8 36c8-1 10-10 18-12s10-7 14-14" />
-      <path d="M8 23h31" />
-      <circle cx="24" cy="23" r="3" />
+      <path d="M10 8v32" />
+      <path d="M11 10h17c5 0 8 3 10 7" />
+      <path d="M11 24h22" />
+      <path d="M11 38h17c5 0 8-3 10-7" />
+      <circle cx="37" cy="17" r="2.5" />
+      <circle cx="33" cy="24" r="2.5" />
+      <circle cx="37" cy="31" r="2.5" />
     </svg>
   );
 }
@@ -84,6 +88,12 @@ export default function Home() {
   ).length;
   const count352 = experiments.filter(
     item => item.dataset === "SawitMVC-Depth-352"
+  ).length;
+  const count763 = experiments.filter(
+    item => item.dataset === "SawitMVC-Depth-763"
+  ).length;
+  const countCombined = experiments.filter(
+    item => item.dataset === "SawitMVC-Combined-1716"
   ).length;
   const historicalCount = experiments.filter(item => item.source).length;
   const visible = (experiment: (typeof experiments)[number]) => {
@@ -158,6 +168,34 @@ export default function Home() {
               <span>RGB + sensor kedalaman · 352 pohon · 1.408 citra</span>
               <b>{count352} simpul eksperimen →</b>
             </button>
+            <div className="dataset-quick-list" aria-label="Korpus batch terbaru">
+              <button
+                type="button"
+                className="dataset-quick dataset-quick--763"
+                onClick={() =>
+                  setFilters({ ...filters, dataset: "SawitMVC-Depth-763" })
+                }
+              >
+                <span>
+                  <strong>Depth · 763</strong>
+                  <small>tiga kampanye RGB</small>
+                </span>
+                <b>{count763}</b>
+              </button>
+              <button
+                type="button"
+                className="dataset-quick dataset-quick--combined"
+                onClick={() =>
+                  setFilters({ ...filters, dataset: "SawitMVC-Combined-1716" })
+                }
+              >
+                <span>
+                  <strong>Combined · 1.716</strong>
+                  <small>split group-safe</small>
+                </span>
+                <b>{countCombined}</b>
+              </button>
+            </div>
           </section>
           <section className="rail-section">
             <div className="rail-heading">Status validitas bukti</div>
@@ -186,6 +224,8 @@ export default function Home() {
           <div className="rail-source">
             <strong>Basis audit repositori</strong>
             <code>project-expertise@225faaeb</code>
+            <br />
+            <code>project-expertise@5d13720</code>
             <br />
             <code>Research-Pipeline@4aa9ad6</code>
             <br />

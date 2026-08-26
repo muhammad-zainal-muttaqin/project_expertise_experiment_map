@@ -25,7 +25,14 @@ PIPELINE_PERTANDAN_SOURCE = {
     "repo": "project-expertise",
     "commit": "c19906bbfbb4",
 }
+LATEST_PROJECT_EXPERTISE_SOURCE = {
+    "key": "latest-project-expertise",
+    "owner": "muhammad-zainal-muttaqin",
+    "repo": "project-expertise",
+    "commit": "5d13720ee9c29faae0e60a8d1d00e0af9068646c",
+}
 HISTORICAL_SOURCES = {
+    "latest-project-expertise": LATEST_PROJECT_EXPERTISE_SOURCE,
     "dedup": {"key": "research-method-dedup", "owner": "muhammad-zainal-muttaqin", "repo": "research-method-dedup", "commit": "a720f17"},
     "baseline": {"key": "Baseline-SawitMVC", "owner": "ULM-SawitMVC", "repo": "Baseline-SawitMVC", "commit": "ee2f0ac"},
     "pipeline": {"key": "Research-Pipeline", "owner": "muhammad-zainal-muttaqin", "repo": "Research-Pipeline", "commit": "4aa9ad6"},
@@ -106,6 +113,7 @@ def main() -> int:
         (arguments.project_root / "client/src/lib/experimentData.ts", DEFAULT_SOURCE),
         (arguments.project_root / "client/src/lib/historicalExperiments.ts", DEFAULT_SOURCE),
         (arguments.project_root / "client/src/lib/pipelinePertandanExperiments.ts", PIPELINE_PERTANDAN_SOURCE),
+        (arguments.project_root / "client/src/lib/latestProjectExpertiseExperiments.ts", LATEST_PROJECT_EXPERTISE_SOURCE),
     ]
     missing = [str(path) for path, _ in catalogs if not path.exists()]
     if missing:
