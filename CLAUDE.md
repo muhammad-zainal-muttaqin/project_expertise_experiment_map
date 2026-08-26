@@ -112,7 +112,9 @@ Urutan itu **terbalik untuk deklarasi `!important`**: deklarasi penting di dalam
 
 `index.css` memuat satu blok `@layer components` bernilai tema terang yang ditulis pada **selektor polos tanpa prefiks tema**, termasuk keadaan `:hover`, `.is-active`, dan `.is-selected`. Blok itu berlaku pada kedua tema, sehingga setiap properti yang tidak dinyatakan ulang di bawah `html.dark` pada berkas tak berlapis akan membawa nilai terang ke peta gelap. Keadaan interaktif adalah titik paling mudah terlewat: kartu simpul dan akar dataset sempat berubah menjadi krem saat disorot atau dipilih pada mode gelap sementara tintanya tetap terang. Setelah mengubah warna, ukur kontras pada keadaan diam **dan** keadaan terpilih di kedua tema.
 
-Aturan gelap yang hanya berlaku pada tata letak satu kolom harus ditulis **di dalam** `@media (max-width: 720px)`. Di bawah lebar itu `.left-rail` memakai `display:contents`, sehingga `.brand-lockup` dan `.rail-source` duduk langsung di atas kanvas gelap `.atlas-layout`; di atas lebar itu keduanya kembali ke rail kertas krem dan memerlukan tinta gelap. Menaruh aturan semacam itu di lingkup global membuat teks terang tertulis di atas kertas terang.
+Arah tema sudah ditetapkan: **mode gelap menggelapkan seluruh permukaan** — rail, header, bilah filter, dan lembar bukti ikut memakai Canopy Ink, bukan hanya kanvas peta. Commit `547d051` sempat membalik arah ini menjadi kertas gading yang mengelilingi peta gelap, dan pembalikan itu meninggalkan tinta terang di atas permukaan krem pada belasan selektor. Arah gelap penuh dipulihkan pada commit sesudahnya. Bila suatu saat permukaan kertas hendak dibawa kembali ke mode gelap, seluruh tinta di atasnya harus ikut dibalik dalam satu perubahan, bukan hanya latarnya.
+
+Di bawah 720px `.left-rail` memakai `display:contents`, sehingga `.brand-lockup` dan `.rail-source` menjadi anak langsung `.atlas-layout`. Perbedaannya hanya struktural, bukan warna: karena rail sudah gelap pada semua lebar, tinta terang untuk keduanya cukup ditulis satu kali di lingkup global.
 
 ## Konvensi
 

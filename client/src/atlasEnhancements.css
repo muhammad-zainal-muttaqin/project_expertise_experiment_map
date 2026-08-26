@@ -33,9 +33,10 @@ html.dark .filter-chip:hover { border-color:rgba(225,228,175,.6);background:rgba
 .lineage-chip { display:inline-flex;align-items:center;max-width:100%;padding:5px 8px;border:1px solid rgba(45,88,55,.32);background:rgba(45,88,55,.07);color:#2c5540;font:600 10px/1.35 "IBM Plex Sans",sans-serif;text-align:left;transition:border-color .16s cubic-bezier(.23,1,.32,1),background .16s cubic-bezier(.23,1,.32,1); }
 .lineage-chip:hover { border-color:rgba(45,88,55,.6);background:rgba(45,88,55,.14); }
 .lineage-chip--root { border-style:dashed;color:#4d6854;background:transparent; }
-/* Lembar bukti tetap kertas krem pada mode gelap, sehingga chip silsilah memakai tinta gelap
-   yang sama dengan tema terang. Empat aturan html.dark sebelumnya menuliskan tinta terang di
-   atas kertas terang dan menghasilkan rasio kontras 1,31:1. */
+html.dark .lineage-row-label { color:#90a997; }
+html.dark .lineage-chip { border-color:rgba(211,226,189,.24);background:rgba(211,226,189,.06);color:#c7d5ca; }
+html.dark .lineage-chip:hover { border-color:rgba(225,228,175,.55);background:rgba(211,226,189,.13);color:#fff4c6; }
+html.dark .lineage-chip--root { color:#9db7a4; }
 
 /* Definisi glosarium memakai kembali irama istilah-definisi lembar bukti tanpa penekanan angka
    rata kanan milik metric-list, sebab isian di sini berupa prosa, bukan hasil pengukuran. */
@@ -44,8 +45,9 @@ html.dark .filter-chip:hover { border-color:rgba(225,228,175,.6);background:rgba
 .term-list div:last-child { border-bottom:0; }
 .term-list dt { color:#3d5c31;font-size:11px;font-weight:700;letter-spacing:.01em; }
 .term-list dd { margin:4px 0 0;color:#4d6854;font-size:11px;line-height:1.55; }
-/* Alasan yang sama berlaku pada glosarium: istilah dan definisinya berada di atas kertas krem,
-   sehingga tinta terang html.dark sebelumnya menghasilkan rasio 1,25:1 dan 1,35:1. */
+html.dark .term-list div { border-bottom-color:rgba(211,226,189,.10); }
+html.dark .term-list dt { color:#cddf9a; }
+html.dark .term-list dd { color:#c4d3c7; }
 
 .atlas-header-actions { order:2;display:flex;align-items:center;gap:6px; }
 .atlas-header-actions button { display:flex;align-items:center;gap:7px;padding:7px 9px;border:1px solid rgba(225,228,175,.34);background:rgba(7,31,22,.36);color:#f7f0cd;font:600 10px/1 "IBM Plex Sans",sans-serif;letter-spacing:.05em;text-transform:uppercase;backdrop-filter:blur(8px);transition:background .16s cubic-bezier(.23,1,.32,1),transform .16s cubic-bezier(.23,1,.32,1); }

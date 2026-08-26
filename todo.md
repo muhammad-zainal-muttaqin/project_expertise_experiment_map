@@ -243,3 +243,11 @@
 - [x] Perbaiki singkatan bulan `Aug` menjadi `Agu` pada keterangan lane arsip formulasi.
 - [x] Verifikasi galat konsol, nama aksesibel kontrol, luapan horizontal, dan sasaran panduan.
 - [x] Verifikasi penyaringan rail, pencarian, minimap, dan mode fokus cabang.
+
+## Pemulihan Mode Gelap Penuh
+
+- [x] Telusuri asal permukaan kertas pada mode gelap hingga commit `547d051`.
+- [x] Pulihkan kontrak Canopy Ink penuh: rail, header, bilah filter, dan lembar bukti ikut gelap.
+- [x] Pasang kembali tinta terang chip silsilah, glosarium, basis audit, dan pelipat penyaringan.
+- [x] Pertahankan pasangan gelap keadaan hover serta terpilih yang tidak pernah ada sebelumnya.
+- [x] Verifikasi nol pelanggaran kontras pada kedua tema di lebar desktop dan ponsel.

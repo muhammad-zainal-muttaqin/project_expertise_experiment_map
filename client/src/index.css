@@ -120,8 +120,8 @@
   html.dark .artifact-verified .artifact-status { color:#a4d7ac;background:rgba(64,121,76,.2); }
   html.dark .artifact-unavailable .artifact-status { color:#f0aa91;background:rgba(165,80,56,.18); }
   html.dark .artifact-audit-needed .artifact-status { color:#e6cd85;background:rgba(184,137,43,.18); }
-  html.dark .artifact-actions a { border-color:rgba(31,75,58,.35) !important;background:#f8efcf !important;color:#315d43 !important; }
-  html.dark .artifact-actions a:hover { border-color:#1f4b3a !important;color:#173e2b !important; }
+  html.dark .artifact-actions a { border-color:rgba(211,226,189,.25) !important;background:rgba(10,45,32,.68) !important;color:#d4df9d !important; }
+  html.dark .artifact-actions a:hover { border-color:rgba(225,228,175,.6) !important;color:#fff4c6 !important; }
   html.dark .artifact-audit-note { color:#d9bd69; }
 }
 @layer components {
