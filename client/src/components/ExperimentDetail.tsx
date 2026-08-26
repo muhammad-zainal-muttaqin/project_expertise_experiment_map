@@ -381,7 +381,6 @@ export function ExperimentDetail({
       <section className="sheet-section">
         <div className="section-title">
           <span>Metrik kuantitatif utama</span>
-          <small>rincian hasil evaluasi</small>
         </div>
         <dl className="metric-list">
           {experiment.metrics.map(metric => (
@@ -399,7 +398,6 @@ export function ExperimentDetail({
         <section className="sheet-section">
           <div className="section-title">
             <span>Evaluasi spesifik kelas</span>
-            <small>rincian per kategori kematangan</small>
           </div>
           <dl className="metric-list compact">
             {experiment.perClass.map(metric => (
@@ -423,7 +421,6 @@ export function ExperimentDetail({
       <section className="sheet-section">
         <div className="section-title">
           <span>Catatan sintesis teknis</span>
-          <small>analisis mendalam temuan</small>
         </div>
         <p className="finding-text">{experiment.findings}</p>
       </section>
@@ -497,7 +494,6 @@ export function ExperimentDetail({
       <section className="sheet-section provenance-section">
         <div className="section-title">
           <span>Sumber data & repositori</span>
-          <small>audit rekam jejak</small>
         </div>
         <div className="provenance-card">
           <span>Era penelitian</span>

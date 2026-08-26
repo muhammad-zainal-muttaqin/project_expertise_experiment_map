@@ -58,7 +58,7 @@
 - [x] Tambahkan ringkasan awam: apa yang dicoba, hasilnya, maknanya, dan batasannya pada lembar detail.
 - [x] Sederhanakan label serta istilah teknis di panel detail tanpa menghapus metrik sumber.
 - [x] Uji tema dan keterbacaan panel detail pada desktop serta ponsel.
-- [ ] Simpan checkpoint perbaikan pengalaman baca dan sampaikan hasil.
+- [x] Simpan checkpoint perbaikan pengalaman baca dan sampaikan hasil.
 
 ## Perbaikan Garis Lineage
 
@@ -236,3 +236,10 @@
 - [x] Telusuri sasaran klik kartu akar dataset pada kanvas peta.
 - [x] Turunkan sasaran dari `parentIds` agar akar 763 dan Combined-1.716 membuka simpul miliknya sendiri.
 - [x] Verifikasi keempat akar memilih simpul yang benar dan kartunya berstatus aktif.
+
+## Penyisiran Akhir Antarmuka
+
+- [x] Hapus empat subjudul lembar bukti yang hanya mengulang judul bagiannya.
+- [x] Perbaiki singkatan bulan `Aug` menjadi `Agu` pada keterangan lane arsip formulasi.
+- [x] Verifikasi galat konsol, nama aksesibel kontrol, luapan horizontal, dan sasaran panduan.
+- [x] Verifikasi penyaringan rail, pencarian, minimap, dan mode fokus cabang.

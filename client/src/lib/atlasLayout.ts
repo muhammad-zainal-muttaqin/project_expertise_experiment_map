@@ -141,7 +141,7 @@ export const atlasLanes: AtlasLane[] = [
   {
     id: "formulation",
     label: "ARSIP · FORMULASI",
-    caption: "Aug 2026 · prasyarat dan cabang yang dihentikan",
+    caption: "Agu 2026 · prasyarat dan cabang yang dihentikan",
     y: 3360,
     height: 154,
     tone: "archive",
