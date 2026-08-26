@@ -167,6 +167,20 @@ html.dark .sheet-dismiss:hover {
     border-top: 1px solid rgba(42, 79, 50, 0.18);
     border-bottom: 0;
   }
+  /* Tinta terang ini hanya berlaku dalam satu kolom. Di sini .left-rail memakai display:contents,
+     sehingga basis audit duduk langsung di atas kanvas gelap .atlas-layout. Pada lebar penuh
+     .rail-source kembali berada di atas rail krem, dan kontrak gelap themeReaderFix.css (#4a6453
+     serta #1f4b3a) yang berlaku. */
+  html.dark .rail-source {
+    border-top-color: rgba(177, 202, 166, 0.18);
+    color: #a9c0ad;
+  }
+  html.dark .rail-source strong {
+    color: #fff7dc;
+  }
+  html.dark .rail-source code {
+    color: #c7d7c7;
+  }
 
   .atlas-header {
     padding: 13px 14px;
@@ -223,12 +237,6 @@ html.dark .brand-lockup {
 }
 html.dark .brand-lockup p { color:#a9c0ad; }
 html.dark .brand-lockup h1 { color:#fff7dc; }
-html.dark .rail-source {
-  border-top-color: rgba(177, 202, 166, 0.18);
-  color:#a9c0ad;
-}
-html.dark .rail-source strong { color:#fff7dc; }
-html.dark .rail-source code { color:#c7d7c7; }
 
 /* ---------- Penyaringan yang dapat dilipat (≤720px) ----------
    Tujuh kendali menghabiskan 306px tinggi layar dan mendorong peta ke bawah lipatan. Dalam keadaan
@@ -280,8 +288,10 @@ html.dark .rail-source code { color:#c7d7c7; }
   }
 }
 
+/* Bilah filter tetap kertas krem pada mode gelap, sehingga judul pelipat memakai tinta gelap yang
+   sama dengan .filter-label pada themeReaderFix.css, bukan tinta terang milik kanvas peta. */
 html.dark .filter-disclosure {
-  color: #cbd9b6;
+  color: #4a6453;
 }
 
 @media (max-width: 560px) {

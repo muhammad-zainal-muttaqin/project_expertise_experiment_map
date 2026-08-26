@@ -94,8 +94,8 @@
 
 ## Penyederhanaan Minimap
 
-- [ ] Hapus label bantuan teknis di atas minimap fullscreen tanpa mengubah posisi dock minimap.
-- [ ] Verifikasi minimap tetap tidak bertumpuk dengan lembar bukti.
+- [x] Hapus label bantuan teknis di atas minimap fullscreen tanpa mengubah posisi dock minimap.
+- [x] Verifikasi minimap tetap tidak bertumpuk dengan lembar bukti.
 
 ## Audit Label Bantuan
 
@@ -213,3 +213,20 @@
 - [x] Perbarui katalog atlas, narasi bukti, dossier, dan manifest audit berdasarkan sumber tersemat.
 - [x] Verifikasi data, tautan artefak, tampilan, serta build GitHub Pages.
 - [x] Simpan checkpoint dan sinkronkan pembaruan atlas ke GitHub.
+
+## Perbaikan Kontras dan Teks Antarmuka
+
+- [x] Perbaiki kontras `.rail-source` pada mode gelap tampilan desktop.
+- [x] Perbaiki kontras `.filter-disclosure` pada mode gelap tampilan ponsel.
+- [x] Lengkapi pasangan tema terang untuk kartu korpus `--763` dan `--combined`.
+- [x] Perbaiki label “Combined · 1.716” dan keterangan kartu korpus yang terpotong.
+- [x] Turunkan jumlah simpul dan relasi pada panduan penggunaan langsung dari data.
+
+## Audit Kontras Menyeluruh Dua Tema
+
+- [x] Ukur rasio kontras seluruh teks rail, header, filter, lembar bukti, dan peta pada kedua tema.
+- [x] Pulihkan tinta gelap pada chip silsilah, glosarium, dan stempel lembar bukti yang berada di atas kertas krem mode gelap.
+- [x] Tambahkan pasangan gelap untuk keadaan `:hover`, `.is-active`, dan `.is-selected` kartu simpul serta akar dataset.
+- [x] Selaraskan aturan `!important` tombol artefak antara `index.css` dan `themeReaderFix.css`.
+- [x] Naikkan tinta sekunder ke ambang WCAG AA 4,5:1 pada kedua tema.
+- [x] Verifikasi nol pelanggaran kontras pada lebar desktop dan ponsel untuk kedua tema.

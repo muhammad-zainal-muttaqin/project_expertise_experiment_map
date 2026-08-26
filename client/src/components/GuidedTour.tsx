@@ -13,8 +13,17 @@
  *  siapa pun di dalamnya. */
 import { ArrowRight, Check, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { experiments } from "@/lib/experimentData";
 
 const STORAGE_KEY = "frl-panduan-selesai";
+
+/* Jumlah simpul dan relasi diturunkan dari katalog pada waktu modul dimuat, bukan ditulis sebagai
+   angka tetap, supaya kalimat panduan tidak menjadi usang setiap kali simpul baru ditambahkan. */
+const NODE_COUNT = experiments.length;
+const RELATION_COUNT = experiments.reduce(
+  (total, item) => total + item.parentIds.length,
+  0,
+);
 
 interface TourStep {
   id: string;
@@ -37,7 +46,7 @@ const steps: TourStep[] = [
   {
     id: "pengantar",
     title: "Cara membaca atlas ini",
-    body: "Peta memuat 93 simpul eksperimen dari empat repositori, tersusun menurut silsilah: setiap simpul menunjuk pada eksperimen yang mendahuluinya. Panduan ini menempuh lima langkah dan meminta Anda mencoba dua kendali utamanya secara langsung.",
+    body: `Peta memuat ${NODE_COUNT} simpul eksperimen dari empat repositori, tersusun menurut silsilah: setiap simpul menunjuk pada eksperimen yang mendahuluinya. Panduan ini menempuh lima langkah dan meminta Anda mencoba dua kendali utamanya secara langsung.`,
   },
   {
     id: "pilih-simpul",
@@ -61,7 +70,7 @@ const steps: TourStep[] = [
   {
     id: "mode-fokus",
     title: "Mode fokus cabang",
-    body: "Peta penuh menampilkan 120 relasi sekaligus. Mode fokus menyisakan leluhur dan turunan simpul terpilih saja, sehingga satu jalur penelitian dapat dibaca terpisah dari sisanya.",
+    body: `Peta penuh menampilkan ${RELATION_COUNT} relasi sekaligus. Mode fokus menyisakan leluhur dan turunan simpul terpilih saja, sehingga satu jalur penelitian dapat dibaca terpisah dari sisanya.`,
     target: '[data-tour="focus"]',
     prepare: closeMobileSheet,
     action: {

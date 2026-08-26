@@ -3,5 +3,5 @@
 .lineage-svg { width:var(--canvas-width); height:var(--canvas-height); }
 .node-meta em { overflow:hidden; max-width:72px; color:#3f5a4a; font-size:8px; font-style:normal; text-overflow:ellipsis; white-space:nowrap; }
 .provenance-card { display:grid; grid-template-columns:1fr auto; gap:5px 10px; margin-top:9px; padding:10px; border:1px solid rgba(77,113,80,.42); background:rgba(255,252,235,.52); }
-.provenance-card span { color:#62806b; font-size:9px; text-transform:uppercase; letter-spacing:.07em; }
+.provenance-card span { color:#4a6453; font-size:9px; text-transform:uppercase; letter-spacing:.07em; }
 .provenance-card strong,.provenance-card code { overflow:hidden; max-width:190px; color:#254a37; font-size:10px; text-align:right; text-overflow:ellipsis; white-space:nowrap; }

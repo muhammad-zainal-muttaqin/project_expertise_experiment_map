@@ -8,10 +8,10 @@
 .dataset-card--352 { background-color:#d3e4ea; }
 html.dark .dataset-card--953 { background-color:#17402d; }
 html.dark .dataset-card--352 { background-color:#123c40; }
-.dataset-quick-list { display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:9px; }
-.dataset-quick { display:flex;align-items:center;justify-content:space-between;gap:6px;min-width:0;padding:8px 9px;border:1px solid rgba(31,75,58,.24);background:#eee0b8;color:#244b39;text-align:left;transition:transform .16s cubic-bezier(.23,1,.32,1),border-color .16s cubic-bezier(.23,1,.32,1); }
-.dataset-quick:hover { transform:translateY(-1px);border-color:rgba(31,75,58,.52); }.dataset-quick span { min-width:0; }.dataset-quick strong,.dataset-quick small { display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }.dataset-quick strong { font-family:"Fraunces",Georgia,serif;font-size:11px;line-height:1.2; }.dataset-quick small { margin-top:2px;color:#557361;font-size:8px;line-height:1.25; }.dataset-quick b { color:#315d43;font-family:"Fraunces",Georgia,serif;font-size:15px; }.dataset-quick--763 { background:#f0dfbd; }.dataset-quick--combined { background:#e4d8ee; }
-html.dark .dataset-quick { border-color:rgba(211,226,189,.2);background:#183b2c;color:#eef0d2; }.dataset-quick--763 { background:#3c3420; }.dataset-quick--combined { background:#332947; } html.dark .dataset-quick small { color:#b9cabb; } html.dark .dataset-quick b { color:#e9d990; }
+.dataset-quick-list { display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:9px; }
+.dataset-quick { display:flex;align-items:center;justify-content:space-between;gap:4px;min-width:0;padding:8px 6px;border:1px solid rgba(31,75,58,.24);background:#eee0b8;color:#244b39;text-align:left;transition:transform .16s cubic-bezier(.23,1,.32,1),border-color .16s cubic-bezier(.23,1,.32,1); }
+.dataset-quick:hover { transform:translateY(-1px);border-color:rgba(31,75,58,.52); }.dataset-quick span { min-width:0; }.dataset-quick strong,.dataset-quick small { display:block; }.dataset-quick strong { font-family:"Fraunces",Georgia,serif;font-size:10px;line-height:1.2;text-wrap:balance; }.dataset-quick small { margin-top:2px;color:#4a6453;font-size:8px;line-height:1.25; }.dataset-quick b { color:#315d43;font-family:"Fraunces",Georgia,serif;font-size:15px; }.dataset-quick--763 { background:#e0e2b6;border-color:rgba(31,75,58,.3); }.dataset-quick--combined { background:#e4d8ee;border-color:rgba(31,75,58,.3); }
+html.dark .dataset-quick { border-color:rgba(211,226,189,.2);background:#183b2c;color:#eef0d2; }html.dark .dataset-quick--763 { background:#3c3420;border-color:rgba(211,226,189,.24); }html.dark .dataset-quick--combined { background:#332947;border-color:rgba(211,226,189,.24); } html.dark .dataset-quick small { color:#b9cabb; } html.dark .dataset-quick b { color:#e9d990; }
 
 /* Filter aktif dinyatakan ulang sebagai tombol yang dapat dihapus, pada barisnya sendiri di dalam kisi filter. */
 .filter-active { grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px;margin-top:9px;padding-top:9px;border-top:1px solid rgba(31,75,58,.16); }
@@ -33,10 +33,9 @@ html.dark .filter-chip:hover { border-color:rgba(225,228,175,.6);background:rgba
 .lineage-chip { display:inline-flex;align-items:center;max-width:100%;padding:5px 8px;border:1px solid rgba(45,88,55,.32);background:rgba(45,88,55,.07);color:#2c5540;font:600 10px/1.35 "IBM Plex Sans",sans-serif;text-align:left;transition:border-color .16s cubic-bezier(.23,1,.32,1),background .16s cubic-bezier(.23,1,.32,1); }
 .lineage-chip:hover { border-color:rgba(45,88,55,.6);background:rgba(45,88,55,.14); }
 .lineage-chip--root { border-style:dashed;color:#4d6854;background:transparent; }
-html.dark .lineage-row-label { color:#90a997; }
-html.dark .lineage-chip { border-color:rgba(211,226,189,.24);background:rgba(211,226,189,.06);color:#c7d5ca; }
-html.dark .lineage-chip:hover { border-color:rgba(225,228,175,.55);background:rgba(211,226,189,.13);color:#fff4c6; }
-html.dark .lineage-chip--root { color:#9db7a4; }
+/* Lembar bukti tetap kertas krem pada mode gelap, sehingga chip silsilah memakai tinta gelap
+   yang sama dengan tema terang. Empat aturan html.dark sebelumnya menuliskan tinta terang di
+   atas kertas terang dan menghasilkan rasio kontras 1,31:1. */
 
 /* Definisi glosarium memakai kembali irama istilah-definisi lembar bukti tanpa penekanan angka
    rata kanan milik metric-list, sebab isian di sini berupa prosa, bukan hasil pengukuran. */
@@ -45,9 +44,8 @@ html.dark .lineage-chip--root { color:#9db7a4; }
 .term-list div:last-child { border-bottom:0; }
 .term-list dt { color:#3d5c31;font-size:11px;font-weight:700;letter-spacing:.01em; }
 .term-list dd { margin:4px 0 0;color:#4d6854;font-size:11px;line-height:1.55; }
-html.dark .term-list div { border-bottom-color:rgba(211,226,189,.10); }
-html.dark .term-list dt { color:#cddf9a; }
-html.dark .term-list dd { color:#c4d3c7; }
+/* Alasan yang sama berlaku pada glosarium: istilah dan definisinya berada di atas kertas krem,
+   sehingga tinta terang html.dark sebelumnya menghasilkan rasio 1,25:1 dan 1,35:1. */
 
 .atlas-header-actions { order:2;display:flex;align-items:center;gap:6px; }
 .atlas-header-actions button { display:flex;align-items:center;gap:7px;padding:7px 9px;border:1px solid rgba(225,228,175,.34);background:rgba(7,31,22,.36);color:#f7f0cd;font:600 10px/1 "IBM Plex Sans",sans-serif;letter-spacing:.05em;text-transform:uppercase;backdrop-filter:blur(8px);transition:background .16s cubic-bezier(.23,1,.32,1),transform .16s cubic-bezier(.23,1,.32,1); }
@@ -71,7 +69,7 @@ html.ledger-light body { background-color:#edf0df;color:#183e2e;background-image
 html.ledger-light .atlas-page { background:linear-gradient(110deg,#edf0df,#e5e9d3); }
 html.ledger-light .left-rail,html.ledger-light .right-rail { border-color:rgba(42,79,50,.19);background:rgba(245,243,221,.88); }
 html.ledger-light .brand-lockup { border-color:rgba(40,74,48,.18); }
-html.ledger-light .brand-lockup p,html.ledger-light .rail-heading,html.ledger-light .rail-source,html.ledger-light .rail-source code { color:#567260; }
+html.ledger-light .brand-lockup p,html.ledger-light .rail-heading,html.ledger-light .rail-source,html.ledger-light .rail-source code { color:#4a6453; }
 html.ledger-light .brand-lockup h1,html.ledger-light .rail-source strong { color:#193d2c; }
 html.ledger-light .status-tally button { color:#41614d;background:rgba(54,98,65,.035); }
 html.ledger-light .status-tally button:hover,html.ledger-light .status-tally button.is-active { border-color:rgba(35,78,48,.42);background:rgba(55,104,68,.09);color:#173e2b; }
@@ -79,22 +77,22 @@ html.ledger-light .atlas-header { border-color:rgba(38,76,48,.22);background-ima
 html.ledger-light .atlas-header::after { border-color:rgba(45,88,55,.28);box-shadow:0 0 0 36px rgba(52,98,60,.06),0 0 0 74px rgba(52,98,60,.035); }
 html.ledger-light .atlas-stat { border-color:rgba(53,95,59,.32); }
 html.ledger-light .atlas-stat strong { color:#254b35; }
-html.ledger-light .atlas-stat span { color:#63806b; }
+html.ledger-light .atlas-stat span { color:#4a6453; }
 html.ledger-light .atlas-header-actions button { border-color:rgba(46,89,53,.34);background:rgba(250,249,228,.64);color:#264b35; }
 html.ledger-light .filter-bar { border-color:rgba(43,79,49,.22);background:rgba(250,248,227,.75); }
-html.ledger-light .filter-label,html.ledger-light .filter-bar label span { color:#4e7058; }
+html.ledger-light .filter-label,html.ledger-light .filter-bar label span { color:#4a6453; }
 html.ledger-light .filter-bar select,html.ledger-light .filter-search > div { border-color:rgba(43,79,49,.28);background:#f8f6df;color:#244a34; }
 html.ledger-light .filter-search input { color:#244a34; }
 html.ledger-light .filter-search input::placeholder { color:#7e9a82; }
 html.ledger-light .reset-filter { color:#496a53; }
 html.ledger-light .graph-shell { border-color:rgba(43,79,49,.25);box-shadow:0 13px 28px rgba(49,76,45,.09); }
 html.ledger-light .evidence-sheet { background-color:#f6f1d8;background-image:linear-gradient(155deg,rgba(255,255,255,.72),rgba(231,236,207,.52)); }
-html.ledger-light .sheet-topline { color:#607763; }
+html.ledger-light .sheet-topline { color:#4a6453; }
 html.ledger-light .evidence-sheet h2 { color:#214632; }
 html.ledger-light .sheet-conclusion,html.ledger-light .finding-text { color:#4d6854; }
 html.ledger-light .sheet-meta-grid { background:rgba(56,91,60,.2);border-color:rgba(56,91,60,.2); }
 html.ledger-light .sheet-meta-grid div { background:rgba(255,253,233,.82); }
-html.ledger-light .sheet-meta-grid span,html.ledger-light .metric-list dt { color:#637b66; }
+html.ledger-light .sheet-meta-grid span,html.ledger-light .metric-list dt { color:#4a6453; }
 html.ledger-light .sheet-meta-grid strong,html.ledger-light .metric-list dd { color:#254a34; }
 html.ledger-light .section-title { border-color:rgba(47,83,53,.18);color:#365d42; }
 @media (max-width:1100px) { .filter-bar--enhanced { grid-template-columns:auto repeat(2,minmax(120px,1fr)); }.filter-search { grid-column:span 2; } }
@@ -119,7 +117,7 @@ html.ledger-light .graph-controls output { color:#5a6d42; }
 html.ledger-light .experiment-canvas { background-image:linear-gradient(rgba(31,75,58,.11) 1px,transparent 1px),linear-gradient(90deg,rgba(31,75,58,.11) 1px,transparent 1px); }
 html.ledger-light .canvas-lane { border-color:rgba(31,75,58,.18);background:linear-gradient(90deg,rgba(31,75,58,.065),transparent 42%); }
 html.ledger-light .canvas-lane strong { color:rgba(31,75,58,.73); }
-html.ledger-light .canvas-lane span { color:rgba(59,96,72,.7); }
+html.ledger-light .canvas-lane span { color:#2d4e39; }
 html.ledger-light .lineage-path { stroke:rgba(31,75,58,.46); }
 html.ledger-light .lineage-path.is-active { stroke:#8d6720; }
 html.ledger-light .lineage-path.is-pinned { stroke:#8d6720; }
@@ -129,7 +127,6 @@ html.ledger-light .focus-strip { border-color:rgba(156,119,48,.32);background:rg
 html.ledger-light .focus-strip strong,html.ledger-light .focus-strip b { color:#3e5e37; }
 html.ledger-light .focus-strip button { border-color:rgba(62,94,55,.55);color:#3e5e37; }
 html.ledger-light .graph-minimap { border-color:rgba(31,75,58,.42);background:#f4e9c8;box-shadow:3px 4px 0 rgba(31,75,58,.2);color:#254a37; }
-html.ledger-light .minimap-title small { color:#5b765f; }
 html.ledger-light .graph-minimap svg { border-color:rgba(31,75,58,.28);background:#dde0c4; }
 html.ledger-light .graph-minimap text { fill:rgba(31,75,58,.62); }
 html.ledger-light .minimap-lane { fill:rgba(255,250,219,.46);stroke:rgba(31,75,58,.18); }

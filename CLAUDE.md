@@ -27,6 +27,8 @@ Catatan lingkungan Windows: `pnpm run build:pages` gagal karena skrip memakai pr
 $env:NODE_ENV = "production"; pnpm exec vite build --mode github-pages
 ```
 
+Pada mesin ini skrip Python dipanggil dengan `python`, bukan `python3`, karena alias `python3` tidak tersedia.
+
 pnpm 10 tidak lagi membaca field `pnpm.patchedDependencies` dan `pnpm.overrides` dari `package.json`, sehingga patch `wouter` dan override `nanoid` diabaikan pada instalasi lokal. Type check dan build tetap lolos tanpa keduanya.
 
 ## Alur wajib sebelum commit
@@ -44,18 +46,18 @@ Langkah salin manifest tidak otomatis. Panel bukti mengimpor `client/src/lib/art
 
 ### Aliran data satu arah
 
-`historicalExperiments.ts` (arsip `HD-*`, `HB-*`, `RP-E*`, `RP-F*`) di-*spread* ke akhir array `experiments` dalam `experimentData.ts`. Seluruh UI — peta, filter, lembar bukti, minimap, ekspor PNG — membaca satu array tersebut. Menambah keluarga node baru berarti cukup memasukkannya ke salah satu katalog dengan kontrak `Experiment` yang sama; tidak ada jalur khusus per komponen.
+Tiga katalog terpisah di-*spread* ke akhir array `experiments` dalam `experimentData.ts`: `historicalExperiments.ts` (arsip `HD-*`, `HB-*`, `RP-E*`, `RP-F*`), `pipelinePertandanExperiments.ts` (seri `PT-E-*` awal), dan `latestProjectExpertiseExperiments.ts` (lanjutan seri `PT-E-*` beserta simpul `V2-E-*` terbaru). Simpul `V2-E-*` selebihnya dan keempat akar dataset ditulis sebagai literal di dalam `experimentData.ts` itu sendiri. Seluruh UI — peta, filter, lembar bukti, minimap, ekspor PNG — membaca satu array tersebut. Menambah keluarga node baru berarti cukup memasukkannya ke salah satu katalog dengan kontrak `Experiment` yang sama; tidak ada jalur khusus per komponen.
 
 Opsi filter dibangkitkan dari data (`FilterBar.tsx` menurunkan `projectOptions`, `eraOptions`, `phaseOptions` dari array `experiments`), sehingga metadata node yang tidak konsisten langsung muncul sebagai opsi filter baru.
 
-Tidak semua node ditulis sebagai literal. Dari 93 node, 32 di antaranya — seluruh seri `RP-E*` — dibangkitkan oleh `pipelineRecords.map(...)` di `historicalExperiments.ts`, sehingga ID-nya tidak pernah muncul sebagai `id: "RP-E..."` di dalam berkas. Mencari node dengan `grep 'id: "'` hanya menemukan 61 node dan melewatkan seluruh seri itu. Hitung node lewat `experiments.length` atau lewat `pipelineRecords`, bukan lewat pencarian teks. `scripts/audit_artifacts.py` memakai regex yang sama, sehingga seri `RP-E*` juga tidak terbaca olehnya: `artifactManifest.json` hanya memuat 61 ID unik dari 93 node. Akibatnya kedua artefak seri itu (`experiments/README.md` dan `experiments/EKSPERIMEN.md`) selalu jatuh ke cabang terakhir `getArtifactTarget` dan tampil berstatus "Perlu audit", bukan "Terverifikasi". Ini batas yang diketahui, bukan kegagalan audit.
+Tidak semua node ditulis sebagai literal. Dari 136 node, 32 di antaranya — seluruh seri `RP-E*` — dibangkitkan oleh `pipelineRecords.map(...)` di `historicalExperiments.ts`, sehingga ID-nya tidak pernah muncul sebagai `id: "RP-E..."` di dalam berkas. Mencari node pada seluruh katalog dengan `grep 'id: "'` hanya menemukan 108 ID — 104 simpul eksperimen literal ditambah empat akar dataset — dan melewatkan seluruh seri itu. Hitung node lewat `experiments.length` atau lewat `pipelineRecords`, bukan lewat pencarian teks. `scripts/audit_artifacts.py` memakai regex yang sama, sehingga seri `RP-E*` juga tidak terbaca olehnya: `artifactManifest.json` hanya memuat 104 ID unik dari 136 node. Akibatnya kedua artefak seri itu (`experiments/README.md` dan `experiments/EKSPERIMEN.md`) selalu jatuh ke cabang terakhir `getArtifactTarget` dan tampil berstatus "Perlu audit", bukan "Terverifikasi". Ini batas yang diketahui, bukan kegagalan audit.
 
 ### Posisi peta terpisah dari data node
 
 Field `position` pada `Experiment` wajib secara tipe tetapi **tidak dipakai** oleh peta. Tata letak sebenarnya berasal dari `client/src/lib/atlasLayout.ts`:
 
 - Seri aktif `V2-E-*` memakai koordinat eksplisit di objek `v2Positions`. Node baru harus ditambahkan di sana, atau ia jatuh ke baris residual di bagian bawah kanvas.
-- Keluarga arsip ditata otomatis berdasarkan prefiks ID (`HD-`, `HB-`, `RP-E`, `RP-F`) melalui `setRow`.
+- Keluarga arsip ditata otomatis berdasarkan prefiks ID (`PT-E-`, `HD-`, `HB-`, `RP-E`, `RP-F`) melalui `setRow`.
 - `atlasLanes` mendefinisikan swimlane; koordinat `v2Positions` harus selaras dengan rentang `y` lane yang dituju.
 
 ### Lineage dan penjelasan edge
@@ -84,7 +86,7 @@ Empat repositori sumber dipasangi commit pin, dan commit tersebut diulang di beb
 
 ### Biaya render peta
 
-Satu render `ExperimentGraph` menghasilkan 93 kartu node, 131 pasang `path` lineage, dan 104 `rect` minimap. Nilai yang berubah pada setiap frame — posisi gulir, posisi kursor saat menyeret — karena itu tidak boleh disimpan sebagai state React. Persegi `.minimap-viewport` ditulis langsung ke DOM melalui `viewportRectRef` dan digabungkan menjadi satu penulisan per frame oleh `updateViewport`; `zoomRef` menyediakan pembagi terkini tanpa perlu mendaftarkan ulang listener. Mengembalikannya menjadi `useState` akan memunculkan kembali long task 50–80 ms pada setiap kejadian scroll.
+Satu render `ExperimentGraph` menghasilkan 136 kartu node, 201 pasang `path` lineage, dan 151 `rect` minimap. Nilai yang berubah pada setiap frame — posisi gulir, posisi kursor saat menyeret — karena itu tidak boleh disimpan sebagai state React. Persegi `.minimap-viewport` ditulis langsung ke DOM melalui `viewportRectRef` dan digabungkan menjadi satu penulisan per frame oleh `updateViewport`; `zoomRef` menyediakan pembagi terkini tanpa perlu mendaftarkan ulang listener. Mengembalikannya menjadi `useState` akan memunculkan kembali long task 50–80 ms pada setiap kejadian scroll.
 
 ### Build, base path, dan aset
 
@@ -100,11 +102,17 @@ Font Fraunces dan IBM Plex Sans disajikan dari bundel aplikasi. Berkas woff2 ber
 
 ### Lapisan tampilan
 
-Permukaan atlas hampir seluruhnya CSS kustom berbasis nama kelas pada empat berkas global: `index.css` (grid tiga-rail dan permukaan dasar), `navigation.css` (peta, minimap, dock, fullscreen), `atlasEnhancements.css` (permukaan ledger, header, filter), `themeReaderFix.css` (kontrak terang/gelap). Tailwind v4 dan shadcn/ui (`components/ui/`) tersedia, tetapi komponen atlas tidak memakainya. Perubahan tema harus diuji pada mode terang dan gelap.
+Permukaan atlas hampir seluruhnya CSS kustom berbasis nama kelas pada lima berkas global: `index.css` (grid tiga-rail, permukaan dasar, dan aturan panel audit artefak), `navigation.css` (peta, minimap, dock, fullscreen), `atlasEnhancements.css` (permukaan ledger, header, filter), `themeReaderFix.css` (kontrak terang/gelap), serta `responsive.css` (penyesuaian lebar sempit dan ponsel). Tailwind v4 dan shadcn/ui (`components/ui/`) tersedia, tetapi komponen atlas tidak memakainya. Perubahan tema harus diuji pada mode terang dan gelap.
 
 Tema dipilih melalui kelas pada elemen root: `html.dark` untuk mode gelap dan `html.ledger-light` untuk mode terang. Warna belum ditokenkan, sehingga setiap nilai ditulis sebagai literal pada aturan terang lalu dinyatakan ulang di bawah `html.dark`.
 
-Hanya `index.css` yang membungkus aturannya dalam `@layer components`; `historical.css`, `navigation.css`, `atlasEnhancements.css`, dan `themeReaderFix.css` tidak berlapis. Deklarasi tanpa layer selalu menang atas deklarasi berlapis, berapa pun spesifisitasnya. Akibatnya, satu aturan tanpa prefiks tema di keempat berkas itu mengunci properti pada kedua tema sekaligus dan membatalkan pasangan terang/gelap di `index.css` tanpa peringatan. Setiap kali menambah aturan di sana, tuliskan nilai terang pada selektor polos lalu nyatakan ulang nilai gelapnya di bawah `html.dark`. Saat menyunting, perhatikan bahwa dua aturan dengan selektor sama **saling melengkapi**, bukan saling menimpa: hanya properti yang bertabrakan yang ditimpa. Menghapus aturan yang tampak duplikat dapat menghilangkan properti yang sebenarnya masih hidup — bandingkan properti per selektor terhadap `git show HEAD:` sebelum dan sesudah pembersihan.
+Hanya `index.css` yang membungkus aturannya dalam `@layer components`; `historical.css`, `navigation.css`, `atlasEnhancements.css`, `themeReaderFix.css`, dan `responsive.css` tidak berlapis. Deklarasi tanpa layer selalu menang atas deklarasi berlapis, berapa pun spesifisitasnya. Akibatnya, satu aturan tanpa prefiks tema di kelima berkas itu mengunci properti pada kedua tema sekaligus dan membatalkan pasangan terang/gelap di `index.css` tanpa peringatan. Setiap kali menambah aturan di sana, tuliskan nilai terang pada selektor polos lalu nyatakan ulang nilai gelapnya di bawah `html.dark`. Saat menyunting, perhatikan bahwa dua aturan dengan selektor sama **saling melengkapi**, bukan saling menimpa: hanya properti yang bertabrakan yang ditimpa. Menghapus aturan yang tampak duplikat dapat menghilangkan properti yang sebenarnya masih hidup — bandingkan properti per selektor terhadap `git show HEAD:` sebelum dan sesudah pembersihan.
+
+Urutan itu **terbalik untuk deklarasi `!important`**: deklarasi penting di dalam `@layer` mengungguli deklarasi penting tanpa layer. Karena itu `html.dark .artifact-actions a { ... !important }` di `index.css` pernah membatalkan aturan bernama sama di `themeReaderFix.css` meskipun yang terakhir tidak berlapis. Bila sebuah pasangan tema memakai `!important`, kedua salinannya harus diselaraskan, bukan hanya salinan yang tidak berlapis.
+
+`index.css` memuat satu blok `@layer components` bernilai tema terang yang ditulis pada **selektor polos tanpa prefiks tema**, termasuk keadaan `:hover`, `.is-active`, dan `.is-selected`. Blok itu berlaku pada kedua tema, sehingga setiap properti yang tidak dinyatakan ulang di bawah `html.dark` pada berkas tak berlapis akan membawa nilai terang ke peta gelap. Keadaan interaktif adalah titik paling mudah terlewat: kartu simpul dan akar dataset sempat berubah menjadi krem saat disorot atau dipilih pada mode gelap sementara tintanya tetap terang. Setelah mengubah warna, ukur kontras pada keadaan diam **dan** keadaan terpilih di kedua tema.
+
+Aturan gelap yang hanya berlaku pada tata letak satu kolom harus ditulis **di dalam** `@media (max-width: 720px)`. Di bawah lebar itu `.left-rail` memakai `display:contents`, sehingga `.brand-lockup` dan `.rail-source` duduk langsung di atas kanvas gelap `.atlas-layout`; di atas lebar itu keduanya kembali ke rail kertas krem dan memerlukan tinta gelap. Menaruh aturan semacam itu di lingkup global membuat teks terang tertulis di atas kertas terang.
 
 ## Konvensi
 

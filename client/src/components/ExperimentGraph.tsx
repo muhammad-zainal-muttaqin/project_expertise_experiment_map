@@ -213,7 +213,7 @@ export function ExperimentGraph({
   } as React.CSSProperties;
 
   /* Persegi minimap adalah satu-satunya bagian yang mengikuti posisi gulir. Menyimpannya sebagai
-     state React membuat 93 simpul, 120 path edge, dan 104 persegi minimap dirender ulang pada
+     state React membuat 136 simpul, 201 path edge, dan 151 persegi minimap dirender ulang pada
      setiap kejadian gulir — 50–80 ms skrip per frame geseran — sehingga nilainya ditulis langsung
      ke DOM dan digabungkan menjadi satu penulisan per frame animasi. zoomRef menyediakan pembagi
      terkini tanpa perlu mendaftarkan ulang listener-nya. */
@@ -747,7 +747,6 @@ export function ExperimentGraph({
       <div className="graph-minimap" aria-label="Minimap atlas eksperimen">
         <div className="minimap-title">
           <span>MINIMAP ATLAS</span>
-          <small>Navigasi cepat area kanvas</small>
         </div>
         <svg
           viewBox={`0 0 ${canvasWidth} ${canvasHeight}`}
