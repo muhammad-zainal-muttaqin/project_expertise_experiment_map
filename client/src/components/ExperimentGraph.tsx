@@ -47,6 +47,19 @@ type RoutedEdge = {
 const lookup = new Map<string, GraphRecord>(
   [...datasetRoots, ...experiments].map(item => [item.id, item])
 );
+// Kartu akar dataset bukan simpul bukti, sehingga kliknya diarahkan ke eksperimen pertama yang
+// menyatakan akar itu sebagai induk. Pemetaan diturunkan dari `parentIds` agar akar dataset baru
+// ikut terhubung tanpa penyuntingan komponen; sebelumnya sasaran ditulis tetap untuk dua akar saja,
+// sehingga akar 763 dan Combined-1.716 selalu melompat ke lajur 352.
+const rootEntryPoints = new Map<string, string>(
+  datasetRoots
+    .map(root => {
+      const entry = experiments.find(item => item.parentIds.includes(root.id));
+      return entry ? ([root.id, entry.id] as const) : null;
+    })
+    .filter((pair): pair is readonly [string, string] => pair !== null)
+    .map(pair => [pair[0], pair[1]])
+);
 // Simpul memuat huruf berukuran 8–11px; di bawah 1,0 judulnya tidak lagi terbaca tanpa tindakan
 // zoom kedua, sehingga peta dibuka pada ukuran sebenarnya dan diperkecil hanya bila diminta.
 const DEFAULT_ZOOM = 1;
@@ -710,11 +723,11 @@ export function ExperimentGraph({
                   left: layout.positions[root.id]?.x ?? root.position.x,
                   top: layout.positions[root.id]?.y ?? root.position.y,
                 }}
-                onClick={() =>
-                  selectNode(
-                    root.id === "dataset-953" ? "V2-E-001" : "V2-E-003"
-                  )
-                }
+                disabled={!rootEntryPoints.has(root.id)}
+                onClick={() => {
+                  const entry = rootEntryPoints.get(root.id);
+                  if (entry) selectNode(entry);
+                }}
               >
                 <span>DATASET</span>
                 <strong>{root.label}</strong>

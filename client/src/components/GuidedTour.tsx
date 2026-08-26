@@ -22,7 +22,7 @@ const STORAGE_KEY = "frl-panduan-selesai";
 const NODE_COUNT = experiments.length;
 const RELATION_COUNT = experiments.reduce(
   (total, item) => total + item.parentIds.length,
-  0,
+  0
 );
 
 interface TourStep {

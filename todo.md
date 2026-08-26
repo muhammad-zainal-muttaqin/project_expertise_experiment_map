@@ -230,3 +230,9 @@
 - [x] Selaraskan aturan `!important` tombol artefak antara `index.css` dan `themeReaderFix.css`.
 - [x] Naikkan tinta sekunder ke ambang WCAG AA 4,5:1 pada kedua tema.
 - [x] Verifikasi nol pelanggaran kontras pada lebar desktop dan ponsel untuk kedua tema.
+
+## Aksi Kartu Akar Dataset
+
+- [x] Telusuri sasaran klik kartu akar dataset pada kanvas peta.
+- [x] Turunkan sasaran dari `parentIds` agar akar 763 dan Combined-1.716 membuka simpul miliknya sendiri.
+- [x] Verifikasi keempat akar memilih simpul yang benar dan kartunya berstatus aktif.
