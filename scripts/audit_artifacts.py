@@ -29,7 +29,7 @@ LATEST_PROJECT_EXPERTISE_SOURCE = {
     "key": "latest-project-expertise",
     "owner": "muhammad-zainal-muttaqin",
     "repo": "project-expertise",
-    "commit": "5d13720ee9c29faae0e60a8d1d00e0af9068646c",
+    "commit": "74b19c2b641b96d056a728ffecf56cd6ecd648b8",
 }
 HISTORICAL_SOURCES = {
     "latest-project-expertise": LATEST_PROJECT_EXPERTISE_SOURCE,

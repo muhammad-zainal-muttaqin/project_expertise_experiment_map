@@ -1,15 +1,15 @@
-/** Field Research Ledger — eksperimen sumber primer pada project-expertise commit 5d13720. */
+/** Field Research Ledger — eksperimen sumber primer pada project-expertise commit 74b19c2. */
 import type { Experiment } from "@/lib/experimentData";
 
 const latestSource = {
   repo: "project-expertise",
-  commit: "5d13720ee9c29faae0e60a8d1d00e0af9068646c",
-  url: "https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/5d13720ee9c29faae0e60a8d1d00e0af9068646c",
+  commit: "74b19c2b641b96d056a728ffecf56cd6ecd648b8",
+  url: "https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/74b19c2b641b96d056a728ffecf56cd6ecd648b8",
 };
 
 const latestPipelineSource = {
   ...latestSource,
-  url: "https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan",
+  url: "https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan",
 };
 
 const latest = "Cabang terbaru · Agu 2026";
@@ -71,6 +71,70 @@ export const latestProjectExpertiseExperiments: Experiment[] = [
     findings: "Evaluasi mengecualikan 56 gambar LONSUM sebagai keputusan scope karena distribusi kelasnya timpang. Angka ini eksplorasi terpisah, bukan baseline kanonik proyek.",
     metrics: [{ label: "RT-DETR penurunan agnostik", value: "−52%" }, { label: "RT-DETR 4-kelas", value: "−71%" }, { label: "YOLO26x luar-domain agnostik", value: "0,5877" }, { label: "Citra evaluasi", value: "996 · LONSUM dikecualikan" }],
     artifacts: ["results/local_eval_combined1716_no_lonsum/summary.json", "docs/EDA-COMBINED1716.md"], parentIds: ["V2-E-040", "V2-E-035"], position: p, era: latest, source: latestSource, sourceKey: "latest-project-expertise",
+  },
+  {
+    id: "V2-E-042", title: "Verifikasi bobot remote dan garis dasar pipeline empat sisi", date: "27 Agu 2026", phase: "Pipeline empat sisi · diagnosis", dataset: "Lintas-dataset", inputs: ["RGB", "Multi-view", "WBF", "Counting"], model: "Enam detektor · WBF · prior rotasi", seeds: "12 evaluasi · test 953/Depth terkunci", status: "supported",
+    conclusion: "Verifikasi lokal mengonfirmasi bahwa recall proposal sudah tinggi, tetapi duplikasi klaster menurunkan presisi dan merusak pencacahan; hambatan utama pipeline berada pada asosiasi lintas-sisi.",
+    findings: "Pada 953, pipeline menghasilkan 3.366 klaster untuk 1.342 tandan acuan meskipun recall fisik 0,9344. Diagnosis ini menjadi dasar pengetatan proposal, penaut, dan lapisan pencacahan berikutnya.",
+    metrics: [{ label: "F1 fisik 953", value: "0,5327" }, { label: "MAE 953", value: "14,993" }, { label: "F1 fisik Depth", value: "0,6140" }, { label: "MAE Depth", value: "4,518" }],
+    artifacts: ["experiments/EKSPERIMEN.md", "results/remote_eval_2026-08-27/README.md", "results/remote_eval_2026-08-27/metrics/pipeline_combined1716_testsets.json"], parentIds: ["V2-E-039", "V2-E-040", "V2-E-041"], position: p, era: latest, source: latestSource, sourceKey: "latest-project-expertise",
+  },
+  {
+    id: "V2-E-043", title: "Pengetatan proposal dan penaut dari sapuan pada data uji", date: "27 Agu 2026", phase: "Pipeline empat sisi · batas atas rekayasa", dataset: "Lintas-dataset", inputs: ["Prediksi tersimpan", "Multi-view", "Sweep", "Counting"], model: "WBF · penaut greedy/test-tuned", seeds: "sapuan deterministik pada data uji", status: "audit_needed",
+    conclusion: "Pengetatan proposal dan penaut membuktikan secara mekanistis bahwa duplikasi klaster dapat ditekan, tetapi skor terbaik dipilih langsung dari test sehingga hanya sah dibaca sebagai batas atas rekayasa.",
+    findings: "Jumlah klaster 953 turun dari 3.366 menjadi 1.358 dan MAE turun 13,348 tandan per pohon. Ambang wajib dikunci ulang dari TRAIN/VALID sebelum hasil dapat ditafsirkan sebagai estimasi generalisasi.",
+    metrics: [{ label: "F1 Depth", value: "0,6140 → 0,8590" }, { label: "MAE Depth", value: "4,518 → 0,818" }, { label: "F1 953", value: "0,5327 → 0,8296" }, { label: "MAE 953", value: "14,993 → 1,644" }],
+    artifacts: ["experiments/EKSPERIMEN.md", "results/remote_eval_2026-08-27/OPTIMIZED_PIPELINE.md", "results/remote_eval_2026-08-27/PIPELINE_EXPERIMENTS_V3.md"], parentIds: ["V2-E-042"], position: p, era: latest, source: latestSource, sourceKey: "latest-project-expertise",
+  },
+  {
+    id: "V2-E-044", title: "Pengklasifikasi citra terpotong RGB lima epoch", date: "27 Agu 2026", phase: "Pipeline empat sisi · klasifikasi", dataset: "SawitMVC-953", inputs: ["RGB", "Crop classifier", "Ordinal", "Ensemble"], model: "ConvNeXt-Tiny · softmax + CORAL", seeds: "seed 42 · 5 epoch", status: "negative",
+    conclusion: "Penggantian penuh probabilitas detektor dengan pengklasifikasi citra terpotong menurunkan klasifikasi end-to-end; campuran 25% hanya memberi kenaikan sangat kecil pada test yang juga dipakai untuk memilihnya.",
+    findings: "Model dilatih pada kotak acuan, sedangkan penerapan menerima proposal WBF. Pergeseran distribusi ini menurunkan akurasi kelas 7,76 poin persentase pada penggantian penuh.",
+    metrics: [{ label: "Akurasi kelas detektor", value: "70,71%" }, { label: "Akurasi kelas C2", value: "62,95%" }, { label: "Makro-F1 detektor", value: "0,5410" }, { label: "Makro-F1 blend 25%", value: "0,5469", note: "test-selected" }],
+    artifacts: ["experiments/EKSPERIMEN.md", "results/remote_eval_2026-08-27/classifier_c2/remote953_c2_rgb_5ep_jitter10.json", "results/remote_eval_2026-08-27/sweeps/sweep_combined1716_953_c2blend025.json"], parentIds: ["V2-E-043"], position: p, era: latest, source: latestSource, sourceKey: "latest-project-expertise",
+  },
+  {
+    id: "V2-E-045", title: "Pipeline sadar-cacah yang dikunci dari validasi", date: "27 Agu 2026", phase: "Pipeline empat sisi · uji terkunci", dataset: "Lintas-dataset", inputs: ["Multi-view", "Validation lock", "Ridge", "Counting"], model: "WBF · prior rotasi · Ridge TRAIN-only", seeds: "CV TRAIN 5 lipatan · satu pembukaan uji", status: "supported",
+    conclusion: "Profil yang dipilih dari TRAIN/VALID mempertahankan sebagian besar perbaikan pipeline tanpa memilih ambang dari test dan menjadi garis dasar pembanding test-locked untuk iterasi V2.",
+    findings: "Jarak terhadap hasil test-tuned mengukur bias optimisme sekitar 5,2 poin F1 pada Depth dan 2,5 poin pada 953. Test lokal pernah dibaca pada iterasi historis sehingga bukan hold-out publikasi yang sepenuhnya murni.",
+    metrics: [{ label: "F1 test Depth", value: "0,8069" }, { label: "MAE test Depth", value: "0,891" }, { label: "F1 test 953", value: "0,8043" }, { label: "MAE test 953", value: "1,393" }],
+    artifacts: ["experiments/EKSPERIMEN.md", "results/remote_eval_2026-08-27/metrics/pipeline_combined1716_generalization_locked.json", "results/remote_eval_2026-08-27/PIPELINE_EXPERIMENTS_V3.md"], parentIds: ["V2-E-043", "V2-E-044"], position: p, era: latest, source: latestSource, sourceKey: "latest-project-expertise",
+  },
+  {
+    id: "V2-E-046", title: "GSP dan re-ranking terpelajar pada uji terkunci", date: "28 Agu 2026", phase: "Pipeline V2 · uji terkunci", dataset: "Lintas-dataset", inputs: ["Multi-view", "GSP", "Learned linker", "Bootstrap"], model: "GSP MILP · p_tp re-ranker", seeds: "500 citra + 5.000 pohon bootstrap", status: "supported",
+    conclusion: "GSP meningkatkan F1 fisik secara signifikan pada kedua dataset, sedangkan re-ranking deteksi memberi kenaikan mAP yang didukung hanya pada 953; profil sadar-kelas Depth mengalami penurunan dan tidak dipromosikan.",
+    findings: "ID ini berasal dari subjek commit integrasi `V2-E-046 record validation backbone wave`, tetapi tidak tercantum sebagai entri pada berkas register. Angka atlas berasal langsung dari lembar bukti dan JSON uji terkunci.",
+    metrics: [{ label: "Δ F1 953", value: "+0,0344", note: "CI [+0,0209; +0,0477]" }, { label: "Δ F1 Depth", value: "+0,0465", note: "CI [+0,0257; +0,0690]" }, { label: "Δ mAP50 953", value: "+0,0108", note: "CI [+0,0030; +0,0194]" }, { label: "Δ mAP50 Depth", value: "−0,0139", note: "CI [−0,0284; +0,0016]" }],
+    artifacts: ["results/remote_eval_2026-08-28/GSP_LINKER.md", "results/remote_eval_2026-08-28/MAP_BOOST.md", "results/remote_eval_2026-08-28/ci_artifacts/CI_SUMMARY.md", "results/remote_eval_2026-08-28/ci_artifacts/e2e_paired_test.json"], parentIds: ["V2-E-045"], position: p, era: latest, source: latestSource, sourceKey: "latest-project-expertise",
+  },
+  {
+    id: "V2-E-047", title: "Komposisi lintas-lapis topology, count, dan class head", date: "28 Agu 2026", phase: "Pipeline V2 · validation-only", dataset: "SawitMVC-Depth-763", inputs: ["GSP", "Counting", "Class calibration", "Bootstrap"], model: "Original GSP · V2 geo Ridge · scale_macro", seeds: "117 pohon VALID · 5.000 bootstrap", status: "inconclusive",
+    conclusion: "Komposisi lintas-lapis menghasilkan peningkatan titik estimasi pada seluruh metrik utama tanpa menurunkan akurasi ±1, tetapi seluruh selang kepercayaan delta masih mencakup nilai nol.",
+    findings: "Kandidat mempertahankan topology GSP, meminjam target pencacahan V2 geo, lalu menerapkan kalibrasi kelas. ID hanya muncul sebagai judul bagian pada STATUS, bukan entri penuh pada register. Hasil belum dijalankan pada TEST dan tidak mengganti profil terkunci.",
+    metrics: [{ label: "F1 fisik", value: "0,8526 → 0,8542" }, { label: "MAE", value: "0,9316 → 0,9145" }, { label: "Akurasi kelas", value: "0,8457 → 0,8500" }, { label: "Makro-F1", value: "0,6807 → 0,6890" }],
+    confidence: { label: "CI 95% Δ makro-F1", value: "[−0,0154; +0,0330]" },
+    artifacts: ["results/remote_eval_2026-08-28/validation_wave/WAVE2_RECAP.md", "results/remote_eval_2026-08-28/validation_wave/reports/depth_topology_count_class_combo_results_val.json", "results/remote_eval_2026-08-28/validation_wave/reports/depth_topology_count_class_bootstrap_val.json"], parentIds: ["V2-E-046"], position: p, era: latest, source: latestSource, sourceKey: "latest-project-expertise",
+  },
+  {
+    id: "V2-E-048", title: "Audit retraining composition-aware", date: "28 Agu 2026", phase: "Pipeline V2 · kontrol negatif", dataset: "SawitMVC-Depth-763", inputs: ["Multi-view", "Composition-aware", "Class head"], model: "Member head dilatih ulang pada komposisi TRAIN", seeds: "TRAIN/VALID-only", status: "negative",
+    conclusion: "Melatih ulang kepala anggota pada komposisi yang tepat tidak mengungguli kepala terkalibrasi yang sudah ada, sehingga cabang ini dipertahankan sebagai kontrol negatif.",
+    findings: "ID ini disebut melalui commit audit tetapi belum memiliki entri penuh tersendiri di experiments/EKSPERIMEN.md. Akurasi matched tetap sama dan makro-F1 menurun.",
+    metrics: [{ label: "Matched baru", value: "0,8500" }, { label: "Matched acuan", value: "0,8500" }, { label: "Makro-F1 baru", value: "0,6850" }, { label: "Makro-F1 acuan", value: "0,6890" }],
+    artifacts: ["results/remote_eval_2026-08-28/PERFORMANCE_WAVE_2026-08-28.md", "results/remote_eval_2026-08-28/validation_wave/reports/depth_composition_aware_head_results_val.json"], parentIds: ["V2-E-047"], position: p, era: latest, source: latestSource, sourceKey: "latest-project-expertise",
+  },
+  {
+    id: "V2-RGBD4-001", title: "Ablasi terkontrol fusi awal RGB+D4 pada new763", date: "28 Agu 2026", phase: "RGB+D4 · khusus validasi", dataset: "SawitMVC-Depth-763", inputs: ["RGB", "Depth", "Early fusion", "Bootstrap"], model: "YOLO26l · RT-DETR-L · RF-DETR-L", seeds: "seed 42 · 468 citra VALID", status: "negative",
+    conclusion: "Penambahan depth terproyeksi sebagai kanal keempat tidak menunjukkan keunggulan performa yang konsisten pada tiga arsitektur; seluruh selang kepercayaan delta mAP50 mencakup nilai nol.",
+    findings: "YOLO26l pada dasarnya tetap, RF-DETR-L menurun sebagai titik estimasi, dan RT-DETR-L meningkat kecil. TEST sengaja tidak dimaterialkan; ID node ini adalah identitas atlas karena eksperimen sumber belum diberi V2-E resmi.",
+    metrics: [{ label: "Δ YOLO26l", value: "+0,0002", note: "CI [−0,0242; +0,0289]" }, { label: "Δ RF-DETR-L", value: "−0,0112", note: "CI [−0,0370; +0,0181]" }, { label: "Δ RT-DETR-L", value: "+0,0063", note: "CI [−0,0268; +0,0397]" }, { label: "Cakupan depth valid", value: "0,286–0,288" }],
+    artifacts: ["docs/NEW763_RGBD4_DESIGN.md", "docs/NEW763_RGBD4_RESULTS.md", "results/new763_rgbd4/new763_rgbd4_summary.json"], parentIds: ["V2-E-034", "V2-E-046"], position: p, era: latest, source: latestSource, sourceKey: "latest-project-expertise",
+  },
+  {
+    id: "V2-RGBD4-002", title: "Fusi akhir tetap antara prediksi RGB dan RGB+D4", date: "28 Agu 2026", phase: "RGB+D4 · dipilih dari validasi", dataset: "SawitMVC-Depth-763", inputs: ["RGB", "Depth", "Late fusion", "NMS", "WBF"], model: "Union-NMS/WBF tetap · IoU 0,60", seeds: "468 citra VALID · 200/500 bootstrap", status: "inconclusive",
+    conclusion: "Fusi akhir memperlihatkan galat RGB dan RGB+D4 yang saling melengkapi pada YOLO26l dan RT-DETR-L, tetapi hasil dipilih dan diuji pada VALID yang sama sehingga belum menjadi klaim generalisasi.",
+    findings: "YOLO memperoleh manfaat dari union-WBF dan RT-DETR dari union-NMS; WBF class-aware justru merusak RF-DETR dan RT-DETR. Tidak ada satu resep fusi yang berlaku universal.",
+    metrics: [{ label: "YOLO union-WBF", value: "0,5677", note: "Δ +0,0379; CI [+0,0161; +0,0591]" }, { label: "RT union-NMS", value: "0,6064", note: "Δ +0,0285; CI [+0,0092; +0,0472]" }, { label: "RF union-NMS", value: "0,6069", note: "RGB 0,6082" }, { label: "TEST", value: "belum dibuka" }],
+    artifacts: ["docs/NEW763_RGBD4_RESULTS.md", "results/new763_rgbd4/yolo26l_union_wbf_bootstrap.json", "results/new763_rgbd4/rtdetr_l_union_nms_screen200_bootstrap.json", "results/new763_rgbd4/new763_rgbd4_summary.json"], parentIds: ["V2-RGBD4-001"], position: p, era: latest, source: latestSource, sourceKey: "latest-project-expertise",
   },
   {
     id: "PT-E-014", title: "Backbone ConvNeXt untuk modul klasifikasi per-tandan", date: "18 Agu 2026", phase: "Per-tandan · modul C", dataset: "SawitMVC-953", inputs: ["RGB", "Multi-view", "Crop classifier"], model: "ResNet-18 vs ConvNeXt-Tiny", seeds: "2 seed · crop GT + tautan oracle", status: "inconclusive",

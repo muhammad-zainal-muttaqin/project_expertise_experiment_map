@@ -63,6 +63,15 @@ const v2Positions: Record<string, AtlasPosition> = {
   "V2-E-039": { x: 1356, y: 1152 },
   "V2-E-040": { x: 1570, y: 1152 },
   "V2-E-041": { x: 1784, y: 1152 },
+  "V2-E-042": { x: 1998, y: 1152 },
+  "V2-E-043": { x: 2212, y: 1152 },
+  "V2-E-044": { x: 2426, y: 1152 },
+  "V2-E-045": { x: 2640, y: 1152 },
+  "V2-E-046": { x: 2854, y: 1152 },
+  "V2-E-047": { x: 3068, y: 1152 },
+  "V2-E-048": { x: 3282, y: 1152 },
+  "V2-RGBD4-001": { x: 3496, y: 1152 },
+  "V2-RGBD4-002": { x: 3710, y: 1152 },
 };
 
 export const atlasLanes: AtlasLane[] = [
@@ -101,7 +110,7 @@ export const atlasLanes: AtlasLane[] = [
   {
     id: "new-corpora",
     label: "KORPUS BARU · GENERALISASI",
-    caption: "Agu 2026 · new763, combined1716, ensemble, inferensi, dan domain shift",
+    caption: "Agu 2026 · korpus baru, pipeline V2, GSP, validasi lintas-lapis, dan RGB+D4",
     y: 1100,
     height: 210,
     tone: "audit",

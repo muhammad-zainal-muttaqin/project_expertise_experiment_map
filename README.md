@@ -12,7 +12,7 @@ Atlas menggabungkan katalog eksperimen aktif dan arsip historis dari empat repos
 
 | Sumber | Peran di atlas | Contoh identitas node |
 |---|---|---|
-| `project-expertise` | Volume 2, korpus new763/combined1716, audit generalisasi, dan pipeline per-tandan | `V2-E-001`–`V2-E-041`, `PT-E-*` |
+| `project-expertise` | Volume 2, korpus new763/combined1716, pipeline empat sisi, GSP, RGB+D4, dan pipeline per-tandan | `V2-E-001`–`V2-E-048`, `V2-RGBD4-*`, `PT-E-*` |
 | `Research-Pipeline` | Riwayat pipeline, diagnosis sensor, serta formulasi | `RP-E*`, `RP-F*` |
 | `Baseline-SawitMVC` | Baseline dan pembandingan metode | `HB-*` |
 | `research-method-dedup` | Eksperimen deduplikasi dan oracle historis | `HD-*` |
@@ -25,7 +25,7 @@ Selain atlas interaktif, empat dossier Markdown menyediakan pembacaan tekstual y
 
 | Repositori | Dossier teks | Commit audit | Cakupan khusus |
 |---|---|---|---|
-| `project-expertise` | [Buka dossier](docs/REPOSITORY-AUDIT-PROJECT-EXPERTISE.md) | [`225faaeb`](https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/225faaeb) + [`c19906bbfbb4`](https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/c19906bbfbb4/pipeline-pertandan) + [`5d13720`](https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/5d13720ee9c29faae0e60a8d1d00e0af9068646c) | Volume 2, depth sensor, dua tahap, monocular depth, new763, combined1716, domain shift, dan pipeline per-tandan PT-E. |
+| `project-expertise` | [Buka dossier](docs/REPOSITORY-AUDIT-PROJECT-EXPERTISE.md) | [`225faaeb`](https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/225faaeb) + [`c19906bbfbb4`](https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/c19906bbfbb4/pipeline-pertandan) + [`74b19c2`](https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/74b19c2b641b96d056a728ffecf56cd6ecd648b8) | Volume 2, depth sensor, dua tahap, new763, pipeline V2/GSP, RGB+D4, dan pipeline per-tandan PT-E. |
 | `Research-Pipeline` | [Buka dossier](docs/REPOSITORY-AUDIT-RESEARCH-PIPELINE.md) | [`4aa9ad6`](https://github.com/muhammad-zainal-muttaqin/Research-Pipeline/tree/4aa9ad6) | Literatur, register seri E/F, benchmark RGB final, serta audit RGB-D. |
 | `Baseline-SawitMVC` | [Buka dossier](docs/REPOSITORY-AUDIT-BASELINE-SAWITMVC.md) | [`ee2f0ac`](https://github.com/ULM-SawitMVC/Baseline-SawitMVC/tree/ee2f0ac) | Baseline deteksi→counting, oracle GT, dan matriks counter. |
 | `research-method-dedup` | [Buka dossier](docs/REPOSITORY-AUDIT-RESEARCH-METHOD-DEDUP.md) | [`a720f17`](https://github.com/muhammad-zainal-muttaqin/research-method-dedup/tree/a720f17) | Deduplikasi, audit GT, oracle counting, dan eksperimen E2E historis. |
@@ -87,7 +87,7 @@ pnpm run build:pages
 
 ## Audit Artefak
 
-Atlas tidak hanya menyimpan nama artefak. Setiap path diaudit terhadap **commit sumber yang dipasangi pin**, lalu hasilnya disimpan sebagai manifest statis agar tetap dapat dibaca di GitHub Pages. Audit terbaru mencakup **189 entri**: **177 terverifikasi**, **5 tidak tersedia**, **6 pola path** yang belum menunjuk ke berkas tunggal, dan **1 rujukan commit**. Node batch `5d13720` tidak pernah meminjam status dari snapshot lama.
+Atlas tidak hanya menyimpan nama artefak. Setiap path diaudit terhadap **commit sumber yang dipasangi pin**, lalu hasilnya disimpan sebagai manifest statis agar tetap dapat dibaca di GitHub Pages. Audit terbaru mencakup **217 entri**: **205 terverifikasi**, **5 tidak tersedia**, **6 pola path** yang belum menunjuk ke berkas tunggal, dan **1 rujukan commit**. Node batch `74b19c2` tidak pernah meminjam status dari snapshot lama.
 
 | Badge panel | Makna | Akses yang diberikan |
 |---|---|---|
@@ -122,7 +122,7 @@ client/
       experimentData.ts         # Kontrak data dan katalog eksperimen utama
       historicalExperiments.ts  # Arsip node historis dan provenance commit
       pipelinePertandanExperiments.ts # Cabang PT-E pada commit project-expertise terbaru
-      latestProjectExpertiseExperiments.ts # V2-E-034–041 dan PT-E-014–036 pada commit 5d13720
+      latestProjectExpertiseExperiments.ts # V2-E-034–048, RGBD4, dan PT-E-014–036 pada commit 74b19c2
       artifactManifest.json     # Status artefak yang dihasilkan audit dan dibaca panel
       atlasLayout.ts            # Swimlane, posisi node, dan routing edge
     pages/

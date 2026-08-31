@@ -250,6 +250,60 @@ const specialNarratives: Record<string, Partial<EvidenceNarrative>> = {
     impact: "Pola RT-DETR-L sebagai model in-domain terbaik tetapi paling rapuh di domain kamera baru berulang pada jalur pelatihan independen, memperkuat temuan V2-E-040.",
     caution: "Ini baseline eksploratif, bukan angka kanonik langsung: batch, seed, dan toolchain berbeda, serta 56 gambar LONSUM dikecualikan dari evaluasi karena distribusi kelasnya timpang.",
   },
+  "V2-E-042": {
+    kind: "Diagnosis pipeline empat sisi",
+    work: "Memverifikasi enam bobot remote pada dua kumpulan uji lokal, menggabungkan prediksi tiga detektor dengan WBF, lalu menjalankan penaut empat sisi untuk mengisolasi sumber galat hilir.",
+    impact: "Recall proposal yang tinggi tetapi presisi dan pencacahan yang buruk memindahkan fokus optimasi dari detektor menuju deduplikasi klaster dan asosiasi lintas-sisi.",
+    caution: "Skor awal pipeline adalah garis dasar diagnosis; angka tersebut belum memakai pengetatan proposal atau lapisan pencacahan yang dikunci dari validasi.",
+  },
+  "V2-E-043": {
+    kind: "Batas atas rekayasa test-tuned",
+    work: "Menyapu ambang proposal, penaut, singleton, pasangan sisi, dan ukuran klaster pada dump prediksi untuk menguji apakah duplikasi klaster dapat ditekan secara mekanistis.",
+    impact: "Penurunan jumlah klaster dan MAE mengonfirmasi diagnosis V2-E-042, tetapi hasil ini terutama berfungsi sebagai sasaran rekayasa untuk protokol yang kemudian dikunci dari TRAIN/VALID.",
+    caution: "Parameter dipilih langsung pada test; skor tidak boleh diperlakukan sebagai estimasi generalisasi atau dibandingkan dengan hasil test-locked tanpa label test-tuned.",
+  },
+  "V2-E-044": {
+    kind: "Ablasi pengklasifikasi citra terpotong",
+    work: "Melatih ConvNeXt-Tiny dengan kepala softmax dan CORAL pada citra terpotong dari kotak acuan, lalu mengganti atau mencampur probabilitas kelas WBF pada pipeline 953.",
+    impact: "Penggantian penuh ditolak; probabilitas detektor tetap menjadi jangkar kelas dan campuran kecil hanya dipertahankan sebagai petunjuk eksploratif.",
+    caution: "Campuran terbaik dipilih pada test yang sama dan kenaikannya tipis, sehingga belum dapat dipisahkan dari bias seleksi.",
+  },
+  "V2-E-045": {
+    kind: "Garis dasar pipeline test-locked",
+    work: "Melatih prior dan Ridge dari TRAIN, memilih ambang serta profil dari VALID, kemudian membuka test satu kali untuk mengukur performa pipeline tanpa pemilihan ulang dari hasil test.",
+    impact: "Node ini menjadi jangkar metodologis bagi GSP, re-ranking terpelajar, dan seluruh gelombang validasi Pipeline V2 berikutnya.",
+    caution: "Test lokal telah dibaca pada iterasi historis sebelum protokol ini, sehingga hasilnya tidak setara dengan hold-out publikasi yang sepenuhnya murni.",
+  },
+  "V2-E-046": {
+    kind: "Validasi terkunci GSP dan re-ranking",
+    work: "Mengganti asosiasi union-find dengan GSP yang membatasi satu proposal per sisi, serta menilai cabang re-ranking deteksi yang dilatih dari TRAIN dan dipilih dari VALID sebelum satu pembukaan test.",
+    impact: "GSP dipertahankan sebagai peningkatan fisik yang didukung pada kedua dataset; re-ranking dipromosikan hanya pada 953 karena profil sadar-kelas Depth tidak menunjukkan keunggulan performa.",
+    caution: "Nomor V2-E-046 berasal dari subjek commit integrasi; ID tersebut tidak tercantum sebagai entri pada berkas register experiments/EKSPERIMEN.md.",
+  },
+  "V2-E-047": {
+    kind: "Komposisi lintas-lapis validation-only",
+    work: "Mengombinasikan topology original GSP, target pencacahan V2 geo Ridge, dan kalibrasi kelas scale_macro pada 117 pohon VALID, lalu menghitung bootstrap berpasangan 5.000 kali.",
+    impact: "Kandidat memberi peningkatan titik estimasi yang konsisten arah dan disimpan sebagai komposisi VALID terkuat untuk pengujian prospektif berikutnya.",
+    caution: "ID hanya muncul sebagai judul bagian pada STATUS, bukan entri penuh pada register. Seluruh selang kepercayaan delta mencakup nilai nol dan TEST tidak dibuka ulang.",
+  },
+  "V2-E-048": {
+    kind: "Kontrol negatif composition-aware",
+    work: "Melatih ulang kepala anggota pada komposisi TRAIN yang sama dengan kandidat lintas-lapis untuk menguji apakah ketidakcocokan komposisi membatasi performa kepala sebelumnya.",
+    impact: "Hipotesis tersebut tidak didukung; kepala terkalibrasi yang sudah ada tetap dipakai dan retraining disimpan sebagai kontrol negatif yang dapat direproduksi.",
+    caution: "Nomor V2-E-048 berasal dari commit audit, sedangkan register experiments/EKSPERIMEN.md belum memuat entri penuh tersendiri.",
+  },
+  "V2-RGBD4-001": {
+    kind: "Ablasi modalitas RGB+D4",
+    work: "Membangun pasangan RGB dan depth terproyeksi empat kanal pada split pohon yang sama, lalu membandingkan YOLO26l, RT-DETR-L, dan RF-DETR-L terhadap baseline RGB dengan evaluator serta bootstrap berpasangan.",
+    impact: "Early fusion RGB+D4 tidak dipromosikan sebagai pengganti baseline RGB; hasil mengarahkan pemeriksaan berikutnya pada komplementaritas prediksi, bukan klaim manfaat kanal awal universal.",
+    caution: "Node memakai ID atlas karena sumber belum memberi ID V2-E resmi. Seluruh hasil hanya berasal dari VALID dan cakupan depth sah sekitar 28,6–28,8% grid warna.",
+  },
+  "V2-RGBD4-002": {
+    kind: "Fusi akhir RGB dan RGB+D4",
+    work: "Menggabungkan dump prediksi RGB dan RGB+D4 yang telah dibekukan menggunakan satu resep union-NMS serta kontrol union-WBF pada IoU 0,60, kemudian menghitung bootstrap VALID.",
+    impact: "Galat komplementer membuka kandidat untuk YOLO26l dan RT-DETR-L, sekaligus menunjukkan bahwa metode fusi harus dipilih per arsitektur dan tidak dapat diberlakukan secara universal.",
+    caution: "Resep ditemukan dan dinilai pada VALID yang sama; meskipun selang bootstrap positif, klaim generalisasi memerlukan evaluasi held-out baru.",
+  },
 };
 
 /**
