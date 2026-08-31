@@ -225,7 +225,7 @@ export default function Home() {
             <strong>Basis audit repositori</strong>
             <code>project-expertise@225faaeb</code>
             <br />
-            <code>project-expertise@5d13720</code>
+            <code>project-expertise@74b19c2</code>
             <br />
             <code>Research-Pipeline@4aa9ad6</code>
             <br />

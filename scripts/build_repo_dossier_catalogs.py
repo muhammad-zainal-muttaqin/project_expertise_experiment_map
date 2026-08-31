@@ -34,7 +34,7 @@ REPOSITORIES = (
             },
             {
                 "label": "Batch eksperimen terbaru",
-                "commit": "5d13720ee9c29faae0e60a8d1d00e0af9068646c",
+                "commit": "74b19c2b641b96d056a728ffecf56cd6ecd648b8",
             },
         ),
     },

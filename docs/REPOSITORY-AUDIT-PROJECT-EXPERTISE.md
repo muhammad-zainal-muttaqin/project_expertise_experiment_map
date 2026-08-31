@@ -1,6 +1,6 @@
 # Dossier Audit Repositori — project-expertise
 
-> **Fungsi dokumen.** Dossier ini adalah pembacaan tekstual untuk membandingkan atlas dengan sumber primer. Ia memetakan seluruh lintasan V2-E-001 hingga V2-E-041 dan PT-E-000 hingga PT-E-036 yang tercatat, mencatat hasil positif dan negatif, serta membedakan bukti hasil dari audit yang membatasi cara hasil itu dibaca.
+> **Fungsi dokumen.** Dossier ini adalah pembacaan tekstual untuk membandingkan atlas dengan sumber primer. Ia memetakan seluruh lintasan V2-E-001 hingga V2-E-048, dua node atlas RGB+D4, dan PT-E-000 hingga PT-E-036, mencatat hasil positif serta negatif, dan membedakan bukti hasil dari audit yang membatasi cara hasil itu dibaca.
 
 ## Identitas dan Batas Audit
 
@@ -9,7 +9,7 @@
 | Repositori | [`muhammad-zainal-muttaqin/project-expertise`](https://github.com/muhammad-zainal-muttaqin/project-expertise) |
 | Commit Volume 2 yang diaudit | [`225faaeb`](https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/225faaeb) |
 | Commit cabang per-tandan | [`c19906bbfbb4`](https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/c19906bbfbb4/pipeline-pertandan) |
-| Commit batch terbaru | [`5d13720`](https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/5d13720ee9c29faae0e60a8d1d00e0af9068646c) |
+| Commit batch terbaru | [`74b19c2`](https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/74b19c2b641b96d056a728ffecf56cd6ecd648b8) |
 | Peran dalam program riset | Volume 2: reproduksi benchmark RGB, eksperimen RGB+depth, diagnosis, dua tahap, monocular-depth, dan audit validitas; dilanjutkan cabang pipeline per-tandan. |
 | Unit utama | Deteksi B1–B4 per citra dan counting per pohon. |
 | Dataset yang tercatat | SawitMVC RGB: 953 pohon/3.992 citra; SawitMVC-Depth: 352 pohon/1.408 citra. |
@@ -47,7 +47,7 @@ Tiga commit setelah snapshot Volume 2 menambahkan `pipeline-pertandan/`: sebuah 
 
 ## Batch Terbaru — `new763`, `combined1716`, dan Pipeline DAMIMAS
 
-Batch pada commit `5d13720` memperluas dua arah sekaligus. Jalur V2 membangun baseline dan audit generalisasi pada korpus `new763` serta `combined1716`; jalur PT-E melanjutkan pipeline per-tandan menuju proposal fisik, penaut DAMIMAS, propagasi evidence lintas-view, evaluasi end-to-end, counting, dan eksperimen batas ensemble. Semua angka di bawah terikat pada commit ini; hasil cross-evaluation yang telah ditandai terkontaminasi tetap dicatat sebagai batas, bukan bukti generalisasi. [10] [11]
+Batch yang kini dipasangi pin pada commit `74b19c2` memperluas beberapa arah sekaligus. Jalur V2 membangun baseline dan audit generalisasi pada korpus `new763` serta `combined1716`; jalur PT-E melanjutkan pipeline per-tandan menuju proposal fisik, penaut DAMIMAS, propagasi bukti lintas-tampak, evaluasi end-to-end, pencacahan, dan eksperimen batas ensemble. Commit yang sama juga memuat iterasi 27–28 Agustus berupa pipeline empat sisi test-locked, GSP, re-ranking terpelajar, komposisi lintas-lapis, dan RGB+D4. Semua angka di bawah terikat pada commit ini; hasil evaluasi silang yang telah ditandai terkontaminasi tetap dicatat sebagai batas, bukan bukti generalisasi. [10] [11] [12] [13]
 
 | ID | Pertanyaan / tindakan | Putusan | Angka atau batas penting |
 |---|---|---|---|
@@ -59,6 +59,22 @@ Batch pada commit `5d13720` memperluas dua arah sekaligus. Jalur V2 membangun ba
 | V2-E-039 | Sweep ambang dan WBF | Campuran: lokalisasi didukung, WBF aware dipalsukan | AP50 agnostik WBF `0,8106`; mAP aware WBF `0,5538` < RF tunggal `0,5960`. |
 | V2-E-040 | Generalisasi lintas-domain | Didukung dengan batas kontaminasi 352 | `new763` runtuh ke 953; `combined1716` stabil; ranking arsitektur bisa terbalik. |
 | V2-E-041 | Replikasi independen lewat Ultralytics HUB | Didukung sebagai replikasi eksploratif | RT-DETR turun `−52%` agnostik dan `−71%` 4-kelas; LONSUM dikecualikan. |
+
+### Iterasi 27–28 Agustus — Pipeline Empat Sisi, GSP, dan RGB+D4
+
+| ID atlas | Pertanyaan / tindakan | Putusan | Angka atau batas penting |
+|---|---|---|---|
+| V2-E-042 | Verifikasi enam bobot remote dan garis dasar pipeline empat sisi | Didukung sebagai diagnosis | F1/MAE: Depth `0,6140/4,518`; 953 `0,5327/14,993`; duplikasi klaster dominan. |
+| V2-E-043 | Pengetatan proposal dan penaut melalui sapuan pada data uji | Audit/batas atas rekayasa | F1 naik menjadi `0,8590/0,8296`, tetapi parameter dipilih langsung pada data uji. |
+| V2-E-044 | Pengklasifikasi citra terpotong RGB lima epoch | Negatif untuk penggantian penuh | Akurasi kelas `70,71% → 62,95%`; campuran 25% hanya test-selected. |
+| V2-E-045 | Pipeline sadar-cacah yang dikunci dari TRAIN/VALID | Didukung sebagai garis dasar uji terkunci | F1 uji Depth `0,8069`; 953 `0,8043`; MAE `0,891/1,393`. |
+| V2-E-046 | GSP dan re-ranking terpelajar | Campuran: F1 didukung pada kedua dataset; mAP didukung hanya pada 953 | Δ F1 `+0,0344/+0,0465`; Δ mAP50 Depth `−0,0139`, CI mencakup nol. |
+| V2-E-047 | Komposisi topology/count/class pada VALID Depth | Belum konklusif | F1 `0,8542`, MAE `0,9145`, matched `0,8500`, makro-F1 `0,6890`; seluruh CI delta mencakup nol. |
+| V2-E-048 | Retraining composition-aware | Negatif | Matched tetap `0,8500`; makro-F1 `0,6850` < `0,6890`. |
+| V2-RGBD4-001 | Early fusion fair RGB+D4 pada tiga arsitektur | Tidak mendukung peningkatan konsisten | Δ mAP50 YOLO `+0,0002`, RF `−0,0112`, RT `+0,0063`; seluruh CI mencakup nol. |
+| V2-RGBD4-002 | Fixed late fusion RGB dan RGB+D4 | Kandidat validation-selected | YOLO union-WBF `0,5677`; RT union-NMS `0,6064`; TEST belum dibuka. |
+
+`V2-E-046` dan `V2-E-048` berasal dari subjek commit, sedangkan `V2-E-047` hanya muncul sebagai judul bagian pada `experiments/STATUS.md`; ketiganya belum memiliki entri penuh tersendiri di `experiments/EKSPERIMEN.md`. Dua ID `V2-RGBD4-*` merupakan identitas atlas karena eksperimen sumber juga belum diberi nomor `V2-E` resmi. Perbedaan administratif ini dipertahankan sebagai batas audit, bukan dirapikan secara diam-diam. [12] [13] [14]
 
 | ID | Pertanyaan / tindakan PT-E lanjutan | Putusan | Angka atau batas penting |
 |---|---|---|---|
@@ -184,7 +200,7 @@ Sampel lima run kecil dibaca melalui `args.yaml`, `hasil.json` bila tersedia, da
 
 ## Keterkaitan dengan Atlas
 
-Atlas mengimpor node V2-E-001 sampai V2-E-041 serta PT-E-000 sampai PT-E-036 yang tercatat dari kontrak data `client/src/lib/experimentData.ts` dan katalog batch terbaru. Dossier ini menggunakan ID yang sama dan mengembalikan pembaca ke artefak primer. Jika sebuah simpul dan dossier tidak sepakat, rujukan otoritatif untuk angka adalah JSON/CSV pada commit di atas; rujukan otoritatif untuk putusan adalah entri yang lebih baru di register dan auditnya. Perbedaan tersebut harus dicatat sebagai pembaruan katalog, bukan diam-diam dirapikan.
+Atlas mengimpor node V2-E-001 sampai V2-E-048, dua node atlas RGB+D4, serta PT-E-000 sampai PT-E-036 dari kontrak data `client/src/lib/experimentData.ts` dan katalog batch terbaru. Dossier ini menggunakan ID yang sama dan mengembalikan pembaca ke artefak primer. Jika sebuah simpul dan dossier tidak sepakat, rujukan otoritatif untuk angka adalah JSON/CSV pada commit di atas; rujukan otoritatif untuk putusan adalah entri yang lebih baru di register dan auditnya. Perbedaan tersebut harus dicatat sebagai pembaruan katalog, bukan diam-diam dirapikan.
 
 Artefak bucket yang dijelaskan di atas berfungsi sebagai petunjuk pemeriksaan tambahan. Ia baru dapat mengubah atlas bila konfigurasi, split, evaluator, dan artefak testnya dapat direkonstruksi, lalu hasilnya diberi sumber/tanggal bucket secara eksplisit dan diaudit kembali. Cabang PT-E berbeda: ia berasal dari commit Git `c19906bbfbb4`, sehingga setiap node dapat diaudit sebagai sumber versioned yang terpisah dari snapshot V2 `225faaeb`.
 
@@ -199,8 +215,11 @@ Artefak bucket yang dijelaskan di atas berfungsi sebagai petunjuk pemeriksaan ta
 [7]: https://huggingface.co/docs/hub/en/storage-buckets "Dokumentasi Hugging Face Storage Buckets — object storage mutable dan non-versioned"
 [8]: https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/EKSPERIMEN.md "Register eksperimen pipeline per-tandan"
 [9]: https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/c19906bbfbb4/pipeline-pertandan/STATUS.md "Status board dan gerbang bukti pipeline per-tandan"
-[10]: https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/experiments/EKSPERIMEN.md "Register V2-E-034 hingga V2-E-041 pada commit terbaru"
-[11]: https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/EKSPERIMEN.md "Register PT-E-014 hingga PT-E-036 pada commit terbaru"
+[10]: https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/experiments/EKSPERIMEN.md "Register V2-E pada commit terbaru"
+[11]: https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/EKSPERIMEN.md "Register PT-E pada commit terbaru"
+[12]: https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/PERFORMANCE_WAVE_2026-08-28.md "Lembar bukti GSP, re-ranking, dan gelombang validasi"
+[13]: https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/docs/NEW763_RGBD4_RESULTS.md "Ablasi RGB+D4 dan fixed late fusion"
+[14]: https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/docs/ANALISIS_PIPELINE_MENDALAM.md "Analisis mendalam dan audit administrasi ID eksperimen"
 
 <!-- AUTO_CATALOG_START -->
 ## Lampiran A — Katalog Artefak yang Dapat Diaudit
@@ -453,201 +472,197 @@ Tidak ada payload anotasi atau citra yang perlu dikelompokkan.
 | `.png` | 1 |
 ---
 
-### Batch eksperimen terbaru — commit `5d13720ee9c29faae0e60a8d1d00e0af9068646c`
+### Batch eksperimen terbaru — commit `74b19c2b641b96d056a728ffecf56cd6ecd648b8`
 
 | Inventaris | Jumlah | Keterangan |
 |---|---:|---|
-| Seluruh path Git | 514 | [Buka pohon commit](https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/5d13720ee9c29faae0e60a8d1d00e0af9068646c) |
-| Dokumen naratif / log | 37 | Markdown, TXT, atau RST di luar payload anotasi |
-| Hasil terstruktur | 284 | JSON, CSV, Parquet, atau NPZ di luar payload anotasi |
-| Kode dan konfigurasi | 133 | Python, shell, YAML, TOML, atau notebook |
+| Seluruh path Git | 841 | [Buka pohon commit](https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/74b19c2b641b96d056a728ffecf56cd6ecd648b8) |
+| Dokumen naratif / log | 55 | Markdown, TXT, atau RST di luar payload anotasi |
+| Hasil terstruktur | 499 | JSON, CSV, Parquet, atau NPZ di luar payload anotasi |
+| Kode dan konfigurasi | 225 | Python, shell, YAML, TOML, atau notebook |
 | Payload anotasi atau citra dikelompokkan | 0 | Diwakili direktori agar catalogue tetap dapat dibaca |
 
 ### Dokumen Naratif dan Log
 
-- [`.agents/rules/perbaikan-bahasa-penyampaian.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/.agents/rules/perbaikan-bahasa-penyampaian.md)
-- [`.agents/skills/perbaikan-bahasa-penyampaian/SKILL.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/.agents/skills/perbaikan-bahasa-penyampaian/SKILL.md)
-- [`AGENTS.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/AGENTS.md)
-- [`CLAUDE.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/CLAUDE.md)
-- [`IDEA.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/IDEA.md)
-- [`PIPELINE_DAMIMAS.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/PIPELINE_DAMIMAS.md)
-- [`README.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/README.md)
-- [`docs/CATATAN-TEKNIS-FASE1.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/docs/CATATAN-TEKNIS-FASE1.md)
-- [`docs/DATASET.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/docs/DATASET.md)
-- [`docs/DIAGNOSIS-DEPTH.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/docs/DIAGNOSIS-DEPTH.md)
-- [`docs/EDA-COMBINED1716.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/docs/EDA-COMBINED1716.md)
-- [`docs/LAPORAN-AKHIR.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/docs/LAPORAN-AKHIR.md)
-- [`docs/NEW763_BASELINE.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/docs/NEW763_BASELINE.md)
-- [`docs/REGENERASI.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/docs/REGENERASI.md)
-- [`docs/REKAP.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/docs/REKAP.md)
-- [`docs/RENCANA.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/docs/RENCANA.md)
-- [`docs/REPRODUKSI-FASE6.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/docs/REPRODUKSI-FASE6.md)
-- [`docs/SCHEMA-PERTREE.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/docs/SCHEMA-PERTREE.md)
-- [`docs/WORKFLOW_KRONOLOGIS.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/docs/WORKFLOW_KRONOLOGIS.md)
-- [`experiments/EKSPERIMEN.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/experiments/EKSPERIMEN.md)
-- [`experiments/STATUS.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/experiments/STATUS.md)
-- [`pipeline-pertandan/CLAUDE.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/CLAUDE.md)
-- [`pipeline-pertandan/EKSPERIMEN.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/EKSPERIMEN.md)
-- [`pipeline-pertandan/README.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/README.md)
-- [`pipeline-pertandan/STATUS.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/STATUS.md)
-- [`pipeline-pertandan/docs/HASIL.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/docs/HASIL.md)
-- [`pipeline-pertandan/docs/PROPOSAL.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/docs/PROPOSAL.md)
-- [`pipeline-pertandan/docs/RINGKASAN-SESI-2026-08-18.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/docs/RINGKASAN-SESI-2026-08-18.md)
-- [`requirements-freeze.txt`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/requirements-freeze.txt)
-- [`results/local_eval_combined1716_no_lonsum/logs_ringkas/rt-detr-l_e60_bs64.txt`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/results/local_eval_combined1716_no_lonsum/logs_ringkas/rt-detr-l_e60_bs64.txt)
-- [`results/local_eval_combined1716_no_lonsum/logs_ringkas/rt-detr_e60_bs16_4class.txt`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/results/local_eval_combined1716_no_lonsum/logs_ringkas/rt-detr_e60_bs16_4class.txt)
-- [`results/local_eval_combined1716_no_lonsum/logs_ringkas/y26l_e60_b16_4class.txt`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/results/local_eval_combined1716_no_lonsum/logs_ringkas/y26l_e60_b16_4class.txt)
-- [`results/local_eval_combined1716_no_lonsum/logs_ringkas/y26l_e60_bs64_p15.txt`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/results/local_eval_combined1716_no_lonsum/logs_ringkas/y26l_e60_bs64_p15.txt)
-- [`results/local_eval_combined1716_no_lonsum/logs_ringkas/y26x_e60_b16_4class.txt`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/results/local_eval_combined1716_no_lonsum/logs_ringkas/y26x_e60_b16_4class.txt)
-- [`results/local_eval_combined1716_no_lonsum/logs_ringkas/y26x_e60_bs64_p15.txt`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/results/local_eval_combined1716_no_lonsum/logs_ringkas/y26x_e60_bs64_p15.txt)
-- [`splits_fase6/pretrain953_images.txt`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/splits_fase6/pretrain953_images.txt)
-- [`splits_fase6/pretrain953_trees.txt`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/splits_fase6/pretrain953_trees.txt)
+- [`.agents/rules/perbaikan-bahasa-penyampaian.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/.agents/rules/perbaikan-bahasa-penyampaian.md)
+- [`.agents/skills/perbaikan-bahasa-penyampaian/SKILL.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/.agents/skills/perbaikan-bahasa-penyampaian/SKILL.md)
+- [`AGENTS.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/AGENTS.md)
+- [`CLAUDE.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/CLAUDE.md)
+- [`HANDOFF.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/HANDOFF.md)
+- [`IDEA.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/IDEA.md)
+- [`PIPELINE_DAMIMAS.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/PIPELINE_DAMIMAS.md)
+- [`PROPOSAL-Pipeline.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/PROPOSAL-Pipeline.md)
+- [`README.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/README.md)
+- [`docs/ANALISIS_PIPELINE_MENDALAM.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/docs/ANALISIS_PIPELINE_MENDALAM.md)
+- [`docs/CATATAN-TEKNIS-FASE1.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/docs/CATATAN-TEKNIS-FASE1.md)
+- [`docs/DATASET.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/docs/DATASET.md)
+- [`docs/DIAGNOSIS-DEPTH.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/docs/DIAGNOSIS-DEPTH.md)
+- [`docs/EDA-COMBINED1716.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/docs/EDA-COMBINED1716.md)
+- [`docs/LAPORAN-AKHIR.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/docs/LAPORAN-AKHIR.md)
+- [`docs/NEW763_BASELINE.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/docs/NEW763_BASELINE.md)
+- [`docs/NEW763_RGBD4_DESIGN.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/docs/NEW763_RGBD4_DESIGN.md)
+- [`docs/NEW763_RGBD4_RESULTS.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/docs/NEW763_RGBD4_RESULTS.md)
+- [`docs/REGENERASI.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/docs/REGENERASI.md)
+- [`docs/REKAP.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/docs/REKAP.md)
+- [`docs/RENCANA.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/docs/RENCANA.md)
+- [`docs/REPRODUKSI-FASE6.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/docs/REPRODUKSI-FASE6.md)
+- [`docs/SCHEMA-PERTREE.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/docs/SCHEMA-PERTREE.md)
+- [`docs/WORKFLOW_KRONOLOGIS.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/docs/WORKFLOW_KRONOLOGIS.md)
+- [`experiments/EKSPERIMEN.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/experiments/EKSPERIMEN.md)
+- [`experiments/STATUS.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/experiments/STATUS.md)
+- [`pipeline-pertandan/CLAUDE.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/CLAUDE.md)
+- [`pipeline-pertandan/EKSPERIMEN.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/EKSPERIMEN.md)
+- [`pipeline-pertandan/README.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/README.md)
+- [`pipeline-pertandan/STATUS.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/STATUS.md)
+- [`pipeline-pertandan/docs/HASIL.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/docs/HASIL.md)
+- [`pipeline-pertandan/docs/PROPOSAL.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/docs/PROPOSAL.md)
+- [`pipeline-pertandan/docs/RINGKASAN-SESI-2026-08-18.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/docs/RINGKASAN-SESI-2026-08-18.md)
+- [`requirements-freeze.txt`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/requirements-freeze.txt)
+- [`results/local_eval_combined1716_no_lonsum/logs_ringkas/rt-detr-l_e60_bs64.txt`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/local_eval_combined1716_no_lonsum/logs_ringkas/rt-detr-l_e60_bs64.txt)
+- [`results/local_eval_combined1716_no_lonsum/logs_ringkas/rt-detr_e60_bs16_4class.txt`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/local_eval_combined1716_no_lonsum/logs_ringkas/rt-detr_e60_bs16_4class.txt)
+- [`results/local_eval_combined1716_no_lonsum/logs_ringkas/y26l_e60_b16_4class.txt`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/local_eval_combined1716_no_lonsum/logs_ringkas/y26l_e60_b16_4class.txt)
+- [`results/local_eval_combined1716_no_lonsum/logs_ringkas/y26l_e60_bs64_p15.txt`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/local_eval_combined1716_no_lonsum/logs_ringkas/y26l_e60_bs64_p15.txt)
+- [`results/local_eval_combined1716_no_lonsum/logs_ringkas/y26x_e60_b16_4class.txt`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/local_eval_combined1716_no_lonsum/logs_ringkas/y26x_e60_b16_4class.txt)
+- [`results/local_eval_combined1716_no_lonsum/logs_ringkas/y26x_e60_bs64_p15.txt`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/local_eval_combined1716_no_lonsum/logs_ringkas/y26x_e60_bs64_p15.txt)
+- [`results/remote_eval_2026-08-27/MANIFEST.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-27/MANIFEST.md)
+- [`results/remote_eval_2026-08-27/OPTIMIZED_PIPELINE.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-27/OPTIMIZED_PIPELINE.md)
+- [`results/remote_eval_2026-08-27/PIPELINE_EXPERIMENTS_V3.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-27/PIPELINE_EXPERIMENTS_V3.md)
+- [`results/remote_eval_2026-08-27/README.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-27/README.md)
+- [`results/remote_eval_2026-08-28/GSP_LINKER.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/GSP_LINKER.md)
+- [`results/remote_eval_2026-08-28/MAP_BOOST.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/MAP_BOOST.md)
+- [`results/remote_eval_2026-08-28/PERFORMANCE_WAVE_2026-08-28.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/PERFORMANCE_WAVE_2026-08-28.md)
+- [`results/remote_eval_2026-08-28/SHA256SUMS.validation_wave.txt`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/SHA256SUMS.validation_wave.txt)
+- [`results/remote_eval_2026-08-28/ci_artifacts/CI_SUMMARY.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/ci_artifacts/CI_SUMMARY.md)
+- [`results/remote_eval_2026-08-28/validation_wave/WAVE2_RECAP.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/WAVE2_RECAP.md)
+- [`results/remote_eval_2026-08-28/validation_wave/ci_artifacts/CI_SUMMARY.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/ci_artifacts/CI_SUMMARY.md)
+- [`results/remote_eval_2026-08-28/validation_wave/reports/953_cluster_head_val_bootstrap.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/reports/953_cluster_head_val_bootstrap.md)
+- [`results/remote_eval_2026-08-28/validation_wave/reports/depth_cluster_head_val_bootstrap.md`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/reports/depth_cluster_head_val_bootstrap.md)
+- [`splits_fase6/pretrain953_images.txt`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/splits_fase6/pretrain953_images.txt)
+- [`splits_fase6/pretrain953_trees.txt`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/splits_fase6/pretrain953_trees.txt)
 
 ### Hasil Terstruktur — JSON, CSV, Parquet, NPZ
 
-- [`splits_fase6/agnostic_ringkas.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/splits_fase6/agnostic_ringkas.json)
-- [`splits_fase6/pretrain953_meta.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/splits_fase6/pretrain953_meta.json)
+- [`splits_fase6/agnostic_ringkas.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/splits_fase6/agnostic_ringkas.json)
+- [`splits_fase6/pretrain953_meta.json`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/splits_fase6/pretrain953_meta.json)
 
 | Direktori bervolume tinggi | Jumlah path | Inspeksi manual |
 |---|---:|---|
-| `pipeline-pertandan/` | 112 | [Buka seluruh isi pada commit](https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan) |
-| `results/` | 170 | [Buka seluruh isi pada commit](https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/5d13720ee9c29faae0e60a8d1d00e0af9068646c/results) |
+| `pipeline-pertandan/` | 112 | [Buka seluruh isi pada commit](https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan) |
+| `results/` | 385 | [Buka seluruh isi pada commit](https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results) |
 
 ### Kode, Konfigurasi, dan Notebook
 
-- [`configs/new763_abs.yaml`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/configs/new763_abs.yaml)
-- [`configs/new763_rgb_abs.yaml`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/configs/new763_rgb_abs.yaml)
-- [`pipeline-pertandan/scripts/audit_counting_total_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/audit_counting_total_damimas.py)
-- [`pipeline-pertandan/scripts/bangun_crop_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/bangun_crop_damimas.py)
-- [`pipeline-pertandan/scripts/c3_multitampak.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/c3_multitampak.py)
-- [`pipeline-pertandan/scripts/c_backbone_ordinal.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/c_backbone_ordinal.py)
-- [`pipeline-pertandan/scripts/ci_gnn.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/ci_gnn.py)
-- [`pipeline-pertandan/scripts/classifier_coral_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/classifier_coral_damimas.py)
-- [`pipeline-pertandan/scripts/classifier_deteksi_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/classifier_deteksi_damimas.py)
-- [`pipeline-pertandan/scripts/classifier_hibrida_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/classifier_hibrida_damimas.py)
-- [`pipeline-pertandan/scripts/classifier_klasik_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/classifier_klasik_damimas.py)
-- [`pipeline-pertandan/scripts/counting_catboost_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/counting_catboost_damimas.py)
-- [`pipeline-pertandan/scripts/counting_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/counting_damimas.py)
-- [`pipeline-pertandan/scripts/counting_multibank_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/counting_multibank_damimas.py)
-- [`pipeline-pertandan/scripts/des_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/des_damimas.py)
-- [`pipeline-pertandan/scripts/endtoend_gabungan.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/endtoend_gabungan.py)
-- [`pipeline-pertandan/scripts/ensemble_bagged_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/ensemble_bagged_damimas.py)
-- [`pipeline-pertandan/scripts/ensemble_c.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/ensemble_c.py)
-- [`pipeline-pertandan/scripts/ensemble_classifier_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/ensemble_classifier_damimas.py)
-- [`pipeline-pertandan/scripts/ensemble_kelas_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/ensemble_kelas_damimas.py)
-- [`pipeline-pertandan/scripts/eval_counting.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/eval_counting.py)
-- [`pipeline-pertandan/scripts/eval_counting_baseline.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/eval_counting_baseline.py)
-- [`pipeline-pertandan/scripts/eval_endtoend.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/eval_endtoend.py)
-- [`pipeline-pertandan/scripts/eval_endtoend_global_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/eval_endtoend_global_damimas.py)
-- [`pipeline-pertandan/scripts/eval_pertandan.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/eval_pertandan.py)
-- [`pipeline-pertandan/scripts/eval_pertandan_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/eval_pertandan_damimas.py)
-- [`pipeline-pertandan/scripts/eval_rem_hitung.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/eval_rem_hitung.py)
-- [`pipeline-pertandan/scripts/gate_pola_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/gate_pola_damimas.py)
-- [`pipeline-pertandan/scripts/gnn_deteksi.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/gnn_deteksi.py)
-- [`pipeline-pertandan/scripts/gnn_penaut.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/gnn_penaut.py)
-- [`pipeline-pertandan/scripts/infer_skor_penuh.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/infer_skor_penuh.py)
-- [`pipeline-pertandan/scripts/jalankan_ide.sh`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/jalankan_ide.sh)
-- [`pipeline-pertandan/scripts/laporkan_kepala_linker_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/laporkan_kepala_linker_damimas.py)
-- [`pipeline-pertandan/scripts/linker_global_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/linker_global_damimas.py)
-- [`pipeline-pertandan/scripts/moe_classifier_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/moe_classifier_damimas.py)
-- [`pipeline-pertandan/scripts/moe_view_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/moe_view_damimas.py)
-- [`pipeline-pertandan/scripts/penaut_pertandan.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/penaut_pertandan.py)
-- [`pipeline-pertandan/scripts/probe_penautan_953.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/probe_penautan_953.py)
-- [`pipeline-pertandan/scripts/reid_pertandan.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/reid_pertandan.py)
-- [`pipeline-pertandan/scripts/rekonsiliasi_pohon_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/rekonsiliasi_pohon_damimas.py)
-- [`pipeline-pertandan/scripts/sapu_ambang_gnn.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/sapu_ambang_gnn.py)
-- [`pipeline-pertandan/scripts/sapu_conf.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/sapu_conf.py)
-- [`pipeline-pertandan/scripts/set_transformer_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/set_transformer_damimas.py)
-- [`pipeline-pertandan/scripts/spesialis_batas_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/spesialis_batas_damimas.py)
-- [`pipeline-pertandan/scripts/stacker_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/stacker_damimas.py)
-- [`pipeline-pertandan/scripts/uji_352.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/uji_352.py)
-- [`pipeline-pertandan/scripts/validasi_dump.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/pipeline-pertandan/scripts/validasi_dump.py)
-- [`results/riwayat_epoch/sel3_352_rgbmono__args.yaml`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/results/riwayat_epoch/sel3_352_rgbmono__args.yaml)
-- [`results/riwayat_epoch/sel4_352_rgbedgemono__args.yaml`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/results/riwayat_epoch/sel4_352_rgbedgemono__args.yaml)
-- [`results/riwayat_epoch/sel6_953_rgbmono__args.yaml`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/results/riwayat_epoch/sel6_953_rgbmono__args.yaml)
-- [`results/riwayat_epoch_combined1716/combined1716_rtdetr_l_rgb_s42_i1280__args.yaml`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/results/riwayat_epoch_combined1716/combined1716_rtdetr_l_rgb_s42_i1280__args.yaml)
-- [`results/riwayat_epoch_combined1716/combined1716_yolo26l_rgb_s42_i1280__args.yaml`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/results/riwayat_epoch_combined1716/combined1716_yolo26l_rgb_s42_i1280__args.yaml)
-- [`results/riwayat_epoch_new763/rtdetr_l_rgb_s42_i1280__args.yaml`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/results/riwayat_epoch_new763/rtdetr_l_rgb_s42_i1280__args.yaml)
-- [`results/riwayat_epoch_new763/yolo26l_rgb_s42_i1280__args.yaml`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/results/riwayat_epoch_new763/yolo26l_rgb_s42_i1280__args.yaml)
-- [`scripts/adapters/common_pertree.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/adapters/common_pertree.py)
-- [`scripts/adapters/rfdetr_to_pertree.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/adapters/rfdetr_to_pertree.py)
-- [`scripts/adapters/rtdetr_to_pertree.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/adapters/rtdetr_to_pertree.py)
-- [`scripts/adapters/yolo_to_pertree.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/adapters/yolo_to_pertree.py)
-- [`scripts/bootstrap_ci.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/bootstrap_ci.py)
-- [`scripts/bootstrap_map.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/bootstrap_map.py)
-- [`scripts/bootstrap_map_from_npz.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/bootstrap_map_from_npz.py)
-- [`scripts/bootstrap_nch.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/bootstrap_nch.py)
-- [`scripts/buat_agnostic352_4ch.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/buat_agnostic352_4ch.py)
-- [`scripts/buat_dataset_agnostik_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/buat_dataset_agnostik_damimas.py)
-- [`scripts/buat_dataset_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/buat_dataset_damimas.py)
-- [`scripts/buat_dataset_nch.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/buat_dataset_nch.py)
-- [`scripts/buat_dataset_rfdetr_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/buat_dataset_rfdetr_damimas.py)
-- [`scripts/buat_mono_depth.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/buat_mono_depth.py)
-- [`scripts/buat_test_953_bersih.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/buat_test_953_bersih.py)
-- [`scripts/build_4ch_dataset.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/build_4ch_dataset.py)
-- [`scripts/build_combined_rgb_dataset.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/build_combined_rgb_dataset.py)
-- [`scripts/build_crop_dataset.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/build_crop_dataset.py)
-- [`scripts/compile_matrix.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/compile_matrix.py)
-- [`scripts/convert_rfdetr_checkpoints.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/convert_rfdetr_checkpoints.py)
-- [`scripts/create_depth_edge_dataset.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/create_depth_edge_dataset.py)
-- [`scripts/dump_classaware.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/dump_classaware.py)
-- [`scripts/eval_agnostic_from_npz.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/eval_agnostic_from_npz.py)
-- [`scripts/eval_all_pycoco_v2repro.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/eval_all_pycoco_v2repro.py)
-- [`scripts/eval_confusion_from_npz.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/eval_confusion_from_npz.py)
-- [`scripts/eval_detector_agnostic.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/eval_detector_agnostic.py)
-- [`scripts/eval_dump_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/eval_dump_damimas.py)
-- [`scripts/eval_extra_metrics_from_npz.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/eval_extra_metrics_from_npz.py)
-- [`scripts/eval_nch.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/eval_nch.py)
-- [`scripts/eval_new763_campaigns.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/eval_new763_campaigns.py)
-- [`scripts/eval_new763_pycoco.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/eval_new763_pycoco.py)
-- [`scripts/eval_pycoco_352.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/eval_pycoco_352.py)
-- [`scripts/eval_pycoco_rgbd352.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/eval_pycoco_rgbd352.py)
-- [`scripts/eval_twostage.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/eval_twostage.py)
-- [`scripts/finalize_new763.sh`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/finalize_new763.sh)
-- [`scripts/fuse_final.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/fuse_final.py)
-- [`scripts/fusi_detektor_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/fusi_detektor_damimas.py)
-- [`scripts/fusi_proposal_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/fusi_proposal_damimas.py)
-- [`scripts/infer_detektor_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/infer_detektor_damimas.py)
-- [`scripts/infer_rfdetr_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/infer_rfdetr_damimas.py)
-- [`scripts/infer_tile_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/infer_tile_damimas.py)
-- [`scripts/jalankan_matriks.sh`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/jalankan_matriks.sh)
-- [`scripts/lengkapi_metadata_split.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/lengkapi_metadata_split.py)
-- [`scripts/make_absolute_split.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/make_absolute_split.py)
-- [`scripts/make_agnostic_dataset.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/make_agnostic_dataset.py)
-- [`scripts/make_pretrain_split.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/make_pretrain_split.py)
-- [`scripts/materialize_split_dirs.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/materialize_split_dirs.py)
-- [`scripts/perbaiki_tiff_korup.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/perbaiki_tiff_korup.py)
-- [`scripts/pilih_detektor.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/pilih_detektor.py)
-- [`scripts/postprocess_rfdetr_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/postprocess_rfdetr_damimas.py)
-- [`scripts/probe_depth_signal.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/probe_depth_signal.py)
-- [`scripts/probe_fitur_depth.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/probe_fitur_depth.py)
-- [`scripts/probe_mono_vs_sensor.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/probe_mono_vs_sensor.py)
-- [`scripts/probe_pergeseran_temporal.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/probe_pergeseran_temporal.py)
-- [`scripts/propagasi_multiview_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/propagasi_multiview_damimas.py)
-- [`scripts/rantai_xtree953.sh`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/rantai_xtree953.sh)
-- [`scripts/relabel_classifier_deteksi_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/relabel_classifier_deteksi_damimas.py)
-- [`scripts/relabel_detektor_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/relabel_detektor_damimas.py)
-- [`scripts/run_combined1716_matrix.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/run_combined1716_matrix.py)
-- [`scripts/run_counting_rgb352.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/run_counting_rgb352.py)
-- [`scripts/run_counting_rgbd352.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/run_counting_rgbd352.py)
-- [`scripts/run_counting_twostage.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/run_counting_twostage.py)
-- [`scripts/run_counting_v2repro.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/run_counting_v2repro.py)
-- [`scripts/run_new763_matrix.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/run_new763_matrix.py)
-- [`scripts/run_new763_parallel.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/run_new763_parallel.py)
-- [`scripts/seleksi_rfdetr_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/seleksi_rfdetr_damimas.py)
-- [`scripts/summarize_new763.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/summarize_new763.py)
-- [`scripts/sweep_inferensi.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/sweep_inferensi.py)
-- [`scripts/train_baseline_new763.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/train_baseline_new763.py)
-- [`scripts/train_crop_classifier.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/train_crop_classifier.py)
-- [`scripts/train_rfdetr_4ch.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/train_rfdetr_4ch.py)
-- [`scripts/train_rfdetr_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/train_rfdetr_damimas.py)
-- [`scripts/train_rtdetr_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/train_rtdetr_damimas.py)
-- [`scripts/train_ultra_local.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/train_ultra_local.py)
-- [`scripts/train_yolo_4ch_dropout.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/train_yolo_4ch_dropout.py)
-- [`scripts/train_yolo_4ch_screening.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/train_yolo_4ch_screening.py)
-- [`scripts/train_yolo_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/train_yolo_damimas.py)
-- [`scripts/train_yolo_midfusion.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/train_yolo_midfusion.py)
-- [`scripts/validate_new763.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/5d13720ee9c29faae0e60a8d1d00e0af9068646c/scripts/validate_new763.py)
+- [`configs/new763_abs.yaml`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/configs/new763_abs.yaml)
+- [`configs/new763_rgb_abs.yaml`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/configs/new763_rgb_abs.yaml)
+- [`configs/new763_rgbd4.yaml`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/configs/new763_rgbd4.yaml)
+- [`pipeline-pertandan/scripts/audit_counting_total_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/audit_counting_total_damimas.py)
+- [`pipeline-pertandan/scripts/bangun_crop_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/bangun_crop_damimas.py)
+- [`pipeline-pertandan/scripts/c3_multitampak.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/c3_multitampak.py)
+- [`pipeline-pertandan/scripts/c_backbone_ordinal.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/c_backbone_ordinal.py)
+- [`pipeline-pertandan/scripts/ci_gnn.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/ci_gnn.py)
+- [`pipeline-pertandan/scripts/classifier_coral_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/classifier_coral_damimas.py)
+- [`pipeline-pertandan/scripts/classifier_deteksi_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/classifier_deteksi_damimas.py)
+- [`pipeline-pertandan/scripts/classifier_hibrida_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/classifier_hibrida_damimas.py)
+- [`pipeline-pertandan/scripts/classifier_klasik_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/classifier_klasik_damimas.py)
+- [`pipeline-pertandan/scripts/counting_catboost_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/counting_catboost_damimas.py)
+- [`pipeline-pertandan/scripts/counting_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/counting_damimas.py)
+- [`pipeline-pertandan/scripts/counting_multibank_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/counting_multibank_damimas.py)
+- [`pipeline-pertandan/scripts/des_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/des_damimas.py)
+- [`pipeline-pertandan/scripts/endtoend_gabungan.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/endtoend_gabungan.py)
+- [`pipeline-pertandan/scripts/ensemble_bagged_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/ensemble_bagged_damimas.py)
+- [`pipeline-pertandan/scripts/ensemble_c.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/ensemble_c.py)
+- [`pipeline-pertandan/scripts/ensemble_classifier_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/ensemble_classifier_damimas.py)
+- [`pipeline-pertandan/scripts/ensemble_kelas_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/ensemble_kelas_damimas.py)
+- [`pipeline-pertandan/scripts/eval_counting.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/eval_counting.py)
+- [`pipeline-pertandan/scripts/eval_counting_baseline.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/eval_counting_baseline.py)
+- [`pipeline-pertandan/scripts/eval_endtoend.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/eval_endtoend.py)
+- [`pipeline-pertandan/scripts/eval_endtoend_global_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/eval_endtoend_global_damimas.py)
+- [`pipeline-pertandan/scripts/eval_pertandan.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/eval_pertandan.py)
+- [`pipeline-pertandan/scripts/eval_pertandan_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/eval_pertandan_damimas.py)
+- [`pipeline-pertandan/scripts/eval_rem_hitung.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/eval_rem_hitung.py)
+- [`pipeline-pertandan/scripts/gate_pola_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/gate_pola_damimas.py)
+- [`pipeline-pertandan/scripts/gnn_deteksi.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/gnn_deteksi.py)
+- [`pipeline-pertandan/scripts/gnn_penaut.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/gnn_penaut.py)
+- [`pipeline-pertandan/scripts/infer_skor_penuh.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/infer_skor_penuh.py)
+- [`pipeline-pertandan/scripts/jalankan_ide.sh`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/jalankan_ide.sh)
+- [`pipeline-pertandan/scripts/laporkan_kepala_linker_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/laporkan_kepala_linker_damimas.py)
+- [`pipeline-pertandan/scripts/linker_global_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/linker_global_damimas.py)
+- [`pipeline-pertandan/scripts/moe_classifier_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/moe_classifier_damimas.py)
+- [`pipeline-pertandan/scripts/moe_view_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/moe_view_damimas.py)
+- [`pipeline-pertandan/scripts/penaut_pertandan.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/penaut_pertandan.py)
+- [`pipeline-pertandan/scripts/probe_penautan_953.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/probe_penautan_953.py)
+- [`pipeline-pertandan/scripts/reid_pertandan.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/reid_pertandan.py)
+- [`pipeline-pertandan/scripts/rekonsiliasi_pohon_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/rekonsiliasi_pohon_damimas.py)
+- [`pipeline-pertandan/scripts/sapu_ambang_gnn.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/sapu_ambang_gnn.py)
+- [`pipeline-pertandan/scripts/sapu_conf.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/sapu_conf.py)
+- [`pipeline-pertandan/scripts/set_transformer_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/set_transformer_damimas.py)
+- [`pipeline-pertandan/scripts/spesialis_batas_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/spesialis_batas_damimas.py)
+- [`pipeline-pertandan/scripts/stacker_damimas.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/stacker_damimas.py)
+- [`pipeline-pertandan/scripts/uji_352.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/uji_352.py)
+- [`pipeline-pertandan/scripts/validasi_dump.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/pipeline-pertandan/scripts/validasi_dump.py)
+- [`results/new763_rgbd4/rtdetr_l_rgbd4_args.yaml`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/new763_rgbd4/rtdetr_l_rgbd4_args.yaml)
+- [`results/new763_rgbd4/yolo26l_rgbd4_args.yaml`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/new763_rgbd4/yolo26l_rgbd4_args.yaml)
+- [`results/remote_eval_2026-08-28/scripts/rank_and_emit.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/scripts/rank_and_emit.py)
+- [`results/remote_eval_2026-08-28/scripts/run_test_locked.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/scripts/run_test_locked.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/adaptive_linker.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/adaptive_linker.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/build_submissions_test_locked.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/build_submissions_test_locked.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/ci_bootstrap_test_locked.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/ci_bootstrap_test_locked.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/class_bias_general.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/class_bias_general.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/class_bias_general_bootstrap.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/class_bias_general_bootstrap.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/class_bias_refine.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/class_bias_refine.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/class_bias_sweep.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/class_bias_sweep.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/cluster_head_experiment.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/cluster_head_experiment.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/composition_aware_953.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/composition_aware_953.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/composition_aware_head.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/composition_aware_head.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/count_ensemble_aborted_exhaustive.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/count_ensemble_aborted_exhaustive.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/count_ensemble_fast.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/count_ensemble_fast.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/count_meta_ensemble.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/count_meta_ensemble.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/cross_layer_953.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/cross_layer_953.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/depth_adaptive_v2.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/depth_adaptive_v2.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/e2e_paired_bootstrap.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/e2e_paired_bootstrap.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/e2e_paired_bootstrap_test_locked.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/e2e_paired_bootstrap_test_locked.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/edge_ensemble_gsp_953.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/edge_ensemble_gsp_953.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/extract_aux_crops.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/extract_aux_crops.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/extract_aux_features.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/extract_aux_features.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/extract_large_features.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/extract_large_features.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/gpu_group_head.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/gpu_group_head.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/harness.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/harness.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/head_aware_selection.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/head_aware_selection.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/knn_prototype_head.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/knn_prototype_head.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/large_member_head.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/large_member_head.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/large_stack_class_bias.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/large_stack_class_bias.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/large_stacker.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/large_stacker.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/large_stacker_val_bootstrap.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/large_stacker_val_bootstrap.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/member_head.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/member_head.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/member_head_weighted.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/member_head_weighted.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/member_stacker.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/member_stacker.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/member_validation_bootstrap.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/member_validation_bootstrap.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/multimodal_cluster_head.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/multimodal_cluster_head.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/multiscale_member_head.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/multiscale_member_head.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/multiscale_stacker.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/multiscale_stacker.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/oof_expert_stack.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/oof_expert_stack.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/pipeline_v2.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/pipeline_v2.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/residual_mlp_member.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/residual_mlp_member.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/residual_stack.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/residual_stack.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/rich_count_models.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/rich_count_models.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/side_aware_ordinal.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/side_aware_ordinal.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/stacked_heads.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/stacked_heads.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/timm_extract_features.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/timm_extract_features.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/timm_member_head.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/timm_member_head.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/timm_stack_fusion.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/timm_stack_fusion.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/topology_count_class_bootstrap.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/topology_count_class_bootstrap.py)
+- [`results/remote_eval_2026-08-28/validation_wave/scripts/topology_count_class_combo.py`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/remote_eval_2026-08-28/validation_wave/scripts/topology_count_class_combo.py)
+- [`results/riwayat_epoch/sel3_352_rgbmono__args.yaml`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/riwayat_epoch/sel3_352_rgbmono__args.yaml)
+- [`results/riwayat_epoch/sel4_352_rgbedgemono__args.yaml`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/riwayat_epoch/sel4_352_rgbedgemono__args.yaml)
+- [`results/riwayat_epoch/sel6_953_rgbmono__args.yaml`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/riwayat_epoch/sel6_953_rgbmono__args.yaml)
+- [`results/riwayat_epoch_combined1716/combined1716_rtdetr_l_rgb_s42_i1280__args.yaml`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/riwayat_epoch_combined1716/combined1716_rtdetr_l_rgb_s42_i1280__args.yaml)
+- [`results/riwayat_epoch_combined1716/combined1716_yolo26l_rgb_s42_i1280__args.yaml`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/riwayat_epoch_combined1716/combined1716_yolo26l_rgb_s42_i1280__args.yaml)
+- [`results/riwayat_epoch_new763/rtdetr_l_rgb_s42_i1280__args.yaml`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/riwayat_epoch_new763/rtdetr_l_rgb_s42_i1280__args.yaml)
+- [`results/riwayat_epoch_new763/yolo26l_rgb_s42_i1280__args.yaml`](https://github.com/muhammad-zainal-muttaqin/project-expertise/blob/74b19c2b641b96d056a728ffecf56cd6ecd648b8/results/riwayat_epoch_new763/yolo26l_rgb_s42_i1280__args.yaml)
+
+| Direktori bervolume tinggi | Jumlah path | Inspeksi manual |
+|---|---:|---|
+| `scripts/` | 118 | [Buka seluruh isi pada commit](https://github.com/muhammad-zainal-muttaqin/project-expertise/tree/74b19c2b641b96d056a728ffecf56cd6ecd648b8/scripts) |
 
 ### Payload Anotasi atau Citra yang Dikelompokkan
 
@@ -657,16 +672,16 @@ Tidak ada payload anotasi atau citra yang perlu dikelompokkan.
 
 | Ekstensi | Jumlah path |
 |---|---:|
-| `.json` | 153 |
-| `.py` | 120 |
-| `.npz` | 103 |
+| `.json` | 299 |
+| `.py` | 209 |
+| `.npz` | 167 |
+| `.md` | 45 |
 | `.log` | 42 |
-| `.csv` | 28 |
-| `.md` | 28 |
+| `.csv` | 33 |
+| `.yaml` | 12 |
+| `.txt` | 10 |
 | `tanpa ekstensi` | 10 |
-| `.txt` | 9 |
-| `.yaml` | 9 |
-| `.png` | 6 |
+| `.png` | 8 |
 | `.sh` | 4 |
 | `.out` | 1 |
 | `.pt` | 1 |

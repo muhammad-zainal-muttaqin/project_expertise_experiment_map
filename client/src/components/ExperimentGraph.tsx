@@ -226,8 +226,8 @@ export function ExperimentGraph({
   } as React.CSSProperties;
 
   /* Persegi minimap adalah satu-satunya bagian yang mengikuti posisi gulir. Menyimpannya sebagai
-     state React membuat 136 simpul, 201 path edge, dan 151 persegi minimap dirender ulang pada
-     setiap kejadian gulir — 50–80 ms skrip per frame geseran — sehingga nilainya ditulis langsung
+     state React membuat seluruh simpul, path edge, dan persegi minimap dirender ulang pada
+     setiap kejadian gulir — puluhan milidetik skrip per frame geseran — sehingga nilainya ditulis langsung
      ke DOM dan digabungkan menjadi satu penulisan per frame animasi. zoomRef menyediakan pembagi
      terkini tanpa perlu mendaftarkan ulang listener-nya. */
   const zoomRef = useRef(zoom);

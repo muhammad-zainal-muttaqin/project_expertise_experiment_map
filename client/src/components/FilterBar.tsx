@@ -132,6 +132,12 @@ export function FilterBar({ filters, onChange }: FilterBarProps) {
           <option value="SawitMVC-Depth-352">
             SawitMVC-Depth · 352 (RGB-D)
           </option>
+          <option value="SawitMVC-Depth-763">
+            SawitMVC-Depth · 763 (RGB-D)
+          </option>
+          <option value="SawitMVC-Combined-1716">
+            SawitMVC-Combined · 1.716
+          </option>
           <option value="Lintas-dataset">Lintas-dataset</option>
           <option value="Audit">Audit</option>
         </select>
